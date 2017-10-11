@@ -22,3 +22,26 @@ select,
 textarea {
     max-width: 280px;
 }
+
+/*------------------------------------------------ NAVIGATION STYLES ------------------------------------------------ */
+nav {
+  /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#519032+17,71bf44+100 */
+  background: #519032;
+  /* Old browsers */
+  /* FF3.6-15 */
+  /* Chrome10-25,Safari5.1-6 */
+  background: linear-gradient(to bottom, #519032 17%, #71bf44 100%);
+  /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#519032', endColorstr='#71bf44', GradientType=0);
+  /* IE6-9 */
+  color: #ffffff;
+}
+nav a {
+    color: #ffffff;
+}
+nav a:hover {
+    color: #333333;
+}
+.navbar .navbar-toggle .icon-bar {
+    background-color: #ffffff;
+}
