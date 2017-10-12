@@ -6,7 +6,7 @@
     <ProductVersion>
     </ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{9CEBD191-114A-4241-9B96-4D64B117E10B}</ProjectGuid>
+    <ProjectGuid>{6C4DA1F2-4464-496A-B988-8E1F119311D6}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Gartenkraft.Tests</RootNamespace>
@@ -93,7 +93,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Gartenkraft\Gartenkraft.csproj">
-      <Project>{E6899525-44E4-4E1E-96DC-61712D26F848}</Project>
+      <Project>{FD285F9A-A645-424B-8EB9-E311DC9AD121}</Project>
       <Name>Gartenkraft</Name>
     </ProjectReference>
   </ItemGroup>

@@ -64,6 +64,11 @@ namespace Gartenkraft.Models
 
     public class RegisterViewModel
     {
+        [Display(Name = "Role")]
+        public string RoleName { get; set; }
+        [Display(Name = "UserName")]
+        public string UserName { get; set; }
+
         [Required]
         [EmailAddress]
         [Display(Name = "Email")]
