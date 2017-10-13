@@ -81,6 +81,8 @@
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -222,8 +224,59 @@
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\AspNetUser.cs">
+      <DependentUpon>BusinessModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\BusinessModel.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>BusinessModel.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\BusinessModel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>BusinessModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\BusinessModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>BusinessModel.edmx</DependentUpon>
+    </Compile>
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\tblBilling_Information.cs">
+      <DependentUpon>BusinessModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tblInventory.cs">
+      <DependentUpon>BusinessModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tblInvoice.cs">
+      <DependentUpon>BusinessModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tblLineitem.cs">
+      <DependentUpon>BusinessModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tblOrder.cs">
+      <DependentUpon>BusinessModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tblProduct.cs">
+      <DependentUpon>BusinessModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tblProduct_Category.cs">
+      <DependentUpon>BusinessModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tblProduct_Category_Image.cs">
+      <DependentUpon>BusinessModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tblProduct_Image.cs">
+      <DependentUpon>BusinessModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tblShipping.cs">
+      <DependentUpon>BusinessModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tblStore.cs">
+      <DependentUpon>BusinessModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
@@ -239,10 +292,27 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="Models\BusinessModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>BusinessModel.edmx</DependentUpon>
+      <LastGenOutput>BusinessModel.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\BusinessModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>BusinessModel.edmx</DependentUpon>
+      <LastGenOutput>BusinessModel.cs</LastGenOutput>
+    </Content>
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <EntityDeploy Include="Models\BusinessModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>BusinessModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\BusinessModel.edmx.diagram">
+      <DependentUpon>BusinessModel.edmx</DependentUpon>
     </Content>
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
@@ -324,6 +394,9 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Images\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
