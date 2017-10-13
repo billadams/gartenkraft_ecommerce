@@ -66,6 +66,8 @@ namespace Gartenkraft.Models
     {
         [Display(Name = "Role")]
         public string RoleName { get; set; }
+
+        [Required]
         [Display(Name = "UserName")]
         public string UserName { get; set; }
 
@@ -84,6 +86,37 @@ namespace Gartenkraft.Models
         [Display(Name = "Confirm password")]
         [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
         public string ConfirmPassword { get; set; }
+
+        [Display(Name ="First Name")]
+        public string FirstName { get; set; }
+
+        [Display(Name = "Last Name")]
+        public string LastName { get; set; }
+
+        [Display(Name = "Address1")]
+        public string Address1 { get; set; }
+
+        [Display(Name = "Address2")]
+        public string Address2 { get; set; }
+
+        [Display(Name = "City")]
+        public string City { get; set; }
+
+        [Display(Name = "State")]
+        public string State { get; set; }
+
+        [Display(Name = "Zip Code")]
+        public string Zip { get; set; }
+
+        [Display(Name = "")]
+        public string Zip4 { get; set; }
+
+        [Display(Name = "Country")]
+        public string Country { get; set; }
+
+        [Display(Name = "Image")]
+        public string ImageFileName { get; set; }
+
     }
 
     public class ResetPasswordViewModel

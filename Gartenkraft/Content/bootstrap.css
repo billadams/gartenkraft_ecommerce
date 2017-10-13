@@ -1716,9 +1716,7 @@ input[type="number"]::-webkit-inner-spin-button {
   color: #999999;
 }
 
-.form-control {
-  display: block;
-  width: 100%;
+.form-control, .form-control-zip {  
   height: 34px;
   padding: 6px 12px;
   font-size: 14px;
@@ -1732,6 +1730,16 @@ input[type="number"]::-webkit-inner-spin-button {
           box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
   -webkit-transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;
           transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;
+}
+
+.form-control {
+    display: block;
+    width: 100%;
+}
+
+.form-control-zip {
+    display:inline-block;
+    width:45%;
 }
 
 .form-control:focus {

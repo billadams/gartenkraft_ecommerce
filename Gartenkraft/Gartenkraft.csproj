@@ -191,6 +191,11 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="App_GlobalResources\Resource.designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resource.resx</DependentUpon>
+    </Compile>
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\IdentityConfig.cs" />
@@ -210,6 +215,10 @@
     <Compile Include="Migrations\201710081953040_ApplicationRoles.cs" />
     <Compile Include="Migrations\201710081953040_ApplicationRoles.Designer.cs">
       <DependentUpon>201710081953040_ApplicationRoles.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201710130648076_User.cs" />
+    <Compile Include="Migrations\201710130648076_User.Designer.cs">
+      <DependentUpon>201710130648076_User.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -247,7 +256,9 @@
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
     <Content Include="Scripts\_references.js" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
@@ -289,11 +300,18 @@
     <Content Include="Views\Account\RegisterRole.cshtml" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="App_GlobalResources\Resource.resx">
+      <Generator>GlobalResourceProxyGenerator</Generator>
+      <LastGenOutput>Resource.designer.cs</LastGenOutput>
+    </Content>
     <EmbeddedResource Include="Migrations\201710081937282_InitialCreate.resx">
       <DependentUpon>201710081937282_InitialCreate.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201710081953040_ApplicationRoles.resx">
       <DependentUpon>201710081953040_ApplicationRoles.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201710130648076_User.resx">
+      <DependentUpon>201710130648076_User.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
