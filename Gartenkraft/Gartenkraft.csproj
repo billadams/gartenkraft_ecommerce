@@ -205,6 +205,9 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\AdminControllers\ApplicationRolesController.cs" />
+    <Compile Include="Controllers\AdminControllers\tblProductsController.cs" />
+    <Compile Include="Controllers\AdminControllers\tblProduct_CategoryController.cs" />
+    <Compile Include="Controllers\AdminControllers\tblStoresController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Global.asax.cs">
@@ -368,6 +371,21 @@
     <Content Include="Views\ApplicationRoles\Edit.cshtml" />
     <Content Include="Views\ApplicationRoles\Index.cshtml" />
     <Content Include="Views\Account\RegisterRole.cshtml" />
+    <Content Include="Views\tblProducts\Create.cshtml" />
+    <Content Include="Views\tblProducts\Delete.cshtml" />
+    <Content Include="Views\tblProducts\Details.cshtml" />
+    <Content Include="Views\tblProducts\Edit.cshtml" />
+    <Content Include="Views\tblProducts\Index.cshtml" />
+    <Content Include="Views\tblStores\Create.cshtml" />
+    <Content Include="Views\tblStores\Delete.cshtml" />
+    <Content Include="Views\tblStores\Details.cshtml" />
+    <Content Include="Views\tblStores\Edit.cshtml" />
+    <Content Include="Views\tblStores\Index.cshtml" />
+    <Content Include="Views\tblProduct_Category\Create.cshtml" />
+    <Content Include="Views\tblProduct_Category\Delete.cshtml" />
+    <Content Include="Views\tblProduct_Category\Details.cshtml" />
+    <Content Include="Views\tblProduct_Category\Edit.cshtml" />
+    <Content Include="Views\tblProduct_Category\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="App_GlobalResources\Resource.resx">
