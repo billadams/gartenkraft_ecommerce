@@ -153,7 +153,7 @@ namespace Gartenkraft.Controllers
         {
             if (ModelState.IsValid)
             {
-                var user = new ApplicationUser { UserName = model.Email, Email = model.Email };
+                var user = new ApplicationUser { UserName = model.UserName, Email = model.Email, FirstName = model.FirstName, LastName = model.LastName, Address1 = model.Address1, Address2 = model.Address2, City = model.City, State = model.State, Zip = model.Zip, Zip4 = model.Zip4, Country = model.Country };
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
