@@ -1,0 +1,99 @@
+﻿@model Gartenkraft_Admin.Models.tblProduct
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>tblProduct</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.product_name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.product_name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.product_short_description)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.product_short_description)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.product_long_description)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.product_long_description)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.product_unit_cost)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.product_unit_cost)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.product_unit_price)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.product_unit_price)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.product_weight)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.product_weight)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.product_date_added)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.product_date_added)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.product_image_id)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.product_image_id)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.tblProduct_Category.category_name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tblProduct_Category.category_name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.tblStore.store_name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tblStore.store_name)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.product_id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

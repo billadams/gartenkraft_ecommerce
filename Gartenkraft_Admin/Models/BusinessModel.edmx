@@ -1,0 +1,907 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="gartenkraftModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="AspNetUsers">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="Email" Type="nvarchar" MaxLength="256" />
+          <Property Name="EmailConfirmed" Type="bit" Nullable="false" />
+          <Property Name="PasswordHash" Type="nvarchar(max)" />
+          <Property Name="SecurityStamp" Type="nvarchar(max)" />
+          <Property Name="PhoneNumber" Type="nvarchar(max)" />
+          <Property Name="PhoneNumberConfirmed" Type="bit" Nullable="false" />
+          <Property Name="TwoFactorEnabled" Type="bit" Nullable="false" />
+          <Property Name="LockoutEndDateUtc" Type="datetime" />
+          <Property Name="LockoutEnabled" Type="bit" Nullable="false" />
+          <Property Name="AccessFailedCount" Type="int" Nullable="false" />
+          <Property Name="UserName" Type="nvarchar" MaxLength="256" Nullable="false" />
+          <Property Name="FirstName" Type="nvarchar(max)" />
+          <Property Name="LastName" Type="nvarchar(max)" />
+          <Property Name="Address1" Type="nvarchar(max)" />
+          <Property Name="Address2" Type="nvarchar(max)" />
+          <Property Name="City" Type="nvarchar(max)" />
+          <Property Name="State" Type="nvarchar(max)" />
+          <Property Name="Zip" Type="nvarchar(max)" />
+          <Property Name="Zip4" Type="nvarchar(max)" />
+          <Property Name="Country" Type="nvarchar(max)" />
+          <Property Name="ImageFileName" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="tblBilling_Information">
+          <Key>
+            <PropertyRef Name="billing_id" />
+          </Key>
+          <Property Name="billing_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="customer_id" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="billing_address1" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="billing_address2" Type="varchar" MaxLength="100" />
+          <Property Name="billing_city" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="billing_state" Type="varchar(max)" Nullable="false" />
+          <Property Name="billing_zip" Type="varchar" MaxLength="5" Nullable="false" />
+          <Property Name="billing_zip4" Type="varchar" MaxLength="4" />
+          <Property Name="billing_country" Type="varchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tblInventory">
+          <Key>
+            <PropertyRef Name="inventory_id" />
+          </Key>
+          <Property Name="inventory_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="product_id" Type="int" Nullable="false" />
+          <Property Name="inventory_quantity" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tblInvoice">
+          <Key>
+            <PropertyRef Name="invoice_id" />
+          </Key>
+          <Property Name="invoice_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="invoice_date" Type="datetime" Nullable="false" />
+          <Property Name="order_id" Type="int" />
+          <Property Name="customer_id" Type="nvarchar" MaxLength="128" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tblLineitem">
+          <Key>
+            <PropertyRef Name="lineitem_id" />
+          </Key>
+          <Property Name="lineitem_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="product_id" Type="int" Nullable="false" />
+          <Property Name="lineitem_quantity" Type="int" Nullable="false" />
+          <Property Name="invoice_id" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tblOrder">
+          <Key>
+            <PropertyRef Name="order_id" />
+          </Key>
+          <Property Name="order_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="customer_id" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="order_date" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tblProduct">
+          <Key>
+            <PropertyRef Name="product_id" />
+          </Key>
+          <Property Name="product_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="product_name" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="product_short_description" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="product_long_description" Type="varchar(max)" Nullable="false" />
+          <Property Name="product_unit_cost" Type="money" Nullable="false" />
+          <Property Name="product_unit_price" Type="money" Nullable="false" />
+          <Property Name="product_category_id" Type="int" Nullable="false" />
+          <Property Name="product_store_id" Type="int" Nullable="false" />
+          <Property Name="product_weight" Type="decimal" Precision="6" Scale="2" Nullable="false" />
+          <Property Name="product_date_added" Type="datetime" Nullable="false" />
+          <Property Name="product_image_id" Type="int" />
+        </EntityType>
+        <EntityType Name="tblProduct_Category">
+          <Key>
+            <PropertyRef Name="category_id" />
+          </Key>
+          <Property Name="category_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="category_store_id" Type="int" Nullable="false" />
+          <Property Name="category_image_id" Type="int" />
+          <Property Name="category_name" Type="varchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tblProduct_Category_Image">
+          <Key>
+            <PropertyRef Name="product_category_image_id" />
+          </Key>
+          <Property Name="product_category_image_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="product_category_id" Type="int" Nullable="false" />
+          <Property Name="product_category_image_name" Type="varchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tblProduct_Image">
+          <Key>
+            <PropertyRef Name="product_image_id" />
+          </Key>
+          <Property Name="product_image_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="product_id" Type="int" Nullable="false" />
+          <Property Name="product_image_name" Type="varchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tblShipping">
+          <Key>
+            <PropertyRef Name="shipping_id" />
+          </Key>
+          <Property Name="shipping_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="customer_id" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="shipping_address1" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="shipping_address2" Type="varchar" MaxLength="100" />
+          <Property Name="shipping_city" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="shipping_state" Type="varchar(max)" Nullable="false" />
+          <Property Name="shipping_zip" Type="varchar" MaxLength="5" Nullable="false" />
+          <Property Name="shipping_zip4" Type="varchar" MaxLength="4" />
+          <Property Name="shipping_country" Type="varchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tblStore">
+          <Key>
+            <PropertyRef Name="store_id" />
+          </Key>
+          <Property Name="store_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="store_name" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="date_added" Type="datetime" Nullable="false" />
+          <Property Name="soft_delete" Type="bit" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_tblBilling_Information_AspNetUsers">
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1" />
+          <End Role="tblBilling_Information" Type="Self.tblBilling_Information" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="tblBilling_Information">
+              <PropertyRef Name="customer_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblInventory_tblProduct">
+          <End Role="tblProduct" Type="Self.tblProduct" Multiplicity="1" />
+          <End Role="tblInventory" Type="Self.tblInventory" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblProduct">
+              <PropertyRef Name="product_id" />
+            </Principal>
+            <Dependent Role="tblInventory">
+              <PropertyRef Name="product_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblInvoice_AspNetUsers">
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1" />
+          <End Role="tblInvoice" Type="Self.tblInvoice" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="tblInvoice">
+              <PropertyRef Name="customer_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblLineitem_tblInvoice">
+          <End Role="tblInvoice" Type="Self.tblInvoice" Multiplicity="1" />
+          <End Role="tblLineitem" Type="Self.tblLineitem" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblInvoice">
+              <PropertyRef Name="invoice_id" />
+            </Principal>
+            <Dependent Role="tblLineitem">
+              <PropertyRef Name="invoice_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblLineitem_tblProduct">
+          <End Role="tblProduct" Type="Self.tblProduct" Multiplicity="1" />
+          <End Role="tblLineitem" Type="Self.tblLineitem" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblProduct">
+              <PropertyRef Name="product_id" />
+            </Principal>
+            <Dependent Role="tblLineitem">
+              <PropertyRef Name="product_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblOrder_AspNetUsers">
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1" />
+          <End Role="tblOrder" Type="Self.tblOrder" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="tblOrder">
+              <PropertyRef Name="customer_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblProduct_Category_Image_tblProduct_Category">
+          <End Role="tblProduct_Category" Type="Self.tblProduct_Category" Multiplicity="1" />
+          <End Role="tblProduct_Category_Image" Type="Self.tblProduct_Category_Image" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblProduct_Category">
+              <PropertyRef Name="category_id" />
+            </Principal>
+            <Dependent Role="tblProduct_Category_Image">
+              <PropertyRef Name="product_category_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblProduct_Category_tblStore">
+          <End Role="tblStore" Type="Self.tblStore" Multiplicity="1" />
+          <End Role="tblProduct_Category" Type="Self.tblProduct_Category" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblStore">
+              <PropertyRef Name="store_id" />
+            </Principal>
+            <Dependent Role="tblProduct_Category">
+              <PropertyRef Name="category_store_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblProduct_Image_tblProduct">
+          <End Role="tblProduct" Type="Self.tblProduct" Multiplicity="1" />
+          <End Role="tblProduct_Image" Type="Self.tblProduct_Image" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblProduct">
+              <PropertyRef Name="product_id" />
+            </Principal>
+            <Dependent Role="tblProduct_Image">
+              <PropertyRef Name="product_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblProduct_tblProduct_Category">
+          <End Role="tblProduct_Category" Type="Self.tblProduct_Category" Multiplicity="1" />
+          <End Role="tblProduct" Type="Self.tblProduct" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblProduct_Category">
+              <PropertyRef Name="category_id" />
+            </Principal>
+            <Dependent Role="tblProduct">
+              <PropertyRef Name="product_category_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblProduct_tblStore">
+          <End Role="tblStore" Type="Self.tblStore" Multiplicity="1" />
+          <End Role="tblProduct" Type="Self.tblProduct" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblStore">
+              <PropertyRef Name="store_id" />
+            </Principal>
+            <Dependent Role="tblProduct">
+              <PropertyRef Name="product_store_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblShipping_AspNetUsers">
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1" />
+          <End Role="tblShipping" Type="Self.tblShipping" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="tblShipping">
+              <PropertyRef Name="customer_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="gartenkraftModelStoreContainer">
+          <EntitySet Name="AspNetUsers" EntityType="Self.AspNetUsers" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblBilling_Information" EntityType="Self.tblBilling_Information" Schema="gkraft" store:Type="Tables" />
+          <EntitySet Name="tblInventory" EntityType="Self.tblInventory" Schema="gkraft" store:Type="Tables" />
+          <EntitySet Name="tblInvoice" EntityType="Self.tblInvoice" Schema="gkraft" store:Type="Tables" />
+          <EntitySet Name="tblLineitem" EntityType="Self.tblLineitem" Schema="gkraft" store:Type="Tables" />
+          <EntitySet Name="tblOrder" EntityType="Self.tblOrder" Schema="gkraft" store:Type="Tables" />
+          <EntitySet Name="tblProduct" EntityType="Self.tblProduct" Schema="gkraft" store:Type="Tables" />
+          <EntitySet Name="tblProduct_Category" EntityType="Self.tblProduct_Category" Schema="gkraft" store:Type="Tables" />
+          <EntitySet Name="tblProduct_Category_Image" EntityType="Self.tblProduct_Category_Image" Schema="gkraft" store:Type="Tables" />
+          <EntitySet Name="tblProduct_Image" EntityType="Self.tblProduct_Image" Schema="gkraft" store:Type="Tables" />
+          <EntitySet Name="tblShipping" EntityType="Self.tblShipping" Schema="gkraft" store:Type="Tables" />
+          <EntitySet Name="tblStore" EntityType="Self.tblStore" Schema="gkraft" store:Type="Tables" />
+          <AssociationSet Name="FK_tblBilling_Information_AspNetUsers" Association="Self.FK_tblBilling_Information_AspNetUsers">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="tblBilling_Information" EntitySet="tblBilling_Information" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblInventory_tblProduct" Association="Self.FK_tblInventory_tblProduct">
+            <End Role="tblProduct" EntitySet="tblProduct" />
+            <End Role="tblInventory" EntitySet="tblInventory" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblInvoice_AspNetUsers" Association="Self.FK_tblInvoice_AspNetUsers">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="tblInvoice" EntitySet="tblInvoice" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblLineitem_tblInvoice" Association="Self.FK_tblLineitem_tblInvoice">
+            <End Role="tblInvoice" EntitySet="tblInvoice" />
+            <End Role="tblLineitem" EntitySet="tblLineitem" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblLineitem_tblProduct" Association="Self.FK_tblLineitem_tblProduct">
+            <End Role="tblProduct" EntitySet="tblProduct" />
+            <End Role="tblLineitem" EntitySet="tblLineitem" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblOrder_AspNetUsers" Association="Self.FK_tblOrder_AspNetUsers">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="tblOrder" EntitySet="tblOrder" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblProduct_Category_Image_tblProduct_Category" Association="Self.FK_tblProduct_Category_Image_tblProduct_Category">
+            <End Role="tblProduct_Category" EntitySet="tblProduct_Category" />
+            <End Role="tblProduct_Category_Image" EntitySet="tblProduct_Category_Image" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblProduct_Category_tblStore" Association="Self.FK_tblProduct_Category_tblStore">
+            <End Role="tblStore" EntitySet="tblStore" />
+            <End Role="tblProduct_Category" EntitySet="tblProduct_Category" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblProduct_Image_tblProduct" Association="Self.FK_tblProduct_Image_tblProduct">
+            <End Role="tblProduct" EntitySet="tblProduct" />
+            <End Role="tblProduct_Image" EntitySet="tblProduct_Image" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblProduct_tblProduct_Category" Association="Self.FK_tblProduct_tblProduct_Category">
+            <End Role="tblProduct_Category" EntitySet="tblProduct_Category" />
+            <End Role="tblProduct" EntitySet="tblProduct" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblProduct_tblStore" Association="Self.FK_tblProduct_tblStore">
+            <End Role="tblStore" EntitySet="tblStore" />
+            <End Role="tblProduct" EntitySet="tblProduct" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblShipping_AspNetUsers" Association="Self.FK_tblShipping_AspNetUsers">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="tblShipping" EntitySet="tblShipping" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="gartenkraftModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="AspNetUser">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Email" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="EmailConfirmed" Type="Boolean" Nullable="false" />
+          <Property Name="PasswordHash" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="SecurityStamp" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="PhoneNumber" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="PhoneNumberConfirmed" Type="Boolean" Nullable="false" />
+          <Property Name="TwoFactorEnabled" Type="Boolean" Nullable="false" />
+          <Property Name="LockoutEndDateUtc" Type="DateTime" Precision="3" />
+          <Property Name="LockoutEnabled" Type="Boolean" Nullable="false" />
+          <Property Name="AccessFailedCount" Type="Int32" Nullable="false" />
+          <Property Name="UserName" Type="String" MaxLength="256" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="FirstName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="LastName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Address1" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Address2" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="City" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="State" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Zip" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Zip4" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Country" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ImageFileName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="tblBilling_Information" Relationship="Self.FK_tblBilling_Information_AspNetUsers" FromRole="AspNetUsers" ToRole="tblBilling_Information" />
+          <NavigationProperty Name="tblInvoices" Relationship="Self.FK_tblInvoice_AspNetUsers" FromRole="AspNetUsers" ToRole="tblInvoice" />
+          <NavigationProperty Name="tblOrders" Relationship="Self.FK_tblOrder_AspNetUsers" FromRole="AspNetUsers" ToRole="tblOrder" />
+          <NavigationProperty Name="tblShippings" Relationship="Self.FK_tblShipping_AspNetUsers" FromRole="AspNetUsers" ToRole="tblShipping" />
+        </EntityType>
+        <EntityType Name="tblBilling_Information">
+          <Key>
+            <PropertyRef Name="billing_id" />
+          </Key>
+          <Property Name="billing_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="customer_id" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="billing_address1" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="billing_address2" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="billing_city" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="billing_state" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="billing_zip" Type="String" MaxLength="5" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="billing_zip4" Type="String" MaxLength="4" FixedLength="false" Unicode="false" />
+          <Property Name="billing_country" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="AspNetUser" Relationship="Self.FK_tblBilling_Information_AspNetUsers" FromRole="tblBilling_Information" ToRole="AspNetUsers" />
+        </EntityType>
+        <EntityType Name="tblInventory">
+          <Key>
+            <PropertyRef Name="inventory_id" />
+          </Key>
+          <Property Name="inventory_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="product_id" Type="Int32" Nullable="false" />
+          <Property Name="inventory_quantity" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="tblProduct" Relationship="Self.FK_tblInventory_tblProduct" FromRole="tblInventory" ToRole="tblProduct" />
+        </EntityType>
+        <EntityType Name="tblInvoice">
+          <Key>
+            <PropertyRef Name="invoice_id" />
+          </Key>
+          <Property Name="invoice_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="invoice_date" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="order_id" Type="Int32" />
+          <Property Name="customer_id" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="AspNetUser" Relationship="Self.FK_tblInvoice_AspNetUsers" FromRole="tblInvoice" ToRole="AspNetUsers" />
+          <NavigationProperty Name="tblLineitems" Relationship="Self.FK_tblLineitem_tblInvoice" FromRole="tblInvoice" ToRole="tblLineitem" />
+        </EntityType>
+        <EntityType Name="tblLineitem">
+          <Key>
+            <PropertyRef Name="lineitem_id" />
+          </Key>
+          <Property Name="lineitem_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="product_id" Type="Int32" Nullable="false" />
+          <Property Name="lineitem_quantity" Type="Int32" Nullable="false" />
+          <Property Name="invoice_id" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="tblInvoice" Relationship="Self.FK_tblLineitem_tblInvoice" FromRole="tblLineitem" ToRole="tblInvoice" />
+          <NavigationProperty Name="tblProduct" Relationship="Self.FK_tblLineitem_tblProduct" FromRole="tblLineitem" ToRole="tblProduct" />
+        </EntityType>
+        <EntityType Name="tblOrder">
+          <Key>
+            <PropertyRef Name="order_id" />
+          </Key>
+          <Property Name="order_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="customer_id" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="order_date" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="AspNetUser" Relationship="Self.FK_tblOrder_AspNetUsers" FromRole="tblOrder" ToRole="AspNetUsers" />
+        </EntityType>
+        <EntityType Name="tblProduct">
+          <Key>
+            <PropertyRef Name="product_id" />
+          </Key>
+          <Property Name="product_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="product_name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="product_short_description" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="product_long_description" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="product_unit_cost" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+          <Property Name="product_unit_price" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+          <Property Name="product_category_id" Type="Int32" Nullable="false" />
+          <Property Name="product_store_id" Type="Int32" Nullable="false" />
+          <Property Name="product_weight" Type="Decimal" Precision="6" Scale="2" Nullable="false" />
+          <Property Name="product_date_added" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="product_image_id" Type="Int32" />
+          <NavigationProperty Name="tblInventories" Relationship="Self.FK_tblInventory_tblProduct" FromRole="tblProduct" ToRole="tblInventory" />
+          <NavigationProperty Name="tblLineitems" Relationship="Self.FK_tblLineitem_tblProduct" FromRole="tblProduct" ToRole="tblLineitem" />
+          <NavigationProperty Name="tblProduct_Image" Relationship="Self.FK_tblProduct_Image_tblProduct" FromRole="tblProduct" ToRole="tblProduct_Image" />
+          <NavigationProperty Name="tblProduct_Category" Relationship="Self.FK_tblProduct_tblProduct_Category" FromRole="tblProduct" ToRole="tblProduct_Category" />
+          <NavigationProperty Name="tblStore" Relationship="Self.FK_tblProduct_tblStore" FromRole="tblProduct" ToRole="tblStore" />
+        </EntityType>
+        <EntityType Name="tblProduct_Category">
+          <Key>
+            <PropertyRef Name="category_id" />
+          </Key>
+          <Property Name="category_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="category_store_id" Type="Int32" Nullable="false" />
+          <Property Name="category_image_id" Type="Int32" />
+          <Property Name="category_name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="tblProducts" Relationship="Self.FK_tblProduct_tblProduct_Category" FromRole="tblProduct_Category" ToRole="tblProduct" />
+          <NavigationProperty Name="tblProduct_Category_Image" Relationship="Self.FK_tblProduct_Category_Image_tblProduct_Category" FromRole="tblProduct_Category" ToRole="tblProduct_Category_Image" />
+          <NavigationProperty Name="tblStore" Relationship="Self.FK_tblProduct_Category_tblStore" FromRole="tblProduct_Category" ToRole="tblStore" />
+        </EntityType>
+        <EntityType Name="tblProduct_Category_Image">
+          <Key>
+            <PropertyRef Name="product_category_image_id" />
+          </Key>
+          <Property Name="product_category_image_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="product_category_id" Type="Int32" Nullable="false" />
+          <Property Name="product_category_image_name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="tblProduct_Category" Relationship="Self.FK_tblProduct_Category_Image_tblProduct_Category" FromRole="tblProduct_Category_Image" ToRole="tblProduct_Category" />
+        </EntityType>
+        <EntityType Name="tblProduct_Image">
+          <Key>
+            <PropertyRef Name="product_image_id" />
+          </Key>
+          <Property Name="product_image_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="product_id" Type="Int32" Nullable="false" />
+          <Property Name="product_image_name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="tblProduct" Relationship="Self.FK_tblProduct_Image_tblProduct" FromRole="tblProduct_Image" ToRole="tblProduct" />
+        </EntityType>
+        <EntityType Name="tblShipping">
+          <Key>
+            <PropertyRef Name="shipping_id" />
+          </Key>
+          <Property Name="shipping_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="customer_id" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="shipping_address1" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="shipping_address2" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="shipping_city" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="shipping_state" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="shipping_zip" Type="String" MaxLength="5" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="shipping_zip4" Type="String" MaxLength="4" FixedLength="false" Unicode="false" />
+          <Property Name="shipping_country" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="AspNetUser" Relationship="Self.FK_tblShipping_AspNetUsers" FromRole="tblShipping" ToRole="AspNetUsers" />
+        </EntityType>
+        <EntityType Name="tblStore">
+          <Key>
+            <PropertyRef Name="store_id" />
+          </Key>
+          <Property Name="store_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="store_name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="date_added" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="soft_delete" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="tblProducts" Relationship="Self.FK_tblProduct_tblStore" FromRole="tblStore" ToRole="tblProduct" />
+          <NavigationProperty Name="tblProduct_Category" Relationship="Self.FK_tblProduct_Category_tblStore" FromRole="tblStore" ToRole="tblProduct_Category" />
+        </EntityType>
+        <Association Name="FK_tblBilling_Information_AspNetUsers">
+          <End Role="AspNetUsers" Type="Self.AspNetUser" Multiplicity="1" />
+          <End Role="tblBilling_Information" Type="Self.tblBilling_Information" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="tblBilling_Information">
+              <PropertyRef Name="customer_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblInvoice_AspNetUsers">
+          <End Role="AspNetUsers" Type="Self.AspNetUser" Multiplicity="1" />
+          <End Role="tblInvoice" Type="Self.tblInvoice" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="tblInvoice">
+              <PropertyRef Name="customer_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblOrder_AspNetUsers">
+          <End Role="AspNetUsers" Type="Self.AspNetUser" Multiplicity="1" />
+          <End Role="tblOrder" Type="Self.tblOrder" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="tblOrder">
+              <PropertyRef Name="customer_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblShipping_AspNetUsers">
+          <End Role="AspNetUsers" Type="Self.AspNetUser" Multiplicity="1" />
+          <End Role="tblShipping" Type="Self.tblShipping" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="tblShipping">
+              <PropertyRef Name="customer_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblInventory_tblProduct">
+          <End Role="tblProduct" Type="Self.tblProduct" Multiplicity="1" />
+          <End Role="tblInventory" Type="Self.tblInventory" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblProduct">
+              <PropertyRef Name="product_id" />
+            </Principal>
+            <Dependent Role="tblInventory">
+              <PropertyRef Name="product_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblLineitem_tblInvoice">
+          <End Role="tblInvoice" Type="Self.tblInvoice" Multiplicity="1" />
+          <End Role="tblLineitem" Type="Self.tblLineitem" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblInvoice">
+              <PropertyRef Name="invoice_id" />
+            </Principal>
+            <Dependent Role="tblLineitem">
+              <PropertyRef Name="invoice_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblLineitem_tblProduct">
+          <End Role="tblProduct" Type="Self.tblProduct" Multiplicity="1" />
+          <End Role="tblLineitem" Type="Self.tblLineitem" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblProduct">
+              <PropertyRef Name="product_id" />
+            </Principal>
+            <Dependent Role="tblLineitem">
+              <PropertyRef Name="product_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblProduct_Image_tblProduct">
+          <End Role="tblProduct" Type="Self.tblProduct" Multiplicity="1" />
+          <End Role="tblProduct_Image" Type="Self.tblProduct_Image" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblProduct">
+              <PropertyRef Name="product_id" />
+            </Principal>
+            <Dependent Role="tblProduct_Image">
+              <PropertyRef Name="product_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblProduct_tblProduct_Category">
+          <End Role="tblProduct_Category" Type="Self.tblProduct_Category" Multiplicity="1" />
+          <End Role="tblProduct" Type="Self.tblProduct" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblProduct_Category">
+              <PropertyRef Name="category_id" />
+            </Principal>
+            <Dependent Role="tblProduct">
+              <PropertyRef Name="product_category_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblProduct_tblStore">
+          <End Role="tblStore" Type="Self.tblStore" Multiplicity="1" />
+          <End Role="tblProduct" Type="Self.tblProduct" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblStore">
+              <PropertyRef Name="store_id" />
+            </Principal>
+            <Dependent Role="tblProduct">
+              <PropertyRef Name="product_store_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblProduct_Category_Image_tblProduct_Category">
+          <End Role="tblProduct_Category" Type="Self.tblProduct_Category" Multiplicity="1" />
+          <End Role="tblProduct_Category_Image" Type="Self.tblProduct_Category_Image" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblProduct_Category">
+              <PropertyRef Name="category_id" />
+            </Principal>
+            <Dependent Role="tblProduct_Category_Image">
+              <PropertyRef Name="product_category_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblProduct_Category_tblStore">
+          <End Role="tblStore" Type="Self.tblStore" Multiplicity="1" />
+          <End Role="tblProduct_Category" Type="Self.tblProduct_Category" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblStore">
+              <PropertyRef Name="store_id" />
+            </Principal>
+            <Dependent Role="tblProduct_Category">
+              <PropertyRef Name="category_store_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="BusinessEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="AspNetUsers" EntityType="Self.AspNetUser" />
+          <EntitySet Name="tblBilling_Information" EntityType="Self.tblBilling_Information" />
+          <EntitySet Name="tblInventories" EntityType="Self.tblInventory" />
+          <EntitySet Name="tblInvoices" EntityType="Self.tblInvoice" />
+          <EntitySet Name="tblLineitems" EntityType="Self.tblLineitem" />
+          <EntitySet Name="tblOrders" EntityType="Self.tblOrder" />
+          <EntitySet Name="tblProducts" EntityType="Self.tblProduct" />
+          <EntitySet Name="tblProduct_Category" EntityType="Self.tblProduct_Category" />
+          <EntitySet Name="tblProduct_Category_Image" EntityType="Self.tblProduct_Category_Image" />
+          <EntitySet Name="tblProduct_Image" EntityType="Self.tblProduct_Image" />
+          <EntitySet Name="tblShippings" EntityType="Self.tblShipping" />
+          <EntitySet Name="tblStores" EntityType="Self.tblStore" />
+          <AssociationSet Name="FK_tblBilling_Information_AspNetUsers" Association="Self.FK_tblBilling_Information_AspNetUsers">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="tblBilling_Information" EntitySet="tblBilling_Information" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblInvoice_AspNetUsers" Association="Self.FK_tblInvoice_AspNetUsers">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="tblInvoice" EntitySet="tblInvoices" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblOrder_AspNetUsers" Association="Self.FK_tblOrder_AspNetUsers">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="tblOrder" EntitySet="tblOrders" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblShipping_AspNetUsers" Association="Self.FK_tblShipping_AspNetUsers">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="tblShipping" EntitySet="tblShippings" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblInventory_tblProduct" Association="Self.FK_tblInventory_tblProduct">
+            <End Role="tblProduct" EntitySet="tblProducts" />
+            <End Role="tblInventory" EntitySet="tblInventories" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblLineitem_tblInvoice" Association="Self.FK_tblLineitem_tblInvoice">
+            <End Role="tblInvoice" EntitySet="tblInvoices" />
+            <End Role="tblLineitem" EntitySet="tblLineitems" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblLineitem_tblProduct" Association="Self.FK_tblLineitem_tblProduct">
+            <End Role="tblProduct" EntitySet="tblProducts" />
+            <End Role="tblLineitem" EntitySet="tblLineitems" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblProduct_Image_tblProduct" Association="Self.FK_tblProduct_Image_tblProduct">
+            <End Role="tblProduct" EntitySet="tblProducts" />
+            <End Role="tblProduct_Image" EntitySet="tblProduct_Image" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblProduct_tblProduct_Category" Association="Self.FK_tblProduct_tblProduct_Category">
+            <End Role="tblProduct_Category" EntitySet="tblProduct_Category" />
+            <End Role="tblProduct" EntitySet="tblProducts" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblProduct_tblStore" Association="Self.FK_tblProduct_tblStore">
+            <End Role="tblStore" EntitySet="tblStores" />
+            <End Role="tblProduct" EntitySet="tblProducts" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblProduct_Category_Image_tblProduct_Category" Association="Self.FK_tblProduct_Category_Image_tblProduct_Category">
+            <End Role="tblProduct_Category" EntitySet="tblProduct_Category" />
+            <End Role="tblProduct_Category_Image" EntitySet="tblProduct_Category_Image" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblProduct_Category_tblStore" Association="Self.FK_tblProduct_Category_tblStore">
+            <End Role="tblStore" EntitySet="tblStores" />
+            <End Role="tblProduct_Category" EntitySet="tblProduct_Category" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="gartenkraftModelStoreContainer" CdmEntityContainer="BusinessEntities">
+          <EntitySetMapping Name="AspNetUsers">
+            <EntityTypeMapping TypeName="gartenkraftModel.AspNetUser">
+              <MappingFragment StoreEntitySet="AspNetUsers">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="EmailConfirmed" ColumnName="EmailConfirmed" />
+                <ScalarProperty Name="PasswordHash" ColumnName="PasswordHash" />
+                <ScalarProperty Name="SecurityStamp" ColumnName="SecurityStamp" />
+                <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+                <ScalarProperty Name="PhoneNumberConfirmed" ColumnName="PhoneNumberConfirmed" />
+                <ScalarProperty Name="TwoFactorEnabled" ColumnName="TwoFactorEnabled" />
+                <ScalarProperty Name="LockoutEndDateUtc" ColumnName="LockoutEndDateUtc" />
+                <ScalarProperty Name="LockoutEnabled" ColumnName="LockoutEnabled" />
+                <ScalarProperty Name="AccessFailedCount" ColumnName="AccessFailedCount" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="Address1" ColumnName="Address1" />
+                <ScalarProperty Name="Address2" ColumnName="Address2" />
+                <ScalarProperty Name="City" ColumnName="City" />
+                <ScalarProperty Name="State" ColumnName="State" />
+                <ScalarProperty Name="Zip" ColumnName="Zip" />
+                <ScalarProperty Name="Zip4" ColumnName="Zip4" />
+                <ScalarProperty Name="Country" ColumnName="Country" />
+                <ScalarProperty Name="ImageFileName" ColumnName="ImageFileName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblBilling_Information">
+            <EntityTypeMapping TypeName="gartenkraftModel.tblBilling_Information">
+              <MappingFragment StoreEntitySet="tblBilling_Information">
+                <ScalarProperty Name="billing_id" ColumnName="billing_id" />
+                <ScalarProperty Name="customer_id" ColumnName="customer_id" />
+                <ScalarProperty Name="billing_address1" ColumnName="billing_address1" />
+                <ScalarProperty Name="billing_address2" ColumnName="billing_address2" />
+                <ScalarProperty Name="billing_city" ColumnName="billing_city" />
+                <ScalarProperty Name="billing_state" ColumnName="billing_state" />
+                <ScalarProperty Name="billing_zip" ColumnName="billing_zip" />
+                <ScalarProperty Name="billing_zip4" ColumnName="billing_zip4" />
+                <ScalarProperty Name="billing_country" ColumnName="billing_country" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblInventories">
+            <EntityTypeMapping TypeName="gartenkraftModel.tblInventory">
+              <MappingFragment StoreEntitySet="tblInventory">
+                <ScalarProperty Name="inventory_id" ColumnName="inventory_id" />
+                <ScalarProperty Name="product_id" ColumnName="product_id" />
+                <ScalarProperty Name="inventory_quantity" ColumnName="inventory_quantity" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblInvoices">
+            <EntityTypeMapping TypeName="gartenkraftModel.tblInvoice">
+              <MappingFragment StoreEntitySet="tblInvoice">
+                <ScalarProperty Name="invoice_id" ColumnName="invoice_id" />
+                <ScalarProperty Name="invoice_date" ColumnName="invoice_date" />
+                <ScalarProperty Name="order_id" ColumnName="order_id" />
+                <ScalarProperty Name="customer_id" ColumnName="customer_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblLineitems">
+            <EntityTypeMapping TypeName="gartenkraftModel.tblLineitem">
+              <MappingFragment StoreEntitySet="tblLineitem">
+                <ScalarProperty Name="lineitem_id" ColumnName="lineitem_id" />
+                <ScalarProperty Name="product_id" ColumnName="product_id" />
+                <ScalarProperty Name="lineitem_quantity" ColumnName="lineitem_quantity" />
+                <ScalarProperty Name="invoice_id" ColumnName="invoice_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblOrders">
+            <EntityTypeMapping TypeName="gartenkraftModel.tblOrder">
+              <MappingFragment StoreEntitySet="tblOrder">
+                <ScalarProperty Name="order_id" ColumnName="order_id" />
+                <ScalarProperty Name="customer_id" ColumnName="customer_id" />
+                <ScalarProperty Name="order_date" ColumnName="order_date" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblProducts">
+            <EntityTypeMapping TypeName="gartenkraftModel.tblProduct">
+              <MappingFragment StoreEntitySet="tblProduct">
+                <ScalarProperty Name="product_id" ColumnName="product_id" />
+                <ScalarProperty Name="product_name" ColumnName="product_name" />
+                <ScalarProperty Name="product_short_description" ColumnName="product_short_description" />
+                <ScalarProperty Name="product_long_description" ColumnName="product_long_description" />
+                <ScalarProperty Name="product_unit_cost" ColumnName="product_unit_cost" />
+                <ScalarProperty Name="product_unit_price" ColumnName="product_unit_price" />
+                <ScalarProperty Name="product_category_id" ColumnName="product_category_id" />
+                <ScalarProperty Name="product_store_id" ColumnName="product_store_id" />
+                <ScalarProperty Name="product_weight" ColumnName="product_weight" />
+                <ScalarProperty Name="product_date_added" ColumnName="product_date_added" />
+                <ScalarProperty Name="product_image_id" ColumnName="product_image_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblProduct_Category">
+            <EntityTypeMapping TypeName="gartenkraftModel.tblProduct_Category">
+              <MappingFragment StoreEntitySet="tblProduct_Category">
+                <ScalarProperty Name="category_id" ColumnName="category_id" />
+                <ScalarProperty Name="category_store_id" ColumnName="category_store_id" />
+                <ScalarProperty Name="category_image_id" ColumnName="category_image_id" />
+                <ScalarProperty Name="category_name" ColumnName="category_name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblProduct_Category_Image">
+            <EntityTypeMapping TypeName="gartenkraftModel.tblProduct_Category_Image">
+              <MappingFragment StoreEntitySet="tblProduct_Category_Image">
+                <ScalarProperty Name="product_category_image_id" ColumnName="product_category_image_id" />
+                <ScalarProperty Name="product_category_id" ColumnName="product_category_id" />
+                <ScalarProperty Name="product_category_image_name" ColumnName="product_category_image_name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblProduct_Image">
+            <EntityTypeMapping TypeName="gartenkraftModel.tblProduct_Image">
+              <MappingFragment StoreEntitySet="tblProduct_Image">
+                <ScalarProperty Name="product_image_id" ColumnName="product_image_id" />
+                <ScalarProperty Name="product_id" ColumnName="product_id" />
+                <ScalarProperty Name="product_image_name" ColumnName="product_image_name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblShippings">
+            <EntityTypeMapping TypeName="gartenkraftModel.tblShipping">
+              <MappingFragment StoreEntitySet="tblShipping">
+                <ScalarProperty Name="shipping_id" ColumnName="shipping_id" />
+                <ScalarProperty Name="customer_id" ColumnName="customer_id" />
+                <ScalarProperty Name="shipping_address1" ColumnName="shipping_address1" />
+                <ScalarProperty Name="shipping_address2" ColumnName="shipping_address2" />
+                <ScalarProperty Name="shipping_city" ColumnName="shipping_city" />
+                <ScalarProperty Name="shipping_state" ColumnName="shipping_state" />
+                <ScalarProperty Name="shipping_zip" ColumnName="shipping_zip" />
+                <ScalarProperty Name="shipping_zip4" ColumnName="shipping_zip4" />
+                <ScalarProperty Name="shipping_country" ColumnName="shipping_country" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblStores">
+            <EntityTypeMapping TypeName="gartenkraftModel.tblStore">
+              <MappingFragment StoreEntitySet="tblStore">
+                <ScalarProperty Name="store_id" ColumnName="store_id" />
+                <ScalarProperty Name="store_name" ColumnName="store_name" />
+                <ScalarProperty Name="date_added" ColumnName="date_added" />
+                <ScalarProperty Name="soft_delete" ColumnName="soft_delete" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
