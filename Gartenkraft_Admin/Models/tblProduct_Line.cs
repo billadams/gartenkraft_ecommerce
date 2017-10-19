@@ -12,26 +12,27 @@ namespace Gartenkraft_Admin.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class tblProduct_Category
+    public partial class tblProduct_Line
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public tblProduct_Category()
+        public tblProduct_Line()
         {
             this.tblProducts = new HashSet<tblProduct>();
-            this.tblProduct_Category_Image = new HashSet<tblProduct_Category_Image>();
+            this.tblProduct_Category = new HashSet<tblProduct_Category>();
+            this.tblProduct_Line_Image = new HashSet<tblProduct_Line_Image>();
         }
     
-        public int category_id { get; set; }
-        public int category_product_line_id { get; set; }
-        public Nullable<int> category_image_id { get; set; }
-        public string category_name { get; set; }
-        public Nullable<bool> soft_delete { get; set; }
-        public Nullable<bool> is_visible { get; set; }
+        public int product_line_id { get; set; }
+        public string product_line_name { get; set; }
+        public System.DateTime date_added { get; set; }
+        public bool soft_delete { get; set; }
+        public bool is_visible { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<tblProduct> tblProducts { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<tblProduct_Category_Image> tblProduct_Category_Image { get; set; }
-        public virtual tblProduct_Line tblProduct_Line { get; set; }
+        public virtual ICollection<tblProduct_Category> tblProduct_Category { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<tblProduct_Line_Image> tblProduct_Line_Image { get; set; }
     }
 }

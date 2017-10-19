@@ -17,9 +17,10 @@ namespace Gartenkraft_Admin.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public tblProduct()
         {
+            this.tblFeature_Product = new HashSet<tblFeature_Product>();
             this.tblInventories = new HashSet<tblInventory>();
-            this.tblLineitems = new HashSet<tblLineitem>();
             this.tblProduct_Image = new HashSet<tblProduct_Image>();
+            this.tblSales_Invoice_Lineitem = new HashSet<tblSales_Invoice_Lineitem>();
         }
     
         public int product_id { get; set; }
@@ -29,18 +30,22 @@ namespace Gartenkraft_Admin.Models
         public decimal product_unit_cost { get; set; }
         public decimal product_unit_price { get; set; }
         public int product_category_id { get; set; }
-        public int product_store_id { get; set; }
+        public int product_line_id { get; set; }
         public decimal product_weight { get; set; }
         public System.DateTime product_date_added { get; set; }
         public Nullable<int> product_image_id { get; set; }
+        public Nullable<bool> soft_delete { get; set; }
+        public Nullable<bool> is_visible { get; set; }
     
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<tblFeature_Product> tblFeature_Product { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<tblInventory> tblInventories { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<tblLineitem> tblLineitems { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<tblProduct_Image> tblProduct_Image { get; set; }
+        public virtual tblProduct_Line tblProduct_Line { get; set; }
         public virtual tblProduct_Category tblProduct_Category { get; set; }
-        public virtual tblStore tblStore { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<tblSales_Invoice_Lineitem> tblSales_Invoice_Lineitem { get; set; }
     }
 }

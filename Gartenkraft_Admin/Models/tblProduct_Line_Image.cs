@@ -12,12 +12,12 @@ namespace Gartenkraft_Admin.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class tblOrder
+    public partial class tblProduct_Line_Image
     {
-        public int order_id { get; set; }
-        public string customer_id { get; set; }
-        public System.DateTime order_date { get; set; }
+        public int product_line_image_id { get; set; }
+        public int product_line_id { get; set; }
+        public string product_line_image_name { get; set; }
     
-        public virtual AspNetUser AspNetUser { get; set; }
+        public virtual tblProduct_Line tblProduct_Line { get; set; }
     }
 }

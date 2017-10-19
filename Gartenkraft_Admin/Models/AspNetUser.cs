@@ -18,8 +18,7 @@ namespace Gartenkraft_Admin.Models
         public AspNetUser()
         {
             this.tblBilling_Information = new HashSet<tblBilling_Information>();
-            this.tblInvoices = new HashSet<tblInvoice>();
-            this.tblOrders = new HashSet<tblOrder>();
+            this.tblSales_Invoice = new HashSet<tblSales_Invoice>();
             this.tblShippings = new HashSet<tblShipping>();
         }
     
@@ -49,9 +48,7 @@ namespace Gartenkraft_Admin.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<tblBilling_Information> tblBilling_Information { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<tblInvoice> tblInvoices { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<tblOrder> tblOrders { get; set; }
+        public virtual ICollection<tblSales_Invoice> tblSales_Invoice { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<tblShipping> tblShippings { get; set; }
     }

@@ -12,23 +12,24 @@ namespace Gartenkraft_Admin.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class tblStore
+    public partial class tblSales_Invoice
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public tblStore()
+        public tblSales_Invoice()
         {
-            this.tblProducts = new HashSet<tblProduct>();
-            this.tblProduct_Category = new HashSet<tblProduct_Category>();
+            this.tblSales_Invoice_Lineitem = new HashSet<tblSales_Invoice_Lineitem>();
         }
     
-        public int store_id { get; set; }
-        public string store_name { get; set; }
-        public System.DateTime date_added { get; set; }
-        public bool soft_delete { get; set; }
+        public int invoice_id { get; set; }
+        public System.DateTime invoice_date { get; set; }
+        public string customer_id { get; set; }
+        public Nullable<int> billing_id { get; set; }
+        public Nullable<int> shipping_id { get; set; }
     
+        public virtual AspNetUser AspNetUser { get; set; }
+        public virtual tblBilling_Information tblBilling_Information { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<tblProduct> tblProducts { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<tblProduct_Category> tblProduct_Category { get; set; }
+        public virtual ICollection<tblSales_Invoice_Lineitem> tblSales_Invoice_Lineitem { get; set; }
+        public virtual tblShipping tblShipping { get; set; }
     }
 }

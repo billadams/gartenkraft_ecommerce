@@ -14,6 +14,12 @@ namespace Gartenkraft_Admin.Models
     
     public partial class tblBilling_Information
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public tblBilling_Information()
+        {
+            this.tblSales_Invoice = new HashSet<tblSales_Invoice>();
+        }
+    
         public int billing_id { get; set; }
         public string customer_id { get; set; }
         public string billing_address1 { get; set; }
@@ -25,5 +31,7 @@ namespace Gartenkraft_Admin.Models
         public string billing_country { get; set; }
     
         public virtual AspNetUser AspNetUser { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<tblSales_Invoice> tblSales_Invoice { get; set; }
     }
 }
