@@ -12,7 +12,7 @@ namespace Gartenkraft_Admin.Controllers.AdminControllers
 {
     public class ProductsController : Controller
     {
-        private gartenkraftBusinessEntities db = new gartenkraftBusinessEntities();
+        private gartenkraftAdminEntities db = new gartenkraftAdminEntities();
 
         // GET: Products
         public ActionResult Index()
@@ -49,7 +49,7 @@ namespace Gartenkraft_Admin.Controllers.AdminControllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "product_id,product_name,product_short_description,product_long_description,product_unit_cost,product_unit_price,product_category_id,product_line_id,product_weight,product_date_added,product_image_id,soft_delete,is_visible")] tblProduct tblProduct)
+        public ActionResult Create([Bind(Include = "product_id,product_name,product_short_description,product_long_description,product_unit_cost,product_unit_price,product_category_id,product_line_id,product_weight,product_date_added,soft_delete,is_visible")] tblProduct tblProduct)
         {
             if (ModelState.IsValid)
             {
@@ -85,7 +85,7 @@ namespace Gartenkraft_Admin.Controllers.AdminControllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "product_id,product_name,product_short_description,product_long_description,product_unit_cost,product_unit_price,product_category_id,product_line_id,product_weight,product_date_added,product_image_id,soft_delete,is_visible")] tblProduct tblProduct)
+        public ActionResult Edit([Bind(Include = "product_id,product_name,product_short_description,product_long_description,product_unit_cost,product_unit_price,product_category_id,product_line_id,product_weight,product_date_added,soft_delete,is_visible")] tblProduct tblProduct)
         {
             if (ModelState.IsValid)
             {

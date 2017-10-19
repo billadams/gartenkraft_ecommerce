@@ -202,61 +202,61 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\AdminModel.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>AdminModel.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\AdminModel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>AdminModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\AdminModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>AdminModel.edmx</DependentUpon>
+    </Compile>
     <Compile Include="Models\AspNetUser.cs">
-      <DependentUpon>BusinessModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\BusinessModel.Context.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>BusinessModel.Context.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\BusinessModel.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>BusinessModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\BusinessModel.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>BusinessModel.edmx</DependentUpon>
+      <DependentUpon>AdminModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\tblBilling_Information.cs">
-      <DependentUpon>BusinessModel.tt</DependentUpon>
+      <DependentUpon>AdminModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\tblFeature_Product.cs">
-      <DependentUpon>BusinessModel.tt</DependentUpon>
+      <DependentUpon>AdminModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\tblInventory.cs">
-      <DependentUpon>BusinessModel.tt</DependentUpon>
+      <DependentUpon>AdminModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\tblProduct.cs">
-      <DependentUpon>BusinessModel.tt</DependentUpon>
+      <DependentUpon>AdminModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\tblProduct_Category.cs">
-      <DependentUpon>BusinessModel.tt</DependentUpon>
+      <DependentUpon>AdminModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\tblProduct_Category_Image.cs">
-      <DependentUpon>BusinessModel.tt</DependentUpon>
+      <DependentUpon>AdminModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\tblProduct_Image.cs">
-      <DependentUpon>BusinessModel.tt</DependentUpon>
+      <DependentUpon>AdminModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\tblProduct_Line.cs">
-      <DependentUpon>BusinessModel.tt</DependentUpon>
+      <DependentUpon>AdminModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\tblProduct_Line_Image.cs">
-      <DependentUpon>BusinessModel.tt</DependentUpon>
+      <DependentUpon>AdminModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\tblSales_Invoice.cs">
-      <DependentUpon>BusinessModel.tt</DependentUpon>
+      <DependentUpon>AdminModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\tblSales_Invoice_Lineitem.cs">
-      <DependentUpon>BusinessModel.tt</DependentUpon>
+      <DependentUpon>AdminModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\tblShipping.cs">
-      <DependentUpon>BusinessModel.tt</DependentUpon>
+      <DependentUpon>AdminModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
@@ -271,27 +271,27 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
-    <Content Include="Models\BusinessModel.Context.tt">
+    <Content Include="Models\AdminModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>BusinessModel.edmx</DependentUpon>
-      <LastGenOutput>BusinessModel.Context.cs</LastGenOutput>
+      <DependentUpon>AdminModel.edmx</DependentUpon>
+      <LastGenOutput>AdminModel.Context.cs</LastGenOutput>
     </Content>
-    <Content Include="Models\BusinessModel.tt">
+    <Content Include="Models\AdminModel.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>BusinessModel.edmx</DependentUpon>
-      <LastGenOutput>BusinessModel.cs</LastGenOutput>
+      <DependentUpon>AdminModel.edmx</DependentUpon>
+      <LastGenOutput>AdminModel.cs</LastGenOutput>
     </Content>
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <EntityDeploy Include="Models\BusinessModel.edmx">
+    <EntityDeploy Include="Models\AdminModel.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>BusinessModel.Designer.cs</LastGenOutput>
+      <LastGenOutput>AdminModel.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <Content Include="Models\BusinessModel.edmx.diagram">
-      <DependentUpon>BusinessModel.edmx</DependentUpon>
+    <Content Include="Models\AdminModel.edmx.diagram">
+      <DependentUpon>AdminModel.edmx</DependentUpon>
     </Content>
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />

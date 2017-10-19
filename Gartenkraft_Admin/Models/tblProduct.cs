@@ -33,7 +33,6 @@ namespace Gartenkraft_Admin.Models
         public int product_line_id { get; set; }
         public decimal product_weight { get; set; }
         public System.DateTime product_date_added { get; set; }
-        public Nullable<int> product_image_id { get; set; }
         public Nullable<bool> soft_delete { get; set; }
         public Nullable<bool> is_visible { get; set; }
     
