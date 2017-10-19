@@ -193,6 +193,9 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\AdminControllers\ProductsController.cs" />
+    <Compile Include="Controllers\AdminControllers\Product_CategoryController.cs" />
+    <Compile Include="Controllers\AdminControllers\Product_LineController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Global.asax.cs">
@@ -337,21 +340,21 @@
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
-    <Content Include="Views\tblStores\Create.cshtml" />
-    <Content Include="Views\tblStores\Delete.cshtml" />
-    <Content Include="Views\tblStores\Details.cshtml" />
-    <Content Include="Views\tblStores\Edit.cshtml" />
-    <Content Include="Views\tblStores\Index.cshtml" />
-    <Content Include="Views\tblProduct_Category\Create.cshtml" />
-    <Content Include="Views\tblProduct_Category\Delete.cshtml" />
-    <Content Include="Views\tblProduct_Category\Details.cshtml" />
-    <Content Include="Views\tblProduct_Category\Edit.cshtml" />
-    <Content Include="Views\tblProduct_Category\Index.cshtml" />
-    <Content Include="Views\tblProducts\Create.cshtml" />
-    <Content Include="Views\tblProducts\Delete.cshtml" />
-    <Content Include="Views\tblProducts\Details.cshtml" />
-    <Content Include="Views\tblProducts\Edit.cshtml" />
-    <Content Include="Views\tblProducts\Index.cshtml" />
+    <Content Include="Views\Product_Line\Create.cshtml" />
+    <Content Include="Views\Product_Line\Delete.cshtml" />
+    <Content Include="Views\Product_Line\Details.cshtml" />
+    <Content Include="Views\Product_Line\Edit.cshtml" />
+    <Content Include="Views\Product_Line\Index.cshtml" />
+    <Content Include="Views\Product_Category\Create.cshtml" />
+    <Content Include="Views\Product_Category\Delete.cshtml" />
+    <Content Include="Views\Product_Category\Details.cshtml" />
+    <Content Include="Views\Product_Category\Edit.cshtml" />
+    <Content Include="Views\Product_Category\Index.cshtml" />
+    <Content Include="Views\Products\Create.cshtml" />
+    <Content Include="Views\Products\Delete.cshtml" />
+    <Content Include="Views\Products\Details.cshtml" />
+    <Content Include="Views\Products\Edit.cshtml" />
+    <Content Include="Views\Products\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
@@ -369,9 +372,7 @@
     <None Include="packages.config" />
     <Content Include="Scripts\jquery-1.10.2.min.map" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Controllers\AdminControllers\" />
-  </ItemGroup>
+  <ItemGroup />
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>

@@ -19,7 +19,13 @@
             @Html.DisplayNameFor(model => model.category_name)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.tblStore.store_name)
+            @Html.DisplayNameFor(model => model.soft_delete)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.is_visible)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.tblProduct_Line.product_line_name)
         </th>
         <th></th>
     </tr>
@@ -33,7 +39,13 @@
             @Html.DisplayFor(modelItem => item.category_name)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.tblStore.store_name)
+            @Html.DisplayFor(modelItem => item.soft_delete)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.is_visible)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.tblProduct_Line.product_line_name)
         </td>
         <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.category_id }) |

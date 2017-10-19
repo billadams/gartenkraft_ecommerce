@@ -1,4 +1,4 @@
-﻿@model Gartenkraft_Admin.Models.tblStore
+﻿@model Gartenkraft_Admin.Models.tblProduct_Line
 
 @{
     ViewBag.Title = "Details";
@@ -8,15 +8,15 @@
 <h2>Details</h2>
 
 <div>
-    <h4>tblStore</h4>
+    <h4>tblProduct_Line</h4>
     <hr />
     <dl class="dl-horizontal">
         <dt>
-            @Html.DisplayNameFor(model => model.store_name)
+            @Html.DisplayNameFor(model => model.product_line_name)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.store_name)
+            @Html.DisplayFor(model => model.product_line_name)
         </dd>
 
         <dt>
@@ -35,9 +35,17 @@
             @Html.DisplayFor(model => model.soft_delete)
         </dd>
 
+        <dt>
+            @Html.DisplayNameFor(model => model.is_visible)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.is_visible)
+        </dd>
+
     </dl>
 </div>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.store_id }) |
+    @Html.ActionLink("Edit", "Edit", new { id = Model.product_line_id }) |
     @Html.ActionLink("Back to List", "Index")
 </p>

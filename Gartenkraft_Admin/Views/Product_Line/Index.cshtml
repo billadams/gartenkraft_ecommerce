@@ -1,4 +1,4 @@
-﻿@model IEnumerable<Gartenkraft_Admin.Models.tblStore>
+﻿@model IEnumerable<Gartenkraft_Admin.Models.tblProduct_Line>
 
 @{
     ViewBag.Title = "Index";
@@ -13,7 +13,7 @@
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.store_name)
+            @Html.DisplayNameFor(model => model.product_line_name)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.date_added)
@@ -21,13 +21,16 @@
         <th>
             @Html.DisplayNameFor(model => model.soft_delete)
         </th>
+        <th>
+            @Html.DisplayNameFor(model => model.is_visible)
+        </th>
         <th></th>
     </tr>
 
 @foreach (var item in Model) {
     <tr>
         <td>
-            @Html.DisplayFor(modelItem => item.store_name)
+            @Html.DisplayFor(modelItem => item.product_line_name)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.date_added)
@@ -36,9 +39,12 @@
             @Html.DisplayFor(modelItem => item.soft_delete)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.store_id }) |
-            @Html.ActionLink("Details", "Details", new { id=item.store_id }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.store_id })
+            @Html.DisplayFor(modelItem => item.is_visible)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.product_line_id }) |
+            @Html.ActionLink("Details", "Details", new { id=item.product_line_id }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.product_line_id })
         </td>
     </tr>
 }

@@ -67,10 +67,10 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.product_store_id, "product_store_id", htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.product_line_id, "product_line_id", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.DropDownList("product_store_id", null, htmlAttributes: new { @class = "form-control" })
-                @Html.ValidationMessageFor(model => model.product_store_id, "", new { @class = "text-danger" })
+                @Html.DropDownList("product_line_id", null, htmlAttributes: new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.product_line_id, "", new { @class = "text-danger" })
             </div>
         </div>
 
@@ -95,6 +95,26 @@
             <div class="col-md-10">
                 @Html.EditorFor(model => model.product_image_id, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.product_image_id, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.soft_delete, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <div class="checkbox">
+                    @Html.EditorFor(model => model.soft_delete)
+                    @Html.ValidationMessageFor(model => model.soft_delete, "", new { @class = "text-danger" })
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.is_visible, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <div class="checkbox">
+                    @Html.EditorFor(model => model.is_visible)
+                    @Html.ValidationMessageFor(model => model.is_visible, "", new { @class = "text-danger" })
+                </div>
             </div>
         </div>
 

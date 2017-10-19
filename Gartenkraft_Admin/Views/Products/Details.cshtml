@@ -1,13 +1,12 @@
 ﻿@model Gartenkraft_Admin.Models.tblProduct
 
 @{
-    ViewBag.Title = "Delete";
+    ViewBag.Title = "Details";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Delete</h2>
+<h2>Details</h2>
 
-<h3>Are you sure you want to delete this?</h3>
 <div>
     <h4>tblProduct</h4>
     <hr />
@@ -77,6 +76,30 @@
         </dd>
 
         <dt>
+            @Html.DisplayNameFor(model => model.soft_delete)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.soft_delete)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.is_visible)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.is_visible)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.tblProduct_Line.product_line_name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tblProduct_Line.product_line_name)
+        </dd>
+
+        <dt>
             @Html.DisplayNameFor(model => model.tblProduct_Category.category_name)
         </dt>
 
@@ -84,22 +107,9 @@
             @Html.DisplayFor(model => model.tblProduct_Category.category_name)
         </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.tblStore.store_name)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.tblStore.store_name)
-        </dd>
-
     </dl>
-
-    @using (Html.BeginForm()) {
-        @Html.AntiForgeryToken()
-
-        <div class="form-actions no-color">
-            <input type="submit" value="Delete" class="btn btn-default" /> |
-            @Html.ActionLink("Back to List", "Index")
-        </div>
-    }
 </div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.product_id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
