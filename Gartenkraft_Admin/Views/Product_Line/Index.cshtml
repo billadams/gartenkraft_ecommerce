@@ -1,28 +1,28 @@
 ﻿@model IEnumerable<Gartenkraft_Admin.Models.tblProduct_Line>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Current Product Lines";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Index</h2>
+<h2>Current Product Lines</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("Add a New Product Line", "Create")
 </p>
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.product_line_name)
+            @Html.DisplayName("Product Line Name")
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.date_added)
+            @Html.DisplayName("Date Added")
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.soft_delete)
+            @Html.DisplayName("Soft Delete Status")
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.is_visible)
+            @Html.DisplayName("Visible Status")
         </th>
         <th></th>
     </tr>
