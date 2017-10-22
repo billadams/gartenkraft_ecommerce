@@ -23,22 +23,26 @@
                 <ul class="nav navbar-nav">
                     <li>@Html.ActionLink("Home", "Index", "Home")</li>
                     <li class="dropdown">
-                        <a class="navbar-link dropdown-toggle" href="/" id="navbarDropDownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            Gartenkraft
-                        </a>
+                        <a href="/" class="dropdown-toggle" id="navbarDropDownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Gartenkraft<span class="caret"></span></a>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                             <li>@Html.ActionLink("Hose Reel1", "Index", "Home")</li>
                             <li>@Html.ActionLink("Hose Real2", "Index", "Home")</li>
                         </ul>
                     </li>
-                    <li class="nav-item dropdown">
-                        <a class="navbar-link dropdown-toggle" href="/" id="navbarDropDownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            Starmist
-                        </a>
+                    <li class="dropdown">
+                        <a href="/" class="navbar-link dropdown-toggle" id="navbarDropDownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Starmist<span class="caret"></span></a>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                             <li>@Html.ActionLink("Starmist1", "Index", "Home")</li>
                             <li>@Html.ActionLink("Starmist2", "Index", "Home")</li>
                         </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a href="/" class="navbar-link dropdown-toggle" id="navbarDropDownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">XTRIM<span class="caret"></span></a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                            <li>@Html.ActionLink("XTRIM1", "Index", "Home")</li>
+                            <li>@Html.ActionLink("XTRIM1", "Index", "Home")</li>
+                        </ul>
+                    </li>
                     <li>@Html.ActionLink("About", "About", "Home")</li>
                     <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
                 </ul>

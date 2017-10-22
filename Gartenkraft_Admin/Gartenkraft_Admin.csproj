@@ -48,6 +48,24 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Microsoft.AI.DependencyCollector, Version=2.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.DependencyCollector.2.2.0\lib\net45\Microsoft.AI.DependencyCollector.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AI.PerfCounterCollector, Version=2.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.PerfCounterCollector.2.2.0\lib\net45\Microsoft.AI.PerfCounterCollector.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AI.ServerTelemetryChannel, Version=2.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel.2.2.0\lib\net45\Microsoft.AI.ServerTelemetryChannel.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AI.Web, Version=2.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.Web.2.2.0\lib\net45\Microsoft.AI.Web.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AI.WindowsServer, Version=2.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.WindowsServer.2.2.0\lib\net45\Microsoft.AI.WindowsServer.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ApplicationInsights, Version=2.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.2.2.0\lib\net45\Microsoft.ApplicationInsights.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=1.0.5.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.5\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
     </Reference>
@@ -164,26 +182,8 @@
     <Reference Include="Microsoft.Owin.Security.MicrosoftAccount">
       <HintPath>..\packages\Microsoft.Owin.Security.MicrosoftAccount.3.0.1\lib\net45\Microsoft.Owin.Security.MicrosoftAccount.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.ApplicationInsights">
-      <HintPath>..\packages\Microsoft.ApplicationInsights.2.2.0\lib\net45\Microsoft.ApplicationInsights.dll</HintPath>
-    </Reference>
     <Reference Include="Microsoft.AI.Agent.Intercept">
       <HintPath>..\packages\Microsoft.ApplicationInsights.Agent.Intercept.2.0.6\lib\net45\Microsoft.AI.Agent.Intercept.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.AI.DependencyCollector">
-      <HintPath>..\packages\Microsoft.ApplicationInsights.DependencyCollector.2.2.0\lib\net45\Microsoft.AI.DependencyCollector.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.AI.PerfCounterCollector">
-      <HintPath>..\packages\Microsoft.ApplicationInsights.PerfCounterCollector.2.2.0\lib\net45\Microsoft.AI.PerfCounterCollector.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.AI.ServerTelemetryChannel">
-      <HintPath>..\packages\Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel.2.2.0\lib\net45\Microsoft.AI.ServerTelemetryChannel.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.AI.WindowsServer">
-      <HintPath>..\packages\Microsoft.ApplicationInsights.WindowsServer.2.2.0\lib\net45\Microsoft.AI.WindowsServer.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.AI.Web">
-      <HintPath>..\packages\Microsoft.ApplicationInsights.Web.2.2.0\lib\net45\Microsoft.AI.Web.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -281,8 +281,6 @@
       <DependentUpon>AdminModel.edmx</DependentUpon>
       <LastGenOutput>AdminModel.cs</LastGenOutput>
     </Content>
-    <Content Include="Scripts\bootstrap.js" />
-    <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
@@ -293,7 +291,17 @@
     <Content Include="Models\AdminModel.edmx.diagram">
       <DependentUpon>AdminModel.edmx</DependentUpon>
     </Content>
+    <Content Include="fonts\glyphicons-halflings-regular.woff2" />
+    <Content Include="fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="Content\bootstrap.min.css.map" />
+    <Content Include="Content\bootstrap.css.map" />
+    <Content Include="Content\bootstrap-theme.min.css.map" />
+    <Content Include="Content\bootstrap-theme.css.map" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
+    <Content Include="Scripts\bootstrap.js" />
+    <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
@@ -358,15 +366,6 @@
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="fonts\glyphicons-halflings-regular.woff" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="fonts\glyphicons-halflings-regular.ttf" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="fonts\glyphicons-halflings-regular.eot" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

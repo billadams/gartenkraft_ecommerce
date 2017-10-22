@@ -283,12 +283,14 @@
   <ItemGroup>
     <Content Include="App_Data\states.xml" />
     <Content Include="App_Data\ViewUserRoles.sql" />
+    <Content Include="Content\bootstrap-theme.css" />
+    <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
-    <Content Include="Content\Site.css" />
+    <Content Include="Content\site.css" />
     <Content Include="Models\CustomerModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>CustomerModel.edmx</DependentUpon>
@@ -299,8 +301,6 @@
       <DependentUpon>CustomerModel.edmx</DependentUpon>
       <LastGenOutput>CustomerModel.cs</LastGenOutput>
     </Content>
-    <Content Include="Scripts\bootstrap.js" />
-    <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
@@ -311,7 +311,16 @@
     <Content Include="Models\CustomerModel.edmx.diagram">
       <DependentUpon>CustomerModel.edmx</DependentUpon>
     </Content>
+    <Content Include="fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="Content\bootstrap-theme.css.map" />
+    <Content Include="Content\bootstrap-theme.min.css.map" />
+    <Content Include="Content\bootstrap.css.map" />
+    <Content Include="Content\bootstrap.min.css.map" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
+    <Content Include="Scripts\bootstrap.js" />
+    <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
@@ -372,9 +381,6 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="fonts\glyphicons-halflings-regular.woff" />
-    <Content Include="fonts\glyphicons-halflings-regular.ttf" />
-    <Content Include="fonts\glyphicons-halflings-regular.eot" />
     <Content Include="packages.config" />
     <None Include="Project_Readme.html" />
     <Content Include="Scripts\jquery-1.10.2.min.map" />
