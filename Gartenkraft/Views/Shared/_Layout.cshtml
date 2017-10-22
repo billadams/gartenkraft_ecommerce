@@ -6,7 +6,7 @@
     <title>@ViewBag.Title - Home</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
-
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
 </head>
 <body>
     <nav class="navbar navbar-fixed-top">
@@ -23,21 +23,21 @@
                 <ul class="nav navbar-nav">
                     <li>@Html.ActionLink("Home", "Index", "Home")</li>
                     <li class="dropdown">
-                        <a href="/" class="dropdown-toggle" id="navbarDropDownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Gartenkraft<span class="caret"></span></a>
+                        <a href="/" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Gartenkraft<span class="caret"></span></a>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                             <li>@Html.ActionLink("Hose Reel1", "Index", "Home")</li>
                             <li>@Html.ActionLink("Hose Real2", "Index", "Home")</li>
                         </ul>
                     </li>
                     <li class="dropdown">
-                        <a href="/" class="navbar-link dropdown-toggle" id="navbarDropDownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Starmist<span class="caret"></span></a>
+                        <a href="/" class="navbar-link dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Starmist<span class="caret"></span></a>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                             <li>@Html.ActionLink("Starmist1", "Index", "Home")</li>
                             <li>@Html.ActionLink("Starmist2", "Index", "Home")</li>
                         </ul>
                     </li>
                     <li class="dropdown">
-                        <a href="/" class="navbar-link dropdown-toggle" id="navbarDropDownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">XTRIM<span class="caret"></span></a>
+                        <a href="/" class="navbar-link dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">XTRIM<span class="caret"></span></a>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                             <li>@Html.ActionLink("XTRIM1", "Index", "Home")</li>
                             <li>@Html.ActionLink("XTRIM1", "Index", "Home")</li>
@@ -50,13 +50,31 @@
             </div>
         </div>
     </nav>
+
     <div class="container body-content">
         @RenderBody()
-        <hr />
-        <footer>
-            <p>&copy; @DateTime.Now.Year Gartenkraft . Starmist All Rights Reserved</p>
-        </footer>
     </div>
+    <footer class="containter">
+        <div class="row">
+            <div class="col-xs-6 col-xs-offset-3 col-sm-4 col-sm-offset-2 col-md-2 col-md-offset-0" id="sunneday-logo">
+                <img src="~/Images/sunneday-logo-white.png" alt="Sunneday Corporate Logo">
+            </div>
+            <div class="col-xs-12 col-sm-6 col-sm-offset-0 col-md-4 col-md-offset-0 contact-info">
+                <ul>
+                    <li>Office: 402-852-2008</li>
+                    <li>Fax: 402-852-2031</li>
+                    <li>Email: <a href="mailto:info@sunneday.com">info@sunneday.com</a></li>
+                    <li>Web: <a href="http://www.sunneday.com" target="_blank">Sunneday Corporate Website</a></li>
+                </ul>
+            </div>
+            <div class="col-xs-6 col-xs-offset-3 col-sm-4 col-sm-offset-4 col-md-2 col-md-offset-4" id="gartenkraft-logo">
+                <img src="~/Images/gartenkraft-whitelogo.png" alt="Gartenkraft Logo">
+            </div>
+        </div>
+        <div id="copyright">
+            <p>Copyright &copy; @DateTime.Now.Year Gartenkraft All Rights Reserved.</p>
+        </div>
+    </footer>
 
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")

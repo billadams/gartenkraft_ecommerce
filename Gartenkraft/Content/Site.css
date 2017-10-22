@@ -1,4 +1,5 @@
-﻿body {
+﻿
+body {
     padding-top: 50px;
     padding-bottom: 20px;
 }
@@ -45,7 +46,17 @@ nav a:hover {
 .navbar .navbar-toggle .icon-bar {
     background-color: #ffffff;
 }
-
+.dropdown-menu > li > a {
+    color: #ffffff;
+}
+.nav .caret {
+    border-top-color: #ffffff;
+    border-bottom-color: #ffffff; 
+}
+.nav a:hover .caret {
+    border-top-color: #ffffff;
+    border-bottom-color: #ffffff;
+}
 .caret {
     display: inline-block;
     width: 0;
@@ -57,3 +68,114 @@ nav a:hover {
     border-right: 4px solid transparent;
     border-left: 4px solid transparent;
 }
+
+/*------------------------------------------------ INDEX STYLES ------------------------------------------------ */
+.carousel {
+    margin-top: 30px;
+}
+
+/*------------------------------------------------ BACK TO TOP STYLES ------------------------------------------------ */
+#toTop.btn-info {
+    background-color: #b62d2d;
+    background-image: none;
+    border-color: #9c2727; 
+}
+#toTop {
+    border-radius: 50px;
+    bottom: 20px;
+    cursor: pointer;
+    display: none;
+    height: 50px;
+    line-height: 40px;
+    opacity: .75;
+    position: fixed;
+    right: 20px;
+    width: 50px; }
+
+#toTop .fa {
+    font-size: 25px; }
+
+/*------------------------------------------------ FOOTER STYLES ------------------------------------------------ */
+footer {
+    background-color: #71bf44;
+    color: #ffffff;
+    padding: 15px 0 15px; 
+}
+footer ul {
+    text-align: center;
+}
+footer a {
+    color: #ffffff;
+    text-decoration: underline;
+}
+footer > .row {
+    margin-bottom: 15px; 
+}
+.contact-info {
+    border-left: 1px solid #ffffff; 
+}
+.contact-info ul, .contact-info li {
+    list-style: none; 
+}
+.contact-info ul {
+    margin-bottom: 5px;
+    padding-left: 0; 
+}
+/*#sunneday-logo,*/
+#gartenkraft-logo {
+    height: 100%; }
+
+/*#sunneday-logo:before,*/
+#gartenkraft-logo:before {
+    content: "";
+    display: inline-block;
+    height: 100%;
+    vertical-align: middle;
+}
+footer #copyright {
+    clear: both;
+    text-align: center; 
+}
+@media (min-width: 320px) and (max-width: 767px) {
+    #sunneday-logo, #gartenkraft-logo {
+        text-align: center; 
+    }
+    #sunneday-logo img, #gartenkraft-logo img {
+        width: 60%;
+    } 
+}
+@media (max-width: 767px) {
+    .content, footer {
+        font-size: 86%; 
+    }
+    h3 {
+        font-size: 18px; 
+    }
+    header h1 {
+        font-size: 28px;
+        margin-bottom: 0; 
+    }
+    header div.logo {
+        padding-bottom: 8px; 
+    }
+    .rslides_container + div {
+        font-size: 110%; 
+    }
+    /*------ FOOTER STYLES ------*/
+    .contact-info {
+        border-left: none;
+        clear: left;
+    }
+    #gartenkraft-logo {
+        margin-bottom: 20px; 
+    } 
+}
+@media (min-width: 768px) and (max-width: 992px) {
+    .content, footer {
+        font-size: 120%; 
+    }
+    #gartenkraft-logo {
+        margin-bottom: 20px; 
+    }
+}
+
