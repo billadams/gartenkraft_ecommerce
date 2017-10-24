@@ -12,7 +12,7 @@
     <hr />
     <dl class="dl-horizontal">
         <dt>
-            @Html.DisplayName("Product Line Name:")
+            @Html.DisplayNameFor(model => model.product_line_name)
         </dt>
 
         <dd>
@@ -20,7 +20,7 @@
         </dd>
 
         <dt>
-            @Html.DisplayName("Date Added")
+            @Html.DisplayNameFor(model => model.date_added)
         </dt>
 
         <dd>
@@ -28,7 +28,7 @@
         </dd>
 
         <dt>
-            @Html.DisplayName("Soft Delete Status:")
+           @Html.DisplayFor(model => model.soft_delete)
         </dt>
 
         <dd>
@@ -36,7 +36,7 @@
         </dd>
 
         <dt>
-            @Html.DisplayName("Visible Status:")
+            @Html.DisplayFor(model => model.is_visible)
         </dt>
 
         <dd>
