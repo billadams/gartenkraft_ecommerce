@@ -12,10 +12,10 @@ namespace Gartenkraft.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class tblProduct_Line_Image
+    public partial class vwProduct_Line
     {
-        public int product_line_image_id { get; set; }
         public int product_line_id { get; set; }
-        public string product_line_image_name { get; set; }
+        public string product_line_name { get; set; }
+        public bool is_visible { get; set; }
     }
 }
