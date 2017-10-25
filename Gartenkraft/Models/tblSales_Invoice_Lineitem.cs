@@ -18,8 +18,36 @@ namespace Gartenkraft.Models
 
         public int lineitem_id { get; set; }
         public int product_id { get; private set; }
-        public int lineitem_quantity { get; set; }
+        //public int lineitem_quantity
+        //{
+        //    get
+        //    {
+        //        return this.lineitem_quantity;
+        //    }
+        //    set
+        //    {
+        //        lineitem_quantity = value;
+        //        SetLineTotal();
+        //    }
+        //}
+        private int qty;
+        public int lineitem_quantity
+        {
+            get
+            {
+                return this.qty;
+            }
+            set
+            {
+                this.qty = value;
+                if (this.product != null)
+                {
+                    SetLineTotal();
+                }
+            }
+        }
         public int invoice_id { get; set; }
+        public decimal LineTotal { get; private set; }
 
         public void SetProduct(vwProduct p)
         {
@@ -32,7 +60,10 @@ namespace Gartenkraft.Models
             return this.product;
         }
 
-        public decimal GetLineTotal() => this.product.product_unit_price * this.lineitem_quantity;
+        public void SetLineTotal()
+        {
+            this.LineTotal = this.product.product_unit_price * this.lineitem_quantity;
+        }
 
         public virtual tblSales_Invoice tblSales_Invoice { get; set; }
     }

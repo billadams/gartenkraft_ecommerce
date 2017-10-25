@@ -84,7 +84,7 @@ namespace Gartenkraft.Models
             this.Subtotal = 0m;
             foreach (tblSales_Invoice_Lineitem li in this.CartItems)
             {
-                this.Subtotal += li.GetLineTotal();
+                this.Subtotal += li.LineTotal;
             }
         }
 

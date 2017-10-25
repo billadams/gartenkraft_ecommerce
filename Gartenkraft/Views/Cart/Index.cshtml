@@ -1,0 +1,48 @@
+﻿@model Gartenkraft.Models.Cart
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Cart</h2>
+
+<table class="table">
+    <tr>
+        <th>@*image*@</th>
+        <th>@Html.DisplayNameFor(model => model.CartItems.Single().lineitem_quantity)</th>
+        <th>@Html.DisplayNameFor(model => model.CartItems.Single().GetProduct().product_name)</th>
+        <th>@Html.DisplayNameFor(model => model.CartItems.Single().GetProduct().product_short_description)</th>
+        <th>@Html.DisplayNameFor(model => model.CartItems.Single().GetProduct().product_weight)</th>
+        <th>@Html.DisplayNameFor(model => model.CartItems.Single().GetProduct().product_unit_price)</th>
+        <th>@Html.DisplayName("Line Total")</th>
+        <th>&nbsp;</th>
+    </tr>
+    @foreach (var item in Model.CartItems)
+    {
+        <tr>
+            <td></td>
+            <td>
+                @Html.EditorFor(modelItem => item.lineitem_quantity, new { @type = "number", @min = "1", @step = "1" })
+                @Html.ActionLink("Update", "UpdateQuantity", "Cart", new { productID = item.product_id, quantity = item.lineitem_quantity }, htmlAttributes: new { @class = "btn btn-warning" })
+            </td>
+            <td>@Html.DisplayFor(modelItem => item.GetProduct().product_name)</td>
+            <td>@Html.DisplayFor(modelItem => item.GetProduct().product_short_description)</td>
+            <td>@Html.DisplayFor(modelItem => item.GetProduct().product_weight)</td>
+            <td>@Html.DisplayFor(modelItem => item.GetProduct().product_unit_price)</td>
+            <td>@Html.DisplayFor(modelItem => item.LineTotal)</td>
+            <td>
+                @Html.ActionLink("Remove", "RemoveLineitem", new { productID = item.GetProduct().product_id }, htmlAttributes: new { @class = "btn btn-danger"})
+            </td>
+        </tr>
+    }
+</table>
+
+@*<script type="text/javascript">
+    $(document).ready(function () {
+        $()
+    });
+    function getQuantity() {
+        return $("#").val;
+    }
+</script>*@

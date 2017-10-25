@@ -35,7 +35,7 @@ namespace Gartenkraft.Models
         public int product_line_id { get; set; }
 
         [Display(Name = "Weight")]
-        [DisplayFormat(DataFormatString = "{0:D2}")]
+        [RegularExpression(@"^\d+\.\d{0,2}$")]
         public decimal product_weight { get; set; }
 
         public Nullable<bool> is_visible { get; set; }
