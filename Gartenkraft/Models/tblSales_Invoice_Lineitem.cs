@@ -17,7 +17,7 @@ namespace Gartenkraft.Models
         private vwProduct product;
 
         public int lineitem_id { get; set; }
-        public int product_id { get; private set; }
+        public int product_id { get; set; }
         //public int lineitem_quantity
         //{
         //    get
