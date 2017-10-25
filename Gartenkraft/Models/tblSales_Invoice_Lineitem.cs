@@ -14,11 +14,26 @@ namespace Gartenkraft.Models
     
     public partial class tblSales_Invoice_Lineitem
     {
+        private vwProduct product;
+
         public int lineitem_id { get; set; }
-        public int product_id { get; set; }
+        public int product_id { get; private set; }
         public int lineitem_quantity { get; set; }
         public int invoice_id { get; set; }
-    
+
+        public void SetProduct(vwProduct p)
+        {
+            this.product = p;
+            this.product_id = p.product_id;
+        }
+
+        public vwProduct GetProduct()
+        {
+            return this.product;
+        }
+
+        public decimal GetLineTotal() => this.product.product_unit_price * this.lineitem_quantity;
+
         public virtual tblSales_Invoice tblSales_Invoice { get; set; }
     }
 }
