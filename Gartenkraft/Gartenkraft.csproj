@@ -366,10 +366,6 @@
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Scripts\jquery-1.10.2.min.map" />
-    <Content Include="Views\ViewProducts\Create.cshtml" />
-    <Content Include="Views\ViewProducts\Delete.cshtml" />
-    <Content Include="Views\ViewProducts\Details.cshtml" />
-    <Content Include="Views\ViewProducts\Edit.cshtml" />
     <Content Include="Views\ViewProducts\Index.cshtml" />
     <Content Include="Views\Cart\Index.cshtml" />
   </ItemGroup>

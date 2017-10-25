@@ -64,10 +64,10 @@ namespace Gartenkraft.Controllers
         }
 
         // GET: Cart/UpdateQuantity
-        public ActionResult UpdateQuantity(int productID, int quantity)
+        public ActionResult UpdateQuantity(tblSales_Invoice_Lineitem item)
         {
             cart = (Cart)Session["Cart"];
-            cart.CartItems.Where(ci => ci.product_id == productID).Single().lineitem_quantity = quantity;
+            cart.CartItems.Where(ci => ci.product_id == item.product_id).Single().lineitem_quantity = item.lineitem_quantity;
             Session["Cart"] = cart;
             return RedirectToAction("Index");
         }

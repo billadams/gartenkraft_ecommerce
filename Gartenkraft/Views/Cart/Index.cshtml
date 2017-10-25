@@ -21,19 +21,24 @@
     @foreach (var item in Model.CartItems)
     {
         <tr>
-            <td></td>
-            <td>
-                @Html.EditorFor(modelItem => item.lineitem_quantity, new { @type = "number", @min = "1", @step = "1" })
-                @Html.ActionLink("Update", "UpdateQuantity", "Cart", new { productID = item.product_id, quantity = item.lineitem_quantity }, htmlAttributes: new { @class = "btn btn-warning" })
-            </td>
-            <td>@Html.DisplayFor(modelItem => item.GetProduct().product_name)</td>
-            <td>@Html.DisplayFor(modelItem => item.GetProduct().product_short_description)</td>
-            <td>@Html.DisplayFor(modelItem => item.GetProduct().product_weight)</td>
-            <td>@Html.DisplayFor(modelItem => item.GetProduct().product_unit_price)</td>
-            <td>@Html.DisplayFor(modelItem => item.LineTotal)</td>
-            <td>
-                @Html.ActionLink("Remove", "RemoveLineitem", new { productID = item.GetProduct().product_id }, htmlAttributes: new { @class = "btn btn-danger"})
-            </td>
+            @using (Html.BeginForm("UpdateQuantity", "Cart", FormMethod.Get))
+            {
+                @Html.AntiForgeryToken()
+                <td></td>
+                <td>
+                    @Html.HiddenFor(modelItem => item.product_id)
+                    @Html.EditorFor(modelItem => item.lineitem_quantity, new { @type = "number", @min = "1", @step = "1" })
+                    <input type="submit" value="Update" class="btn btn-warning" />
+                </td>
+                <td>@Html.DisplayFor(modelItem => item.GetProduct().product_name)</td>
+                <td>@Html.DisplayFor(modelItem => item.GetProduct().product_short_description)</td>
+                <td>@Html.DisplayFor(modelItem => item.GetProduct().product_weight)</td>
+                <td>@Html.DisplayFor(modelItem => item.GetProduct().product_unit_price)</td>
+                <td>@Html.DisplayFor(modelItem => item.LineTotal)</td>
+                <td>
+                    @Html.ActionLink("Remove", "RemoveLineitem", new { productID = item.GetProduct().product_id }, htmlAttributes: new { @class = "btn btn-danger" })
+                </td>
+            }        
         </tr>
     }
 </table>
