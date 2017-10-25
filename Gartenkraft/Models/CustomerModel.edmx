@@ -117,14 +117,11 @@ warning 6002: The table/view 'gartenkraft.gkraft.vwCategory' does not have a pri
           <Key>
             <PropertyRef Name="category_name" />
             <PropertyRef Name="category_id" />
-            <PropertyRef Name="product_category_image_name" />
             <PropertyRef Name="category_product_line_id" />
           </Key>
           <Property Name="category_name" Type="varchar" MaxLength="100" Nullable="false" />
-          <Property Name="category_id" Type="int" Nullable="false" />
-          <Property Name="product_category_image_name" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="category_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="category_product_line_id" Type="int" Nullable="false" />
-          <Property Name="category_image_id" Type="int" />
           <Property Name="soft_delete" Type="bit" />
           <Property Name="is_visible" Type="bit" />
         </EntityType>
@@ -234,6 +231,7 @@ warning 6002: The table/view 'gartenkraft.gkraft.vwProduct' does not have a prim
           <Property Name="product_line_id" Type="int" Nullable="false" />
           <Property Name="product_weight" Type="decimal" Precision="6" Scale="2" Nullable="false" />
           <Property Name="is_visible" Type="bit" />
+          <Property Name="soft_delete" Type="bit" />
         </EntityType>
         <!--Errors Found During Generation:
 warning 6002: The table/view 'gartenkraft.gkraft.vwProduct_Line' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
@@ -242,10 +240,12 @@ warning 6002: The table/view 'gartenkraft.gkraft.vwProduct_Line' does not have a
             <PropertyRef Name="product_line_id" />
             <PropertyRef Name="product_line_name" />
             <PropertyRef Name="is_visible" />
+            <PropertyRef Name="soft_delete" />
           </Key>
           <Property Name="product_line_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="product_line_name" Type="varchar" MaxLength="100" Nullable="false" />
           <Property Name="is_visible" Type="bit" Nullable="false" />
+          <Property Name="soft_delete" Type="bit" Nullable="false" />
         </EntityType>
         <Association Name="FK_tblBilling_Information_AspNetUsers">
           <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1" />
@@ -337,9 +337,7 @@ warning 6002: The table/view 'gartenkraft.gkraft.vwProduct_Line' does not have a
             <DefiningQuery>SELECT 
     [vwCategory].[category_name] AS [category_name], 
     [vwCategory].[category_id] AS [category_id], 
-    [vwCategory].[product_category_image_name] AS [product_category_image_name], 
     [vwCategory].[category_product_line_id] AS [category_product_line_id], 
-    [vwCategory].[category_image_id] AS [category_image_id], 
     [vwCategory].[soft_delete] AS [soft_delete], 
     [vwCategory].[is_visible] AS [is_visible]
     FROM [gkraft].[vwCategory] AS [vwCategory]</DefiningQuery>
@@ -404,14 +402,16 @@ warning 6002: The table/view 'gartenkraft.gkraft.vwProduct_Line' does not have a
     [vwProduct].[product_category_id] AS [product_category_id], 
     [vwProduct].[product_line_id] AS [product_line_id], 
     [vwProduct].[product_weight] AS [product_weight], 
-    [vwProduct].[is_visible] AS [is_visible]
+    [vwProduct].[is_visible] AS [is_visible], 
+    [vwProduct].[soft_delete] AS [soft_delete]
     FROM [gkraft].[vwProduct] AS [vwProduct]</DefiningQuery>
           </EntitySet>
           <EntitySet Name="vwProduct_Line" EntityType="Self.vwProduct_Line" store:Type="Views" store:Schema="gkraft">
             <DefiningQuery>SELECT 
     [vwProduct_Line].[product_line_id] AS [product_line_id], 
     [vwProduct_Line].[product_line_name] AS [product_line_name], 
-    [vwProduct_Line].[is_visible] AS [is_visible]
+    [vwProduct_Line].[is_visible] AS [is_visible], 
+    [vwProduct_Line].[soft_delete] AS [soft_delete]
     FROM [gkraft].[vwProduct_Line] AS [vwProduct_Line]</DefiningQuery>
           </EntitySet>
           <AssociationSet Name="FK_tblBilling_Information_AspNetUsers" Association="Self.FK_tblBilling_Information_AspNetUsers">
@@ -566,14 +566,11 @@ warning 6002: The table/view 'gartenkraft.gkraft.vwProduct_Line' does not have a
           <Key>
             <PropertyRef Name="category_name" />
             <PropertyRef Name="category_id" />
-            <PropertyRef Name="product_category_image_name" />
             <PropertyRef Name="category_product_line_id" />
           </Key>
           <Property Name="category_name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="category_id" Type="Int32" Nullable="false" />
-          <Property Name="product_category_image_name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="category_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="category_product_line_id" Type="Int32" Nullable="false" />
-          <Property Name="category_image_id" Type="Int32" />
           <Property Name="soft_delete" Type="Boolean" />
           <Property Name="is_visible" Type="Boolean" />
         </EntityType>
@@ -675,16 +672,19 @@ warning 6002: The table/view 'gartenkraft.gkraft.vwProduct_Line' does not have a
           <Property Name="product_line_id" Type="Int32" Nullable="false" />
           <Property Name="product_weight" Type="Decimal" Precision="6" Scale="2" Nullable="false" />
           <Property Name="is_visible" Type="Boolean" />
+          <Property Name="soft_delete" Type="Boolean" />
         </EntityType>
         <EntityType Name="vwProduct_Line">
           <Key>
             <PropertyRef Name="product_line_id" />
             <PropertyRef Name="product_line_name" />
             <PropertyRef Name="is_visible" />
+            <PropertyRef Name="soft_delete" />
           </Key>
           <Property Name="product_line_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="product_line_name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="is_visible" Type="Boolean" Nullable="false" />
+          <Property Name="soft_delete" Type="Boolean" Nullable="false" />
         </EntityType>
         <Association Name="FK_tblBilling_Information_AspNetUsers">
           <End Role="AspNetUsers" Type="Self.AspNetUser" Multiplicity="1" />
@@ -929,9 +929,7 @@ warning 6002: The table/view 'gartenkraft.gkraft.vwProduct_Line' does not have a
               <MappingFragment StoreEntitySet="vwCategory">
                 <ScalarProperty Name="category_name" ColumnName="category_name" />
                 <ScalarProperty Name="category_id" ColumnName="category_id" />
-                <ScalarProperty Name="product_category_image_name" ColumnName="product_category_image_name" />
                 <ScalarProperty Name="category_product_line_id" ColumnName="category_product_line_id" />
-                <ScalarProperty Name="category_image_id" ColumnName="category_image_id" />
                 <ScalarProperty Name="soft_delete" ColumnName="soft_delete" />
                 <ScalarProperty Name="is_visible" ColumnName="is_visible" />
               </MappingFragment>
@@ -1005,6 +1003,7 @@ warning 6002: The table/view 'gartenkraft.gkraft.vwProduct_Line' does not have a
                 <ScalarProperty Name="product_line_id" ColumnName="product_line_id" />
                 <ScalarProperty Name="product_weight" ColumnName="product_weight" />
                 <ScalarProperty Name="is_visible" ColumnName="is_visible" />
+                <ScalarProperty Name="soft_delete" ColumnName="soft_delete" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -1014,6 +1013,7 @@ warning 6002: The table/view 'gartenkraft.gkraft.vwProduct_Line' does not have a
                 <ScalarProperty Name="product_line_id" ColumnName="product_line_id" />
                 <ScalarProperty Name="product_line_name" ColumnName="product_line_name" />
                 <ScalarProperty Name="is_visible" ColumnName="is_visible" />
+                <ScalarProperty Name="soft_delete" ColumnName="soft_delete" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
