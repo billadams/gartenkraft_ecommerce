@@ -201,6 +201,7 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\ProductLineController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -218,6 +219,9 @@
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\AspNetUser.cs">
+      <DependentUpon>CustomerModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\CustomerModel.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -265,6 +269,9 @@
     <Compile Include="Models\tblShipping.cs">
       <DependentUpon>CustomerModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\vwCategory.cs">
+      <DependentUpon>CustomerModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\vwFeatured_Product.cs">
       <DependentUpon>CustomerModel.tt</DependentUpon>
     </Compile>
@@ -275,6 +282,9 @@
       <DependentUpon>CustomerModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\vwProduct.cs">
+      <DependentUpon>CustomerModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\vwProduct_Line.cs">
       <DependentUpon>CustomerModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -373,6 +383,11 @@
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
+    <Content Include="Views\ProductLine\Create.cshtml" />
+    <Content Include="Views\ProductLine\Delete.cshtml" />
+    <Content Include="Views\ProductLine\Details.cshtml" />
+    <Content Include="Views\ProductLine\Edit.cshtml" />
+    <Content Include="Views\ProductLine\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201710081937282_InitialCreate.resx">

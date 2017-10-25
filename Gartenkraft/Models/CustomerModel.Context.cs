@@ -39,5 +39,8 @@ namespace Gartenkraft.Models
         public virtual DbSet<vwInvoice> vwInvoices { get; set; }
         public virtual DbSet<vwInvoice_Lineitem> vwInvoice_Lineitem { get; set; }
         public virtual DbSet<vwProduct> vwProducts { get; set; }
+        public virtual DbSet<AspNetUser> AspNetUsers { get; set; }
+        public virtual DbSet<vwCategory> vwCategories { get; set; }
+        public virtual DbSet<vwProduct_Line> vwProduct_Line { get; set; }
     }
 }
