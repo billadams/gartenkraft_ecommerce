@@ -63,8 +63,10 @@ namespace Gartenkraft.Controllers
             return RedirectToAction("Index", "Cart");
         }
 
-        // GET: Cart/UpdateQuantity
-        public ActionResult UpdateQuantity(tblSales_Invoice_Lineitem item)
+        // POST: Cart/UpdateQuantity
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult UpdateQuantity([Bind(Include = "lineitem_quantity, product_id")] tblSales_Invoice_Lineitem item)
         {
             cart = (Cart)Session["Cart"];
             cart.CartItems.Where(ci => ci.product_id == item.product_id).Single().lineitem_quantity = item.lineitem_quantity;

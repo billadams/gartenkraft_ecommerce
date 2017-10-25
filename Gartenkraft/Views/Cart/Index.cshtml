@@ -11,6 +11,7 @@
     <tr>
         <th>@*image*@</th>
         <th>@Html.DisplayNameFor(model => model.CartItems.Single().lineitem_quantity)</th>
+        <th>&nbsp;</th>
         <th>@Html.DisplayNameFor(model => model.CartItems.Single().GetProduct().product_name)</th>
         <th>@Html.DisplayNameFor(model => model.CartItems.Single().GetProduct().product_short_description)</th>
         <th>@Html.DisplayNameFor(model => model.CartItems.Single().GetProduct().product_weight)</th>
@@ -21,24 +22,26 @@
     @foreach (var item in Model.CartItems)
     {
         <tr>
-            @using (Html.BeginForm("UpdateQuantity", "Cart", FormMethod.Get))
-            {
+            <td></td>
+            @using (Html.BeginForm("UpdateQuantity", "Cart", FormMethod.Post))
+                {
                 @Html.AntiForgeryToken()
-                <td></td>
+                @Html.HiddenFor(modelItem => item.product_id)
                 <td>
-                    @Html.HiddenFor(modelItem => item.product_id)
-                    @Html.EditorFor(modelItem => item.lineitem_quantity, new { @type = "number", @min = "1", @step = "1" })
+                    @Html.TextBoxFor(modelItem => item.lineitem_quantity, htmlAttributes: new { @class = "form-control", @type = "number", @min = "1", @step = "1", @style = "width:100px;" })
+                </td>
+                <td>
                     <input type="submit" value="Update" class="btn btn-warning" />
                 </td>
-                <td>@Html.DisplayFor(modelItem => item.GetProduct().product_name)</td>
-                <td>@Html.DisplayFor(modelItem => item.GetProduct().product_short_description)</td>
-                <td>@Html.DisplayFor(modelItem => item.GetProduct().product_weight)</td>
-                <td>@Html.DisplayFor(modelItem => item.GetProduct().product_unit_price)</td>
-                <td>@Html.DisplayFor(modelItem => item.LineTotal)</td>
-                <td>
-                    @Html.ActionLink("Remove", "RemoveLineitem", new { productID = item.GetProduct().product_id }, htmlAttributes: new { @class = "btn btn-danger" })
-                </td>
-            }        
+            }
+            <td>@Html.DisplayFor(modelItem => item.GetProduct().product_name)</td>
+            <td>@Html.DisplayFor(modelItem => item.GetProduct().product_short_description)</td>
+            <td>@Html.DisplayFor(modelItem => item.GetProduct().product_weight)</td>
+            <td>@Html.DisplayFor(modelItem => item.GetProduct().product_unit_price)</td>
+            <td>@Html.DisplayFor(modelItem => item.LineTotal)</td>
+            <td>
+                @Html.ActionLink("Remove", "RemoveLineitem", new { productID = item.GetProduct().product_id }, htmlAttributes: new { @class = "btn btn-danger" })
+            </td> 
         </tr>
     }
 </table>
