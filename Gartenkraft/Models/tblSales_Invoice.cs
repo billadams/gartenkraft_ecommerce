@@ -30,5 +30,6 @@ namespace Gartenkraft.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<tblSales_Invoice_Lineitem> tblSales_Invoice_Lineitem { get; set; }
         public virtual tblShipping tblShipping { get; set; }
+        public virtual AspNetUser AspNetUser { get; set; }
     }
 }

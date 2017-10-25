@@ -13,10 +13,10 @@ namespace Gartenkraft_Admin.Models
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class gartenkraftAdminEntities : DbContext
+    public partial class GartenkraftAdminEntities : DbContext
     {
-        public gartenkraftAdminEntities()
-            : base("name=gartenkraftAdminEntities")
+        public GartenkraftAdminEntities()
+            : base("name=GartenkraftAdminEntities")
         {
         }
     

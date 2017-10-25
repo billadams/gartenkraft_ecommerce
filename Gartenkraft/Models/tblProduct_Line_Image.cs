@@ -17,7 +17,5 @@ namespace Gartenkraft.Models
         public int product_line_image_id { get; set; }
         public int product_line_id { get; set; }
         public string product_line_image_name { get; set; }
-    
-        public virtual tblProduct_Line tblProduct_Line { get; set; }
     }
 }
