@@ -1,0 +1,50 @@
+﻿@model Gartenkraft.Models.vwCategory
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Details</title>
+</head>
+<body>
+    <div>
+        <h4>vwCategory</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.category_image_id)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.category_image_id)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.soft_delete)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.soft_delete)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.is_visible)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.is_visible)
+            </dd>
+    
+        </dl>
+    </div>
+    <p>
+        @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
+        @Html.ActionLink("Back to List", "Index")
+    </p>
+</body>
+</html>

@@ -10,107 +10,107 @@ using Gartenkraft.Models;
 
 namespace Gartenkraft.Controllers
 {
-    public class ProductLineController : Controller
+    public class CategoryController : Controller
     {
         private GartenkraftCustomerEntities db = new GartenkraftCustomerEntities();
 
-        // GET: ProductLine
+        // GET: Categories
         public ActionResult Index()
         {
-            return View(db.vwProduct_Line.ToList());
+            return View(db.vwCategories.ToList());
         }
 
-        // GET: ProductLine/Details/5
-        public ActionResult Details(int? id)
+        // GET: Categories/Details/5
+        public ActionResult Details(string id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            vwProduct_Line vwProduct_Line = db.vwProduct_Line.Find(id);
-            if (vwProduct_Line == null)
+            vwCategory vwCategory = db.vwCategories.Find(id);
+            if (vwCategory == null)
             {
                 return HttpNotFound();
             }
-            return View(vwProduct_Line);
+            return View(vwCategory);
         }
 
-        // GET: ProductLine/Create
+        // GET: Categories/Create
         public ActionResult Create()
         {
             return View();
         }
 
-        // POST: ProductLine/Create
+        // POST: Categories/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "product_line_id,product_line_name,is_visible")] vwProduct_Line vwProduct_Line)
+        public ActionResult Create([Bind(Include = "category_name,category_id,product_category_image_name,category_product_line_id,category_image_id,soft_delete,is_visible")] vwCategory vwCategory)
         {
             if (ModelState.IsValid)
             {
-                db.vwProduct_Line.Add(vwProduct_Line);
+                db.vwCategories.Add(vwCategory);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            return View(vwProduct_Line);
+            return View(vwCategory);
         }
 
-        // GET: ProductLine/Edit/5
-        public ActionResult Edit(int? id)
+        // GET: Categories/Edit/5
+        public ActionResult Edit(string id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            vwProduct_Line vwProduct_Line = db.vwProduct_Line.Find(id);
-            if (vwProduct_Line == null)
+            vwCategory vwCategory = db.vwCategories.Find(id);
+            if (vwCategory == null)
             {
                 return HttpNotFound();
             }
-            return View(vwProduct_Line);
+            return View(vwCategory);
         }
 
-        // POST: ProductLine/Edit/5
+        // POST: Categories/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "product_line_id,product_line_name,is_visible")] vwProduct_Line vwProduct_Line)
+        public ActionResult Edit([Bind(Include = "category_name,category_id,product_category_image_name,category_product_line_id,category_image_id,soft_delete,is_visible")] vwCategory vwCategory)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(vwProduct_Line).State = EntityState.Modified;
+                db.Entry(vwCategory).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            return View(vwProduct_Line);
+            return View(vwCategory);
         }
 
-        // GET: ProductLine/Delete/5
-        public ActionResult Delete(int? id)
+        // GET: Categories/Delete/5
+        public ActionResult Delete(string id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            vwProduct_Line vwProduct_Line = db.vwProduct_Line.Find(id);
-            if (vwProduct_Line == null)
+            vwCategory vwCategory = db.vwCategories.Find(id);
+            if (vwCategory == null)
             {
                 return HttpNotFound();
             }
-            return View(vwProduct_Line);
+            return View(vwCategory);
         }
 
-        // POST: ProductLine/Delete/5
+        // POST: Categories/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(int id)
+        public ActionResult DeleteConfirmed(string id)
         {
-            vwProduct_Line vwProduct_Line = db.vwProduct_Line.Find(id);
-            db.vwProduct_Line.Remove(vwProduct_Line);
+            vwCategory vwCategory = db.vwCategories.Find(id);
+            db.vwCategories.Remove(vwCategory);
             db.SaveChanges();
             return RedirectToAction("Index");
         }
