@@ -216,6 +216,7 @@
     <Compile Include="Models\tblBilling_Information.cs">
       <DependentUpon>AdminModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\tblCategoryMetaData.cs" />
     <Compile Include="Models\tblFeature_Product.cs">
       <DependentUpon>AdminModel.tt</DependentUpon>
     </Compile>
@@ -225,6 +226,7 @@
     <Compile Include="Models\tblProduct.cs">
       <DependentUpon>AdminModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\tblProductMetaData.cs" />
     <Compile Include="Models\tblProduct_Category.cs">
       <DependentUpon>AdminModel.tt</DependentUpon>
     </Compile>
@@ -237,6 +239,7 @@
     <Compile Include="Models\tblProduct_Line.cs">
       <DependentUpon>AdminModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\tblProduct_LineMetaData.cs" />
     <Compile Include="Models\tblProduct_Line_Image.cs">
       <DependentUpon>AdminModel.tt</DependentUpon>
     </Compile>
@@ -363,6 +366,7 @@
     <None Include="packages.config" />
     <Content Include="Scripts\jquery-1.10.2.min.map" />
   </ItemGroup>
+  <ItemGroup />
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>

@@ -11,7 +11,10 @@ namespace Gartenkraft_Admin.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+    using System.ComponentModel;
+    using System.ComponentModel.DataAnnotations.Schema;
+
     public partial class tblBilling_Information
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -21,13 +24,29 @@ namespace Gartenkraft_Admin.Models
         }
     
         public int billing_id { get; set; }
+        [Required]
+        [DisplayName("Custormer ID")]
         public string customer_id { get; set; }
+        [Required]
+        [DisplayName("Billing Address")]
         public string billing_address1 { get; set; }
+        [DisplayFormat(ConvertEmptyStringToNull = true, NullDisplayText = "[Null]")]
+        [DisplayName("Billing Address 2")]
         public string billing_address2 { get; set; }
+        [Required]
+        [DisplayName("City")]
         public string billing_city { get; set; }
+        [Required]
+        [DisplayName("State")]
         public string billing_state { get; set; }
+        [Required]
+        [DisplayName("Zip")]
         public string billing_zip { get; set; }
+        [DisplayFormat(ConvertEmptyStringToNull = true, NullDisplayText = "[Null]")]
+        [DisplayName("Four Digit Zip")]
         public string billing_zip4 { get; set; }
+        [Required]
+        [DisplayName("Country")]
         public string billing_country { get; set; }
     
         public virtual AspNetUser AspNetUser { get; set; }
