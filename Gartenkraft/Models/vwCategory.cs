@@ -16,9 +16,7 @@ namespace Gartenkraft.Models
     {
         public string category_name { get; set; }
         public int category_id { get; set; }
-        public string product_category_image_name { get; set; }
         public int category_product_line_id { get; set; }
-        public Nullable<int> category_image_id { get; set; }
         public Nullable<bool> soft_delete { get; set; }
         public Nullable<bool> is_visible { get; set; }
     }

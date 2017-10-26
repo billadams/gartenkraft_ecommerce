@@ -11,7 +11,7 @@ namespace Gartenkraft.Models
 {
     using System;
     using System.Collections.Generic;
-    
+
     public partial class tblSales_Invoice_Lineitem
     {
         private vwProduct product;

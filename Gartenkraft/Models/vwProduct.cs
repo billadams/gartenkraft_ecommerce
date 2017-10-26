@@ -39,5 +39,6 @@ namespace Gartenkraft.Models
         public decimal product_weight { get; set; }
 
         public Nullable<bool> is_visible { get; set; }
+        public Nullable<bool> soft_delete { get; set; }
     }
 }
