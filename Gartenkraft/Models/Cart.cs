@@ -9,9 +9,9 @@ namespace Gartenkraft.Models
     public class Cart
     {
         public const decimal TAX = 0.07m;
-        private List<tblSales_Invoice_Lineitem> cartItems;
+        private List<invoice_lineitem> cartItems;
 
-        public List<tblSales_Invoice_Lineitem> CartItems
+        public List<invoice_lineitem> CartItems
         {
             get { return this.cartItems; }
             set { this.cartItems = value; }
@@ -27,17 +27,17 @@ namespace Gartenkraft.Models
         [DisplayFormat(DataFormatString = "{0:C}")]
         public decimal Total { get; private set; }
 
-        public Cart() { cartItems = new List<tblSales_Invoice_Lineitem>(); }
+        public Cart() { cartItems = new List<invoice_lineitem>(); }
 
-        public void AddItem(tblSales_Invoice_Lineitem li)
+        public void AddItem(invoice_lineitem li)
         {
             bool duplicate = false;
-            foreach (tblSales_Invoice_Lineitem item in this.cartItems)
+            foreach (invoice_lineitem item in this.cartItems)
             {
                 if (li.GetProduct().product_id == item.product_id)
                 {
                     duplicate = true;
-                    item.lineitem_quantity += 1;
+                    item.Set_lineitem_quantity(item.lineitem_quantity += 1);
                 }
             }
             if (!duplicate)
@@ -48,21 +48,21 @@ namespace Gartenkraft.Models
 
         }
 
-        public void UpdateItem(tblSales_Invoice_Lineitem li)
+        public void UpdateItem(invoice_lineitem li)
         {
-            foreach (tblSales_Invoice_Lineitem item in this.cartItems)
+            foreach (invoice_lineitem item in this.cartItems)
             {
                 if (li.GetProduct().product_id == item.product_id)
                 {
-                    item.lineitem_quantity = li.lineitem_quantity;
+                    item.Set_lineitem_quantity(li.lineitem_quantity);
                 }
             }
             CalculateTotal();
         }
 
-        public void RemoveItem(tblSales_Invoice_Lineitem li)
+        public void RemoveItem(invoice_lineitem li)
         {
-            foreach (tblSales_Invoice_Lineitem item in this.cartItems)
+            foreach (invoice_lineitem item in this.cartItems)
             {
                 if (li.GetProduct().product_id == item.product_id)
                 {
@@ -82,7 +82,7 @@ namespace Gartenkraft.Models
         private void SetSubtotal()
         {
             this.Subtotal = 0m;
-            foreach (tblSales_Invoice_Lineitem li in this.CartItems)
+            foreach (invoice_lineitem li in this.CartItems)
             {
                 this.Subtotal += li.LineTotal;
             }
