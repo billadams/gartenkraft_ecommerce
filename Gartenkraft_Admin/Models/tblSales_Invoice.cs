@@ -40,6 +40,7 @@ namespace Gartenkraft_Admin.Models
         public Nullable<int> shipping_id { get; set; }
     
         public virtual AspNetUser AspNetUser { get; set; }
+        public void HandledEvents() { }
         public virtual tblBilling_Information tblBilling_Information { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<tblSales_Invoice_Lineitem> tblSales_Invoice_Lineitem { get; set; }

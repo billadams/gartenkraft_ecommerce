@@ -19,7 +19,7 @@ namespace Gartenkraft_Admin.Models
         {
             this.tblSales_Invoice = new HashSet<tblSales_Invoice>();
         }
-    
+        []
         public int shipping_id { get; set; }
         public string customer_id { get; set; }
         public string shipping_address1 { get; set; }

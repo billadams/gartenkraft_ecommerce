@@ -22,6 +22,7 @@ namespace Gartenkraft_Admin.Models
         [DisplayName("ID")]
         public int lineitem_id { get; set; }
         [Required]
+        
         [DisplayName("Product ID")]
         public int product_id { get; set; }
         [Required]
@@ -32,6 +33,7 @@ namespace Gartenkraft_Admin.Models
         public int invoice_id { get; set; }
     
         public virtual tblProduct tblProduct { get; set; }
+        public void proe(){  }
         public virtual tblSales_Invoice tblSales_Invoice { get; set; }
     }
 }
