@@ -33,7 +33,6 @@ namespace Gartenkraft_Admin.Models
         public int invoice_id { get; set; }
     
         public virtual tblProduct tblProduct { get; set; }
-        public void proe(){  }
         public virtual tblSales_Invoice tblSales_Invoice { get; set; }
     }
 }

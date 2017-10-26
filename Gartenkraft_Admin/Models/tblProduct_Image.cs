@@ -26,7 +26,6 @@ namespace Gartenkraft_Admin.Models
         [Required]
         [DisplayName("Image")]
         public string product_image_name { get; set; }
-        public void tblrodct() {}
         public virtual tblProduct tblProduct { get; set; }
     }
 }
