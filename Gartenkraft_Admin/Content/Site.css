@@ -23,8 +23,15 @@ textarea {
     max-width: 280px;
 }
 
-#sidebar
-{
+/* Tim H: Added following unfloat-header id spec */
+#unfloat-header {
+    float: none;
+    text-align: center; 
+    width: auto;
+}
+
+/* Tim H: Added following #sidebar id spec */
+#sidebar {
 	float: left;
 	margin-top: 10px;
 	margin-right: 15px;
@@ -35,6 +42,6 @@ textarea {
 	padding-right: 10px; */
 	list-style: none;
 	line-height: 200%;
-	width: 100px;
+	width: 130px;
 }
 
