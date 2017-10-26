@@ -11,7 +11,10 @@ namespace Gartenkraft_Admin.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+    using System.ComponentModel;
+    using System.ComponentModel.DataAnnotations.Schema;
+
     public partial class tblProduct
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -22,18 +25,41 @@ namespace Gartenkraft_Admin.Models
             this.tblProduct_Image = new HashSet<tblProduct_Image>();
             this.tblSales_Invoice_Lineitem = new HashSet<tblSales_Invoice_Lineitem>();
         }
-    
+        [Required]
+        [DisplayName("Product ID")]
         public int product_id { get; set; }
+        [Required]
+        [DisplayName("Name")]
         public string product_name { get; set; }
+        [Required]
+        [DisplayName("Short Description")]
         public string product_short_description { get; set; }
+        [Required]
+        [DisplayName("Long Description")]
         public string product_long_description { get; set; }
+        [Required]
+        [DisplayName("Unit Cost")]
         public decimal product_unit_cost { get; set; }
+        [Required]
+        [DisplayName("Unit Price")]
         public decimal product_unit_price { get; set; }
+        [Required]
+        [DisplayName("Category ID")]
         public int product_category_id { get; set; }
+        [Required]
+        [DisplayName("Product ID")]
         public int product_line_id { get; set; }
+        [Required]
+        [DisplayName("Weight")]
         public decimal product_weight { get; set; }
+        [Required]
+        [DisplayName("Date Added")]
         public System.DateTime product_date_added { get; set; }
+        [DisplayFormat(ConvertEmptyStringToNull = true, NullDisplayText = "[Null]")]
+        [DisplayName("Soft Delete")]
         public Nullable<bool> soft_delete { get; set; }
+        [DisplayFormat(ConvertEmptyStringToNull = true, NullDisplayText = "[Null]")]
+        [DisplayName("Visible")]
         public Nullable<bool> is_visible { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
