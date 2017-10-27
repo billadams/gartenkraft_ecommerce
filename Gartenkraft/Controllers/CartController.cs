@@ -42,7 +42,7 @@ namespace Gartenkraft.Controllers
             if (isDuplicate)
             {
                 // add 1 quantity to existing lineitem
-                cart.CartItems.Where(ci => ci.product_id == productID).Single().lineitem_quantity += 1;
+                cart.CartItems.Where(ci => ci.product_id == productID).Single().Set_lineitem_quantity(cart.CartItems.Where(ci => ci.product_id == productID).Single().lineitem_quantity += 1);
             }
             else
             {
@@ -50,9 +50,9 @@ namespace Gartenkraft.Controllers
                 var product = dbContext.vwProducts.Where(vP => vP.product_id == productID).Single();
 
                 // set line item
-                tblSales_Invoice_Lineitem li = new tblSales_Invoice_Lineitem();
+                invoice_lineitem li = new invoice_lineitem();
                 li.SetProduct(product);
-                li.lineitem_quantity = 1;
+                li.Set_lineitem_quantity(1);
 
                 // add to cart
                 cart.AddItem(li);
@@ -64,10 +64,10 @@ namespace Gartenkraft.Controllers
         }
 
         // GET: Cart/UpdateQuantity
-        public ActionResult UpdateQuantity(tblSales_Invoice_Lineitem item)
+        public ActionResult UpdateQuantity(invoice_lineitem item)
         {
             cart = (Cart)Session["Cart"];
-            cart.CartItems.Where(ci => ci.product_id == item.product_id).Single().lineitem_quantity = item.lineitem_quantity;
+            cart.CartItems.Where(ci => ci.product_id == item.product_id).Single().Set_lineitem_quantity(item.lineitem_quantity);
             Session["Cart"] = cart;
             return RedirectToAction("Index");
         }

@@ -16,28 +16,13 @@ namespace Gartenkraft.Models
     public partial class vwProduct
     {       
         public int product_id { get; set; }
-
-        [Display(Name = "Product Name")]
         public string product_name { get; set; }
-
-        [Display(Name = "Short Description")]
         public string product_short_description { get; set; }
-
-        [Display(Name = "Long Description")]
         public string product_long_description { get; set; }
-
-        [Display(Name = "Unit Price")]
-        [DisplayFormat(DataFormatString = "{0:C}")]
         public decimal product_unit_price { get; set; }
-
         public int product_category_id { get; set; }
-
         public int product_line_id { get; set; }
-
-        [Display(Name = "Weight")]
-        [RegularExpression(@"^\d+\.\d{0,2}$")]
         public decimal product_weight { get; set; }
-
         public Nullable<bool> is_visible { get; set; }
         public Nullable<bool> soft_delete { get; set; }
     }
