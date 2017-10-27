@@ -10,7 +10,7 @@ using Gartenkraft.Models;
 
 namespace Gartenkraft.Controllers
 {
-    public class ViewProductsController : Controller
+    public class ProductController : Controller
     {
         private GartenkraftCustomerEntities db = new GartenkraftCustomerEntities();
 
