@@ -17,7 +17,9 @@ namespace Gartenkraft.Controllers
         // GET: vwProducts
         public ActionResult Index()
         {
-            return View(db.vwProducts.Where(vP => vP.is_visible == true).ToList());
+            //return View(db.vwProducts.Where(vP => vP.is_visible == true).ToList());
+            return View(db.vwProducts.Where(product => product.is_visible == true).ToList());
+            //return View();
         }
 
         protected override void Dispose(bool disposing)

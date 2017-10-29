@@ -1,0 +1,10 @@
+﻿@model List<Gartenkraft.Models.vwProduct_Line>
+
+<ul>
+    @foreach (var link in Model) {
+        <li class="dropdown">@Html.ActionLink(link.product_line_name, "Menu", "Nav", new Dictionary<string, object> { {"class", "dropdown-toggle"}, {"data-toggle", "dropdown" }, {"aria-haspopup", "true"}, {"aria-expanded", "false"} })</li>
+    }
+</ul>
+
+
+

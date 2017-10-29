@@ -187,9 +187,9 @@
     <Compile Include="Controllers\CategoryController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
-    <Compile Include="Controllers\NavigationController.cs" />
+    <Compile Include="Controllers\NavController.cs" />
+    <Compile Include="Controllers\ProductController.cs" />
     <Compile Include="Controllers\ProductLineController.cs" />
-    <Compile Include="Controllers\ViewProductsController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -230,6 +230,7 @@
     <Compile Include="Models\invoice_lineitem.cs" />
     <Compile Include="Models\invoice_lineitem_metadata.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\Menu.cs" />
     <Compile Include="Models\tblBilling_Information.cs">
       <DependentUpon>CustomerModel.tt</DependentUpon>
     </Compile>
@@ -337,6 +338,7 @@
     <Content Include="Scripts\respond.min.js" />
     <Content Include="Scripts\toTop.js" />
     <Content Include="Scripts\_references.js" />
+    <Content Include="Views\Product\Index.cshtml" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -385,7 +387,7 @@
     <Content Include="Views\ProductLine\Edit.cshtml" />
     <Content Include="Views\ProductLine\Index.cshtml" />
     <Content Include="Views\Cart\Index.cshtml" />
-    <Content Include="Views\ViewProducts\Index.cshtml" />
+    <Content Include="Views\Nav\Menu.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201710081937282_InitialCreate.resx">
