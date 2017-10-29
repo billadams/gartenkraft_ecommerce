@@ -10,18 +10,20 @@ namespace Gartenkraft.Controllers
     public class NavController : Controller
     {
         private GartenkraftCustomerEntities db = new GartenkraftCustomerEntities();
-        private List<vwProduct_Line> _productLines;
-        //private vwCategory _categories;
+        private vwProduct_Line _productLines;
+        private vwCategory _categories;
 
-        //public NavController(vwProduct_Line productLines, vwCategory categories)
-        //{
-        //    this.productLines = productLines;
-        //    this.categories = categories;
-        //}
+        public NavController() { }
+
+        public NavController(vwProduct_Line productLines, vwCategory categories)
+        {
+            this._productLines = productLines;
+            this._categories = categories;
+        }
 
         public PartialViewResult Menu()
         {
-            _productLines = db.vwProduct_Line.ToList();
+            List<vwProduct_Line> _productLines = db.vwProduct_Line.ToList();
 
             return PartialView(_productLines);
         }

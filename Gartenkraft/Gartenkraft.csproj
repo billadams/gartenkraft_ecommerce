@@ -230,6 +230,7 @@
     <Compile Include="Models\invoice_lineitem.cs" />
     <Compile Include="Models\invoice_lineitem_metadata.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\Menu.cs" />
     <Compile Include="Models\tblBilling_Information.cs">
       <DependentUpon>CustomerModel.tt</DependentUpon>
     </Compile>
@@ -386,6 +387,7 @@
     <Content Include="Views\ProductLine\Index.cshtml" />
     <Content Include="Views\Cart\Index.cshtml" />
     <Content Include="Views\Product\Index.cshtml" />
+    <Content Include="Views\Nav\Menu.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201710081937282_InitialCreate.resx">
@@ -403,7 +405,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Views\Navigation\" />
-    <Folder Include="Views\Nav\" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />

@@ -6,10 +6,10 @@ using System.ComponentModel.DataAnnotations;
 
 namespace Gartenkraft.Models
 {
-    [MetadataType(typeof(vwProduct_metadata))]
+    [MetadataType(typeof(vwProductMetadata))]
     public partial class vwProduct { }
 
-    public class vwProduct_metadata
+    public class vwProductMetadata
     {
         [Display(Name = "Product Name")]
         public string product_name { get; set; }

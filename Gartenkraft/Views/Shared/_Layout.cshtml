@@ -24,6 +24,7 @@
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
                     <li>@Html.ActionLink("Home", "Index", "Home")</li>
+                    @*@Html.Action("Menu", "Nav")*@
                     @*@foreach (var link in Model)
                     {
                         @Html.RouteLink(link, new
@@ -67,7 +68,7 @@
     <div class="container body-content">
         @RenderBody()
     </div>
-    <footer class="containter">
+    <footer class="container">
         <div class="row">
             <div class="col-xs-6 col-xs-offset-3 col-sm-4 col-sm-offset-2 col-md-2 col-md-offset-0" id="sunneday-logo">
                 <img src="~/Images/sunneday-logo-white.png" alt="Sunneday Corporate Logo">
