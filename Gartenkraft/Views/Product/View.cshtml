@@ -1,0 +1,20 @@
+﻿@model Gartenkraft.Models.vwProduct
+
+@{
+    ViewBag.Title = "title";
+}
+
+<section class="item">
+    <div class="info">
+        <p>@Model.product_name</p>
+        <img src="http://via.placeholder.com/375x200" alt="Product Image" class="img-responsive" />
+        <p>@Model.product_short_description</p>
+        <p>@Model.product_long_description</p>
+        <p>Price: @Model.product_unit_price.ToString(("c"))</p>
+    </div>
+    <div>
+        <button class="btn btn-primary center-block">
+            @Html.ActionLink("Add to cart", "Add", "Cart", new { productID = @Model.product_id }, htmlAttributes: null) 
+        </button>
+    </div>
+</section>

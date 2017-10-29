@@ -24,7 +24,7 @@ namespace Gartenkraft.Controllers
         }
 
         // GET: Cart/AddToCart
-        public ActionResult AddToCart(int productID)
+        public ActionResult Add(int productID)
         {
             bool isDuplicate = false;
 

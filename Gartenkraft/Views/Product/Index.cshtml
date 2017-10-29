@@ -4,14 +4,27 @@
     ViewBag.Title = "Index";
 }
 
-<div class="row">
-    <div class="col-md-4">
-        <h2>Test Product</h2>
-    </div>
-    <div class="col-md-4">
-        <img src="http://via.placeholder.com/375x200" alt="Product Image"/>
-    </div>
-</div>
+<section class="items">
+    <ul class="item-list">
+    @foreach (var item in Model)
+    {
+        <li>
+            <div class="info">
+                <p>@item.product_name</p>
+                <img src="http://via.placeholder.com/375x200" alt="Product Image" class="img-responsive" />
+                <p>@item.product_short_description</p>
+                <p>Price: @item.product_unit_price.ToString(("c"))</p>
+            </div>
+            <div>
+                <button class="btn btn-primary center-block">
+                    @Html.ActionLink("View Product", "View", "Product", new { productID = item.product_id }, htmlAttributes: null) 
+                </button>
+            </div>
+        </li>
+    }
+    </ul>
+</section>
+
 
 @*<table class="table">
     <tr>

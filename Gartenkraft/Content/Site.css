@@ -179,3 +179,23 @@ footer #copyright {
     }
 }
 
+/*------------------------------------------------ PRODUCT LISTING STYLES ------------------------------------------------ */
+.items {
+    margin-top: 20px;
+}
+.item-list {
+    list-style: none;
+    padding-left: 0;    
+}
+.item-list li {
+    border-bottom: 1px solid #cccccc;
+    margin-bottom: 10px;
+    padding-bottom: 20px;
+}
+.item-list li:last-of-type {
+    border-bottom: none;
+}
+.item-list img {
+    margin-bottom: 5px
+}
+
