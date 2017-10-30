@@ -12,9 +12,5 @@
         <p>@Model.product_long_description</p>
         <p>Price: @Model.product_unit_price.ToString(("c"))</p>
     </div>
-    <div>
-        <button class="btn btn-primary center-block">
-            @Html.ActionLink("Add to cart", "Add", "Cart", new { productID = @Model.product_id }, htmlAttributes: null) 
-        </button>
-    </div>
+        @Html.ActionLink("Add to Cart", "Add", "Cart", new { productID = @Model.product_id }, new { @class = "btn btn-primary" }) 
 </section>

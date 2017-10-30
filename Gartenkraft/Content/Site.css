@@ -111,9 +111,9 @@ footer a {
 footer > .row {
     margin-bottom: 15px; 
 }
-.contact-info {
+/*.contact-info {
     border-left: 1px solid #ffffff; 
-}
+}*/
 .contact-info ul, .contact-info li {
     list-style: none; 
 }
