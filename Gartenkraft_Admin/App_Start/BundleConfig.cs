@@ -28,7 +28,7 @@ namespace Gartenkraft_Admin
                       "~/Content/bootstrap.css",
                       "~/Content/bootstrap-theme.css",
                       "~/Content/site.css",
-                      "~/Content/dashboard.css"));
+                      "~/Content/sidebar.css"));
         }
     }
 }
