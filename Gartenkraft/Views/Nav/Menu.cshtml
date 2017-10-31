@@ -1,10 +1,23 @@
-﻿@model List<Gartenkraft.Models.vwProduct_Line>
+﻿@model Gartenkraft.ModelsForViews.MenuModel
 
-<ul>
-    @foreach (var link in Model) {
-        <li class="dropdown">@Html.ActionLink(link.product_line_name, "Menu", "Nav", new Dictionary<string, object> { {"class", "dropdown-toggle"}, {"data-toggle", "dropdown" }, {"aria-haspopup", "true"}, {"aria-expanded", "false"} })</li>
-    }
-</ul>
+
+@foreach (var link in Model.ProductLines)
+{
+    <li class="dropdown">
+        @Html.ActionLink(link.product_line_name, "Menu", "Nav", null, new Dictionary<string, object> { {"class", "dropdown-toggle"}, {"data-toggle", "dropdown" }, {"aria-haspopup", "true"}, {"aria-expanded", "false"} })
+        @*<a href="/" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">@link.product_line_name<span class="caret"></span></a>*@
+
+        <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+            @foreach (var sublink in link.Categories)
+            {
+                <li class="dropdown">
+                    @Html.ActionLink(sublink.category_name, "ProductsByCategory", "Product", new { categoryID = sublink.category_id }, new Dictionary<string, object> { { "class", "dropdown-toggle" }, { "data-toggle", "dropdown" }, { "aria-haspopup", "true" }, { "aria-expanded", "false" } })
+                </li>
+            }
+        </ul>
+    </li>
+}
+
 
 
 

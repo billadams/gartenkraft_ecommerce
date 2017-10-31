@@ -1,0 +1,31 @@
+﻿
+@{
+    ViewBag.Title = (string)ViewBag.CategoryName;
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Products in @ViewBag.CategoryName</h2>
+
+@model IEnumerable<Gartenkraft.Models.vwProduct>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<section class="items">
+    <ul class="item-list">
+        @foreach (var item in Model)
+        {
+            <li class="col-sm-6 col-md-4 text-center">
+                <div class="info">
+                    <p>@item.product_name</p>
+                    <img src="http://via.placeholder.com/200x200" alt="Product Image" class="center-block img-responsive" />
+                    <p>@item.product_short_description</p>
+                    <p>Price: @item.product_unit_price.ToString(("c"))</p>
+                </div>
+                @Html.ActionLink("View Product", "View", "Product", new { productID = item.product_id }, new { @class = "btn btn-primary" })
+            </li>
+        }
+    </ul>
+</section>
+

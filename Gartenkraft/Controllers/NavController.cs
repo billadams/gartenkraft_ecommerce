@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using Gartenkraft.Models;
+using Gartenkraft.ModelsForViews;
 
 namespace Gartenkraft.Controllers
 {
@@ -23,9 +24,7 @@ namespace Gartenkraft.Controllers
 
         public PartialViewResult Menu()
         {
-            List<vwProduct_Line> _productLines = db.vwProduct_Line.ToList();
-
-            return PartialView(_productLines);
+            return PartialView(new MenuModel());
         }
 
         // GET: Nav
