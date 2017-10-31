@@ -9,66 +9,102 @@
 
 </head>
 <body>
-    <nav class="navbar-collapse navbar-default">
-        <div class="container-fluid">
-            <div class="navbar-header" id="unfloat-header">
-                <a class="navbar-brand" href="#">GARTENKRAFT</a>
-            </div>
-            <ul class="nav navbar-nav" id="sidebar">
+
+    <div class="container">
+
+        <header>
+            <h1>GARTENKRAFT</h1>
+        </header>
+
+        <nav class="col-md-4">
+            <!-- link list -->
+            <ul>
+                <li>
+                    <a href="#"></a>
+                </li>
                 <li>@Html.ActionLink("Dashboard", "Index", "Home")</li>
                 <li>@Html.ActionLink("Product Line", "About", "Home")</li>
                 <li>@Html.ActionLink("Catagory", "Contact", "Home")</li>
                 <li>@Html.ActionLink("Customer", "Index", "tblStores")</li>
                 <li>@Html.ActionLink("Sales", "Index", "tblProduct_Category")</li>
             </ul>
-        </div>
-    </nav>
+        </nav> <!-- end nav -->
+
+        <div class="col-md-8">
+            <!-- content pane -->
+        </div> <!-- end col-md-8 -->
+
+    </div> <!-- end container -->
+
+
+
+    <!--
+
+        <nav class="navbar-collapse navbar-default">
+            <div class="container-fluid">
+                <div class="navbar-header" id="unfloat-header">
+                    <a class="navbar-brand" href="#">GARTENKRAFT</a>
+                </div>
+                <ul class="nav navbar-nav" id="sidebar">
+                    <li>at Html.ActionLink("Dashboard", "Index", "Home")</li>
+                    <li>at Html.ActionLink("Product Line", "About", "Home")</li>
+                    <li>at Html.ActionLink("Catagory", "Contact", "Home")</li>
+                    <li>at Html.ActionLink("Customer", "Index", "tblStores")</li>
+                    <li>at Html.ActionLink("Sales", "Index", "tblProduct_Category")</li>
+                </ul>
+            </div>
+        </nav>
 
 
 
 
 
 
-    <!-- <div class="navbar navbar-inverse navbar-fixed-top"> --> <!-- Tim H: Commented this line -- >
+        <!-- <div class="navbar navbar-inverse navbar-fixed-top"> -->
+        <!-- Tim H: Commented this line -- >
         <div class="container">
             <div class="navbar-header" id="unfloat-header">  <!-- Tim H: added unfloat-header id-->
-                <!-- Tim H: commented following button -->
-                <!-- <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button> --> 
-                <!-- Tim H: Replaced following line with next one.  Following line had at sign before Html and class -->
-                <!--  Html.ActionLink("Gartenkraft", "Index", "Home", new { area = "" }, new { class = "navbar-brand" }) -- >
-                <h1>GARTENKRAFT</h1>
-            </div>
-            <div class="navbar-collapse collapse">
+        <!-- Tim H: commented following button -->
+        <!-- <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+        </button> -->
+        <!-- Tim H: Replaced following line with next one.  Following line had at sign before Html and class -->
+        <!--  Html.ActionLink("Gartenkraft", "Index", "Home", new { area = "" }, new { class = "navbar-brand" }) -- >
+                    <h1>GARTENKRAFT</h1>
+                </div>
+                <div class="navbar-collapse collapse">
 
-                <!-- Tim H: Enclosed following in nav with #sidebar class spec -- >
-                <nav id="sidebar">
+                    <!-- Tim H: Enclosed following in nav with #sidebar class spec -- >
+                    <nav id="sidebar">
 
-                    <ul class="nav navbar-nav">
-                        <li>at Html.ActionLink("Dashboard", "Index", "Home")</li>
-                        <li>at Html.ActionLink("Product Line", "About", "Home")</li>
-                        <li>at Html.ActionLink("Catagory", "Contact", "Home")</li>
-                        <li>at Html.ActionLink("Customer", "Index", "tblStores")</li>
-                        <li>at Html.ActionLink("Sales", "Index", "tblProduct_Category")</li>
-                    </ul>
-                    at Html.Partial("_LoginPartial")
-                </nav>
+                        <ul class="nav navbar-nav">
+                            <li>at Html.ActionLink("Dashboard", "Index", "Home")</li>
+                            <li>at Html.ActionLink("Product Line", "About", "Home")</li>
+                            <li>at Html.ActionLink("Catagory", "Contact", "Home")</li>
+                            <li>at Html.ActionLink("Customer", "Index", "tblStores")</li>
+                            <li>at Html.ActionLink("Sales", "Index", "tblProduct_Category")</li>
+                        </ul>
+                        at Html.Partial("_LoginPartial")
+                    </nav>
+                </div>
             </div>
+        <!--</div> -->
+        <!-- Tim H: Commented this line -->
+
+        <!--
+        <div class="container body-content">
+            at RenderBody()
+            <hr />
+            <footer>
+                <p>&copy; at DateTime.Now.Year - My ASP.NET Application</p>
+            </footer>
         </div>
-    <!--</div> --> <!-- Tim H: Commented this line -->
-    <div class="container body-content">
-        @RenderBody()
-        <hr />
-        <footer>
-            <p>&copy; at DateTime.Now.Year - My ASP.NET Application</p>
-        </footer>
-    </div> 
+        -->
 
-    @Scripts.Render("~/bundles/jquery")
-    @Scripts.Render("~/bundles/bootstrap")
-    @RenderSection("scripts", required: false)
+        @Scripts.Render("~/bundles/jquery")
+        @Scripts.Render("~/bundles/bootstrap")
+        @RenderSection("scripts", required: false)
 </body>
 </html>
