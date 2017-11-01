@@ -1,10 +1,10 @@
 ﻿
 @{
-    ViewBag.Title = (string)ViewBag.CategoryName;
+    //ViewBag.Title = (string)ViewBag.CategoryName;
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Products in @ViewBag.CategoryName</h2>
+<h2>@ViewBag.CategoryName</h2>
 
 @model IEnumerable<Gartenkraft.Models.vwProduct>
 
