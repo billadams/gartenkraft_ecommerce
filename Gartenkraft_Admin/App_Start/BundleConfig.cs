@@ -22,13 +22,16 @@ namespace Gartenkraft_Admin
             bundles.Add(new ScriptBundle("~/bundles/bootstrap").Include(
                       "~/Scripts/bootstrap.js",
                       "~/Scripts/respond.js",
-                      "~/Scripts/popper.js"));
+                      "~/Scripts/popper.js",
+                      "~/Scripts/tablesearch.js",
+                      "~/Scripts/table.js"));
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
                       "~/Content/bootstrap-theme.css",
                       "~/Content/site.css",
-                      "~/Content/sidebar.css"));
+                      "~/Content/sidebar.css",
+                      "~/Content/table.css"));
         }
     }
 }

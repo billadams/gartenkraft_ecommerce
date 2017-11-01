@@ -273,6 +273,7 @@
     <Content Include="Content\dashboard.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\sidebar.css" />
+    <Content Include="Content\table.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -322,6 +323,8 @@
     <Content Include="Scripts\popper.min.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
+    <Content Include="Scripts\table.js" />
+    <Content Include="Scripts\tablesearch.js" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>

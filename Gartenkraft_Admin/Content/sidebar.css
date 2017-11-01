@@ -34,7 +34,7 @@
 
 .top-nav>li {
     display: inline-block;
-    float: left;
+    float: right;
 }
 
 .top-nav>li>a {
@@ -88,7 +88,10 @@
         overflow-x: hidden;
         padding-bottom: 40px;
     }
-
+    .nav.navbar-right.top-nav{
+        display: inline;
+        float: right;
+    }
     .side-nav>li>a {
         width: 225px;
         border-bottom: 1px rgba(0,0,0,.3) solid;
