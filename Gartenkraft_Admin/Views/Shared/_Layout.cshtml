@@ -16,21 +16,18 @@
             <h1>GARTENKRAFT</h1>
         </header>
 
-        <nav class="col-md-4">
+        <nav class="col-md-2" id="sidebar">
             <!-- link list -->
-            <ul>
-                <li>
-                    <a href="#"></a>
-                </li>
+            <ul id=menu-style>
                 <li>@Html.ActionLink("Dashboard", "Index", "Home")</li>
                 <li>@Html.ActionLink("Product Line", "About", "Home")</li>
-                <li>@Html.ActionLink("Catagory", "Contact", "Home")</li>
+                <li>@Html.ActionLink("Catagory", "Contact", "Home")</liid="menu-style">
                 <li>@Html.ActionLink("Customer", "Index", "tblStores")</li>
                 <li>@Html.ActionLink("Sales", "Index", "tblProduct_Category")</li>
             </ul>
         </nav> <!-- end nav -->
 
-        <div class="col-md-8">
+        <div class="col-md-10">
             <!-- content pane -->
         </div> <!-- end col-md-8 -->
 
@@ -93,15 +90,15 @@
         <!--</div> -->
         <!-- Tim H: Commented this line -->
 
-        <!--
+        
         <div class="container body-content">
-            at RenderBody()
+            @RenderBody()
             <hr />
             <footer>
                 <p>&copy; at DateTime.Now.Year - My ASP.NET Application</p>
             </footer>
         </div>
-        -->
+       
 
         @Scripts.Render("~/bundles/jquery")
         @Scripts.Render("~/bundles/bootstrap")
