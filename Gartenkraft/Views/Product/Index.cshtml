@@ -8,59 +8,15 @@
     <ul class="item-list">
     @foreach (var item in Model)
     {
-        <li>
+        <li class="col-sm-6 col-md-4 text-center">
             <div class="info">
                 <p>@item.product_name</p>
-                <img src="http://via.placeholder.com/375x200" alt="Product Image" class="img-responsive" />
+                <img src="http://via.placeholder.com/200x200" alt="Product Image" class="center-block img-responsive" />
                 <p>@item.product_short_description</p>
                 <p>Price: @item.product_unit_price.ToString(("c"))</p>
             </div>
-            <div>
-                <button class="btn btn-primary center-block">
-                    @Html.ActionLink("View Product", "View", "Product", new { productID = item.product_id }, htmlAttributes: null) 
-                </button>
-            </div>
+                @Html.ActionLink("View Product", "View", "Product", new { productID = item.product_id }, new { @class = "btn btn-primary"}) 
         </li>
     }
     </ul>
 </section>
-
-
-@*<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.product_name)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.product_short_description)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.product_weight)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.product_unit_price)
-        </th>
-        <th></th>
-    </tr>
-
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.product_name)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.product_short_description)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.product_weight)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.product_unit_price)
-        </td>
-        <td>
-            @Html.ActionLink("Add to Cart", "AddToCart", "Cart", new { productID = item.product_id }, htmlAttributes: null) 
-        </td>
-    </tr>
-}
-
-</table>*@

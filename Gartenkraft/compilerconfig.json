@@ -1,0 +1,30 @@
+﻿[
+  {
+    "outputFile": "Content/bootstrap/bootstrap.css",
+    "inputFile": "Content/bootstrap/bootstrap.less"
+  },
+  {
+    "outputFile": "Content/bootstrap/theme.css",
+    "inputFile": "Content/bootstrap/theme.less"
+  },
+  {
+    "outputFile": "Content/site.css",
+    "inputFile": "Content/site.less"
+  },
+  {
+    "outputFile": "Content/large.css",
+    "inputFile": "Content/large.less"
+  },
+  {
+    "outputFile": "Content/extra-large.css",
+    "inputFile": "Content/extra-large.less"
+  },
+  {
+    "outputFile": "Content/medium.css",
+    "inputFile": "Content/medium.less"
+  },
+  {
+    "outputFile": "Content/small.css",
+    "inputFile": "Content/small.less"
+  }
+]
