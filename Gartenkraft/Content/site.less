@@ -1,0 +1,224 @@
+﻿@green: #519032;
+@lighter-green: #71bf44;
+@darker-red: #9c2727;
+@dark-red: #b62d2d;
+
+@text-color: #444444;
+
+body {
+    padding-top: 50px;
+    padding-bottom: 20px;
+    color: @text-color;
+}
+
+/* Set padding to keep content from hitting the edges */
+.body-content {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+/* Override the default bootstrap behavior where horizontal description lists 
+   will truncate terms that are too long to fit in the left column 
+*/
+.dl-horizontal dt {
+    white-space: normal;
+}
+
+/* Set width on the form input elements since they're 100% wide by default */
+input,
+select,
+textarea {
+    max-width: 280px;
+}
+
+/*------------------------------------------------ NAVIGATION STYLES ------------------------------------------------ */
+nav {
+  /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#519032+17,71bf44+100 */
+  background: @green;
+  /* Old browsers */
+  /* FF3.6-15 */
+  /* Chrome10-25,Safari5.1-6 */
+  background: linear-gradient(to bottom, #519032 17%, #71bf44 100%);
+  /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#519032', endColorstr='#71bf44', GradientType=0);
+  /* IE6-9 */
+  color: #ffffff;
+}
+nav a {
+    color: #ffffff;
+}
+nav a:hover {
+    color: #333333;
+}
+.navbar .navbar-toggle .icon-bar {
+    background-color: #ffffff;
+}
+.dropdown-menu > li > a {
+    color: #ffffff;
+}
+.nav .caret {
+    border-top-color: #ffffff;
+    border-bottom-color: #ffffff; 
+}
+.nav a:hover .caret {
+    border-top-color: #ffffff;
+    border-bottom-color: #ffffff;
+}
+.caret {
+    display: inline-block;
+    width: 0;
+    height: 0;
+    margin-left: 2px;
+    vertical-align: middle;
+    border-top: 4px dashed;
+    border-top: 4px solid;
+    border-right: 4px solid transparent;
+    border-left: 4px solid transparent;
+}
+
+/*------------------------------------------------ INDEX STYLES ------------------------------------------------ */
+.carousel {
+    margin-top: 30px;
+}
+
+/*------------------------------------------------ BACK TO TOP STYLES ------------------------------------------------ */
+#toTop.btn-info {
+    background-color: @dark-red;
+    background-image: none;
+    border-color: @darker-red; 
+}
+#toTop {
+    border-radius: 50px;
+    bottom: 20px;
+    cursor: pointer;
+    display: none;
+    height: 50px;
+    line-height: 40px;
+    opacity: .75;
+    position: fixed;
+    right: 20px;
+    width: 50px; }
+
+#toTop .fa {
+    font-size: 25px; }
+
+/*------------------------------------------------ FOOTER STYLES ------------------------------------------------ */
+footer {
+    background-color: @lighter-green;
+    color: #ffffff;
+    padding: 15px 0 15px; 
+}
+footer ul {
+    text-align: center;
+}
+footer a {
+    color: #ffffff;
+    text-decoration: underline;
+}
+footer > .row {
+    margin-bottom: 15px; 
+}
+/*.contact-info {
+    border-left: 1px solid #ffffff; 
+}*/
+.contact-info ul, .contact-info li {
+    list-style: none; 
+}
+.contact-info ul {
+    margin-bottom: 5px;
+    padding-left: 0; 
+}
+/*#sunneday-logo,*/
+#gartenkraft-logo {
+    height: 100%; }
+
+/*#sunneday-logo:before,*/
+#gartenkraft-logo:before {
+    content: "";
+    display: inline-block;
+    height: 100%;
+    vertical-align: middle;
+}
+footer #copyright {
+    clear: both;
+    text-align: center; 
+}
+@media (min-width: 320px) and (max-width: 767px) {
+    #sunneday-logo, #gartenkraft-logo {
+        text-align: center; 
+    }
+    #sunneday-logo img, #gartenkraft-logo img {
+        width: 60%;
+    } 
+}
+@media (max-width: 767px) {
+    .content, footer {
+        font-size: 86%; 
+    }
+    h3 {
+        font-size: 18px; 
+    }
+    header h1 {
+        font-size: 28px;
+        margin-bottom: 0; 
+    }
+    header div.logo {
+        padding-bottom: 8px; 
+    }
+    .rslides_container + div {
+        font-size: 110%; 
+    }
+    /*------ FOOTER STYLES ------*/
+    .contact-info {
+        border-left: none;
+        clear: left;
+    }
+    #gartenkraft-logo {
+        margin-bottom: 20px; 
+    } 
+}
+@media (min-width: 768px) and (max-width: 992px) {
+    .content, footer {
+        font-size: 120%; 
+    }
+    #gartenkraft-logo {
+        margin-bottom: 20px; 
+    }
+}
+
+/*------------------------------------------------ PRODUCT LISTING STYLES ------------------------------------------------ */
+.items {
+    margin-top: 20px;
+}
+.item-list {
+    list-style: none;
+    padding-left: 0;    
+}
+.item-list li {
+    border-bottom: 1px solid #cccccc;
+    margin-bottom: 10px;
+    padding-bottom: 20px;
+}
+.item-list li:last-of-type {
+    border-bottom: none;
+}
+.item-list img {
+    margin-bottom: 5px
+}
+
+
+/*------------------------------------------------ MEDIA QUERIES ------------------------------------------------ */
+// Extra small devices (portrait phones, less than 576px)
+// No media query since this is the default in Bootstrap
+
+// Small devices (landscape phones, 576px and up)
+@import url('small.less') (min-width: 576px);
+
+// Medium devices (tablets, 768px and up)
+@import url('medium.less') (min-width: 768px);
+
+// Large devices (desktops, 992px and up)
+@import url('large.less') (min-width: 992px);
+
+// Extra large devices (large desktops, 1200px and up)
+@import url('extra-large.less') (min-width: 1200px);
