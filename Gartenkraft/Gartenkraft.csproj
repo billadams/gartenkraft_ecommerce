@@ -295,10 +295,43 @@
     <Content Include="Content\bootstrap\theme.min.css">
       <DependentUpon>theme.css</DependentUpon>
     </Content>
+    <Content Include="Content\extra-large.css">
+      <DependentUpon>extra-large.less</DependentUpon>
+    </Content>
+    <Content Include="Content\extra-large.min.css">
+      <DependentUpon>extra-large.css</DependentUpon>
+    </Content>
     <Content Include="Content\fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Content\extra-large.less" />
+    <None Include="Content\large.less" />
+    <Content Include="Content\large.css">
+      <DependentUpon>large.less</DependentUpon>
+    </Content>
+    <Content Include="Content\large.min.css">
+      <DependentUpon>large.css</DependentUpon>
+    </Content>
+    <Content Include="Content\medium.css">
+      <DependentUpon>medium.less</DependentUpon>
+    </Content>
+    <Content Include="Content\medium.min.css">
+      <DependentUpon>medium.css</DependentUpon>
+    </Content>
+    <Content Include="Content\site.css">
+      <DependentUpon>site.less</DependentUpon>
+    </Content>
+    <Content Include="Content\site.min.css">
+      <DependentUpon>site.css</DependentUpon>
+    </Content>
+    <Content Include="Content\small.css">
+      <DependentUpon>small.less</DependentUpon>
+    </Content>
+    <Content Include="Content\small.min.css">
+      <DependentUpon>small.css</DependentUpon>
+    </Content>
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
-    <Content Include="Content\site.css" />
+    <Content Include="Content\medium.less" />
+    <None Include="Content\site.less" />
     <Content Include="gulpfile.js" />
     <Content Include="Images\cooling_towel.jpg" />
     <Content Include="Images\gartenkraft-whitelogo.png" />
@@ -394,6 +427,7 @@
     <Content Include="Content\bootstrap\bootstrap.less" />
     <Content Include="Content\bootstrap\badges.less" />
     <Content Include="Content\bootstrap\alerts.less" />
+    <Content Include="Content\small.less" />
     <None Include="packages.config" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Models\CustomerModel.Context.tt">
