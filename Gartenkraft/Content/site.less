@@ -5,9 +5,14 @@
 
 @text-color: #444444;
 
+html {
+    position: relative;
+    min-height: 100%;
+}
 body {
-    padding-top: 50px;
     color: @text-color;
+    padding-top: 50px;
+    margin-bottom: 150px;
 }
 
 /* Set padding to keep content from hitting the edges */
@@ -102,10 +107,18 @@ nav a:hover {
     font-size: 25px; }
 
 /*------------------------------------------------ FOOTER STYLES ------------------------------------------------ */
-footer {
+
+/* Sticky footer styles
+-------------------------------------------------- */
+
+.footer {
     background-color: @lighter-green;
+    bottom: 0;
+    height: 150px;
     color: #ffffff;
     padding: 15px 0 15px; 
+    position: absolute;
+    width: 100%;
 }
 footer ul {
     text-align: center;
@@ -129,7 +142,9 @@ footer > .row {
 }
 /*#sunneday-logo,*/
 #gartenkraft-logo {
-    height: 100%; }
+    /*height: 100%;*/ 
+
+}
 
 /*#sunneday-logo:before,*/
 #gartenkraft-logo:before {
@@ -139,7 +154,6 @@ footer > .row {
     vertical-align: middle;
 }
 footer #copyright {
-    clear: both;
     text-align: center; 
 }
 @media (min-width: 320px) and (max-width: 767px) {
