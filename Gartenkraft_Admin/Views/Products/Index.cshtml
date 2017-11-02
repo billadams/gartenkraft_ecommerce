@@ -5,90 +5,153 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
+
+<div class="pull-right">
+    <div class="btn-group">
+        <a class="btn btn-danger" href="@Url.Action("Create")"><em class="fa fa-plus"></em> Add</a>
+    </div>
+</div>
+
 <h2>Products</h2>
 
-<p>
-    @Html.ActionLink("Add a new Product", "Create")
-</p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.product_name)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.product_short_description)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.product_long_description)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.product_unit_cost)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.product_unit_price)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.product_weight)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.product_date_added)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.soft_delete)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.is_visible)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.tblProduct_Line.product_line_name)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.tblProduct_Category.category_name)
-        </th>
-        <th></th>
-    </tr>
+<form action="#" method="get">
+    <div class="form-row">
+        <div class="form-group col-lg-12">
+            <label for="system-search" class="col-lg-1">Product</label>
+            <div class="col-lg-5">
+                <input type="text" class="form-control" id="system-search" name="q" placeholder="Search for">
+            </div>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.product_name)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.product_short_description)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.product_long_description)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.product_unit_cost)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.product_unit_price)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.product_weight)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.product_date_added)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.soft_delete)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.is_visible)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.tblProduct_Line.product_line_name)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.tblProduct_Category.category_name)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.product_id }) |
-            @Html.ActionLink("Details", "Details", new { id=item.product_id }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.product_id })
-        </td>
-    </tr>
-}
+            <label for="storeName" class="col-lg-1">Store</label>
+            <div class="col-lg-5">
+                <select class="form-control form-control-lg" id="storeName">
+                    @*@foreach (var item in ViewBag.product_category_id)
+                    {
+                        <option>@Html.DisplayNameFor(item )</option>
+                    }*@
+                    
+                </select>
+            </div>
+        </div>
+    </div>
+    <div class="form-row">
+        <div class="form-group col-lg-12">
+            <label for="categoryName" class="col-lg-1">Category</label>
+            <div class="col-lg-5">
+                <select class="form-control form-control-lg" id="categoryName">
+                    <option>Large select</option>
+                </select>
+            </div>
+            <label for="manufacturer" class="col-sm-1">Manufacturer</label>
+            <div class="col-sm-5">
+                <select class="form-control form-control-lg" id="manufacturer">
+                    <option>Large select</option>
+                </select>
+            </div>
+        </div>
+    </div>
+    @*<div class="form-row">
+        <div class="form-group col-lg-12">
+            <button type="submit" class="btn btn-primary">Sign in</button>
+        </div>
+    </div>*@
+</form>
 
-</table>
+        <p>
+            @Html.ActionLink("Add a new Product", "Create")
+        </p>
+  
+        <div class="table-responsive">
+            <table class="table table-list-search">
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.product_name)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.product_short_description)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.product_long_description)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.product_unit_cost)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.product_unit_price)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.product_weight)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.product_date_added)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.soft_delete)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.is_visible)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.tblProduct_Line.product_line_name)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.tblProduct_Category.category_name)
+                    </th>
+                    <th align="center"><em class="fa fa-cog"></em></th>
+                </tr>
+
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.product_name)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.product_short_description)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.product_long_description)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.product_unit_cost)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.product_unit_price)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.product_weight)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.product_date_added)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.soft_delete)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.is_visible)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.tblProduct_Line.product_line_name)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.tblProduct_Category.category_name)
+                        </td>
+                        <td align="center">
+                            <a class="btn btn-default" href="@Url.Action("Edit", new { id = item.product_id })"><em class="fa fa-pencil"></em></a>
+                            <a class="btn btn-danger" href="@Url.Action("Details", new { id = item.product_id, @class = "btn btn-link" })"><em class="fa fa-eye"></em></a>
+                            <a class="btn btn-danger" href="@Url.Action("Delete", new { id = item.product_id, @class = "btn btn-link" })"><em class="fa fa-trash"></em></a>
+                        </td>
+                        @*<td>
+                            <div class="btn-group" role="group" aria-label="Basic example">
+                                @Html.ActionLink("Edit", "Edit", new { id = item.product_id, @class = "btn btn-secondary" }) |
+                                @Html.ActionLink("Details", "Details", new { id = item.product_id, @class = "btn btn-defult" }) |
+                                @Html.ActionLink("Delete", "Delete", new { id = item.product_id, @class = "btn btn-link" })
+                            </div>
+                        </td>*@
+                    </tr>
+                }
+
+            </table>
+        </div>
+    </div>
+</div>
