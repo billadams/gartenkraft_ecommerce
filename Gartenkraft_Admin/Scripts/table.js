@@ -42,4 +42,32 @@ $(document).ready(function () {
             $table.find('tbody').prepend($('<tr class="no-result text-center"><td colspan="' + $table.find('.filters th').length + '">No result found</td></tr>'));
         }
     });
+
+    $(function () {
+        $("#buttonID").click(function (event) {
+            event.preventDefault();
+            $('<div title="Confirm Box"></div>').dialog({
+                open: function (event, ui) {
+                    $(this).html("Yes or No question?");
+                },
+                close: function () {
+                    $(this).remove();
+                },
+                resizable: false,
+                height: 140,
+                modal: true,
+                buttons: {
+                    'Yes': function () {
+                        $(this).dialog('close');
+                        $.post('url/theValueYouWantToPass');
+
+                    },
+                    'No': function () {
+                        $(this).dialog('close');
+                        $.post('url/theOtherValueYouWantToPAss');
+                    }
+                }
+            });
+        });
+    });
 });

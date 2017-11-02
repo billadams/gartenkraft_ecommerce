@@ -18,6 +18,7 @@ namespace Gartenkraft_Admin.Controllers.AdminControllers
         public ActionResult Index()
         {
             var tblProducts = db.tblProducts.Include(t => t.tblProduct_Line).Include(t => t.tblProduct_Category);
+            ViewBag.Categories = db.tblProduct_Category.ToList();
             return View(tblProducts.ToList());
         }
 

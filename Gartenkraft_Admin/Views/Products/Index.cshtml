@@ -25,10 +25,10 @@
             <label for="storeName" class="col-lg-1">Store</label>
             <div class="col-lg-5">
                 <select class="form-control form-control-lg" id="storeName">
-                    @*@foreach (var item in ViewBag.product_category_id)
+                    @foreach (var item in (List<Gartenkraft_Admin.Models.tblProduct_Category>)ViewBag.Categories)
                     {
-                        <option>@Html.DisplayNameFor(item )</option>
-                    }*@
+                        <option>@item.category_name</option>
+                    }
                     
                 </select>
             </div>
@@ -39,7 +39,10 @@
             <label for="categoryName" class="col-lg-1">Category</label>
             <div class="col-lg-5">
                 <select class="form-control form-control-lg" id="categoryName">
-                    <option>Large select</option>
+                    @foreach (var item in (List<Gartenkraft_Admin.Models.tblProduct_Category>)ViewBag.Categories)
+                    {
+                        <option>@item.category_name</option>
+                    }
                 </select>
             </div>
             <label for="manufacturer" class="col-sm-1">Manufacturer</label>
@@ -139,7 +142,7 @@
                         <td align="center">
                             <a class="btn btn-default" href="@Url.Action("Edit", new { id = item.product_id })"><em class="fa fa-pencil"></em></a>
                             <a class="btn btn-danger" href="@Url.Action("Details", new { id = item.product_id, @class = "btn btn-link" })"><em class="fa fa-eye"></em></a>
-                            <a class="btn btn-danger" href="@Url.Action("Delete", new { id = item.product_id, @class = "btn btn-link" })"><em class="fa fa-trash"></em></a>
+                            <a class="btn btn-danger" id="deleteproduct" href="@Url.Action("Delete", new { id = item.product_id, @class = "btn btn-link" })"><em class="fa fa-trash"></em></a>
                         </td>
                         @*<td>
                             <div class="btn-group" role="group" aria-label="Basic example">
