@@ -1,1 +1,16 @@
-﻿
+﻿body {
+  margin-bottom: 150px;
+}
+/*------------------------------------------------ NAVIGATION STYLES ------------------------------------------------ */
+.dropdown-menu > li > a {
+  color: #444444;
+}
+/*------------------------------------------------ FOOTER STYLES ------------------------------------------------ */
+.footer {
+  font-size: 90%;
+  height: 150px;
+  position: absolute;
+}
+footer #copyright {
+  margin-top: 0;
+}

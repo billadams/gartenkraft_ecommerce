@@ -12,7 +12,6 @@ html {
 body {
     color: @text-color;
     padding-top: 50px;
-    margin-bottom: 150px;
 }
 
 /* Set padding to keep content from hitting the edges */
@@ -52,7 +51,7 @@ nav a {
     color: #ffffff;
 }
 nav a:hover {
-    color: #333333;
+    color: @text-color;
 }
 .navbar .navbar-toggle .icon-bar {
     background-color: #ffffff;
@@ -65,8 +64,8 @@ nav a:hover {
     border-bottom-color: #ffffff; 
 }
 .nav a:hover .caret {
-    border-top-color: #ffffff;
-    border-bottom-color: #ffffff;
+    border-top-color: @text-color;
+    border-bottom-color: @text-color;
 }
 .caret {
     display: inline-block;
@@ -114,36 +113,27 @@ nav a:hover {
 .footer {
     background-color: @lighter-green;
     bottom: 0;
-    height: 150px;
     color: #ffffff;
+    /*font-size: 90%;*/
     padding: 15px 0 15px; 
-    position: absolute;
     width: 100%;
 }
 footer ul {
     text-align: center;
 }
 footer a {
-    color: #ffffff;
+    color: inherit;
     text-decoration: underline;
 }
 footer > .row {
     margin-bottom: 15px; 
 }
-/*.contact-info {
-    border-left: 1px solid #ffffff; 
-}*/
 .contact-info ul, .contact-info li {
     list-style: none; 
 }
 .contact-info ul {
     margin-bottom: 5px;
     padding-left: 0; 
-}
-/*#sunneday-logo,*/
-#gartenkraft-logo {
-    /*height: 100%;*/ 
-
 }
 
 /*#sunneday-logo:before,*/
@@ -154,69 +144,28 @@ footer > .row {
     vertical-align: middle;
 }
 footer #copyright {
+    margin-top: 20px;
     text-align: center; 
-}
-@media (min-width: 320px) and (max-width: 767px) {
-    #sunneday-logo, #gartenkraft-logo {
-        text-align: center; 
-    }
-    #sunneday-logo img, #gartenkraft-logo img {
-        width: 60%;
-    } 
-}
-@media (max-width: 767px) {
-    .content, footer {
-        font-size: 86%; 
-    }
-    h3 {
-        font-size: 18px; 
-    }
-    header h1 {
-        font-size: 28px;
-        margin-bottom: 0; 
-    }
-    header div.logo {
-        padding-bottom: 8px; 
-    }
-    .rslides_container + div {
-        font-size: 110%; 
-    }
-    /*------ FOOTER STYLES ------*/
-    .contact-info {
-        border-left: none;
-        clear: left;
-    }
-    #gartenkraft-logo {
-        margin-bottom: 20px; 
-    } 
-}
-@media (min-width: 768px) and (max-width: 992px) {
-    .content, footer {
-        font-size: 120%; 
-    }
-    #gartenkraft-logo {
-        margin-bottom: 20px; 
-    }
 }
 
 /*------------------------------------------------ PRODUCT LISTING STYLES ------------------------------------------------ */
 .items {
-    margin-top: 20px;
+    /*margin-top: 20px;*/
 }
 .item-list {
-    list-style: none;
-    padding-left: 0;    
+    /*list-style: none;
+    padding-left: 0;*/    
 }
 .item-list li {
-    border-bottom: 1px solid #cccccc;
-    margin-bottom: 10px;
-    padding-bottom: 20px;
+    /*border-bottom: 1px solid #cccccc;*/
+    /*margin-bottom: 10px;
+    padding-bottom: 20px;*/
 }
 .item-list li:last-of-type {
-    border-bottom: none;
+    /*border-bottom: none;*/
 }
 .item-list img {
-    margin-bottom: 5px
+    margin-bottom: 1em;
 }
 
 
