@@ -297,7 +297,6 @@
     <Content Include="Models\AdminModel.edmx.diagram">
       <DependentUpon>AdminModel.edmx</DependentUpon>
     </Content>
-    <Content Include="ProductImages\one_eye_purple_minion.jpg" />
     <Content Include="Scripts\bootstrap.min.js.download" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Models\AdminModel.Context.tt">
@@ -387,7 +386,9 @@
     <None Include="packages.config" />
     <Content Include="Scripts\jquery-1.10.2.min.map" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="ProductImages\" />
+  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
