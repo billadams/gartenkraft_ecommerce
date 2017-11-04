@@ -24,23 +24,24 @@ namespace Gartenkraft_Admin.Controllers.FileUploadController
 
         // post
         [HttpPost]
-        public ActionResult UploadFile(HttpPostedFileBase file)
+        public ActionResult UploadFile(HttpPostedFileBase file, int? productID)
         {
             try
             {
-                if (file.ContentLength > 0)
-                {
-                    string _FileName = Path.GetFileName(file.FileName);
-                    string _path = Path.Combine(Server.MapPath(Url.Content("~/ProductImages")), _FileName);
-                    file.SaveAs(_path);
-                }
+                //if (file.ContentLength > 0)
+                //{
+                    //string _FileName = Path.GetFileName(file.FileName);
+                    //string _path = Path.Combine(Server.MapPath("~/ProductImages"), _FileName);
+                    file.SaveAs(/*_path*/"");
+
+                //}
                 ViewBag.Message = "File uploaded successfully";
-                return View();
+                return RedirectToAction("Edit", "Products", new { id = productID });
             }
             catch
             {
                 ViewBag.Message = "File upload failed.";
-                return View();
+                return RedirectToAction("Edit", "Products", new { id = productID });
             }
         }
     }

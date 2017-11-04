@@ -117,6 +117,15 @@
     </div>
 }
 
+@using(Html.BeginForm("UploadFile", "Upload", new { productID = Model.product_id }, FormMethod.Post, new { enctype = "multipart/form-data"}))
+{
+    <div>
+        @Html.TextBox("file", "", new { type = "file" }) <br />
+        <input type="submit" value="Upload Picture" />
+        <div class="text-danger">@ViewBag.Message</div>
+    </div>
+}
+
 <div>
     @Html.ActionLink("Back to List", "Index")
 </div>
