@@ -21,35 +21,11 @@
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    @*<li>@Html.ActionLink("Home", "Index", "Home")</li>*@
-
+                    @* Dynamic menu *@
                     @Html.Action("Menu", "Nav")
-
-                    @*<li class="dropdown">
-                        <a href="/" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Gartenkraft<span class="caret"></span></a>
-                        <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                            <li>@Html.ActionLink("Hose Reel1", "Index", "Home")</li>
-                            <li>@Html.ActionLink("Hose Real2", "Index", "Home")</li>
-                        </ul>
-                    </li>
-                    <li class="dropdown">
-                        <a href="/" class="navbar-link dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Starmist<span class="caret"></span></a>
-                        <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                            <li>@Html.ActionLink("Starmist1", "Index", "Home")</li>
-                            <li>@Html.ActionLink("Starmist2", "Index", "Home")</li>
-                        </ul>
-                    </li>
-                    <li class="dropdown">
-                        <a href="/" class="navbar-link dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">XTRIM<span class="caret"></span></a>
-                        <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                            <li>@Html.ActionLink("XTRIM1", "Index", "Home")</li>
-                            <li>@Html.ActionLink("XTRIM1", "Index", "Home")</li>
-                        </ul>
-                    </li>*@
 
                     <li>@Html.ActionLink("About", "About", "Home")</li>
                     <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
-                    <li>@Html.ActionLink("Products", "Index", "Product")</li>
                     <li>@Html.ActionLink("Cart", "Index", "Cart")</li>
                 </ul>
                 @Html.Partial("_LoginPartial")
@@ -60,13 +36,13 @@
     <div class="container body-content">
         @RenderBody()
     </div>
-<footer>
+<footer class="footer">
     <div class="container">
         <div class="row">
-            <div id="sunneday-logo" class="col-sm-4 col-md-4">
+            <div id="sunneday-logo" class="col-xs-6 col-xs-offset-3 col-sm-3 col-sm-offset-1 col-md-2 col-md-offset-1 col-lg-2 col-lg-offset-1">
                 <img src="~/Images/sunneday-logo-white.png" alt="Sunneday Corporate Logo" class="img-responsive">
             </div>
-            <div class="contact-info col-sm-4 col-md-4">
+            <div class="contact-info col-xs-12 col-sm-4 col-md-6">
                 <ul>
                     <li>Office: 402-852-2008</li>
                     <li>Fax: 402-852-2031</li>
@@ -74,7 +50,7 @@
                     <li>Web: <a href="http://www.sunneday.com" target="_blank">Sunneday Corporate Website</a></li>
                 </ul>
             </div>
-            <div class="center-block col-sm-4 col-md-4" id="gartenkraft-logo">
+            <div class="col-xs-6 col-xs-offset-3 col-sm-3 col-sm-offset-1 col-md-2 col-md-offset-0 col-lg-2" id="gartenkraft-logo">
                 <img src="~/Images/gartenkraft-whitelogo.png" alt="Gartenkraft Logo" class="img-responsive">
             </div>
         </div>
