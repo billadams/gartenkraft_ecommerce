@@ -9,7 +9,15 @@
 
 <div>
     <hr />
-    <dl class="dl-horizontal">
+    <dl class="dl-horizontal"> <!--Moved dt/dd pair that was at bottom of this dl to the top for consistency with Add a New Category.  Tim H-->
+        <dt>
+            @Html.DisplayNameFor(model => model.tblProduct_Line.product_line_name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tblProduct_Line.product_line_name)
+        </dd>
+
         <dt>
             @Html.DisplayNameFor(model => model.category_image_id)
         </dt>
@@ -40,14 +48,6 @@
 
         <dd>
             @Html.DisplayFor(model => model.is_visible)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.tblProduct_Line.product_line_name)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.tblProduct_Line.product_line_name)
         </dd>
 
     </dl>
