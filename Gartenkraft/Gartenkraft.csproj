@@ -499,6 +499,7 @@
     <Content Include="Views\Nav\Menu.cshtml" />
     <Content Include="Views\Product\View.cshtml" />
     <Content Include="Views\Product\ProductsByCategory.cshtml" />
+    <Content Include="Views\Home\Error.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201710081937282_InitialCreate.resx">
