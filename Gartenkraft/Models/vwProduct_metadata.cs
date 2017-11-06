@@ -3,11 +3,17 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Gartenkraft.Models
 {
     [MetadataType(typeof(vwProductMetadata))]
-    public partial class vwProduct { }
+    public partial class vwProduct
+    {
+        [NotMapped]
+        [Display(Name = "Quantity")]
+        public int quantity { get; set; }
+    }
 
     public class vwProductMetadata
     {

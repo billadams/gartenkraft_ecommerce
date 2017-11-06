@@ -29,7 +29,8 @@
                         <img src="http://via.placeholder.com/25x25" alt="@Model.product_name thumbnail"/>
                     </li>
                 </ul>
-            </div>
+            </div> <!-- ./col-md-4 -->
+
             <div class="col-md-4">
                 <h2>@Model.product_name</h2>
                 
@@ -41,19 +42,17 @@
                 {
                     @Html.AntiForgeryToken()
 
-                    <label for="quantity">Quantity:</label>
-                    <input type="number" id="quantity"/>
-                    @Html.ActionLink("Add to Cart", "Add", "Cart", new {productID = @Model.product_id}, new {@class = "btn btn-primary"})
+                    @Html.HiddenFor(model => model.product_id)
+                    @Html.LabelFor(model => model.quantity)
+                    @Html.EditorFor(model => model.quantity, new {htmlAttributes = new {@Value = "1"}})
+
                     <input type="submit" value="Add to Cart" class="btn btn-primary" />
                 }
 
-            </div>
+            </div> <!-- ./col-md-4 -->
 
-        </div>
+        </div> <!-- ./row -->
 
+    </div> <!-- ./item -->
 
-
-
-
-    </div>
 </section>
