@@ -132,7 +132,7 @@ footer #copyright {
   margin-top: 20px;
   text-align: center;
 }
-/*------------------------------------------------ PRODUCT LISTING STYLES ------------------------------------------------ */
+/*------------------------------------------------ CATEGORY PRODUCT STYLES ------------------------------------------------ */
 .items {
   /*margin-top: 20px;*/
 }
@@ -141,15 +141,19 @@ footer #copyright {
     padding-left: 0;*/
 }
 .item-list li {
-  /*border-bottom: 1px solid #cccccc;*/
-  /*margin-bottom: 10px;
-    padding-bottom: 20px;*/
+  border-bottom: 1px solid #e7e7e7;
+  margin-bottom: 2.5rem;
+  padding-bottom: 2.5rem;
 }
 .item-list li:last-of-type {
-  /*border-bottom: none;*/
+  border-bottom: none;
 }
 .item-list img {
   margin-bottom: 1em;
+}
+/*------------------------------------------------ PRODUCT LISTING STYLES ------------------------------------------------ */
+#quantity {
+  width: 50px;
 }
 /*------------------------------------------------ MEDIA QUERIES ------------------------------------------------ */
 @media (min-width: 768px) {
@@ -157,8 +161,42 @@ footer #copyright {
     margin-bottom: 150px;
   }
   /*------------------------------------------------ NAVIGATION STYLES ------------------------------------------------ */
+  .navbar {
+    margin-bottom: 2.5rem;
+  }
   .dropdown-menu > li > a {
     color: #444444;
+  }
+  /*------------------------------------------------ CATEGORY PRODUCT STYLES ------------------------------------------------ */
+  .item-list {
+    align-items: stretch;
+    display: flex;
+    flex-wrap: wrap;
+    margin-bottom: 2.5rem;
+  }
+  .item-list li {
+    border-bottom: none;
+    margin-bottom: 2.5rem;
+    padding-bottom: 15px;
+    padding-top: 15px;
+    transition: box-shadow 0.3s ease-in-out;
+  }
+  .item-list li:hover {
+    box-shadow: 0px 5px 15px #e7e7e7;
+  }
+  .item-list .info {
+    min-height: 325px;
+  }
+  /*------------------------------------------------ PRODUCT LISTING STYLES ------------------------------------------------ */
+  .item {
+    margin-bottom: 2.5rem;
+  }
+  .product-images img {
+    margin-bottom: 1.5rem;
+  }
+  .thumbnail-list .image-thumbnail {
+    float: left;
+    margin-right: 1rem;
   }
   /*------------------------------------------------ FOOTER STYLES ------------------------------------------------ */
   .footer {

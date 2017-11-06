@@ -1,15 +1,10 @@
-﻿
-@{
+﻿@model IEnumerable<Gartenkraft.Models.vwProduct>
 
+@{
+    ViewBag.Title = ViewBag.CategoryName;
 }
 
 <h2>@ViewBag.CategoryName</h2>
-
-@model IEnumerable<Gartenkraft.Models.vwProduct>
-
-@{
-    ViewBag.Title = "Index";
-}
 
 <section class="items">
     <ul class="item-list list-unstyled clearfix">

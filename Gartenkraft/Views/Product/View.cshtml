@@ -1,16 +1,59 @@
 ﻿@model Gartenkraft.Models.vwProduct
 
 @{
-    ViewBag.Title = "title";
+    ViewBag.Title = @Model.product_name;
 }
 
 <section class="item">
+    
     <div class="info">
-        <p>@Model.product_name</p>
-        <img src="http://via.placeholder.com/375x200" alt="Product Image" class="img-responsive" />
-        <p>@Model.product_short_description</p>
-        <p>@Model.product_long_description</p>
-        <p>Price: @Model.product_unit_price.ToString(("c"))</p>
+        
+        <div class="row">
+            
+            <div class="product-images col-md-4">
+                <img src="http://via.placeholder.com/250x250" alt="@Model.product_name image" class="img-responsive"/>
+                <ul class="thumbnail-list list-unstyled clearfix">
+                    <li class="image-thumbnail">
+                        <img src="http://via.placeholder.com/25x25" alt="@Model.product_name thumbnail"/>
+                    </li>
+                    <li class="image-thumbnail">
+                        <img src="http://via.placeholder.com/25x25" alt="@Model.product_name thumbnail"/>
+                    </li>
+                    <li class="image-thumbnail">
+                        <img src="http://via.placeholder.com/25x25" alt="@Model.product_name thumbnail"/>
+                    </li>
+                    <li class="image-thumbnail">
+                        <img src="http://via.placeholder.com/25x25" alt="@Model.product_name thumbnail"/>
+                    </li>
+                    <li class="image-thumbnail">
+                        <img src="http://via.placeholder.com/25x25" alt="@Model.product_name thumbnail"/>
+                    </li>
+                </ul>
+            </div>
+            <div class="col-md-4">
+                <h2>@Model.product_name</h2>
+                
+                <p>@Model.product_short_description</p>
+                <p>@Model.product_long_description</p>
+                <p>Price: @Model.product_unit_price.ToString(("c"))</p>
+
+                @using (Html.BeginForm("Add", "Cart"))
+                {
+                    @Html.AntiForgeryToken()
+
+                    <label for="quantity">Quantity:</label>
+                    <input type="number" id="quantity"/>
+                    @Html.ActionLink("Add to Cart", "Add", "Cart", new {productID = @Model.product_id}, new {@class = "btn btn-primary"})
+                    <input type="submit" value="Add to Cart" class="btn btn-primary" />
+                }
+
+            </div>
+
+        </div>
+
+
+
+
+
     </div>
-        @Html.ActionLink("Add to Cart", "Add", "Cart", new { productID = @Model.product_id }, new { @class = "btn btn-primary" }) 
 </section>

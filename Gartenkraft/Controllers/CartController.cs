@@ -24,7 +24,7 @@ namespace Gartenkraft.Controllers
         }
 
         // GET: Cart/AddToCart
-        public ActionResult Add(int productID)
+        public ActionResult Add(int productID, int quantity)
         {
             bool isDuplicate = false;
 
@@ -52,7 +52,7 @@ namespace Gartenkraft.Controllers
                 // set line item
                 invoice_lineitem li = new invoice_lineitem();
                 li.SetProduct(product);
-                li.Set_lineitem_quantity(1);
+                li.Set_lineitem_quantity(quantity);
 
                 // add to cart
                 cart.AddItem(li);

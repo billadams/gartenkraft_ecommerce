@@ -2,8 +2,42 @@
   margin-bottom: 150px;
 }
 /*------------------------------------------------ NAVIGATION STYLES ------------------------------------------------ */
+.navbar {
+  margin-bottom: 2.5rem;
+}
 .dropdown-menu > li > a {
   color: #444444;
+}
+/*------------------------------------------------ CATEGORY PRODUCT STYLES ------------------------------------------------ */
+.item-list {
+  align-items: stretch;
+  display: flex;
+  flex-wrap: wrap;
+  margin-bottom: 2.5rem;
+}
+.item-list li {
+  border-bottom: none;
+  margin-bottom: 2.5rem;
+  padding-bottom: 15px;
+  padding-top: 15px;
+  transition: box-shadow 0.3s ease-in-out;
+}
+.item-list li:hover {
+  box-shadow: 0px 5px 15px #e7e7e7;
+}
+.item-list .info {
+  min-height: 325px;
+}
+/*------------------------------------------------ PRODUCT LISTING STYLES ------------------------------------------------ */
+.item {
+  margin-bottom: 2.5rem;
+}
+.product-images img {
+  margin-bottom: 1.5rem;
+}
+.thumbnail-list .image-thumbnail {
+  float: left;
+  margin-right: 1rem;
 }
 /*------------------------------------------------ FOOTER STYLES ------------------------------------------------ */
 .footer {
