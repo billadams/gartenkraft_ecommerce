@@ -4,7 +4,10 @@
     ViewBag.Title = "Edit Products";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+@Scripts.Render(Url.Content("//cdn.ckeditor.com/4.7.3/standard/ckeditor.js"))
+}
 <h2>Edit Products</h2>
 
 <div>
@@ -36,6 +39,9 @@
 
                 <div class="form-group">
                     @Html.LabelFor(model => model.product_long_description, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <!--Begin Section-->
+                   
+                    <!--End Section-->
                     <div class="col-md-10">
                         @Html.EditorFor(model => model.product_long_description, new { htmlAttributes = new { @class = "form-control" } })
                         @Html.ValidationMessageFor(model => model.product_long_description, "", new { @class = "text-danger" })
@@ -167,6 +173,4 @@
     @Html.ActionLink("Back to List", "Index")
 </div>
 
-@section Scripts {
-    @Scripts.Render("~/bundles/jqueryval")
-}
+
