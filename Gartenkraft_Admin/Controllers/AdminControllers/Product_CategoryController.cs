@@ -40,7 +40,10 @@ namespace Gartenkraft_Admin.Controllers.AdminControllers
         public ActionResult Create()
         {
             ViewBag.category_product_line_id = new SelectList(db.tblProduct_Line, "product_line_id", "product_line_name");
-            return View();
+            tblProduct_Category model = new tblProduct_Category();
+            model.is_visible = false;
+            model.soft_delete = false;
+            return View(model);
         }
 
         // POST: Product_Category/Create
