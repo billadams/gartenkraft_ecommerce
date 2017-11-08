@@ -182,6 +182,18 @@
     <Compile Include="App_Start\IdentityConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
+    <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
+    <Compile Include="Areas\Admin\Controllers\AccountController.cs" />
+    <Compile Include="Areas\Admin\Controllers\AdminControllers\ProductsAdminController.cs" />
+    <Compile Include="Areas\Admin\Controllers\AdminControllers\Product_CategoryController.cs" />
+    <Compile Include="Areas\Admin\Controllers\AdminControllers\Product_LineController.cs" />
+    <Compile Include="Areas\Admin\Controllers\FileUploadController\UploadController.cs" />
+    <Compile Include="Areas\Admin\Controllers\HomeController.cs" />
+    <Compile Include="Areas\Admin\Controllers\ManageController.cs" />
+    <Compile Include="Models\tblCategoryMetaData.cs" />
+    <Compile Include="Models\tblProductMetaData.cs" />
+    <Compile Include="Models\tblProduct_LineMetaData.cs" />
+    <Compile Include="Areas\Admin\Models\XmlHelper.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\CartController.cs" />
     <Compile Include="Controllers\CategoryController.cs" />
@@ -209,23 +221,23 @@
     <Compile Include="ModelsForViews\MenuModel.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\AspNetUser.cs">
-      <DependentUpon>CustomerModel.tt</DependentUpon>
+      <DependentUpon>GartenkraftModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Cart.cs" />
-    <Compile Include="Models\CustomerModel.Context.cs">
+    <Compile Include="Models\GartenkraftModel.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>CustomerModel.Context.tt</DependentUpon>
+      <DependentUpon>GartenkraftModel.Context.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\CustomerModel.cs">
+    <Compile Include="Models\GartenkraftModel.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>CustomerModel.tt</DependentUpon>
+      <DependentUpon>GartenkraftModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\CustomerModel.Designer.cs">
+    <Compile Include="Models\GartenkraftModel.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>CustomerModel.edmx</DependentUpon>
+      <DependentUpon>GartenkraftModel.edmx</DependentUpon>
     </Compile>
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\invoice_lineitem.cs" />
@@ -233,48 +245,60 @@
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\Menu.cs" />
     <Compile Include="Models\tblBilling_Information.cs">
-      <DependentUpon>CustomerModel.tt</DependentUpon>
+      <DependentUpon>GartenkraftModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tblFeature_Product.cs">
+      <DependentUpon>GartenkraftModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\tblInventory.cs">
-      <DependentUpon>CustomerModel.tt</DependentUpon>
+      <DependentUpon>GartenkraftModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tblProduct.cs">
+      <DependentUpon>GartenkraftModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tblProduct_Category.cs">
+      <DependentUpon>GartenkraftModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\tblProduct_Category_Image.cs">
-      <DependentUpon>CustomerModel.tt</DependentUpon>
+      <DependentUpon>GartenkraftModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\tblProduct_Image.cs">
-      <DependentUpon>CustomerModel.tt</DependentUpon>
+      <DependentUpon>GartenkraftModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tblProduct_Line.cs">
+      <DependentUpon>GartenkraftModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\tblProduct_Line_Image.cs">
-      <DependentUpon>CustomerModel.tt</DependentUpon>
+      <DependentUpon>GartenkraftModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\tblSales_Invoice.cs">
-      <DependentUpon>CustomerModel.tt</DependentUpon>
+      <DependentUpon>GartenkraftModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\tblSales_Invoice_Lineitem.cs">
-      <DependentUpon>CustomerModel.tt</DependentUpon>
+      <DependentUpon>GartenkraftModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\tblShipping.cs">
-      <DependentUpon>CustomerModel.tt</DependentUpon>
+      <DependentUpon>GartenkraftModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\vwCategory.cs">
-      <DependentUpon>CustomerModel.tt</DependentUpon>
+      <DependentUpon>GartenkraftModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\vwFeatured_Product.cs">
-      <DependentUpon>CustomerModel.tt</DependentUpon>
+      <DependentUpon>GartenkraftModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\vwInvoice.cs">
-      <DependentUpon>CustomerModel.tt</DependentUpon>
+      <DependentUpon>GartenkraftModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\vwInvoice_Lineitem.cs">
-      <DependentUpon>CustomerModel.tt</DependentUpon>
+      <DependentUpon>GartenkraftModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\vwInvoice_Lineitem_metadata.cs" />
     <Compile Include="Models\vwInvoice_metadata.cs" />
     <Compile Include="Models\vwProduct.cs">
-      <DependentUpon>CustomerModel.tt</DependentUpon>
+      <DependentUpon>GartenkraftModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\vwProduct_Line.cs">
-      <DependentUpon>CustomerModel.tt</DependentUpon>
+      <DependentUpon>GartenkraftModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\vwProduct_metadata.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -283,6 +307,14 @@
   <ItemGroup>
     <Content Include="App_Data\states.xml" />
     <Content Include="App_Data\ViewUserRoles.sql" />
+    <Content Include="Areas\Admin\Content\bootstrap-theme.css" />
+    <Content Include="Areas\Admin\Content\bootstrap-theme.min.css" />
+    <Content Include="Areas\Admin\Content\bootstrap.css" />
+    <Content Include="Areas\Admin\Content\bootstrap.min.css" />
+    <Content Include="Areas\Admin\Content\dashboard.css" />
+    <Content Include="Areas\Admin\Content\sidebar.css" />
+    <Content Include="Areas\Admin\Content\Site.css" />
+    <Content Include="Areas\Admin\Content\table.css" />
     <Content Include="Content\bootstrap\bootstrap.css">
       <DependentUpon>bootstrap.less</DependentUpon>
     </Content>
@@ -303,6 +335,53 @@
     </Content>
     <Content Include="Content\fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Content\extra-large.less" />
+    <Content Include="Areas\Admin\Views\web.config" />
+    <Content Include="Areas\Admin\Views\Account\_ExternalLoginsListPartial.cshtml" />
+    <Content Include="Areas\Admin\Views\Account\ConfirmEmail.cshtml" />
+    <Content Include="Areas\Admin\Views\Account\ExternalLoginConfirmation.cshtml" />
+    <Content Include="Areas\Admin\Views\Account\ExternalLoginFailure.cshtml" />
+    <Content Include="Areas\Admin\Views\Account\ForgotPassword.cshtml" />
+    <Content Include="Areas\Admin\Views\Account\ForgotPasswordConfirmation.cshtml" />
+    <Content Include="Areas\Admin\Views\Account\Login.cshtml" />
+    <Content Include="Areas\Admin\Views\Account\Register.cshtml" />
+    <Content Include="Areas\Admin\Views\Account\ResetPassword.cshtml" />
+    <Content Include="Areas\Admin\Views\Account\ResetPasswordConfirmation.cshtml" />
+    <Content Include="Areas\Admin\Views\Account\SendCode.cshtml" />
+    <Content Include="Areas\Admin\Views\Account\VerifyCode.cshtml" />
+    <Content Include="Areas\Admin\Views\Home\About.cshtml" />
+    <Content Include="Areas\Admin\Views\Home\Contact.cshtml" />
+    <Content Include="Areas\Admin\Views\Home\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Manage\AddPhoneNumber.cshtml" />
+    <Content Include="Areas\Admin\Views\Manage\ChangePassword.cshtml" />
+    <Content Include="Areas\Admin\Views\Manage\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Manage\ManageLogins.cshtml" />
+    <Content Include="Areas\Admin\Views\Manage\SetPassword.cshtml" />
+    <Content Include="Areas\Admin\Views\Manage\VerifyPhoneNumber.cshtml" />
+    <Content Include="Areas\Admin\Views\Product_Category\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\Product_Category\Delete.cshtml" />
+    <Content Include="Areas\Admin\Views\Product_Category\Details.cshtml" />
+    <Content Include="Areas\Admin\Views\Product_Category\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\Product_Category\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Product_Line\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\Product_Line\Delete.cshtml" />
+    <Content Include="Areas\Admin\Views\Product_Line\Details.cshtml" />
+    <Content Include="Areas\Admin\Views\Product_Line\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\Product_Line\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Shared\_Layout.cshtml" />
+    <Content Include="Areas\Admin\Views\Shared\_LoginPartial.cshtml" />
+    <Content Include="Areas\Admin\Views\Shared\Error.cshtml" />
+    <Content Include="Areas\Admin\Views\Shared\Lockout.cshtml" />
+    <Content Include="Areas\Admin\Views\Upload\UploadFile.cshtml" />
+    <Content Include="Areas\Admin\Views\_ViewStart.cshtml" />
+    <Content Include="Areas\Admin\Content\bootstrap-theme.css.map" />
+    <Content Include="Areas\Admin\Content\bootstrap-theme.min.css.map" />
+    <Content Include="Areas\Admin\Content\bootstrap.css.map" />
+    <Content Include="Areas\Admin\Content\bootstrap.min.css.map" />
+    <Content Include="Areas\Admin\Views\ProductsAdmin\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\ProductsAdmin\Delete.cshtml" />
+    <Content Include="Areas\Admin\Views\ProductsAdmin\Details.cshtml" />
+    <Content Include="Areas\Admin\Views\ProductsAdmin\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\ProductsAdmin\Index.cshtml" />
     <None Include="Content\large.less" />
     <Content Include="Content\large.css">
       <DependentUpon>large.less</DependentUpon>
@@ -340,12 +419,15 @@
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <EntityDeploy Include="Models\CustomerModel.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>CustomerModel.Designer.cs</LastGenOutput>
-    </EntityDeploy>
-    <Content Include="Models\CustomerModel.edmx.diagram">
-      <DependentUpon>CustomerModel.edmx</DependentUpon>
+    <Content Include="Models\GartenkraftModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>GartenkraftModel.edmx</DependentUpon>
+      <LastGenOutput>GartenkraftModel.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\GartenkraftModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>GartenkraftModel.edmx</DependentUpon>
+      <LastGenOutput>GartenkraftModel.cs</LastGenOutput>
     </Content>
     <Content Include="package.json" />
     <None Include="compilerconfig.json" />
@@ -428,18 +510,15 @@
     <Content Include="Content\bootstrap\badges.less" />
     <Content Include="Content\bootstrap\alerts.less" />
     <Content Include="Content\small.less" />
+    <EntityDeploy Include="Models\GartenkraftModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>GartenkraftModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\GartenkraftModel.edmx.diagram">
+      <DependentUpon>GartenkraftModel.edmx</DependentUpon>
+    </Content>
     <None Include="packages.config" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
-    <Content Include="Models\CustomerModel.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>CustomerModel.edmx</DependentUpon>
-      <LastGenOutput>CustomerModel.Context.cs</LastGenOutput>
-    </Content>
-    <Content Include="Models\CustomerModel.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>CustomerModel.edmx</DependentUpon>
-      <LastGenOutput>CustomerModel.cs</LastGenOutput>
-    </Content>
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
@@ -499,6 +578,7 @@
     <Content Include="Views\Nav\Menu.cshtml" />
     <Content Include="Views\Product\View.cshtml" />
     <Content Include="Views\Product\ProductsByCategory.cshtml" />
+    <Content Include="Views\Home\Error.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201710081937282_InitialCreate.resx">
@@ -514,7 +594,9 @@
   <ItemGroup>
     <None Include="Project_Readme.html" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="ProductImages\" />
+  </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>

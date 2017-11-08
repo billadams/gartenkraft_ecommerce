@@ -1,11 +1,107 @@
 ﻿@{
-    ViewBag.Title = "About";
+    ViewBag.Title = "About GartenKraft";
 }
 
-<h2>@ViewBag.Title.</h2>
+<!DOCTYPE html>
 
-<div class="col-md-8">
-    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. In accumsan velit vitae condimentum egestas. Proin et elit id massa tempus interdum. Suspendisse eu tortor eget dolor tincidunt feugiat. Sed vel porta risus. Aenean hendrerit velit id sapien cursus, euismod semper nulla hendrerit. Nunc semper mollis sapien, quis hendrerit erat tempor in. Mauris id lectus ex. Duis venenatis convallis mi non pulvinar.</p>
-    <p>Nulla ultricies odio vitae lacus sodales, quis aliquet quam venenatis. Maecenas vel convallis metus. Maecenas ornare sapien eget est fringilla mollis. Proin auctor malesuada ligula, tristique posuere metus eleifend quis. Sed quam libero, dictum eget sapien et, dapibus venenatis nibh. Maecenas ac tincidunt purus, sed blandit tortor. Donec eget magna ac mi vehicula ornare eget eu urna. In venenatis, diam ut blandit ultrices, enim turpis gravida nibh, lobortis fringilla velit augue vel magna. Proin posuere maximus augue, dictum interdum dui eleifend et. Sed eu ex dui. Integer in sapien sit amet massa eleifend lobortis. In gravida, nisl sagittis malesuada consectetur, magna ipsum luctus lectus, a scelerisque risus urna a mi.</p>
-    <p>Cras turpis arcu, ultrices a vehicula at, fringilla quis purus. Nunc justo risus, blandit pretium neque vel, lobortis dignissim metus. Suspendisse elit odio, vestibulum quis pulvinar eget, efficitur ac turpis. Morbi sodales, tellus sed venenatis faucibus, nibh neque ullamcorper leo, in sagittis purus velit non mi. Nullam accumsan, tortor quis suscipit maximus, lorem lectus porta nisi, nec placerat urna nibh in ipsum. Sed varius augue non leo rutrum, sed ultricies velit facilisis. Nulla ultrices interdum mi, sit amet volutpat enim vestibulum sagittis. Praesent magna ex, ultricies et tempus vitae, gravida at nisi. Aliquam erat volutpat. Nullam venenatis vehicula tellus, ultrices scelerisque libero dictum quis. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent purus tellus, pretium non suscipit a, gravida nec felis. Integer sagittis orci quis enim varius, vel gravida ligula condimentum. Sed venenatis, lectus ac elementum congue, libero arcu sodales neque, sit amet consequat nisl nunc eget lorem. Suspendisse pretium placerat leo in rhoncus. Aenean auctor, felis a tristique aliquam, tellus leo sagittis lorem, vel lacinia mauris dolor id nibh.</p>
-</div>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<style>
+    body {
+        font-family: "Times New Roman", Georgia, Serif;
+    }
+
+    h1, h2, h3, h4, h5, h6 {
+        font-family: "Playfair Display";
+        letter-spacing: 5px;
+    }
+</style>
+<body>
+
+    <!-- Navbar (sit on top) -->
+    <div class="w3-top">
+        <div class="w3-bar w3-white w3-padding w3-card" style="letter-spacing:4px;">
+            <a href="#home" class="w3-bar-item w3-button">Gourmet au Catering</a>
+            <!-- Right-sided navbar links. Hide them on small screens -->
+            <div class="w3-right w3-hide-small">
+                <a href="#about" class="w3-bar-item w3-button">About</a>
+                <a href="#products" class="w3-bar-item w3-button">Products</a>
+                <a href="#contact" class="w3-bar-item w3-button">Contact</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Header -->
+    <header class="w3-display-container w3-content w3-wide" style="max-width:1600px;min-width:500px" id="home">
+        <img class="w3-image" src="" alt="GKraftIcon" width="1600" height="800">
+        <div class="w3-display-bottomleft w3-padding-large w3-opacity">
+            <h1 class="w3-xxlarge">Le Catering</h1>
+        </div>
+    </header>
+
+    <!-- Page content -->
+    <div class="w3-content" style="max-width:1100px">
+
+        <!-- About Section -->
+        <div class="w3-row w3-padding-64" id="about">
+            <div class="w3-col m6 w3-padding-large w3-hide-small">
+                <img src="/Images/cooling_towel.jpg" class="w3-round w3-image w3-opacity-min" alt="GartenKraft" width="600" height="750"><!--TODO:Add GartenKraft Icon Here-->
+            </div>
+
+            <div class="w3-col m6 w3-padding-large">
+                <h1 class="w3-center">About GartenKraft</h1><br>
+                <h5 class="w3-center">(Founded Date Placeholder)</h5>
+                <p class="w3-large">GartenKraft was founded in blabla by Mr. Smith in lorem ipsum dolor sit amet, consectetur adipiscing elit consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute iruredolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.We only use <span class="w3-tag w3-light-grey">seasonal</span> ingredients.</p>
+                <p class="w3-large w3-text-grey w3-hide-medium">Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod temporincididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+            </div>
+        </div>
+
+        <hr>
+
+        <!-- Products Section -->
+        <div class="w3-row w3-padding-64" id="products">
+            <div class="w3-col l6 w3-padding-large">
+                <h1 class="w3-center">Our Products</h1><br>
+                <h4>Product 1</h4>
+                <p class="w3-text-grey">Product Placeholder Text</p><br>
+
+                <h4>Product 2</h4>
+                <p class="w3-text-grey">Product Placeholder Text</p><br>
+
+                <h4>Product 3</h4>
+                <p class="w3-text-grey">Product Placeholder Text</p><br>
+
+                <h4>Product 4</h4>
+                <p class="w3-text-grey">Product Placeholder Text</p><br>
+
+                <h4>Product 5</h4>
+                <p class="w3-text-grey">Product Placeholder Text</p>
+            </div>
+
+            <div class="w3-col l6 w3-padding-large">
+                <img src="/Images/cooling_towel.jpg" class="w3-round w3-image w3-opacity-min" alt="Products" width="500" height="750">
+            </div>
+        </div>
+
+        <hr>
+
+        <!-- Contact Section -->
+        <div class="w3-container w3-padding-64" id="contact">
+            <h1>Contact</h1><br>
+            <p>What our website does placeholder</p>
+            <p class="w3-text-blue-grey w3-large"><b>GartenKraft, (Full Address Placeholder)</b></p>
+            <p>You can also contact us by phone 00553123-2323(phone Placeholder) or email (email placeholder)</p>
+        </div>
+
+        <!-- End page content -->
+    </div>
+
+    <!-- Footer -->
+    <footer class="w3-center w3-light-grey w3-padding-32">
+        <p>Powered by <a href="https://www.w3schools.com/w3css/default.asp" title="W3.CSS" target="_blank" class="w3-hover-text-green">w3.css</a></p>
+    </footer>
+
+</body>
+

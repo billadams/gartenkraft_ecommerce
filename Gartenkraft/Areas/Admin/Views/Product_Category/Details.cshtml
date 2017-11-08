@@ -1,0 +1,58 @@
+﻿@model Gartenkraft.Areas.Admin.Models.tblProduct_Category
+
+@{
+    ViewBag.Title = "Category Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Category Details</h2>
+
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.category_image_id)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.category_image_id)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.category_name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.category_name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.soft_delete)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.soft_delete)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.is_visible)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.is_visible)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.tblProduct_Line.product_line_name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tblProduct_Line.product_line_name)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.category_id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

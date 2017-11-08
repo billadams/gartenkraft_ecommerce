@@ -12,7 +12,7 @@ namespace Gartenkraft.Controllers
 {
     public class ProductLineController : Controller
     {
-        private GartenkraftCustomerEntities db = new GartenkraftCustomerEntities();
+        private GartenkraftEntities db = new GartenkraftEntities();
 
         // GET: ProductLine
         public ActionResult Index()

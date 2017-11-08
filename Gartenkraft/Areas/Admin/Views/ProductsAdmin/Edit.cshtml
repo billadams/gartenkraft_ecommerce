@@ -1,0 +1,193 @@
+﻿@model Gartenkraft.Models.tblProduct
+
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Edit Products</h2>
+<hr class="navbar-inverse" />
+
+<div>
+    <div class="col-md-6">
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+
+            <div class="form-horizontal">
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                @Html.HiddenFor(model => model.product_id)
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.product_name, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.product_name, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.product_name, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.product_short_description, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.product_short_description, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.product_short_description, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.product_long_description, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.product_long_description, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.product_long_description, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.product_unit_cost, htmlAttributes: new { @class = "control-label col-md-2" } )
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.product_unit_cost, new { htmlAttributes = new { @class = "form-control", @Value = Html.Raw(Model.product_unit_cost) } })
+                        @Html.ValidationMessageFor(model => model.product_unit_cost, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.product_unit_price, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.product_unit_price, new { htmlAttributes = new { @class = "form-control", @Value = Html.Raw(Model.product_unit_price) } })
+                        @Html.ValidationMessageFor(model => model.product_unit_price, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.product_category_id, "Product Categories", htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.DropDownList("product_category_id", null, htmlAttributes: new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.product_category_id, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.product_line_id, "Product Lines", htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.DropDownList("product_line_id", null, htmlAttributes: new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.product_line_id, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.product_weight, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.product_weight, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.product_weight, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.product_date_added, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.product_date_added, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.product_date_added, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.soft_delete, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        <div class="checkbox">
+                            @Html.EditorFor(model => model.soft_delete, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.soft_delete, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.is_visible, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        <div class="checkbox">
+                            @Html.EditorFor(model => model.is_visible, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.is_visible, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-md-offset-2 col-md-10">
+                        <input type="submit" value="Save" class="btn btn-success" />
+                    </div>
+                </div>
+            </div>
+        }
+
+        <hr class="navbar-inverse"/>
+
+        <h3>Image Upload</h3>
+
+        <div class="form-horizontal" @*style="text-align:center;"*@>
+            @using (Html.BeginForm("UploadFile", "Upload", new { productID = Model.product_id }, FormMethod.Post, new { enctype = "multipart/form-data" }))
+            {
+                @*<div>
+                        @Html.TextBox("file", "",htmlAttributes: new { @type = "file", @style = "display:inline-block;", @class = "form-control" })
+                        <input type="submit" value="Upload Picture" style="display:inline-block;margin-left:30px;" />
+                    </div>*@
+                <div class="form-group">
+                    <div class="col-md-offset-2 col-md-10">
+                        @Html.TextBox("file", "", htmlAttributes: new { @type = "file", @style = "display:inline-block;", @class = "form-control" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-offset-2 col-md-10">
+                        <div class="text-danger">@ViewBag.Message</div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-offset-2 col-md-10">
+                        <input type="submit" value="Upload Picture" class="btn btn-success" />
+                    </div>
+                </div>
+                <br />
+                @*<div class="text-danger">@ViewBag.Message</div>*@
+            }
+        </div>
+
+    </div>
+    </div>
+
+    <div class="col-md-6">
+        <hr />
+        <table class="table-condensed">
+            <tr>
+                <th><div class="text-center">Images:</div></th>
+                <th></th>
+            </tr>
+
+            @foreach (var item in (List<Gartenkraft.Models.tblProduct_Image>)ViewBag.ProductImages)
+            {
+                <tr>
+                    <td>
+                        <img src="@Url.Content("~/ProductImages/" + item.product_id.ToString() + "/" + item.product_image_name.ToString())" style="width:100px;height:100px;display:inline-block;margin:30px;" class="btn btn-default" />
+                    </td>
+                    <td>
+                        @Html.ActionLink("Remove", "RemoveImage", "Upload", new { productID = item.product_id, imageName = item.product_image_name }, htmlAttributes: new { @class = "btn btn-danger" })
+                    </td>
+                </tr>
+            }
+        </table>
+        <hr />
+    </div>
+
+    <div style="clear:both;">&nbsp;</div>
+
+    <hr />
+
+    
+
+<br />
+<hr />
+
+<div>
+    @Html.ActionLink("Back to List", "Index", null, htmlAttributes: new { @class = "btn btn-default" })
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

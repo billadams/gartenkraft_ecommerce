@@ -21,5 +21,12 @@ namespace Gartenkraft.Controllers {
 
             return View();
         }
+
+        public ActionResult Error()
+        {
+            ViewBag.Message = "Your error page.";
+
+            return View();
+        }
     }
 }
