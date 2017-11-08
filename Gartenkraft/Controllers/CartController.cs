@@ -10,7 +10,7 @@ namespace Gartenkraft.Controllers
     public class CartController : Controller
     {
         private Cart cart = new Cart();
-        private GartenkraftCustomerEntities dbContext = new GartenkraftCustomerEntities();
+        private GartenkraftEntities dbContext = new GartenkraftEntities();
 
         // GET: Cart
         public ActionResult Index()

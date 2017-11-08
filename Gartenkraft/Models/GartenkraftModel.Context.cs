@@ -13,10 +13,10 @@ namespace Gartenkraft.Models
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class GartenkraftCustomerEntities : DbContext
+    public partial class GartenkraftEntities : DbContext
     {
-        public GartenkraftCustomerEntities()
-            : base("name=GartenkraftCustomerEntities")
+        public GartenkraftEntities()
+            : base("name=GartenkraftEntities")
         {
         }
     
@@ -27,9 +27,13 @@ namespace Gartenkraft.Models
     
         public virtual DbSet<AspNetUser> AspNetUsers { get; set; }
         public virtual DbSet<tblBilling_Information> tblBilling_Information { get; set; }
+        public virtual DbSet<tblFeature_Product> tblFeature_Product { get; set; }
         public virtual DbSet<tblInventory> tblInventories { get; set; }
+        public virtual DbSet<tblProduct> tblProducts { get; set; }
+        public virtual DbSet<tblProduct_Category> tblProduct_Category { get; set; }
         public virtual DbSet<tblProduct_Category_Image> tblProduct_Category_Image { get; set; }
         public virtual DbSet<tblProduct_Image> tblProduct_Image { get; set; }
+        public virtual DbSet<tblProduct_Line> tblProduct_Line { get; set; }
         public virtual DbSet<tblProduct_Line_Image> tblProduct_Line_Image { get; set; }
         public virtual DbSet<tblSales_Invoice> tblSales_Invoice { get; set; }
         public virtual DbSet<tblSales_Invoice_Lineitem> tblSales_Invoice_Lineitem { get; set; }

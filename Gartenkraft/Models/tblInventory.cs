@@ -17,5 +17,7 @@ namespace Gartenkraft.Models
         public int inventory_id { get; set; }
         public int product_id { get; set; }
         public int inventory_quantity { get; set; }
+    
+        public virtual tblProduct tblProduct { get; set; }
     }
 }

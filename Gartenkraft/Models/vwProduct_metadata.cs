@@ -13,6 +13,9 @@ namespace Gartenkraft.Models
         [NotMapped]
         [Display(Name = "Quantity")]
         public int quantity { get; set; }
+
+        [NotMapped]
+        public List<tblProduct_Image> ProductImages { get; set; }
     }
 
     public class vwProductMetadata
