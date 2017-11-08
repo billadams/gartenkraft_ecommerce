@@ -4,7 +4,7 @@ using System.Linq;
 using System.Web;
 using Gartenkraft.Models;
 
-namespace Gartenkraft.ModelsForViews
+namespace Gartenkraft.ViewModels
 {
     public class MenuModel
     {
