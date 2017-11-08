@@ -10,7 +10,7 @@ namespace Gartenkraft.Controllers
 {
     public class NavController : Controller
     {
-        private GartenkraftCustomerEntities db = new GartenkraftCustomerEntities();
+        private GartenkraftEntities db = new GartenkraftEntities();
         private vwProduct_Line _productLines;
         private vwCategory _categories;
 

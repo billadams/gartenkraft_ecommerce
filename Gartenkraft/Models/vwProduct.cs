@@ -11,10 +11,9 @@ namespace Gartenkraft.Models
 {
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel.DataAnnotations;
     
     public partial class vwProduct
-    {       
+    {
         public int product_id { get; set; }
         public string product_name { get; set; }
         public string product_short_description { get; set; }

@@ -12,7 +12,7 @@ namespace Gartenkraft.Controllers
 {
     public class CategoryController : Controller
     {
-        private GartenkraftCustomerEntities db = new GartenkraftCustomerEntities();
+        private GartenkraftEntities db = new GartenkraftEntities();
 
         // GET: Categories
         public ActionResult Index()

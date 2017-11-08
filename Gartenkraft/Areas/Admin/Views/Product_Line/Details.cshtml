@@ -1,0 +1,50 @@
+﻿@model Gartenkraft.Areas.Admin.Models.tblProduct_Line
+
+@{
+    ViewBag.Title = "Product Line Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Product Line Details</h2>
+
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayFor(model => model.product_line_name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.product_line_name)
+        </dd>
+
+        <dt>
+            @Html.DisplayFor(model => model.date_added)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.date_added)
+        </dd>
+
+        <dt>
+            @Html.DisplayFor(model => model.soft_delete)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.soft_delete)
+        </dd>
+
+        <dt>
+            @Html.DisplayFor(model => model.is_visible)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.is_visible)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.product_line_id }) |
+    @Html.ActionLink("Back to Product Lines", "Index")
+</p>
