@@ -31,7 +31,9 @@ namespace Gartenkraft_Admin
                       "~/Content/bootstrap-theme.css",
                       "~/Content/site.css",
                       "~/Content/sidebar.css",
-                      "~/Content/table.css"));
+                      "~/Content/table.css",
+                      "~/Content/edit.css",
+                      "~/Content/layout.css"));
         }
     }
 }

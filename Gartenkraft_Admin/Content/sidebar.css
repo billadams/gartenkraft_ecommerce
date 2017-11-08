@@ -13,7 +13,7 @@
 #page-wrapper {
     width: 100%;        
     padding: 0;
-    background-color: #fff;
+   
 }
 
 @media(min-width:768px) {
@@ -50,7 +50,7 @@
 .top-nav>.open>a:hover,
 .top-nav>.open>a:focus {
     color: #fff;
-    background-color: #1a242f;
+    background-color: #5cb85c;
 }
 
 .top-nav>.open>.dropdown-menu {
@@ -82,7 +82,7 @@
         border-radius: 0;
         border-top: 1px rgba(0,0,0,.5) solid;
         overflow-y: auto;
-        background-color: #222;
+        background-color: #3e423e;
         /*background-color: #5A6B7D;*/
         bottom: 0;
         overflow-x: hidden;

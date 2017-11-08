@@ -4,7 +4,7 @@
     ViewBag.Title = "Products";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-
+<div class="header-content">
 
 <div class="pull-right">
     <div class="btn-group">
@@ -12,58 +12,38 @@
     </div>
 </div>
 
+
 <h2>Products</h2>
+    <div class="col-sm-12 col-md-12 well" id="content">
+        <form action="#" method="get" class="search-form">
+            <div class="form-row">
+                <div class="form-group col-lg-12">
+                    <label for="system-search" class="col-lg-1">Product</label>
+                    <div class="col-lg-5">
+                        <input type="text" class="form-control" id="system-search" name="q" placeholder="Search for">
+                    </div>
 
-<form action="#" method="get">
-    <div class="form-row">
-        <div class="form-group col-lg-12">
-            <label for="system-search" class="col-lg-1">Product</label>
-            <div class="col-lg-5">
-                <input type="text" class="form-control" id="system-search" name="q" placeholder="Search for">
-            </div>
+                    <label for="storeName" class="col-lg-1">Categories</label>
+                    <div class="col-lg-5">
+                        <select class="form-control form-control-lg" id="storeName">
+                            @foreach (var item in (List<Gartenkraft_Admin.Models.tblProduct_Category>)ViewBag.Categories)
+                            {
+                                <option>@item.category_name</option>
+                            }
 
-            <label for="storeName" class="col-lg-1">Store</label>
-            <div class="col-lg-5">
-                <select class="form-control form-control-lg" id="storeName">
-                    @foreach (var item in (List<Gartenkraft_Admin.Models.tblProduct_Category>)ViewBag.Categories)
-                    {
-                        <option>@item.category_name</option>
-                    }
-                    
-                </select>
+                        </select>
+                    </div>
+                </div>
             </div>
-        </div>
-    </div>
-    <div class="form-row">
-        <div class="form-group col-lg-12">
-            <label for="categoryName" class="col-lg-1">Category</label>
-            <div class="col-lg-5">
-                <select class="form-control form-control-lg" id="categoryName">
-                    @foreach (var item in (List<Gartenkraft_Admin.Models.tblProduct_Category>)ViewBag.Categories)
-                    {
-                        <option>@item.category_name</option>
-                    }
-                </select>
-            </div>
-            <label for="manufacturer" class="col-sm-1">Manufacturer</label>
-            <div class="col-sm-5">
-                <select class="form-control form-control-lg" id="manufacturer">
-                    <option>Large select</option>
-                </select>
-            </div>
-        </div>
-    </div>
-    @*<div class="form-row">
-        <div class="form-group col-lg-12">
-            <button type="submit" class="btn btn-primary">Sign in</button>
-        </div>
-    </div>*@
-</form>
+            
 
-        <p>
+        </form>
+        @*<p>
             @Html.ActionLink("Add a new Product", "Create")
-        </p>
-  
+        </p>*@
+    </div>
+      
+    <div class="col-sm-12 col-md-12 well" id="content">
         <div class="table-responsive">
             <table class="table table-list-search">
                 <tr>
@@ -145,16 +125,16 @@
                             <a class="btn btn-danger" id="deleteproduct" href="@Url.Action("Delete", new { id = item.product_id, @class = "btn btn-link" })"><em class="fa fa-trash"></em></a>
                         </td>
                         @*<td>
-                            <div class="btn-group" role="group" aria-label="Basic example">
-                                @Html.ActionLink("Edit", "Edit", new { id = item.product_id, @class = "btn btn-secondary" }) |
-                                @Html.ActionLink("Details", "Details", new { id = item.product_id, @class = "btn btn-defult" }) |
-                                @Html.ActionLink("Delete", "Delete", new { id = item.product_id, @class = "btn btn-link" })
-                            </div>
-                        </td>*@
+                                <div class="btn-group" role="group" aria-label="Basic example">
+                                    @Html.ActionLink("Edit", "Edit", new { id = item.product_id, @class = "btn btn-secondary" }) |
+                                    @Html.ActionLink("Details", "Details", new { id = item.product_id, @class = "btn btn-defult" }) |
+                                    @Html.ActionLink("Delete", "Delete", new { id = item.product_id, @class = "btn btn-link" })
+                                </div>
+                            </td>*@
                     </tr>
                 }
 
             </table>
+            </div>
         </div>
     </div>
-</div>
