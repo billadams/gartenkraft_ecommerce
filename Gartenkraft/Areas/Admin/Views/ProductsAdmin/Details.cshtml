@@ -5,102 +5,129 @@
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Details</h2>
+<h2>Product - Details</h2>
 
-<div>
-    <h4>tblProduct</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.product_name)
-        </dt>
+<div class="row">
+    <div class="col-md-8">
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.product_name)
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.product_name)
-        </dd>
+            <dd>
+                @Html.DisplayFor(model => model.product_name)
+            </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.product_short_description)
-        </dt>
+            <dt>
+                @Html.DisplayNameFor(model => model.product_short_description)
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.product_short_description)
-        </dd>
+            <dd>
+                @Html.DisplayFor(model => model.product_short_description)
+            </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.product_long_description)
-        </dt>
+            <dt>
+                @Html.DisplayNameFor(model => model.product_long_description)
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.product_long_description)
-        </dd>
+            <dd>
+                @Html.DisplayFor(model => model.product_long_description)
+            </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.product_unit_cost)
-        </dt>
+            <dt>
+                @Html.DisplayNameFor(model => model.PriceRange)
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.product_unit_cost)
-        </dd>
+            <dd>
+                @Html.DisplayFor(model => model.PriceRange)
+            </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.product_unit_price)
-        </dt>
+            <dt>
+                @Html.DisplayNameFor(model => model.product_date_added)
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.product_unit_price)
-        </dd>
+            <dd>
+                @Html.DisplayFor(model => model.product_date_added)
+            </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.product_weight)
-        </dt>
+            <dt>
+                @Html.DisplayNameFor(model => model.soft_delete)
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.product_weight)
-        </dd>
+            <dd>
+                @Html.DisplayFor(model => model.soft_delete)
+            </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.product_date_added)
-        </dt>
+            <dt>
+                @Html.DisplayNameFor(model => model.is_visible)
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.product_date_added)
-        </dd>
+            <dd>
+                @Html.DisplayFor(model => model.is_visible)
+            </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.soft_delete)
-        </dt>
+            <dt>
+                @Html.DisplayNameFor(model => model.is_custom_product)
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.soft_delete)
-        </dd>
+            <dd>
+                @Html.DisplayFor(model => model.is_custom_product)
+            </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.is_visible)
-        </dt>
+            <dt>
+                @Html.DisplayNameFor(model => model.tblProduct_Line.product_line_name)
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.is_visible)
-        </dd>
+            <dd>
+                @Html.DisplayFor(model => model.tblProduct_Line.product_line_name)
+            </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.tblProduct_Line.product_line_name)
-        </dt>
+            <dt>
+                @Html.DisplayNameFor(model => model.tblProduct_Category.category_name)
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.tblProduct_Line.product_line_name)
-        </dd>
+            <dd>
+                @Html.DisplayFor(model => model.tblProduct_Category.category_name)
+            </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.tblProduct_Category.category_name)
-        </dt>
+        </dl>
+    </div>
 
-        <dd>
-            @Html.DisplayFor(model => model.tblProduct_Category.category_name)
-        </dd>
-
-    </dl>
+    <div class="col-md-4">
+        @if (Model.is_custom_product == false)
+        {
+            <h3>Options:</h3>
+            <table class="table">
+                <tr>
+                    <th>@Html.DisplayNameFor(model => model.tblProduct_Option.First().title)</th>
+                    <th>@Html.DisplayNameFor(model => model.tblProduct_Option.First().weight)</th>
+                    <th>@Html.DisplayNameFor(model => model.tblProduct_Option.First().unit_cost)</th>
+                    <th>@Html.DisplayNameFor(model => model.tblProduct_Option.First().unit_price)</th>
+                </tr>
+                @foreach (var item in Model.tblProduct_Option)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.title)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.weight)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.unit_cost)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.unit_price)
+                        </td>
+                    </tr>
+                }
+            </table>
+        }
+    </div>
 </div>
+
+
 <p>
     <a class="btn btn-warning" href="@Url.Action("Edit", new { id = Model.product_id })"><em class="fa fa-pencil"></em></a>
     <a class="btn btn-default" href="@Url.Action("Index")">Back to List</a>

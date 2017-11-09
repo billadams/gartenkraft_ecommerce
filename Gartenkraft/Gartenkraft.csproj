@@ -187,11 +187,54 @@
     <Compile Include="Areas\Admin\Controllers\AdminControllers\ProductsAdminController.cs" />
     <Compile Include="Areas\Admin\Controllers\AdminControllers\Product_CategoryController.cs" />
     <Compile Include="Areas\Admin\Controllers\AdminControllers\Product_LineController.cs" />
+    <Compile Include="Areas\Admin\Controllers\AdminControllers\tblProduct_OptionController.cs" />
     <Compile Include="Areas\Admin\Controllers\FileUploadController\UploadController.cs" />
     <Compile Include="Areas\Admin\Controllers\HomeController.cs" />
     <Compile Include="Areas\Admin\Controllers\ManageController.cs" />
+    <Compile Include="Models\AspNetUser.cs">
+      <DependentUpon>GartenkraftModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\GartenkraftModel.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>GartenkraftModel.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\GartenkraftModel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>GartenkraftModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\GartenkraftModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>GartenkraftModel.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tblBilling_Information.cs">
+      <DependentUpon>GartenkraftModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\tblCategoryMetaData.cs" />
+    <Compile Include="Models\tblFeature_Product.cs">
+      <DependentUpon>GartenkraftModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tblInventory.cs">
+      <DependentUpon>GartenkraftModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tblProduct.cs">
+      <DependentUpon>GartenkraftModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\tblProductMetaData.cs" />
+    <Compile Include="Models\tblProduct_Category.cs">
+      <DependentUpon>GartenkraftModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tblProduct_Category_Image.cs">
+      <DependentUpon>GartenkraftModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tblProduct_Image.cs">
+      <DependentUpon>GartenkraftModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tblProduct_Line.cs">
+      <DependentUpon>GartenkraftModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\tblProduct_LineMetaData.cs" />
     <Compile Include="Areas\Admin\Models\XmlHelper.cs" />
     <Compile Include="Controllers\AccountController.cs" />
@@ -218,59 +261,13 @@
       <DependentUpon>201710130648076_User.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
-    <Compile Include="ViewModels\MenuModel.cs" />
-    <Compile Include="Models\AccountViewModels.cs" />
-    <Compile Include="Models\AspNetUser.cs">
-      <DependentUpon>GartenkraftModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Cart.cs" />
-    <Compile Include="Models\GartenkraftModel.Context.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>GartenkraftModel.Context.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\GartenkraftModel.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>GartenkraftModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\GartenkraftModel.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>GartenkraftModel.edmx</DependentUpon>
-    </Compile>
-    <Compile Include="Models\IdentityModels.cs" />
-    <Compile Include="Models\invoice_lineitem.cs" />
-    <Compile Include="Models\invoice_lineitem_metadata.cs" />
-    <Compile Include="Models\ManageViewModels.cs" />
-    <Compile Include="Models\Menu.cs" />
-    <Compile Include="Models\tblBilling_Information.cs">
-      <DependentUpon>GartenkraftModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\tblFeature_Product.cs">
-      <DependentUpon>GartenkraftModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\tblInventory.cs">
-      <DependentUpon>GartenkraftModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\tblProduct.cs">
-      <DependentUpon>GartenkraftModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\tblProduct_Category.cs">
-      <DependentUpon>GartenkraftModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\tblProduct_Category_Image.cs">
-      <DependentUpon>GartenkraftModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\tblProduct_Image.cs">
-      <DependentUpon>GartenkraftModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\tblProduct_Line.cs">
-      <DependentUpon>GartenkraftModel.tt</DependentUpon>
-    </Compile>
     <Compile Include="Models\tblProduct_Line_Image.cs">
       <DependentUpon>GartenkraftModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\tblProduct_Option.cs">
+      <DependentUpon>GartenkraftModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tblProduct_OptionMetadata.cs" />
     <Compile Include="Models\tblSales_Invoice.cs">
       <DependentUpon>GartenkraftModel.tt</DependentUpon>
     </Compile>
@@ -292,14 +289,22 @@
     <Compile Include="Models\vwInvoice_Lineitem.cs">
       <DependentUpon>GartenkraftModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\vwInvoice_Lineitem_metadata.cs" />
-    <Compile Include="Models\vwInvoice_metadata.cs" />
     <Compile Include="Models\vwProduct.cs">
       <DependentUpon>GartenkraftModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\vwProduct_Line.cs">
       <DependentUpon>GartenkraftModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="ViewModels\MenuModel.cs" />
+    <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\Cart.cs" />
+    <Compile Include="Models\IdentityModels.cs" />
+    <Compile Include="Models\invoice_lineitem.cs" />
+    <Compile Include="Models\invoice_lineitem_metadata.cs" />
+    <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\Menu.cs" />
+    <Compile Include="Models\vwInvoice_Lineitem_metadata.cs" />
+    <Compile Include="Models\vwInvoice_metadata.cs" />
     <Compile Include="Models\vwProduct_metadata.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
@@ -382,6 +387,12 @@
     <Content Include="Areas\Admin\Views\ProductsAdmin\Details.cshtml" />
     <Content Include="Areas\Admin\Views\ProductsAdmin\Edit.cshtml" />
     <Content Include="Areas\Admin\Views\ProductsAdmin\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\tblProduct_Option\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\tblProduct_Option\Delete.cshtml" />
+    <Content Include="Areas\Admin\Views\tblProduct_Option\Details.cshtml" />
+    <Content Include="Areas\Admin\Views\tblProduct_Option\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\tblProduct_Option\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\ProductsAdmin\CreateOption.cshtml" />
     <None Include="Content\large.less" />
     <Content Include="Content\large.css">
       <DependentUpon>large.less</DependentUpon>

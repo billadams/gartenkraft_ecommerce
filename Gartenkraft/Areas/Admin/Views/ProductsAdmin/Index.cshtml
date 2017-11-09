@@ -76,15 +76,9 @@
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.product_long_description)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.product_unit_cost)
             </th>*@
             <th>
-                @Html.DisplayNameFor(model => model.product_unit_price)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.product_weight)
+                @Html.DisplayNameFor(model => model.PriceRange)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.product_date_added)
@@ -94,6 +88,9 @@
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.is_visible)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.is_custom_product)
             </th>
             @*<th>
                 @Html.DisplayNameFor(model => model.tblProduct_Line.product_line_name)
@@ -115,15 +112,9 @@
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.product_long_description)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.product_unit_cost)
                 </td>*@
                 <td>
-                    @Html.DisplayFor(modelItem => item.product_unit_price)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.product_weight)
+                    @Html.DisplayFor(modelItem => item.PriceRange)
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.product_date_added)
@@ -133,6 +124,9 @@
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.is_visible)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.is_custom_product)
                 </td>
                 @*<td>
                     @Html.DisplayFor(modelItem => item.tblProduct_Line.product_line_name)

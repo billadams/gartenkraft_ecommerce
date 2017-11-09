@@ -69,14 +69,12 @@
           <Property Name="product_name" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="product_short_description" Type="varchar" MaxLength="100" Nullable="false" />
           <Property Name="product_long_description" Type="varchar(max)" Nullable="false" />
-          <Property Name="product_unit_cost" Type="money" Nullable="false" />
-          <Property Name="product_unit_price" Type="money" Nullable="false" />
           <Property Name="product_category_id" Type="int" Nullable="false" />
           <Property Name="product_line_id" Type="int" Nullable="false" />
-          <Property Name="product_weight" Type="decimal" Precision="6" Scale="2" Nullable="false" />
           <Property Name="product_date_added" Type="datetime" Nullable="false" />
           <Property Name="soft_delete" Type="bit" />
           <Property Name="is_visible" Type="bit" />
+          <Property Name="is_custom_product" Type="bit" />
         </EntityType>
         <EntityType Name="tblProduct_Category">
           <Key>
@@ -122,6 +120,17 @@
           <Property Name="product_line_image_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="product_line_id" Type="int" Nullable="false" />
           <Property Name="product_line_image_name" Type="varchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tblProduct_Option">
+          <Key>
+            <PropertyRef Name="option_id" />
+          </Key>
+          <Property Name="title" Type="varchar" MaxLength="126" Nullable="false" />
+          <Property Name="weight" Type="decimal" Precision="6" Scale="2" Nullable="false" />
+          <Property Name="unit_cost" Type="decimal" Precision="6" Scale="2" Nullable="false" />
+          <Property Name="unit_price" Type="decimal" Precision="6" Scale="2" Nullable="false" />
+          <Property Name="product_id" Type="int" Nullable="false" />
+          <Property Name="option_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
         </EntityType>
         <EntityType Name="tblSales_Invoice">
           <Key>
@@ -292,6 +301,18 @@ warning 6002: The table/view 'gartenkraft.gkraft.vwProduct_Line' does not have a
           <Property Name="is_visible" Type="bit" Nullable="false" />
           <Property Name="soft_delete" Type="bit" Nullable="false" />
         </EntityType>
+        <Association Name="FK_Product_ID">
+          <End Role="tblProduct" Type="Self.tblProduct" Multiplicity="1" />
+          <End Role="tblProduct_Option" Type="Self.tblProduct_Option" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblProduct">
+              <PropertyRef Name="product_id" />
+            </Principal>
+            <Dependent Role="tblProduct_Option">
+              <PropertyRef Name="product_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_tblBilling_Information_AspNetUsers">
           <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1" />
           <End Role="tblBilling_Information" Type="Self.tblBilling_Information" Multiplicity="*" />
@@ -499,6 +520,7 @@ warning 6002: The table/view 'gartenkraft.gkraft.vwProduct_Line' does not have a
           <EntitySet Name="tblProduct_Image" EntityType="Self.tblProduct_Image" Schema="gkraft" store:Type="Tables" />
           <EntitySet Name="tblProduct_Line" EntityType="Self.tblProduct_Line" Schema="gkraft" store:Type="Tables" />
           <EntitySet Name="tblProduct_Line_Image" EntityType="Self.tblProduct_Line_Image" Schema="gkraft" store:Type="Tables" />
+          <EntitySet Name="tblProduct_Option" EntityType="Self.tblProduct_Option" Schema="gkraft" store:Type="Tables" />
           <EntitySet Name="tblSales_Invoice" EntityType="Self.tblSales_Invoice" Schema="gkraft" store:Type="Tables" />
           <EntitySet Name="tblSales_Invoice_Lineitem" EntityType="Self.tblSales_Invoice_Lineitem" Schema="gkraft" store:Type="Tables" />
           <EntitySet Name="tblShipping" EntityType="Self.tblShipping" Schema="gkraft" store:Type="Tables" />
@@ -583,6 +605,10 @@ warning 6002: The table/view 'gartenkraft.gkraft.vwProduct_Line' does not have a
     [vwProduct_Line].[soft_delete] AS [soft_delete]
     FROM [gkraft].[vwProduct_Line] AS [vwProduct_Line]</DefiningQuery>
           </EntitySet>
+          <AssociationSet Name="FK_Product_ID" Association="Self.FK_Product_ID">
+            <End Role="tblProduct" EntitySet="tblProduct" />
+            <End Role="tblProduct_Option" EntitySet="tblProduct_Option" />
+          </AssociationSet>
           <AssociationSet Name="FK_tblBilling_Information_AspNetUsers" Association="Self.FK_tblBilling_Information_AspNetUsers">
             <End Role="AspNetUsers" EntitySet="AspNetUsers" />
             <End Role="tblBilling_Information" EntitySet="tblBilling_Information" />
@@ -720,16 +746,15 @@ warning 6002: The table/view 'gartenkraft.gkraft.vwProduct_Line' does not have a
           <Property Name="product_name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="product_short_description" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="product_long_description" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="product_unit_cost" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
-          <Property Name="product_unit_price" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
           <Property Name="product_category_id" Type="Int32" Nullable="false" />
           <Property Name="product_line_id" Type="Int32" Nullable="false" />
-          <Property Name="product_weight" Type="Decimal" Precision="6" Scale="2" Nullable="false" />
           <Property Name="product_date_added" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="soft_delete" Type="Boolean" />
           <Property Name="is_visible" Type="Boolean" />
+          <Property Name="is_custom_product" Type="Boolean" />
           <NavigationProperty Name="tblFeature_Product" Relationship="Self.FproductFK" FromRole="tblProduct" ToRole="tblFeature_Product" />
           <NavigationProperty Name="tblInventories" Relationship="Self.FK_tblInventory_tblProduct" FromRole="tblProduct" ToRole="tblInventory" />
+          <NavigationProperty Name="tblProduct_Option" Relationship="Self.FK_Product_ID" FromRole="tblProduct" ToRole="tblProduct_Option" />
           <NavigationProperty Name="tblProduct_Image" Relationship="Self.FK_tblProduct_Image_tblProduct" FromRole="tblProduct" ToRole="tblProduct_Image" />
           <NavigationProperty Name="tblProduct_Line" Relationship="Self.FK_tblProduct_productLine" FromRole="tblProduct" ToRole="tblProduct_Line" />
           <NavigationProperty Name="tblProduct_Category" Relationship="Self.FK_tblProduct_tblProduct_Category" FromRole="tblProduct" ToRole="tblProduct_Category" />
@@ -788,6 +813,18 @@ warning 6002: The table/view 'gartenkraft.gkraft.vwProduct_Line' does not have a
           <Property Name="product_line_id" Type="Int32" Nullable="false" />
           <Property Name="product_line_image_name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
           <NavigationProperty Name="tblProduct_Line" Relationship="Self.FK_tblProduct_Line_Image_tblProduct_Line" FromRole="tblProduct_Line_Image" ToRole="tblProduct_Line" />
+        </EntityType>
+        <EntityType Name="tblProduct_Option">
+          <Key>
+            <PropertyRef Name="option_id" />
+          </Key>
+          <Property Name="title" Type="String" MaxLength="126" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="weight" Type="Decimal" Precision="6" Scale="2" Nullable="false" />
+          <Property Name="unit_cost" Type="Decimal" Precision="6" Scale="2" Nullable="false" />
+          <Property Name="unit_price" Type="Decimal" Precision="6" Scale="2" Nullable="false" />
+          <Property Name="product_id" Type="Int32" Nullable="false" />
+          <Property Name="option_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <NavigationProperty Name="tblProduct" Relationship="Self.FK_Product_ID" FromRole="tblProduct_Option" ToRole="tblProduct" />
         </EntityType>
         <EntityType Name="tblSales_Invoice">
           <Key>
@@ -1034,6 +1071,18 @@ warning 6002: The table/view 'gartenkraft.gkraft.vwProduct_Line' does not have a
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_Product_ID">
+          <End Role="tblProduct" Type="Self.tblProduct" Multiplicity="1" />
+          <End Role="tblProduct_Option" Type="Self.tblProduct_Option" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblProduct">
+              <PropertyRef Name="product_id" />
+            </Principal>
+            <Dependent Role="tblProduct_Option">
+              <PropertyRef Name="product_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_tblProduct_Image_tblProduct">
           <End Role="tblProduct" Type="Self.tblProduct" Multiplicity="1">
             <OnDelete Action="Cascade" />
@@ -1161,6 +1210,7 @@ warning 6002: The table/view 'gartenkraft.gkraft.vwProduct_Line' does not have a
           <EntitySet Name="tblProduct_Image" EntityType="Self.tblProduct_Image" />
           <EntitySet Name="tblProduct_Line" EntityType="Self.tblProduct_Line" />
           <EntitySet Name="tblProduct_Line_Image" EntityType="Self.tblProduct_Line_Image" />
+          <EntitySet Name="tblProduct_Option" EntityType="Self.tblProduct_Option" />
           <EntitySet Name="tblSales_Invoice" EntityType="Self.tblSales_Invoice" />
           <EntitySet Name="tblSales_Invoice_Lineitem" EntityType="Self.tblSales_Invoice_Lineitem" />
           <EntitySet Name="tblShippings" EntityType="Self.tblShipping" />
@@ -1193,6 +1243,10 @@ warning 6002: The table/view 'gartenkraft.gkraft.vwProduct_Line' does not have a
           <AssociationSet Name="FK_tblInventory_tblProduct" Association="Self.FK_tblInventory_tblProduct">
             <End Role="tblProduct" EntitySet="tblProducts" />
             <End Role="tblInventory" EntitySet="tblInventories" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Product_ID" Association="Self.FK_Product_ID">
+            <End Role="tblProduct" EntitySet="tblProducts" />
+            <End Role="tblProduct_Option" EntitySet="tblProduct_Option" />
           </AssociationSet>
           <AssociationSet Name="FK_tblProduct_Image_tblProduct" Association="Self.FK_tblProduct_Image_tblProduct">
             <End Role="tblProduct" EntitySet="tblProducts" />
@@ -1304,14 +1358,12 @@ warning 6002: The table/view 'gartenkraft.gkraft.vwProduct_Line' does not have a
                 <ScalarProperty Name="product_name" ColumnName="product_name" />
                 <ScalarProperty Name="product_short_description" ColumnName="product_short_description" />
                 <ScalarProperty Name="product_long_description" ColumnName="product_long_description" />
-                <ScalarProperty Name="product_unit_cost" ColumnName="product_unit_cost" />
-                <ScalarProperty Name="product_unit_price" ColumnName="product_unit_price" />
                 <ScalarProperty Name="product_category_id" ColumnName="product_category_id" />
                 <ScalarProperty Name="product_line_id" ColumnName="product_line_id" />
-                <ScalarProperty Name="product_weight" ColumnName="product_weight" />
                 <ScalarProperty Name="product_date_added" ColumnName="product_date_added" />
                 <ScalarProperty Name="soft_delete" ColumnName="soft_delete" />
                 <ScalarProperty Name="is_visible" ColumnName="is_visible" />
+                <ScalarProperty Name="is_custom_product" ColumnName="is_custom_product" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -1362,6 +1414,18 @@ warning 6002: The table/view 'gartenkraft.gkraft.vwProduct_Line' does not have a
                 <ScalarProperty Name="product_line_image_id" ColumnName="product_line_image_id" />
                 <ScalarProperty Name="product_line_id" ColumnName="product_line_id" />
                 <ScalarProperty Name="product_line_image_name" ColumnName="product_line_image_name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblProduct_Option">
+            <EntityTypeMapping TypeName="GartenkraftModel.tblProduct_Option">
+              <MappingFragment StoreEntitySet="tblProduct_Option">
+                <ScalarProperty Name="title" ColumnName="title" />
+                <ScalarProperty Name="weight" ColumnName="weight" />
+                <ScalarProperty Name="unit_cost" ColumnName="unit_cost" />
+                <ScalarProperty Name="unit_price" ColumnName="unit_price" />
+                <ScalarProperty Name="product_id" ColumnName="product_id" />
+                <ScalarProperty Name="option_id" ColumnName="option_id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

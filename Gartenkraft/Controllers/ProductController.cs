@@ -24,7 +24,11 @@ namespace Gartenkraft.Controllers
         public ActionResult ProductsByCategory(int categoryID)
         {
             var prodByCategory = db.vwProducts.Where(p => p.product_category_id == categoryID).ToList();
-            foreach (var p in prodByCategory) { p.ProductImages = db.tblProduct_Image.Where(img => img.product_id == p.product_id).ToList(); }
+            foreach (var p in prodByCategory)
+            {
+                p.ProductImages = db.tblProduct_Image.Where(img => img.product_id == p.product_id).ToList();
+                p.SetPriceRange();
+            }
             ViewBag.CategoryName = (string)db.vwCategories.Where(c => c.category_id == categoryID).Single().category_name;
             return View(prodByCategory);
         }
@@ -32,7 +36,8 @@ namespace Gartenkraft.Controllers
         public ActionResult View(int productID)
         {
             var selectedProduct = db.vwProducts.Single(product => product.product_id == productID);
-
+            selectedProduct.ProductImages = db.tblProduct_Image.Where(img => img.product_id == p.product_id).ToList();
+            selectedProduct.SetPriceRange();
             return View(selectedProduct);
         }
 

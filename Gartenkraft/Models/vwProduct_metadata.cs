@@ -16,6 +16,39 @@ namespace Gartenkraft.Models
 
         [NotMapped]
         public List<tblProduct_Image> ProductImages { get; set; }
+
+        [NotMapped]
+        public List<tblProduct_Option> Options { get; set; }
+
+        [NotMapped]
+        [Display(Name = "Price")]
+        public string PriceRange { get; private set; }
+
+        public void SetPriceRange()
+        {
+            var db = new GartenkraftEntities();
+            this.Options = db.tblProduct_Option.Where(o => o.product_id == this.product_id).ToList();
+            if (this.Options.Count > 1 && this.Options != null)
+            {
+                decimal lowestPrice = 0m, highestPrice = 0m;
+                foreach (var i in this.Options)
+                {
+                    // initialize lowestprice
+                    if (lowestPrice == 0) { lowestPrice = i.unit_price; }
+
+                    if (i.unit_price < lowestPrice) { lowestPrice = i.unit_price; }
+                    if (i.unit_price > highestPrice) { highestPrice = i.unit_price; }
+                }
+
+                this.PriceRange = lowestPrice.ToString("c") + " - " + highestPrice.ToString("c");
+            }
+            else if (this.Options.Count == 1)
+            {
+                string price = "";
+                foreach (var i in this.Options) { price = i.unit_price.ToString("c"); }
+                this.PriceRange = price;
+            }
+        }
     }
 
     public class vwProductMetadata

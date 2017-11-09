@@ -19,6 +19,7 @@ namespace Gartenkraft.Models
         {
             this.tblFeature_Product = new HashSet<tblFeature_Product>();
             this.tblInventories = new HashSet<tblInventory>();
+            this.tblProduct_Option = new HashSet<tblProduct_Option>();
             this.tblProduct_Image = new HashSet<tblProduct_Image>();
             this.tblSales_Invoice_Lineitem = new HashSet<tblSales_Invoice_Lineitem>();
         }
@@ -27,19 +28,19 @@ namespace Gartenkraft.Models
         public string product_name { get; set; }
         public string product_short_description { get; set; }
         public string product_long_description { get; set; }
-        public decimal product_unit_cost { get; set; }
-        public decimal product_unit_price { get; set; }
         public int product_category_id { get; set; }
         public int product_line_id { get; set; }
-        public decimal product_weight { get; set; }
         public System.DateTime product_date_added { get; set; }
         public Nullable<bool> soft_delete { get; set; }
         public Nullable<bool> is_visible { get; set; }
+        public Nullable<bool> is_custom_product { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<tblFeature_Product> tblFeature_Product { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<tblInventory> tblInventories { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<tblProduct_Option> tblProduct_Option { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<tblProduct_Image> tblProduct_Image { get; set; }
         public virtual tblProduct_Line tblProduct_Line { get; set; }

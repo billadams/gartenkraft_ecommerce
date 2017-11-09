@@ -18,6 +18,7 @@ namespace Gartenkraft.Areas.Admin.Controllers.AdminControllers
         public ActionResult Index()
         {
             var tblProducts = db.tblProducts.Include(t => t.tblProduct_Line).Include(t => t.tblProduct_Category);
+            foreach (var i in tblProducts) { i.SetPriceRange(); }
             ViewBag.Categories = db.tblProduct_Category.ToList();
             return View(tblProducts.ToList());
         }
@@ -30,6 +31,7 @@ namespace Gartenkraft.Areas.Admin.Controllers.AdminControllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             tblProduct tblProduct = db.tblProducts.Find(id);
+            tblProduct.SetPriceRange();
             if (tblProduct == null)
             {
                 return HttpNotFound();
@@ -83,6 +85,7 @@ namespace Gartenkraft.Areas.Admin.Controllers.AdminControllers
             {
                 ViewBag.Message = message;
             }
+            tblProduct.SetPriceRange();
             return View(tblProduct);
         }
 
@@ -99,6 +102,7 @@ namespace Gartenkraft.Areas.Admin.Controllers.AdminControllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
+            tblProduct.SetPriceRange();
             ViewBag.product_line_id = new SelectList(db.tblProduct_Line, "product_line_id", "product_line_name", tblProduct.product_line_id);
             ViewBag.product_category_id = new SelectList(db.tblProduct_Category, "category_id", "category_name", tblProduct.product_category_id);
             ViewBag.ProductImages = db.tblProduct_Image.Where(pi => pi.product_id == tblProduct.product_id).ToList();
@@ -130,6 +134,32 @@ namespace Gartenkraft.Areas.Admin.Controllers.AdminControllers
             db.SaveChanges();
             return RedirectToAction("Index");
         }
+
+        #region Product options
+
+        // Get: Product/CreateOption
+        public ActionResult CreateOption(int? id)
+        {
+            var option = new tblProduct_Option() { product_id = Convert.ToInt32(id), tblProduct = db.tblProducts.Find(Convert.ToInt32(id)) };
+            return View(option);
+        }
+
+        // POST: Product/CreateOption
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult CreateOption([Bind(Include = "product_id,title, weight, unit_cost, unit_price")]tblProduct_Option option)
+        {
+            option.tblProduct = db.tblProducts.Find(option.product_id);
+            if (ModelState.IsValid)
+            {
+                db.tblProduct_Option.Add(option);
+                db.SaveChanges();
+                return RedirectToAction("Edit", new { id = option.product_id });
+            }
+            return View(option);
+        }
+
+        #endregion
 
         protected override void Dispose(bool disposing)
         {
