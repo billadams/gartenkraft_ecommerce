@@ -300,6 +300,10 @@
       <DependentUpon>AdminModel.edmx</DependentUpon>
     </Content>
     <Content Include="Scripts\bootstrap.min.js.download" />
+    <Content Include="Content\medium.less" />
+    <Content Include="Content\large.less" />
+    <Content Include="Content\extra-large.less" />
+    <Content Include="Content\site.less" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Models\AdminModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
