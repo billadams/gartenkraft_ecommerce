@@ -62,12 +62,5 @@ namespace Gartenkraft.Models
         [Display(Name = "Long Description")]
         public string product_long_description { get; set; }
 
-        [Display(Name = "Unit Price")]
-        [DisplayFormat(DataFormatString = "{0:C}")]
-        public decimal product_unit_price { get; set; }
-
-        [Display(Name = "Weight")]
-        [RegularExpression(@"^\d+\.\d{0,2}$")]
-        public decimal product_weight { get; set; }
     }
 }

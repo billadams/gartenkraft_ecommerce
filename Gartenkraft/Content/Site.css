@@ -3,7 +3,7 @@
   min-height: 100%;
 }
 body {
-  color: #444444;
+  color: #666666;
   padding-top: 50px;
 }
 /* Set padding to keep content from hitting the edges */
@@ -40,7 +40,7 @@ nav a {
   color: #ffffff;
 }
 nav a:hover {
-  color: #444444;
+  color: #666666;
 }
 .navbar .navbar-toggle .icon-bar {
   background-color: #ffffff;
@@ -53,8 +53,8 @@ nav a:hover {
   border-bottom-color: #ffffff;
 }
 .nav a:hover .caret {
-  border-top-color: #444444;
-  border-bottom-color: #444444;
+  border-top-color: #666666;
+  border-bottom-color: #666666;
 }
 .caret {
   display: inline-block;
