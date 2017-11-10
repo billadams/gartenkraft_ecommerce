@@ -135,6 +135,7 @@ namespace Gartenkraft.Areas.Admin.Controllers.AdminControllers
             {
                 return HttpNotFound();
             }
+            tblProduct.SetPriceRange();
             return View(tblProduct);
         }
 

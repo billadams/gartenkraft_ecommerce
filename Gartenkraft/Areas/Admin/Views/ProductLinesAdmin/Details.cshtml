@@ -1,17 +1,18 @@
-﻿@model Gartenkraft.Areas.Admin.Models.tblProduct_Line
+﻿@model Gartenkraft.Models.tblProduct_Line
 
 @{
-    ViewBag.Title = "Product Line Details";
-    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "Details";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Product Line Details</h2>
+<h2>Details</h2>
 
 <div>
+    <h4>tblProduct_Line</h4>
     <hr />
     <dl class="dl-horizontal">
         <dt>
-            @Html.DisplayFor(model => model.product_line_name)
+            @Html.DisplayNameFor(model => model.product_line_name)
         </dt>
 
         <dd>
@@ -19,7 +20,7 @@
         </dd>
 
         <dt>
-            @Html.DisplayFor(model => model.date_added)
+            @Html.DisplayNameFor(model => model.date_added)
         </dt>
 
         <dd>
@@ -27,7 +28,7 @@
         </dd>
 
         <dt>
-            @Html.DisplayFor(model => model.soft_delete)
+            @Html.DisplayNameFor(model => model.soft_delete)
         </dt>
 
         <dd>
@@ -35,7 +36,7 @@
         </dd>
 
         <dt>
-            @Html.DisplayFor(model => model.is_visible)
+            @Html.DisplayNameFor(model => model.is_visible)
         </dt>
 
         <dd>
@@ -46,5 +47,5 @@
 </div>
 <p>
     @Html.ActionLink("Edit", "Edit", new { id = Model.product_line_id }) |
-    @Html.ActionLink("Back to Product Lines", "Index")
+    @Html.ActionLink("Back to List", "Index")
 </p>

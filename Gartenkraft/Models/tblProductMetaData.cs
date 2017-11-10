@@ -62,7 +62,7 @@ namespace Gartenkraft.Models
         public int product_line_id { get; set; }
 
         [DisplayName("Date Added")]
-        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:MM/dd/yyyy}")]
+        [DisplayFormat(ApplyFormatInEditMode = false, DataFormatString = "{0:MM/dd/yyyy}")]
         public System.DateTime product_date_added { get; set; }
 
         [DisplayName("Soft Delete Status")]

@@ -70,31 +70,25 @@
                 <div class="form-group">
                     @Html.LabelFor(model => model.soft_delete, htmlAttributes: new { @class = "control-label col-md-2" })
                     <div class="col-md-10">
-                        <div class="checkbox">
-                            @Html.EditorFor(model => model.soft_delete, new { htmlAttributes = new { @class = "form-control" } })
-                            @Html.ValidationMessageFor(model => model.soft_delete, "", new { @class = "text-danger" })
-                        </div>
+                        @Html.EditorFor(model => model.soft_delete)
+                        @Html.ValidationMessageFor(model => model.soft_delete, "", new { @class = "text-danger" })
                     </div>
                 </div>
 
                 <div class="form-group">
                     @Html.LabelFor(model => model.is_visible, htmlAttributes: new { @class = "control-label col-md-2" })
                     <div class="col-md-10">
-                        <div class="checkbox">
-                            @Html.EditorFor(model => model.is_visible, new { htmlAttributes = new { @class = "form-control" } })
-                            @Html.ValidationMessageFor(model => model.is_visible, "", new { @class = "text-danger" })
-                        </div>
+                        @Html.EditorFor(model => model.is_visible)
+                        @Html.ValidationMessageFor(model => model.is_visible, "", new { @class = "text-danger" })
                     </div>
                 </div>
 
                 <div class="form-group">
                     @Html.LabelFor(model => model.is_custom_product, htmlAttributes: new { @class = "control-label col-md-2" })
                     <div class="col-md-10">
-                        <div class="checkbox">
-                            @Html.EditorFor(model => model.is_custom_product, new { htmlAttributes = new { @class = "form-control" } })
-                            @Html.ValidationMessageFor(model => model.is_custom_product, "", new { @class = "text-danger" })
-                            <div class="text-danger">@ViewBag.ErrorMessage</div>
-                        </div>
+                        @Html.EditorFor(model => model.is_custom_product)
+                        @Html.ValidationMessageFor(model => model.is_custom_product, "", new { @class = "text-danger" })
+                        <div class="text-danger">@ViewBag.ErrorMessage</div>
                     </div>
                 </div>
 

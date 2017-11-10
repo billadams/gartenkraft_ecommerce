@@ -72,9 +72,9 @@
           <Property Name="product_category_id" Type="int" Nullable="false" />
           <Property Name="product_line_id" Type="int" Nullable="false" />
           <Property Name="product_date_added" Type="datetime" Nullable="false" />
-          <Property Name="soft_delete" Type="bit" />
-          <Property Name="is_visible" Type="bit" />
-          <Property Name="is_custom_product" Type="bit" />
+          <Property Name="soft_delete" Type="bit" Nullable="false" />
+          <Property Name="is_visible" Type="bit" Nullable="false" />
+          <Property Name="is_custom_product" Type="bit" Nullable="false" />
         </EntityType>
         <EntityType Name="tblProduct_Category">
           <Key>
@@ -749,9 +749,9 @@ warning 6002: The table/view 'gartenkraft.gkraft.vwProduct_Line' does not have a
           <Property Name="product_category_id" Type="Int32" Nullable="false" />
           <Property Name="product_line_id" Type="Int32" Nullable="false" />
           <Property Name="product_date_added" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="soft_delete" Type="Boolean" />
-          <Property Name="is_visible" Type="Boolean" />
-          <Property Name="is_custom_product" Type="Boolean" />
+          <Property Name="soft_delete" Type="Boolean" Nullable="false" />
+          <Property Name="is_visible" Type="Boolean" Nullable="false" />
+          <Property Name="is_custom_product" Type="Boolean" Nullable="false" />
           <NavigationProperty Name="tblFeature_Product" Relationship="Self.FproductFK" FromRole="tblProduct" ToRole="tblFeature_Product" />
           <NavigationProperty Name="tblInventories" Relationship="Self.FK_tblInventory_tblProduct" FromRole="tblProduct" ToRole="tblInventory" />
           <NavigationProperty Name="tblProduct_Option" Relationship="Self.FK_Product_ID" FromRole="tblProduct" ToRole="tblProduct_Option" />

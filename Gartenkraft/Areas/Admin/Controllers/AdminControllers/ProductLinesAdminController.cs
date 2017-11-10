@@ -10,17 +10,18 @@ using Gartenkraft.Models;
 
 namespace Gartenkraft.Areas.Admin.Controllers.AdminControllers
 {
-    public class Product_LineController : Controller
+    public class ProductLinesAdminController : Controller
     {
-        private readonly GartenkraftEntities db = new GartenkraftEntities();
+        private GartenkraftEntities db = new GartenkraftEntities();
 
-        // GET: Product_Line
+
+        // GET: Admin/ProductLinesAdmin
         public ActionResult Index()
         {
             return View(db.tblProduct_Line.ToList());
         }
 
-        // GET: Product_Line/Details/5
+        // GET: Admin/ProductLinesAdmin/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
@@ -35,13 +36,13 @@ namespace Gartenkraft.Areas.Admin.Controllers.AdminControllers
             return View(tblProduct_Line);
         }
 
-        // GET: Product_Line/Create
+        // GET: Admin/ProductLinesAdmin/Create
         public ActionResult Create()
         {
             return View();
         }
 
-        // POST: Product_Line/Create
+        // POST: Admin/ProductLinesAdmin/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
@@ -58,7 +59,7 @@ namespace Gartenkraft.Areas.Admin.Controllers.AdminControllers
             return View(tblProduct_Line);
         }
 
-        // GET: Product_Line/Edit/5
+        // GET: Admin/ProductLinesAdmin/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -73,7 +74,7 @@ namespace Gartenkraft.Areas.Admin.Controllers.AdminControllers
             return View(tblProduct_Line);
         }
 
-        // POST: Product_Line/Edit/5
+        // POST: Admin/ProductLinesAdmin/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
@@ -89,7 +90,7 @@ namespace Gartenkraft.Areas.Admin.Controllers.AdminControllers
             return View(tblProduct_Line);
         }
 
-        // GET: Product_Line/Delete/5
+        // GET: Admin/ProductLinesAdmin/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
@@ -104,7 +105,7 @@ namespace Gartenkraft.Areas.Admin.Controllers.AdminControllers
             return View(tblProduct_Line);
         }
 
-        // POST: Product_Line/Delete/5
+        // POST: Admin/ProductLinesAdmin/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)

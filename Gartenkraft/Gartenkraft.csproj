@@ -184,9 +184,8 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
     <Compile Include="Areas\Admin\Controllers\AccountController.cs" />
+    <Compile Include="Areas\Admin\Controllers\AdminControllers\ProductLinesAdminController.cs" />
     <Compile Include="Areas\Admin\Controllers\AdminControllers\ProductsAdminController.cs" />
-    <Compile Include="Areas\Admin\Controllers\AdminControllers\Product_CategoryController.cs" />
-    <Compile Include="Areas\Admin\Controllers\AdminControllers\Product_LineController.cs" />
     <Compile Include="Areas\Admin\Controllers\FileUploadController\UploadController.cs" />
     <Compile Include="Areas\Admin\Controllers\HomeController.cs" />
     <Compile Include="Areas\Admin\Controllers\ManageController.cs" />
@@ -361,16 +360,6 @@
     <Content Include="Areas\Admin\Views\Manage\ManageLogins.cshtml" />
     <Content Include="Areas\Admin\Views\Manage\SetPassword.cshtml" />
     <Content Include="Areas\Admin\Views\Manage\VerifyPhoneNumber.cshtml" />
-    <Content Include="Areas\Admin\Views\Product_Category\Create.cshtml" />
-    <Content Include="Areas\Admin\Views\Product_Category\Delete.cshtml" />
-    <Content Include="Areas\Admin\Views\Product_Category\Details.cshtml" />
-    <Content Include="Areas\Admin\Views\Product_Category\Edit.cshtml" />
-    <Content Include="Areas\Admin\Views\Product_Category\Index.cshtml" />
-    <Content Include="Areas\Admin\Views\Product_Line\Create.cshtml" />
-    <Content Include="Areas\Admin\Views\Product_Line\Delete.cshtml" />
-    <Content Include="Areas\Admin\Views\Product_Line\Details.cshtml" />
-    <Content Include="Areas\Admin\Views\Product_Line\Edit.cshtml" />
-    <Content Include="Areas\Admin\Views\Product_Line\Index.cshtml" />
     <Content Include="Areas\Admin\Views\Shared\_Layout.cshtml" />
     <Content Include="Areas\Admin\Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Areas\Admin\Views\Shared\Error.cshtml" />
@@ -389,6 +378,11 @@
     <Content Include="Areas\Admin\Views\ProductsAdmin\CreateOption.cshtml" />
     <Content Include="Areas\Admin\Views\ProductsAdmin\EditOption.cshtml" />
     <Content Include="Areas\Admin\Views\ProductsAdmin\DeleteOption.cshtml" />
+    <Content Include="Areas\Admin\Views\ProductLinesAdmin\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\ProductLinesAdmin\Delete.cshtml" />
+    <Content Include="Areas\Admin\Views\ProductLinesAdmin\Details.cshtml" />
+    <Content Include="Areas\Admin\Views\ProductLinesAdmin\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\ProductLinesAdmin\Index.cshtml" />
     <None Include="Content\large.less" />
     <Content Include="Content\large.css">
       <DependentUpon>large.less</DependentUpon>

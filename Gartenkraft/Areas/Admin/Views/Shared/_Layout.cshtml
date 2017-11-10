@@ -41,6 +41,18 @@
                         </a>
                     </li>
                     <li class="dropdown">
+@**********************************do not erase the following codes***********************************************@
+                        @if (Request.IsAuthenticated)
+                        {
+
+                        }
+                         @if (User.IsInRole(""))
+                         {
+
+                         }
+
+@****************************************************************************************************************************@
+
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">Admin User <b class="fa fa-angle-down"></b></a>
                         <ul class="dropdown-menu">
                             <li><a href="#"><i class="fa fa-fw fa-user"></i> Edit Profile</a></li>
@@ -61,9 +73,8 @@
                         <a href="#" data-toggle="collapse" data-target="#submenu-1"><i class="fa fa-book"></i> Catalog <i class="fa fa-fw fa-angle-down pull-right"></i></a>
                         <ul id="submenu-1" class="collapse">
                             <li><a href="@Url.Action("Index", "ProductsAdmin")"><i class="fa fa-angle-double-right"></i> Products</a></li>
-                            <li><a href="@Url.Action("Index", "Product_Category")"><i class="fa fa-angle-double-right"></i> Categories</a></li>
-                            <li><a href="@Url.Action("Index", "Home")"><i class="fa fa-angle-double-right"></i> Menufacturers</a></li>
-                            <li><a href="@Url.Action("Index", "Home")"><i class="fa fa-angle-double-right"></i> Low stock report</a></li>
+                            <li><a href="@Url.Action("Index", "ProductCategoriesAdmin")"><i class="fa fa-angle-double-right"></i> Categories</a></li>
+                            <li><a href="@Url.Action("Index", "ProductLinesAdmin")"><i class="fa fa-angle-double-right"></i> Product Lines</a></li>
                         </ul>
                     </li>
                     <li>

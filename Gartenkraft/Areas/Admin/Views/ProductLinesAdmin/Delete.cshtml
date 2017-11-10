@@ -1,13 +1,13 @@
-﻿@model Gartenkraft.Areas.Admin.Models.tblProduct_Line
+﻿@model Gartenkraft.Models.tblProduct_Line
 
 @{
-    ViewBag.Title = "Delete Product Line";
-    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "Delete";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
 }
 
 <h2>Delete Product Line</h2>
 
-<h3>Are you sure you want to delete this Product Line?</h3>
+<h3>Are you sure you want to delete this?</h3>
 <div>
     <hr />
     <dl class="dl-horizontal">
@@ -28,7 +28,7 @@
         </dd>
 
         <dt>
-           @Html.DisplayFor(model => model.soft_delete)
+            @Html.DisplayNameFor(model => model.soft_delete)
         </dt>
 
         <dd>
@@ -36,7 +36,7 @@
         </dd>
 
         <dt>
-            @Html.DisplayFor(model => model.is_visible)
+            @Html.DisplayNameFor(model => model.is_visible)
         </dt>
 
         <dd>
@@ -49,10 +49,8 @@
         @Html.AntiForgeryToken()
 
         <div class="form-actions no-color">
-            <input type="submit" value="Delete" class="btn btn-default" /> 
-            <br/>
-            <br/>           
-            @Html.ActionLink("Back to Product Lines", "Index")
+            <input type="submit" value="Delete" class="btn btn-danger" /> 
+            @Html.ActionLink("Back to List", "Index", null, htmlAttributes: new { @class = "btn btn-default" })
         </div>
     }
 </div>
