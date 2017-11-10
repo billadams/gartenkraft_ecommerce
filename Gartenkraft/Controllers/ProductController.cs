@@ -36,7 +36,7 @@ namespace Gartenkraft.Controllers
         public ActionResult View(int productID)
         {
             var selectedProduct = db.vwProducts.Single(product => product.product_id == productID);
-            selectedProduct.ProductImages = db.tblProduct_Image.Where(img => img.product_id == p.product_id).ToList();
+            selectedProduct.ProductImages = db.tblProduct_Image.Where(img => img.product_id == productID).ToList();
             selectedProduct.SetPriceRange();
             return View(selectedProduct);
         }

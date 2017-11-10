@@ -187,7 +187,6 @@
     <Compile Include="Areas\Admin\Controllers\AdminControllers\ProductsAdminController.cs" />
     <Compile Include="Areas\Admin\Controllers\AdminControllers\Product_CategoryController.cs" />
     <Compile Include="Areas\Admin\Controllers\AdminControllers\Product_LineController.cs" />
-    <Compile Include="Areas\Admin\Controllers\AdminControllers\tblProduct_OptionController.cs" />
     <Compile Include="Areas\Admin\Controllers\FileUploadController\UploadController.cs" />
     <Compile Include="Areas\Admin\Controllers\HomeController.cs" />
     <Compile Include="Areas\Admin\Controllers\ManageController.cs" />
@@ -387,12 +386,9 @@
     <Content Include="Areas\Admin\Views\ProductsAdmin\Details.cshtml" />
     <Content Include="Areas\Admin\Views\ProductsAdmin\Edit.cshtml" />
     <Content Include="Areas\Admin\Views\ProductsAdmin\Index.cshtml" />
-    <Content Include="Areas\Admin\Views\tblProduct_Option\Create.cshtml" />
-    <Content Include="Areas\Admin\Views\tblProduct_Option\Delete.cshtml" />
-    <Content Include="Areas\Admin\Views\tblProduct_Option\Details.cshtml" />
-    <Content Include="Areas\Admin\Views\tblProduct_Option\Edit.cshtml" />
-    <Content Include="Areas\Admin\Views\tblProduct_Option\Index.cshtml" />
     <Content Include="Areas\Admin\Views\ProductsAdmin\CreateOption.cshtml" />
+    <Content Include="Areas\Admin\Views\ProductsAdmin\EditOption.cshtml" />
+    <Content Include="Areas\Admin\Views\ProductsAdmin\DeleteOption.cshtml" />
     <None Include="Content\large.less" />
     <Content Include="Content\large.css">
       <DependentUpon>large.less</DependentUpon>
