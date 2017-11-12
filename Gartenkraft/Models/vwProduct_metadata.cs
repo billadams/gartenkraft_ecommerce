@@ -21,13 +21,28 @@ namespace Gartenkraft.Models
         public List<tblProduct_Option> Options { get; set; }
 
         [NotMapped]
+        public int SelectedOptionID { get; set; }
+
+        [NotMapped]
+        public vwProduct_Option SelectedOption { get; set; }
+
+        public void SetOption()
+        {
+            var db = new GartenkraftEntities();
+            this.SelectedOption = db.vwProduct_Option.Where(po => po.option_id == this.SelectedOptionID).Single();
+            db.Dispose();
+        }
+
+        [NotMapped]
         [Display(Name = "Price")]
         public string PriceRange { get; private set; }
 
         public void SetPriceRange()
         {
             var db = new GartenkraftEntities();
+            this.ProductImages = db.tblProduct_Image.Where(pi => pi.product_id == this.product_id).ToList();
             this.Options = db.tblProduct_Option.Where(o => o.product_id == this.product_id).ToList();
+            db.Dispose();
             if (this.Options.Count > 1 && this.Options != null)
             {
                 decimal lowestPrice = 0m, highestPrice = 0m;

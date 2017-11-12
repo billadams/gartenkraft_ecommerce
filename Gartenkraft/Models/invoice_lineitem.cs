@@ -34,7 +34,7 @@ namespace Gartenkraft.Models
 
         private void SetLineTotal()
         {
-            this.LineTotal = this.product.product_unit_price * base.lineitem_quantity;
+            this.LineTotal = this.product.SelectedOption.unit_price * base.lineitem_quantity;
         }
     }
 }

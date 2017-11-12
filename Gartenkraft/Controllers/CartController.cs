@@ -25,7 +25,7 @@ namespace Gartenkraft.Controllers
 
         // GET: Cart/AddToCart
         [HttpPost]
-        public ActionResult Add(int product_id, int quantity)
+        public ActionResult Add(vwProduct product, int? quantity)
         {
             bool isDuplicate = false;
 
@@ -35,7 +35,7 @@ namespace Gartenkraft.Controllers
                 cart = (Cart)Session["Cart"]; // load cart if in session
                 foreach(var i in cart.CartItems)
                 {
-                    if(i.product_id == product_id) { isDuplicate = true; } // set checker to see if product is already in cart
+                    if(i.product_id == product.product_id) { isDuplicate = true; } // set checker to see if product is already in cart
                 }
             }
 
@@ -43,17 +43,18 @@ namespace Gartenkraft.Controllers
             if (isDuplicate)
             {
                 // add 1 quantity to existing lineitem
-                cart.CartItems.Where(ci => ci.product_id == product_id).Single().Set_lineitem_quantity(cart.CartItems.Where(ci => ci.product_id == product_id).Single().lineitem_quantity += 1);
+                cart.CartItems.Where(ci => ci.product_id == product.product_id).Single().Set_lineitem_quantity(cart.CartItems.Where(ci => ci.product_id == product.product_id).Single().lineitem_quantity += 1);
             }
             else
             {
                 // set product
-                var product = dbContext.vwProducts.Where(vP => vP.product_id == product_id).Single();
+                product.SetPriceRange();
+                product.SetOption();
 
                 // set line item
                 invoice_lineitem li = new invoice_lineitem();
                 li.SetProduct(product);
-                li.Set_lineitem_quantity(quantity);
+                li.Set_lineitem_quantity(Convert.ToInt32(quantity));
 
                 // add to cart
                 cart.AddItem(li);
@@ -68,7 +69,7 @@ namespace Gartenkraft.Controllers
         public ActionResult UpdateQuantity(invoice_lineitem item)
         {
             cart = (Cart)Session["Cart"];
-            cart.CartItems.Where(ci => ci.product_id == item.product_id).Single().Set_lineitem_quantity(item.lineitem_quantity);
+            cart.UpdateItem(item);
             Session["Cart"] = cart;
             return RedirectToAction("Index");
         }
@@ -77,7 +78,7 @@ namespace Gartenkraft.Controllers
         public ActionResult RemoveLineitem(int productID)
         {
             cart = (Cart)Session["Cart"];
-            cart.CartItems.Remove(cart.CartItems.Where(ci => ci.product_id == productID).Single());
+            cart.RemoveItem(productID);
             Session["Cart"] = cart;
             return RedirectToAction("Index");
         }

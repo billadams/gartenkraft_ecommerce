@@ -18,6 +18,7 @@ namespace Gartenkraft.Models
         public int product_id { get; set; }
         public int lineitem_quantity { get; set; }
         public int invoice_id { get; set; }
+        public int product_option_id { get; set; }
     
         public virtual tblProduct tblProduct { get; set; }
         public virtual tblSales_Invoice tblSales_Invoice { get; set; }

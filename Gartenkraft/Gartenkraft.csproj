@@ -278,7 +278,7 @@
     <Compile Include="Models\vwCategory.cs">
       <DependentUpon>GartenkraftModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\vwFeatured_Product.cs">
+    <Compile Include="Models\vwFeaturedProduct.cs">
       <DependentUpon>GartenkraftModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\vwInvoice.cs">
@@ -291,6 +291,9 @@
       <DependentUpon>GartenkraftModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\vwProduct_Line.cs">
+      <DependentUpon>GartenkraftModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\vwProduct_Option.cs">
       <DependentUpon>GartenkraftModel.tt</DependentUpon>
     </Compile>
     <Compile Include="ViewModels\MenuModel.cs" />

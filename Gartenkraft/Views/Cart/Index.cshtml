@@ -22,7 +22,7 @@ else
                 <th>@Html.DisplayNameFor(model => model.CartItems.Single().lineitem_quantity)</th>
                 <th>@Html.DisplayNameFor(model => model.CartItems.Single().GetProduct().product_name)</th>
                 <th>@Html.DisplayNameFor(model => model.CartItems.Single().GetProduct().product_short_description)</th>
-                <th>@Html.DisplayNameFor(model => model.CartItems.Single().GetProduct().product_unit_price)</th>
+                <th>@Html.DisplayNameFor(model => model.CartItems.Single().GetProduct().SelectedOption.unit_price)</th>
                 <th>@Html.DisplayName("Total")</th>
                 <th>&nbsp;</th>
             </tr>
@@ -43,7 +43,7 @@ else
                     </td>
                     <td>@Html.DisplayFor(modelItem => item.GetProduct().product_name)</td>
                     <td>@Html.DisplayFor(modelItem => item.GetProduct().product_short_description)</td>
-                    <td>@Html.DisplayFor(modelItem => item.GetProduct().product_unit_price)</td>
+                    <td>@Html.DisplayFor(modelItem => item.GetProduct().SelectedOption.unit_price)</td>
                     <td>@Html.DisplayFor(modelItem => item.LineTotal)</td>
                     <td>
                         @Html.ActionLink("Remove", "RemoveLineitem", new {productID = item.GetProduct().product_id}, htmlAttributes: new {@class = "btn btn-danger"})

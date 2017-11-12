@@ -12,15 +12,12 @@ namespace Gartenkraft.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class vwFeatured_Product
+    public partial class vwProduct_Option
     {
-        public int feature_id { get; set; }
-        public string product_name { get; set; }
-        public string product_short_description { get; set; }
-        public string product_long_description { get; set; }
-        public decimal product_unit_price { get; set; }
-        public int product_category_id { get; set; }
-        public int product_line_id { get; set; }
-        public Nullable<bool> is_visible { get; set; }
+        public string title { get; set; }
+        public decimal weight { get; set; }
+        public decimal unit_price { get; set; }
+        public int option_id { get; set; }
+        public int product_id { get; set; }
     }
 }
