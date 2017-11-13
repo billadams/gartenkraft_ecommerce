@@ -36,8 +36,12 @@
   margin-bottom: 1.5rem;
 }
 .thumbnail-list .image-thumbnail {
-  float: left;
-  margin-right: 1rem;
+  /*float: left;
+    margin-right: 1rem;
+    width: 50px;*/
+}
+.item input[type="submit"] {
+  margin-top: 25px;
 }
 /*------------------------------------------------ FOOTER STYLES ------------------------------------------------ */
 .footer {

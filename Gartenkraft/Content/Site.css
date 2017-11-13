@@ -4,7 +4,7 @@
 }
 body {
   color: #666666;
-  padding-top: 50px;
+  /*padding-top: 50px;*/
 }
 /* Set padding to keep content from hitting the edges */
 .body-content {
@@ -22,6 +22,10 @@ input,
 select,
 textarea {
   max-width: 280px;
+}
+.body-content {
+  padding-bottom: 3rem;
+  /*margin-top: 3rem;*/
 }
 /*------------------------------------------------ NAVIGATION STYLES ------------------------------------------------ */
 nav {
@@ -152,8 +156,20 @@ footer #copyright {
   margin-bottom: 1em;
 }
 /*------------------------------------------------ PRODUCT LISTING STYLES ------------------------------------------------ */
+.thumbnail-list .image-thumbnail {
+  border: 1px solid #cccccc;
+  float: left;
+  height: 75px;
+  margin-right: 1rem;
+  padding: 2px;
+  width: 75px;
+}
 #quantity {
-  width: 50px;
+  /*width: 50px;*/
+}
+.price {
+  color: #333;
+  font-size: 1.5em;
 }
 /*------------------------------------------------ MEDIA QUERIES ------------------------------------------------ */
 @media (min-width: 768px) {
@@ -195,8 +211,12 @@ footer #copyright {
     margin-bottom: 1.5rem;
   }
   .thumbnail-list .image-thumbnail {
-    float: left;
+    /*float: left;
     margin-right: 1rem;
+    width: 50px;*/
+  }
+  .item input[type="submit"] {
+    margin-top: 25px;
   }
   /*------------------------------------------------ FOOTER STYLES ------------------------------------------------ */
   .footer {

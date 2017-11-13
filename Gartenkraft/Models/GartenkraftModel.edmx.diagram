@@ -23,7 +23,7 @@
         <EntityTypeShape EntityType="GartenkraftModel.vwFeaturedProduct" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="GartenkraftModel.vwInvoice" Width="1.5" PointX="9.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="GartenkraftModel.vwInvoice_Lineitem" Width="1.5" PointX="4.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="GartenkraftModel.vwProduct" Width="1.5" PointX="9.75" PointY="10.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="GartenkraftModel.vwProduct" Width="2" PointX="9.25" PointY="10.75" IsExpanded="true" />
         <EntityTypeShape EntityType="GartenkraftModel.vwProduct_Line" Width="1.5" PointX="11.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="GartenkraftModel.vwProduct_Option" Width="1.5" PointX="11.75" PointY="3.75" IsExpanded="true" />
         <AssociationConnector Association="GartenkraftModel.FK_tblBilling_Information_AspNetUsers" ManuallyRouted="false" />
