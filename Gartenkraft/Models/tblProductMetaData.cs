@@ -46,21 +46,23 @@ namespace Gartenkraft.Models
         [DisplayName("Product ID")]
         public int product_id { get; set; }
 
+        [Required]
         [DisplayName("Name")]
         public string product_name { get; set; }
 
+        [Required]
         [DisplayName("Short Desc")]
         public string product_short_description { get; set; }
 
+        [Required]
         [DisplayName("Long Desc")]
         public string product_long_description { get; set; }
 
+        [Required]
         [DisplayName("Category ID")]
         public int product_category_id { get; set; }
 
-        [DisplayName("Product Line ID")]
-        public int product_line_id { get; set; }
-
+        [Required]
         [DisplayName("Date Added")]
         [DisplayFormat(ApplyFormatInEditMode = false, DataFormatString = "{0:MM/dd/yyyy}")]
         public System.DateTime product_date_added { get; set; }

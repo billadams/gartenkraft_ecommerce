@@ -6,7 +6,7 @@ using System.Web;
 using System.Web.Mvc;
 using System.Xml.Linq;
 
-namespace ManufacturingCompany.Models
+namespace Gartenkraft.Models
 {
     public class XmlHelper
     {

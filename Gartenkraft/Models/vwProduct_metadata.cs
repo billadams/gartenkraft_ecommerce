@@ -29,7 +29,10 @@ namespace Gartenkraft.Models
         public void SetOption()
         {
             var db = new GartenkraftEntities();
-            this.SelectedOption = db.vwProduct_Option.Where(po => po.option_id == this.SelectedOptionID).Single();
+            // setting option for simple product
+            if (this.is_custom_product == false) { this.SelectedOption = db.vwProduct_Option.Where(po => po.product_id == this.product_id).Single(); }
+            // else custom product
+            else { this.SelectedOption = db.vwProduct_Option.Where(po => po.option_id == this.SelectedOptionID).Single(); }
             db.Dispose();
         }
 
@@ -76,6 +79,12 @@ namespace Gartenkraft.Models
 
         [Display(Name = "Long Description")]
         public string product_long_description { get; set; }
+
+        [Display(Name = "Category Name")]
+        public string category_name { get; set; }
+
+        [Display(Name = "Product Line Name")]
+        public string product_line_name { get; set; }
 
     }
 }

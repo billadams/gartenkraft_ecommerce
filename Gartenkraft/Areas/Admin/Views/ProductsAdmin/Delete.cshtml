@@ -69,11 +69,11 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.tblProduct_Line.product_line_name)
+            @Html.DisplayNameFor(model => model.tblProduct_Category.tblProduct_Line.product_line_name)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.tblProduct_Line.product_line_name)
+            @Html.DisplayFor(model => model.tblProduct_Category.tblProduct_Line.product_line_name)
         </dd>
 
         <dt>
@@ -94,11 +94,12 @@
 
     </dl>
 
-    @using (Html.BeginForm()) {
+    @using (Html.BeginForm())
+    {
         @Html.AntiForgeryToken()
 
         <div class="form-actions no-color">
-            <input type="submit" value="Delete" class="btn btn-danger" /> 
+            <input type="submit" value="Delete" class="btn btn-danger" />
             @Html.ActionLink("Back to List", "Index", null, htmlAttributes: new { @class = "btn btn-default" })
         </div>
     }

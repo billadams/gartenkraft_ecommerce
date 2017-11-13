@@ -17,11 +17,13 @@ namespace Gartenkraft.Areas.Admin.Controllers.AdminControllers
         // GET: Admin/ProductsAdmin
         public ActionResult Index()
         {
-            var tblProducts = db.tblProducts.Include(t => t.tblProduct_Line).Include(t => t.tblProduct_Category);
+            var tblProducts = db.tblProducts;
             foreach (var i in tblProducts) { i.SetPriceRange(); }
             ViewBag.Categories = db.tblProduct_Category.ToList();
             return View(tblProducts.ToList());
         }
+
+
 
         // GET: Admin/ProductsAdmin/Details/5
         public ActionResult Details(int? id)
@@ -42,8 +44,7 @@ namespace Gartenkraft.Areas.Admin.Controllers.AdminControllers
         // GET: Admin/ProductsAdmin/Create
         public ActionResult Create()
         {
-            ViewBag.product_line_id = new SelectList(db.tblProduct_Line, "product_line_id", "product_line_name");
-            ViewBag.product_category_id = new SelectList(db.tblProduct_Category, "category_id", "category_name");
+            ViewBag.product_category_id = new SelectList(db.tblProduct_Category.OrderBy(pc => pc.tblProduct_Line.product_line_id).OrderBy(pc => pc.category_name), "category_id", "category_name");
             return View();
         }
 
@@ -52,7 +53,7 @@ namespace Gartenkraft.Areas.Admin.Controllers.AdminControllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "product_id,product_name,product_short_description,product_long_description,product_unit_cost,product_unit_price,product_category_id,product_line_id,product_weight,product_date_added,soft_delete,is_visible")] tblProduct tblProduct)
+        public ActionResult Create([Bind(Include = "product_id,product_name,product_short_description,product_long_description,product_category_id,product_date_added")] tblProduct tblProduct)
         {
             if (ModelState.IsValid)
             {
@@ -61,8 +62,7 @@ namespace Gartenkraft.Areas.Admin.Controllers.AdminControllers
                 return RedirectToAction("Index");
             }
 
-            ViewBag.product_line_id = new SelectList(db.tblProduct_Line, "product_line_id", "product_line_name", tblProduct.product_line_id);
-            ViewBag.product_category_id = new SelectList(db.tblProduct_Category, "category_id", "category_name", tblProduct.product_category_id);
+            ViewBag.product_category_id = new SelectList(db.tblProduct_Category.OrderBy(pc => pc.tblProduct_Line.product_line_id).OrderBy(pc => pc.category_name), "category_id", "category_name", tblProduct.product_category_id);
             return View(tblProduct);
         }
 
@@ -78,8 +78,8 @@ namespace Gartenkraft.Areas.Admin.Controllers.AdminControllers
             {
                 return HttpNotFound();
             }
-            ViewBag.product_line_id = new SelectList(db.tblProduct_Line, "product_line_id", "product_line_name", tblProduct.product_line_id);
-            ViewBag.product_category_id = new SelectList(db.tblProduct_Category, "category_id", "category_name", tblProduct.product_category_id);
+                        
+            ViewBag.product_category_id = new SelectList(db.tblProduct_Category.OrderBy(pc => pc.tblProduct_Line.product_line_id).OrderBy(pc => pc.category_name), "category_id", "category_name", tblProduct.product_category_id);
             ViewBag.ProductImages = db.tblProduct_Image.Where(pi => pi.product_id == id).ToList();
             if (message != null)
             {
@@ -98,7 +98,7 @@ namespace Gartenkraft.Areas.Admin.Controllers.AdminControllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "product_id,product_name,product_short_description,product_long_description,product_category_id,product_line_id,product_date_added,soft_delete,is_visible,is_custom_product")] tblProduct tblProduct)
+        public ActionResult Edit([Bind(Include = "product_id,product_name,product_short_description,product_long_description,product_category_id,product_date_added,soft_delete,is_visible,is_custom_product")] tblProduct tblProduct)
         {
             string errorMessage = "";
             if (ModelState.IsValid)
@@ -117,8 +117,10 @@ namespace Gartenkraft.Areas.Admin.Controllers.AdminControllers
             }
             tblProduct.SetPriceRange();
             ViewBag.ErrorMessage = errorMessage;
-            ViewBag.product_line_id = new SelectList(db.tblProduct_Line, "product_line_id", "product_line_name", tblProduct.product_line_id);
-            ViewBag.product_category_id = new SelectList(db.tblProduct_Category, "category_id", "category_name", tblProduct.product_category_id);
+            var tblProducts = db.tblProducts;
+            foreach (var i in tblProducts) { i.SetPriceRange(); }
+                        
+            ViewBag.product_category_id = new SelectList(db.tblProduct_Category.OrderBy(pc => pc.tblProduct_Line.product_line_id).OrderBy(pc => pc.category_name), "category_id", "category_name", tblProduct.product_category_id);
             ViewBag.ProductImages = db.tblProduct_Image.Where(pi => pi.product_id == tblProduct.product_id).ToList();
             return View(tblProduct);
         }

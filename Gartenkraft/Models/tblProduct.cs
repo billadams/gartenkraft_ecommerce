@@ -29,7 +29,6 @@ namespace Gartenkraft.Models
         public string product_short_description { get; set; }
         public string product_long_description { get; set; }
         public int product_category_id { get; set; }
-        public int product_line_id { get; set; }
         public System.DateTime product_date_added { get; set; }
         public bool soft_delete { get; set; }
         public bool is_visible { get; set; }
@@ -43,7 +42,6 @@ namespace Gartenkraft.Models
         public virtual ICollection<tblProduct_Option> tblProduct_Option { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<tblProduct_Image> tblProduct_Image { get; set; }
-        public virtual tblProduct_Line tblProduct_Line { get; set; }
         public virtual tblProduct_Category tblProduct_Category { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<tblSales_Invoice_Lineitem> tblSales_Invoice_Lineitem { get; set; }

@@ -296,6 +296,7 @@
     <Compile Include="Models\vwProduct_Option.cs">
       <DependentUpon>GartenkraftModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\XmlHelper.cs" />
     <Compile Include="ViewModels\MenuModel.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Cart.cs" />
@@ -373,19 +374,19 @@
     <Content Include="Areas\Admin\Content\bootstrap-theme.min.css.map" />
     <Content Include="Areas\Admin\Content\bootstrap.css.map" />
     <Content Include="Areas\Admin\Content\bootstrap.min.css.map" />
-    <Content Include="Areas\Admin\Views\ProductsAdmin\Create.cshtml" />
-    <Content Include="Areas\Admin\Views\ProductsAdmin\Delete.cshtml" />
-    <Content Include="Areas\Admin\Views\ProductsAdmin\Details.cshtml" />
-    <Content Include="Areas\Admin\Views\ProductsAdmin\Edit.cshtml" />
-    <Content Include="Areas\Admin\Views\ProductsAdmin\Index.cshtml" />
-    <Content Include="Areas\Admin\Views\ProductsAdmin\CreateOption.cshtml" />
-    <Content Include="Areas\Admin\Views\ProductsAdmin\EditOption.cshtml" />
-    <Content Include="Areas\Admin\Views\ProductsAdmin\DeleteOption.cshtml" />
     <Content Include="Areas\Admin\Views\ProductLinesAdmin\Create.cshtml" />
     <Content Include="Areas\Admin\Views\ProductLinesAdmin\Delete.cshtml" />
     <Content Include="Areas\Admin\Views\ProductLinesAdmin\Details.cshtml" />
     <Content Include="Areas\Admin\Views\ProductLinesAdmin\Edit.cshtml" />
     <Content Include="Areas\Admin\Views\ProductLinesAdmin\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\ProductsAdmin\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\ProductsAdmin\Details.cshtml" />
+    <Content Include="Areas\Admin\Views\ProductsAdmin\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\ProductsAdmin\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\ProductsAdmin\Delete.cshtml" />
+    <Content Include="Areas\Admin\Views\ProductsAdmin\CreateOption.cshtml" />
+    <Content Include="Areas\Admin\Views\ProductsAdmin\EditOption.cshtml" />
+    <Content Include="Areas\Admin\Views\ProductsAdmin\DeleteOption.cshtml" />
     <None Include="Content\large.less" />
     <Content Include="Content\large.css">
       <DependentUpon>large.less</DependentUpon>

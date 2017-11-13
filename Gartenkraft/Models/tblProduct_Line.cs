@@ -17,7 +17,6 @@ namespace Gartenkraft.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public tblProduct_Line()
         {
-            this.tblProducts = new HashSet<tblProduct>();
             this.tblProduct_Category = new HashSet<tblProduct_Category>();
             this.tblProduct_Line_Image = new HashSet<tblProduct_Line_Image>();
         }
@@ -28,8 +27,6 @@ namespace Gartenkraft.Models
         public bool soft_delete { get; set; }
         public bool is_visible { get; set; }
     
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<tblProduct> tblProducts { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<tblProduct_Category> tblProduct_Category { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

@@ -70,7 +70,6 @@
           <Property Name="product_short_description" Type="varchar" MaxLength="100" Nullable="false" />
           <Property Name="product_long_description" Type="varchar(max)" Nullable="false" />
           <Property Name="product_category_id" Type="int" Nullable="false" />
-          <Property Name="product_line_id" Type="int" Nullable="false" />
           <Property Name="product_date_added" Type="datetime" Nullable="false" />
           <Property Name="soft_delete" Type="bit" Nullable="false" />
           <Property Name="is_visible" Type="bit" Nullable="false" />
@@ -297,21 +296,25 @@ warning 6002: The table/view 'gartenkraft.gkraft.vwProduct' does not have a prim
             <PropertyRef Name="product_name" />
             <PropertyRef Name="product_short_description" />
             <PropertyRef Name="product_long_description" />
-            <PropertyRef Name="product_category_id" />
-            <PropertyRef Name="product_line_id" />
             <PropertyRef Name="soft_delete" />
             <PropertyRef Name="is_visible" />
             <PropertyRef Name="is_custom_product" />
+            <PropertyRef Name="category_id" />
+            <PropertyRef Name="category_name" />
+            <PropertyRef Name="product_line_id" />
+            <PropertyRef Name="product_line_name" />
           </Key>
-          <Property Name="product_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="product_id" Type="int" Nullable="false" />
           <Property Name="product_name" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="product_short_description" Type="varchar" MaxLength="100" Nullable="false" />
           <Property Name="product_long_description" Type="varchar(max)" Nullable="false" />
-          <Property Name="product_category_id" Type="int" Nullable="false" />
-          <Property Name="product_line_id" Type="int" Nullable="false" />
           <Property Name="soft_delete" Type="bit" Nullable="false" />
           <Property Name="is_visible" Type="bit" Nullable="false" />
           <Property Name="is_custom_product" Type="bit" Nullable="false" />
+          <Property Name="category_id" Type="int" Nullable="false" />
+          <Property Name="category_name" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="product_line_id" Type="int" Nullable="false" />
+          <Property Name="product_line_name" Type="varchar" MaxLength="100" Nullable="false" />
         </EntityType>
         <!--Errors Found During Generation:
 warning 6002: The table/view 'gartenkraft.gkraft.vwProduct_Line' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
@@ -429,20 +432,6 @@ warning 6002: The table/view 'gartenkraft.gkraft.vwProduct_Option' does not have
               <PropertyRef Name="product_line_id" />
             </Principal>
             <Dependent Role="tblProduct_Line_Image">
-              <PropertyRef Name="product_line_id" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_tblProduct_productLine">
-          <End Role="tblProduct_Line" Type="Self.tblProduct_Line" Multiplicity="1">
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Role="tblProduct" Type="Self.tblProduct" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="tblProduct_Line">
-              <PropertyRef Name="product_line_id" />
-            </Principal>
-            <Dependent Role="tblProduct">
               <PropertyRef Name="product_line_id" />
             </Dependent>
           </ReferentialConstraint>
@@ -643,11 +632,13 @@ warning 6002: The table/view 'gartenkraft.gkraft.vwProduct_Option' does not have
     [vwProduct].[product_name] AS [product_name], 
     [vwProduct].[product_short_description] AS [product_short_description], 
     [vwProduct].[product_long_description] AS [product_long_description], 
-    [vwProduct].[product_category_id] AS [product_category_id], 
-    [vwProduct].[product_line_id] AS [product_line_id], 
     [vwProduct].[soft_delete] AS [soft_delete], 
     [vwProduct].[is_visible] AS [is_visible], 
-    [vwProduct].[is_custom_product] AS [is_custom_product]
+    [vwProduct].[is_custom_product] AS [is_custom_product], 
+    [vwProduct].[category_id] AS [category_id], 
+    [vwProduct].[category_name] AS [category_name], 
+    [vwProduct].[product_line_id] AS [product_line_id], 
+    [vwProduct].[product_line_name] AS [product_line_name]
     FROM [gkraft].[vwProduct] AS [vwProduct]</DefiningQuery>
           </EntitySet>
           <EntitySet Name="vwProduct_Line" EntityType="Self.vwProduct_Line" store:Type="Views" store:Schema="gkraft">
@@ -694,10 +685,6 @@ warning 6002: The table/view 'gartenkraft.gkraft.vwProduct_Option' does not have
           <AssociationSet Name="FK_tblProduct_Line_Image_tblProduct_Line" Association="Self.FK_tblProduct_Line_Image_tblProduct_Line">
             <End Role="tblProduct_Line" EntitySet="tblProduct_Line" />
             <End Role="tblProduct_Line_Image" EntitySet="tblProduct_Line_Image" />
-          </AssociationSet>
-          <AssociationSet Name="FK_tblProduct_productLine" Association="Self.FK_tblProduct_productLine">
-            <End Role="tblProduct_Line" EntitySet="tblProduct_Line" />
-            <End Role="tblProduct" EntitySet="tblProduct" />
           </AssociationSet>
           <AssociationSet Name="FK_tblProduct_tblProduct_Category" Association="Self.FK_tblProduct_tblProduct_Category">
             <End Role="tblProduct_Category" EntitySet="tblProduct_Category" />
@@ -809,7 +796,6 @@ warning 6002: The table/view 'gartenkraft.gkraft.vwProduct_Option' does not have
           <Property Name="product_short_description" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="product_long_description" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="product_category_id" Type="Int32" Nullable="false" />
-          <Property Name="product_line_id" Type="Int32" Nullable="false" />
           <Property Name="product_date_added" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="soft_delete" Type="Boolean" Nullable="false" />
           <Property Name="is_visible" Type="Boolean" Nullable="false" />
@@ -818,7 +804,6 @@ warning 6002: The table/view 'gartenkraft.gkraft.vwProduct_Option' does not have
           <NavigationProperty Name="tblInventories" Relationship="Self.FK_tblInventory_tblProduct" FromRole="tblProduct" ToRole="tblInventory" />
           <NavigationProperty Name="tblProduct_Option" Relationship="Self.FK_Product_ID" FromRole="tblProduct" ToRole="tblProduct_Option" />
           <NavigationProperty Name="tblProduct_Image" Relationship="Self.FK_tblProduct_Image_tblProduct" FromRole="tblProduct" ToRole="tblProduct_Image" />
-          <NavigationProperty Name="tblProduct_Line" Relationship="Self.FK_tblProduct_productLine" FromRole="tblProduct" ToRole="tblProduct_Line" />
           <NavigationProperty Name="tblProduct_Category" Relationship="Self.FK_tblProduct_tblProduct_Category" FromRole="tblProduct" ToRole="tblProduct_Category" />
           <NavigationProperty Name="tblSales_Invoice_Lineitem" Relationship="Self.FK_tblSales_Invoice_Lineitem_tblProduct" FromRole="tblProduct" ToRole="tblSales_Invoice_Lineitem" />
         </EntityType>
@@ -863,7 +848,6 @@ warning 6002: The table/view 'gartenkraft.gkraft.vwProduct_Option' does not have
           <Property Name="date_added" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="soft_delete" Type="Boolean" Nullable="false" />
           <Property Name="is_visible" Type="Boolean" Nullable="false" />
-          <NavigationProperty Name="tblProducts" Relationship="Self.FK_tblProduct_productLine" FromRole="tblProduct_Line" ToRole="tblProduct" />
           <NavigationProperty Name="tblProduct_Category" Relationship="Self.FK_tblProduct_Category_tblProductLine" FromRole="tblProduct_Line" ToRole="tblProduct_Category" />
           <NavigationProperty Name="tblProduct_Line_Image" Relationship="Self.FK_tblProduct_Line_Image_tblProduct_Line" FromRole="tblProduct_Line" ToRole="tblProduct_Line_Image" />
         </EntityType>
@@ -1051,21 +1035,25 @@ warning 6002: The table/view 'gartenkraft.gkraft.vwProduct_Option' does not have
             <PropertyRef Name="product_name" />
             <PropertyRef Name="product_short_description" />
             <PropertyRef Name="product_long_description" />
-            <PropertyRef Name="product_category_id" />
-            <PropertyRef Name="product_line_id" />
             <PropertyRef Name="soft_delete" />
             <PropertyRef Name="is_visible" />
             <PropertyRef Name="is_custom_product" />
+            <PropertyRef Name="category_id" />
+            <PropertyRef Name="category_name" />
+            <PropertyRef Name="product_line_id" />
+            <PropertyRef Name="product_line_name" />
           </Key>
-          <Property Name="product_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="product_id" Type="Int32" Nullable="false" />
           <Property Name="product_name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="product_short_description" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="product_long_description" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="product_category_id" Type="Int32" Nullable="false" />
-          <Property Name="product_line_id" Type="Int32" Nullable="false" />
           <Property Name="soft_delete" Type="Boolean" Nullable="false" />
           <Property Name="is_visible" Type="Boolean" Nullable="false" />
           <Property Name="is_custom_product" Type="Boolean" Nullable="false" />
+          <Property Name="category_id" Type="Int32" Nullable="false" />
+          <Property Name="category_name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="product_line_id" Type="Int32" Nullable="false" />
+          <Property Name="product_line_name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
         </EntityType>
         <EntityType Name="vwProduct_Line">
           <Key>
@@ -1196,20 +1184,6 @@ warning 6002: The table/view 'gartenkraft.gkraft.vwProduct_Option' does not have
             </Principal>
             <Dependent Role="tblProduct_Image">
               <PropertyRef Name="product_id" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_tblProduct_productLine">
-          <End Role="tblProduct_Line" Type="Self.tblProduct_Line" Multiplicity="1">
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Role="tblProduct" Type="Self.tblProduct" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="tblProduct_Line">
-              <PropertyRef Name="product_line_id" />
-            </Principal>
-            <Dependent Role="tblProduct">
-              <PropertyRef Name="product_line_id" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -1355,10 +1329,6 @@ warning 6002: The table/view 'gartenkraft.gkraft.vwProduct_Option' does not have
             <End Role="tblProduct" EntitySet="tblProducts" />
             <End Role="tblProduct_Image" EntitySet="tblProduct_Image" />
           </AssociationSet>
-          <AssociationSet Name="FK_tblProduct_productLine" Association="Self.FK_tblProduct_productLine">
-            <End Role="tblProduct_Line" EntitySet="tblProduct_Line" />
-            <End Role="tblProduct" EntitySet="tblProducts" />
-          </AssociationSet>
           <AssociationSet Name="FK_tblProduct_tblProduct_Category" Association="Self.FK_tblProduct_tblProduct_Category">
             <End Role="tblProduct_Category" EntitySet="tblProduct_Category" />
             <End Role="tblProduct" EntitySet="tblProducts" />
@@ -1462,7 +1432,6 @@ warning 6002: The table/view 'gartenkraft.gkraft.vwProduct_Option' does not have
                 <ScalarProperty Name="product_short_description" ColumnName="product_short_description" />
                 <ScalarProperty Name="product_long_description" ColumnName="product_long_description" />
                 <ScalarProperty Name="product_category_id" ColumnName="product_category_id" />
-                <ScalarProperty Name="product_line_id" ColumnName="product_line_id" />
                 <ScalarProperty Name="product_date_added" ColumnName="product_date_added" />
                 <ScalarProperty Name="soft_delete" ColumnName="soft_delete" />
                 <ScalarProperty Name="is_visible" ColumnName="is_visible" />
@@ -1655,11 +1624,13 @@ warning 6002: The table/view 'gartenkraft.gkraft.vwProduct_Option' does not have
                 <ScalarProperty Name="product_name" ColumnName="product_name" />
                 <ScalarProperty Name="product_short_description" ColumnName="product_short_description" />
                 <ScalarProperty Name="product_long_description" ColumnName="product_long_description" />
-                <ScalarProperty Name="product_category_id" ColumnName="product_category_id" />
-                <ScalarProperty Name="product_line_id" ColumnName="product_line_id" />
                 <ScalarProperty Name="soft_delete" ColumnName="soft_delete" />
                 <ScalarProperty Name="is_visible" ColumnName="is_visible" />
                 <ScalarProperty Name="is_custom_product" ColumnName="is_custom_product" />
+                <ScalarProperty Name="category_id" ColumnName="category_id" />
+                <ScalarProperty Name="category_name" ColumnName="category_name" />
+                <ScalarProperty Name="product_line_id" ColumnName="product_line_id" />
+                <ScalarProperty Name="product_line_name" ColumnName="product_line_name" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
