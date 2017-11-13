@@ -10,6 +10,7 @@
 .navbar-inverse .navbar-callapse, .navbar-inverse .navbar-form{
     background-color: green;
 }
+
 .navbar.navbar-inverse.navbar-fixed-top{
     background-image: linear-gradient(to bottom, #3c763d 0%, #81d643 100%);
     border-color: #5cc75c;
