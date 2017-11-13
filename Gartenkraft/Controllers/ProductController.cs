@@ -27,7 +27,7 @@ namespace Gartenkraft.Controllers
         {
             var prodByCategory = db.vwProducts.Where(p => p.category_id == categoryID).ToList();
             foreach (var p in prodByCategory) { p.SetPriceRange(); }
-            ViewBag.CategoryName = (string)db.vwCategories.Where(c => c.category_id == categoryID).Single().category_name;
+            ViewBag.CategoryName = (string)db.vwCategories.Single(c => c.category_id == categoryID).category_name;
             return View(prodByCategory);
         }
 
