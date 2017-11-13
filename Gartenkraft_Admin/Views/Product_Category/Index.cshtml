@@ -12,11 +12,12 @@
     at Html.ActionLink("Add a New Category", "Create")
 </p> -->
 
+@*
 <div class="pull-right">
     <div class="btn-group">
-        <a class="btn btn-danger" href="@Url.Action("Create")"><em class="fa fa-plus"></em> Add</a>
+        <a class="btn btn-danger" href="@Url.Action("Create")"><em class="fa fa-plus"></em>Add</a>
     </div>
-</div>
+</div>*@
 
 
 <table class="table">
@@ -53,18 +54,18 @@
 
         <!-- Tim H added the following <td> and commented the <td> following it -->
 
-        <td align="center">
-            <a class="btn btn-default" href="@Url.Action("Edit", new { id = item.category_id })"><em class="fa fa-pencil"></em></a>
-            <a class="btn btn-danger" href="@Url.Action("Details", new { id = item.category_id, @class = "btn btn-link" })"><em class="fa fa-eye"></em></a>
-            <a class="btn btn-danger" id="deletecategory" href="@Url.Action("Delete", new { id = item.category_id, @class = "btn btn-link" })"><em class="fa fa-trash"></em></a>
-        </td>
+        @*<td align="center">
+        <a class="btn btn-default" href="@Url.Action("Edit", new { id = item.category_id })"><em class="fa fa-pencil"></em></a>
+        <a class="btn btn-danger" href="@Url.Action("Details", new { id = item.category_id, @class = "btn btn-link" })"><em class="fa fa-eye"></em></a>
+        <a class="btn btn-danger" id="deletecategory" href="@Url.Action("Delete", new { id = item.category_id, @class = "btn btn-link" })"><em class="fa fa-trash"></em></a>
+        </td> *@
 
 
-        @*<td>
+        <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.category_id }) |
             @Html.ActionLink("Details", "Details", new { id=item.category_id }) |
             @Html.ActionLink("Delete", "Delete", new { id=item.category_id })
-        </td> *@
+        </td> 
     </tr>
 }
 
