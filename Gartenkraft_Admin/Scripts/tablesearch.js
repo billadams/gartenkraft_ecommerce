@@ -71,6 +71,7 @@
             }
         });
         //delete product alert --------------------search
+        /*  Commented by Tim H
         $(function(){
             $("#deleteproduct").click(function (event) {
                 event.preventDefault();
@@ -102,8 +103,8 @@
             if (tableRowsClass.children(':visible').length == 0) {
                 tableBody.append('<tr class="search-sf"><td class="text-muted" colspan="6">No entries found.</td></tr>');
             }
-        });
-        //delete category alert --------------------search Added by Tim H
+        });*/
+        //delete category alert --------------------search Added by Tim H , then commented by Tim H
         /*
         $(function () {
             $("#deletecategory").click(function (event) {
@@ -120,7 +121,7 @@
                     modal: true,
                     buttons: {
                         'Yes': function () {
-                            var url = '@Url.Action(""Delete", new { id = item.product_id, @class = "btn btn-link" })';
+                            var url = '@Url.Action(""Delete", new { id = item.category_id, @class = "btn btn-link" })';
                             $(this).dialog('close');
                             $.post(url, { categoryId: SelCat });
 
