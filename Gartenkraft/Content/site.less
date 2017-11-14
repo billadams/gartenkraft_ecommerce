@@ -4,6 +4,7 @@
 @dark-red: #b62d2d;
 
 @text-color: #666666;
+@link-color: #666666;
 
 html {
     position: relative;
@@ -36,6 +37,18 @@ textarea {
 .body-content {
     padding-bottom: 3rem;
     /*margin-top: 3rem;*/
+}
+a {
+    color: @link-color;
+}
+a:hover {
+    color: @link-color;
+}
+
+.product-short-description {
+    color: @dark-red;
+    font-size: 90%;
+    text-transform: uppercase;
 }
 
 /*------------------------------------------------ NAVIGATION STYLES ------------------------------------------------ */
@@ -155,6 +168,12 @@ footer #copyright {
 /*------------------------------------------------ CATEGORY PRODUCT STYLES ------------------------------------------------ */
 .items {
     /*margin-top: 20px;*/
+}
+.items a:hover {
+    text-decoration: none;
+}
+.items h3 {
+    margin-top: 0;
 }
 .item-list {
     /*list-style: none;

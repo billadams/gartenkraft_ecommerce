@@ -27,6 +27,17 @@ textarea {
   padding-bottom: 3rem;
   /*margin-top: 3rem;*/
 }
+a {
+  color: #666666;
+}
+a:hover {
+  color: #666666;
+}
+.product-short-description {
+  color: #b62d2d;
+  font-size: 90%;
+  text-transform: uppercase;
+}
 /*------------------------------------------------ NAVIGATION STYLES ------------------------------------------------ */
 nav {
   /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#519032+17,71bf44+100 */
@@ -140,6 +151,12 @@ footer #copyright {
 .items {
   /*margin-top: 20px;*/
 }
+.items a:hover {
+  text-decoration: none;
+}
+.items h3 {
+  margin-top: 0;
+}
 .item-list {
   /*list-style: none;
     padding-left: 0;*/
@@ -184,6 +201,15 @@ footer #copyright {
     color: #444444;
   }
   /*------------------------------------------------ CATEGORY PRODUCT STYLES ------------------------------------------------ */
+  .items .product-info {
+    padding: 15px;
+  }
+  .item a {
+    color: inherit;
+  }
+  .items a:hover {
+    opacity: .5;
+  }
   .item-list {
     align-items: stretch;
     display: flex;
@@ -192,16 +218,16 @@ footer #copyright {
   }
   .item-list li {
     border-bottom: none;
-    margin-bottom: 2.5rem;
+    /*margin-bottom: 2.5rem;
     padding-bottom: 15px;
     padding-top: 15px;
-    transition: box-shadow 0.3s ease-in-out;
+    transition: box-shadow 0.3s ease-in-out;*/
   }
   .item-list li:hover {
-    box-shadow: 0px 5px 15px #e7e7e7;
+    /*box-shadow: 0px 5px 15px #e7e7e7;*/
   }
   .item-list .info {
-    min-height: 325px;
+    /*min-height: 325px;*/
   }
   /*------------------------------------------------ PRODUCT LISTING STYLES ------------------------------------------------ */
   .item {
