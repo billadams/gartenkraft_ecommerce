@@ -27,13 +27,13 @@ namespace Gartenkraft.Controllers
         {
             var prodByCategory = db.vwProducts.Where(p => p.category_id == categoryID).ToList();
             foreach (var p in prodByCategory) { p.SetPriceRange(); }
-            ViewBag.CategoryName = (string)db.vwCategories.Single(c => c.category_id == categoryID).category_name;
+            ViewBag.CategoryName = (string)db.vwCategories.FirstOrDefault(c => c.category_id == categoryID).category_name;
             return View(prodByCategory);
         }
 
         public ActionResult View(int productID)
         {
-            var selectedProduct = db.vwProducts.Single(product => product.product_id == productID);
+            var selectedProduct = db.vwProducts.FirstOrDefault(product => product.product_id == productID);
             selectedProduct.SetPriceRange();
             return View(selectedProduct);
         }
