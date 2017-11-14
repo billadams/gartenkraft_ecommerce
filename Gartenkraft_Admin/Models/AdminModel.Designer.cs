@@ -1,4 +1,4 @@
-﻿// T4 code generation is enabled for model 'C:\Users\johns_a0t36nc\Source\Repos\gartenkraft_ecommerce\Gartenkraft_Admin\Models\AdminModel.edmx'. 
+﻿// T4 code generation is enabled for model 'C:\Users\ry604193\Source\Repos\gartenkraft_ecommerce\Gartenkraft_Admin\Models\AdminModel.edmx'. 
 // To enable legacy code generation, change the value of the 'Code Generation Strategy' designer
 // property to 'Legacy ObjectContext'. This property is available in the Properties Window when the model
 // is open in the designer.

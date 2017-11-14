@@ -12,24 +12,19 @@ namespace Gartenkraft_Admin.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class tblSales_Invoice
+    public partial class AspNetRole
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public tblSales_Invoice()
+        public AspNetRole()
         {
-            this.tblSales_Invoice_Lineitem = new HashSet<tblSales_Invoice_Lineitem>();
+            this.AspNetUsers = new HashSet<AspNetUser>();
         }
     
-        public int invoice_id { get; set; }
-        public System.DateTime invoice_date { get; set; }
-        public string customer_id { get; set; }
-        public Nullable<int> billing_id { get; set; }
-        public Nullable<int> shipping_id { get; set; }
+        public string Id { get; set; }
+        public string Name { get; set; }
+        public string Discriminator { get; set; }
     
-        public virtual AspNetUser AspNetUser { get; set; }
-        public virtual tblBilling_Information tblBilling_Information { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<tblSales_Invoice_Lineitem> tblSales_Invoice_Lineitem { get; set; }
-        public virtual tblShipping tblShipping { get; set; }
+        public virtual ICollection<AspNetUser> AspNetUsers { get; set; }
     }
 }

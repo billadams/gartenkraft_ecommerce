@@ -12,12 +12,13 @@ namespace Gartenkraft_Admin.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class tblProduct_Image
+    public partial class vwCategory
     {
-        public int product_image_id { get; set; }
-        public int product_id { get; set; }
-        public string product_image_name { get; set; }
-    
-        public virtual tblProduct tblProduct { get; set; }
+        public string category_name { get; set; }
+        public int category_id { get; set; }
+        public int category_product_line_id { get; set; }
+        public Nullable<bool> soft_delete { get; set; }
+        public Nullable<bool> is_visible { get; set; }
+        public string product_line_name { get; set; }
     }
 }

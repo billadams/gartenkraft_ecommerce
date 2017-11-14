@@ -12,16 +12,16 @@ namespace Gartenkraft_Admin.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class tblBilling_Information
+    public partial class vwInvoice
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public tblBilling_Information()
-        {
-            this.tblSales_Invoice = new HashSet<tblSales_Invoice>();
-        }
-    
-        public int billing_id { get; set; }
-        public string customer_id { get; set; }
+        public int invoice_id { get; set; }
+        public System.DateTime invoice_date { get; set; }
+        public string Email { get; set; }
+        public string PhoneNumber { get; set; }
+        public string UserName { get; set; }
+        public string FirstName { get; set; }
+        public string LastName { get; set; }
+        public string ImageFileName { get; set; }
         public string billing_address1 { get; set; }
         public string billing_address2 { get; set; }
         public string billing_city { get; set; }
@@ -29,9 +29,12 @@ namespace Gartenkraft_Admin.Models
         public string billing_zip { get; set; }
         public string billing_zip4 { get; set; }
         public string billing_country { get; set; }
-    
-        public virtual AspNetUser AspNetUser { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<tblSales_Invoice> tblSales_Invoice { get; set; }
+        public string shipping_address1 { get; set; }
+        public string shipping_address2 { get; set; }
+        public string shipping_city { get; set; }
+        public string shipping_state { get; set; }
+        public string shipping_zip { get; set; }
+        public string shipping_zip4 { get; set; }
+        public string shipping_country { get; set; }
     }
 }

@@ -33,6 +33,23 @@
         <AssociationConnector Association="GartenkraftAdminModel.FK_tblProduct_Line_Image_tblProduct_Line" ManuallyRouted="false" />
         <AssociationConnector Association="GartenkraftAdminModel.FK_tblSales_Invoice_Lineitem_tblSales_Invoice" ManuallyRouted="false" />
         <AssociationConnector Association="GartenkraftAdminModel.FK_tblSales_Invoice_tblShipping" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="GartenkraftAdminModel.C__MigrationHistory" Width="1.5" PointX="0.75" PointY="0.75" />
+        <EntityTypeShape EntityType="GartenkraftAdminModel.AspNetRole" Width="1.5" PointX="4.125" PointY="22.125" />
+        <EntityTypeShape EntityType="GartenkraftAdminModel.AspNetUserClaim" Width="1.5" PointX="8.625" PointY="22.375" />
+        <EntityTypeShape EntityType="GartenkraftAdminModel.AspNetUserLogin" Width="1.5" PointX="8.625" PointY="19.875" />
+        <EntityTypeShape EntityType="GartenkraftAdminModel.tblProduct_Option" Width="1.5" PointX="7.875" PointY="29.875" />
+        <EntityTypeShape EntityType="GartenkraftAdminModel.vwCategory" Width="1.5" PointX="2.75" PointY="0.75" />
+        <EntityTypeShape EntityType="GartenkraftAdminModel.vwCheckout" Width="1.5" PointX="0.75" PointY="3.75" />
+        <EntityTypeShape EntityType="GartenkraftAdminModel.vwFeaturedProduct" Width="1.5" PointX="2.75" PointY="3.75" />
+        <EntityTypeShape EntityType="GartenkraftAdminModel.vwInvoice" Width="1.5" PointX="10.75" PointY="0.75" />
+        <EntityTypeShape EntityType="GartenkraftAdminModel.vwInvoice_Lineitem" Width="1.5" PointX="10.75" PointY="6.75" />
+        <EntityTypeShape EntityType="GartenkraftAdminModel.vwProduct" Width="1.5" PointX="4.75" PointY="0.75" />
+        <EntityTypeShape EntityType="GartenkraftAdminModel.vwProduct_Line" Width="1.5" PointX="12.75" PointY="0.75" />
+        <EntityTypeShape EntityType="GartenkraftAdminModel.vwProduct_Option" Width="1.5" PointX="12.75" PointY="3.75" />
+        <AssociationConnector Association="GartenkraftAdminModel.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" />
+        <AssociationConnector Association="GartenkraftAdminModel.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" />
+        <AssociationConnector Association="GartenkraftAdminModel.FK_Product_ID" />
+        <AssociationConnector Association="GartenkraftAdminModel.AspNetUserRoles" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
