@@ -26,5 +26,21 @@
   {
     "outputFile": "Content/small.css",
     "inputFile": "Content/small.less"
+  },
+  {
+    "outputFile": "Areas/Admin/Content/site.css",
+    "inputFile": "Areas/Admin/Content/site.less"
+  },
+  {
+    "outputFile": "Areas/Admin/Content/medium.css",
+    "inputFile": "Areas/Admin/Content/medium.less"
+  },
+  {
+    "outputFile": "Areas/Admin/Content/large.css",
+    "inputFile": "Areas/Admin/Content/large.less"
+  },
+  {
+    "outputFile": "Areas/Admin/Content/extra-large.css",
+    "inputFile": "Areas/Admin/Content/extra-large.less"
   }
 ]

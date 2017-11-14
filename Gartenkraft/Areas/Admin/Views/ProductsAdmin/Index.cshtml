@@ -5,117 +5,97 @@
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
 }
 
-<div class="pull-right">
-    <div class="btn-group">
-        <a class="btn btn-success" href="@Url.Action("Create")"><em class="fa fa-plus"></em> Add</a>
-    </div>
-</div>
 
-<h2>Products</h2>
-
-@using (Html.BeginForm())
-{
-    @Html.AntiForgeryToken()
-    <div class="form-horizontal">
-        <div class="form-row">
-            <div class="form-group col-lg-12">
-                <label for="system-search" class="col-lg-1">Product</label>
-                <div class="col-lg-5">
-                    <input type="text" class="form-control" id="system-search" name="q" placeholder="Search for">
-                </div>
-
-                <label for="storeName" class="col-lg-1">Store</label>
-                <div class="col-lg-5">
-                    <select class="form-control form-control-lg" id="storeName">
-                        @foreach (var item in (List<Gartenkraft.Models.tblProduct_Category>)ViewBag.Categories)
-                        {
-                            <option>@item.category_name</option>
-                        }
-
-                    </select>
-                </div>
-            </div>
-        </div>
-        <div class="form-row">
-            <div class="form-group col-lg-12">
-                <label for="categoryName" class="col-lg-1">Category</label>
-                <div class="col-lg-5">
-                    <select class="form-control form-control-lg" id="categoryName">
-                        @foreach (var item in (List<Gartenkraft.Models.tblProduct_Category>)ViewBag.Categories)
-                        {
-                            <option>@item.category_name</option>
-                        }
-                    </select>
-                </div>
-                <label for="manufacturer" class="col-sm-1">Manufacturer</label>
-                <div class="col-sm-5">
-                    <select class="form-control form-control-lg" id="manufacturer">
-                        <option>Large select</option>
-                    </select>
-                </div>
-            </div>
-        </div>
-        <div class="form-row ">
-            <div class="form-group col-lg-12">
-                <input type="submit" class="btn btn-primary" value="Filter" />
-            </div>
+    <div class="pull-right">
+        <div class="btn-group">
+            <a class="btn btn-danger" href="@Url.Action("Create")"><em class="fa fa-plus"></em> Add</a>
         </div>
     </div>
-}
 
-<div style="clear:both;">&nbsp;</div>
-
-<div class="table-responsive" style="min-height:500px;">
-    <table class="table table-list-search">
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.product_name)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.PriceRange)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.product_date_added)
-            </th>
-            <th class="text-center">
-                @Html.DisplayNameFor(model => model.soft_delete)
-            </th>
-            <th class="text-center">
-                @Html.DisplayNameFor(model => model.is_visible)
-            </th>
-            <th class="text-center">
-                @Html.DisplayNameFor(model => model.is_custom_product)
-            </th>
-            <th align="center"><em class="fa fa-cog"></em></th>
-        </tr>
-
-        @foreach (var item in Model)
+    <h2>Products</h2>
+    <div class="col-sm-12 col-md-12 well" id="content">
+        @using (Html.BeginForm())
         {
-            <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.product_name)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.PriceRange)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.product_date_added)
-                </td>
-                <td class="text-center">
-                    @Html.DisplayFor(modelItem => item.soft_delete)
-                </td>
-                <td class="text-center">
-                    @Html.DisplayFor(modelItem => item.is_visible)
-                </td>
-                <td class="text-center">
-                    @Html.DisplayFor(modelItem => item.is_custom_product)
-                </td>
-                <td align="center">
-                    <a class="btn btn-warning" href="@Url.Action("Edit", new { id = item.product_id })"><em class="fa fa-pencil"></em></a>
-                    <a class="btn btn-default" href="@Url.Action("Details", new { id = item.product_id})"><em class="fa fa-eye"></em></a>
-                    <a class="btn btn-danger" id="deleteproduct" href="@Url.Action("Delete", new { id = item.product_id})"><em class="fa fa-trash"></em></a>
-                </td>
-            </tr>
+            @Html.AntiForgeryToken()
+            <div class="form-horizontal">
+                <div class="form-row">
+                    <div class="form-group col-lg-12">
+                        <label for="system-search" class="col-lg-1">Product</label>
+                        <div class="col-lg-5">
+                            <input type="text" class="form-control" id="system-search" name="q" placeholder="Search for">
+                        </div>
+
+                        <label for="storeName" class="col-lg-1">Category</label>
+                        <div class="col-lg-5">
+                            <select class="form-control form-control-lg" id="storeName">
+                                @foreach (var item in (List<Gartenkraft.Models.tblProduct_Category>)ViewBag.Categories)
+                                {
+                                    <option>@item.category_name</option>
+                                }
+
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
         }
-    </table>
-</div>
+    </div>
+    <div class="col-sm-12 col-md-12 well" id="content">
+        <div style="clear:both;">&nbsp;</div>
+
+        <div class="table-responsive" style="min-height:500px;">
+            <table class="table table-list-search">
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.product_name)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.PriceRange)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.product_date_added)
+                    </th>
+                    <th class="text-center">
+                        @Html.DisplayNameFor(model => model.soft_delete)
+                    </th>
+                    <th class="text-center">
+                        @Html.DisplayNameFor(model => model.is_visible)
+                    </th>
+                    <th class="text-center">
+                        @Html.DisplayNameFor(model => model.is_custom_product)
+                    </th>
+                    <th align="center"><em class="fa fa-cog"></em></th>
+                </tr>
+
+                @foreach (var item in Model)
+            {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.product_name)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.PriceRange)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.product_date_added)
+                        </td>
+                        <td class="text-center">
+                            @Html.DisplayFor(modelItem => item.soft_delete)
+                        </td>
+                        <td class="text-center">
+                            @Html.DisplayFor(modelItem => item.is_visible)
+                        </td>
+                        <td class="text-center">
+                            @Html.DisplayFor(modelItem => item.is_custom_product)
+                        </td>
+                        <td align="center">
+                            <a class="btn btn-warning" href="@Url.Action("Edit", new { id = item.product_id })"><em class="fa fa-pencil"></em></a>
+                            <a class="btn btn-default" href="@Url.Action("Details", new { id = item.product_id})"><em class="fa fa-eye"></em></a>
+                            <a class="btn btn-danger" id="deleteproduct" href="@Url.Action("Delete", new { id = item.product_id})"><em class="fa fa-trash"></em></a>
+                        </td>
+                    </tr>
+                }
+            </table>
+        </div>
+    </div>
