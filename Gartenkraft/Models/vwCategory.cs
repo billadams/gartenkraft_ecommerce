@@ -19,5 +19,6 @@ namespace Gartenkraft.Models
         public int category_product_line_id { get; set; }
         public Nullable<bool> soft_delete { get; set; }
         public Nullable<bool> is_visible { get; set; }
+        public string product_line_name { get; set; }
     }
 }

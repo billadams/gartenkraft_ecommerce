@@ -17,22 +17,24 @@ namespace Gartenkraft.Controllers
         // GET: vwProducts
         public ActionResult Index()
         {
-            return View(db.vwProducts.Where(product => product.is_visible == true).ToList());
+            var products = db.vwProducts.Where(product => product.is_visible == true).ToList();
+            foreach (var p in products) { p.SetPriceRange(); }
+            return View(products);
         }
 
         // GET: vwProducts/ProductsByCategory
         public ActionResult ProductsByCategory(int categoryID)
         {
-            var prodByCategory = db.vwProducts.Where(p => p.product_category_id == categoryID).ToList();
-            foreach (var p in prodByCategory) { p.ProductImages = db.tblProduct_Image.Where(img => img.product_id == p.product_id).ToList(); }
-            ViewBag.CategoryName = (string)db.vwCategories.Where(c => c.category_id == categoryID).Single().category_name;
+            var prodByCategory = db.vwProducts.Where(p => p.category_id == categoryID).ToList();
+            foreach (var p in prodByCategory) { p.SetPriceRange(); }
+            ViewBag.CategoryName = (string)db.vwCategories.Single(c => c.category_id == categoryID).category_name;
             return View(prodByCategory);
         }
 
         public ActionResult View(int productID)
         {
             var selectedProduct = db.vwProducts.Single(product => product.product_id == productID);
-
+            selectedProduct.SetPriceRange();
             return View(selectedProduct);
         }
 

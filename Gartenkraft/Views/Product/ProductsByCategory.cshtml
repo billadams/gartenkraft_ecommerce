@@ -6,7 +6,7 @@
 
 <h2>@ViewBag.CategoryName</h2>
 
-<section class="items">
+<section class="items row">
     <ul class="item-list list-unstyled clearfix">
         
         @foreach (var item in Model)
@@ -23,9 +23,9 @@
                         <img src="http://via.placeholder.com/200x200" alt="Product Image" class="center-block img-responsive" />
                     }
                     <p class="text-muted">@item.product_short_description</p>
-                    <p>Price: @item.product_unit_price.ToString(("c"))</p>
+                    <p>Price: @item.PriceRange</p>
                 </div>
-                @Html.ActionLink("View Product", "View", "Product", new {productID = item.product_id}, new {@class = "btn btn-primary"})
+                @Html.ActionLink("Show details", "View", "Product", new {productID = item.product_id}, new {@class = "btn btn-primary"})
             </li>
         }
 

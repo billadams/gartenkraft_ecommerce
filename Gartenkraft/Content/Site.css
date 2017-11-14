@@ -3,8 +3,8 @@
   min-height: 100%;
 }
 body {
-  color: #444444;
-  padding-top: 50px;
+  color: #666666;
+  /*padding-top: 50px;*/
 }
 /* Set padding to keep content from hitting the edges */
 .body-content {
@@ -23,6 +23,10 @@ select,
 textarea {
   max-width: 280px;
 }
+.body-content {
+  padding-bottom: 3rem;
+  /*margin-top: 3rem;*/
+}
 /*------------------------------------------------ NAVIGATION STYLES ------------------------------------------------ */
 nav {
   /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#519032+17,71bf44+100 */
@@ -40,7 +44,7 @@ nav a {
   color: #ffffff;
 }
 nav a:hover {
-  color: #444444;
+  color: #666666;
 }
 .navbar .navbar-toggle .icon-bar {
   background-color: #ffffff;
@@ -53,8 +57,8 @@ nav a:hover {
   border-bottom-color: #ffffff;
 }
 .nav a:hover .caret {
-  border-top-color: #444444;
-  border-bottom-color: #444444;
+  border-top-color: #666666;
+  border-bottom-color: #666666;
 }
 .caret {
   display: inline-block;
@@ -152,8 +156,20 @@ footer #copyright {
   margin-bottom: 1em;
 }
 /*------------------------------------------------ PRODUCT LISTING STYLES ------------------------------------------------ */
+.thumbnail-list .image-thumbnail {
+  border: 1px solid #cccccc;
+  float: left;
+  height: 75px;
+  margin-right: 1rem;
+  padding: 2px;
+  width: 75px;
+}
 #quantity {
-  width: 50px;
+  /*width: 50px;*/
+}
+.price {
+  color: #333;
+  font-size: 1.5em;
 }
 /*------------------------------------------------ MEDIA QUERIES ------------------------------------------------ */
 @media (min-width: 768px) {
@@ -195,8 +211,12 @@ footer #copyright {
     margin-bottom: 1.5rem;
   }
   .thumbnail-list .image-thumbnail {
-    float: left;
+    /*float: left;
     margin-right: 1rem;
+    width: 50px;*/
+  }
+  .item input[type="submit"] {
+    margin-top: 25px;
   }
   /*------------------------------------------------ FOOTER STYLES ------------------------------------------------ */
   .footer {

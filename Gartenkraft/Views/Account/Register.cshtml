@@ -82,20 +82,14 @@
     <div class="form-group">
         @Html.LabelFor(m => m.Zip, new { @class = "col-md-2 control-label"})
         <div class="col-md-10">
-            @Html.TextBoxFor(m => m.Zip, new { @class = "form-control-zip", @placeholder = "Optional" })
-            @Html.TextBoxFor(m => m.Zip4, new { @class = "form-control-zip", @placeholder = "Optional" })
+            @Html.TextBoxFor(m => m.Zip, new { @class = "form-control col-md-8", @placeholder = "Optional" })
+            @*@Html.TextBoxFor(m => m.Zip4, new { @class = "form-control col-md-2", @placeholder = "Optional" })*@
         </div>
     </div>
     <div class="form-group">
         @Html.LabelFor(m => m.Country, new { @class = "col-md-2 control-label" })
         <div class="col-md-10">
             @Html.TextBoxFor(m => m.Country, new { @class = "form-control", @placeholder = "Optional" })
-        </div>
-    </div>
-    <div class="form-group">
-        @Html.LabelFor(m => m.ImageFileName, new { @class = "col-md-2 control-label" })
-        <div class="col-md-10">
-            @Html.TextBoxFor(m => m.ImageFileName, new { @class = "form-control", @placeholder = "Optional" })
         </div>
     </div>
 }

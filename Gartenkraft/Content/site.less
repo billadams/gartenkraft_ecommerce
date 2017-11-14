@@ -3,7 +3,7 @@
 @darker-red: #9c2727;
 @dark-red: #b62d2d;
 
-@text-color: #444444;
+@text-color: #666666;
 
 html {
     position: relative;
@@ -11,7 +11,7 @@ html {
 }
 body {
     color: @text-color;
-    padding-top: 50px;
+    /*padding-top: 50px;*/
 }
 
 /* Set padding to keep content from hitting the edges */
@@ -32,6 +32,10 @@ input,
 select,
 textarea {
     max-width: 280px;
+}
+.body-content {
+    padding-bottom: 3rem;
+    /*margin-top: 3rem;*/
 }
 
 /*------------------------------------------------ NAVIGATION STYLES ------------------------------------------------ */
@@ -168,8 +172,20 @@ footer #copyright {
     margin-bottom: 1em;
 }
 /*------------------------------------------------ PRODUCT LISTING STYLES ------------------------------------------------ */
+.thumbnail-list .image-thumbnail {
+    border: 1px solid #cccccc;
+    float: left;
+    height: 75px;
+    margin-right: 1rem;
+    padding: 2px;
+    width: 75px;
+}
 #quantity {
-    width: 50px;
+    /*width: 50px;*/
+}
+.price {
+    color: #333;
+    font-size: 1.5em;
 }
 
 /*------------------------------------------------ MEDIA QUERIES ------------------------------------------------ */

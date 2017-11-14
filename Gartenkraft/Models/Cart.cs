@@ -50,26 +50,13 @@ namespace Gartenkraft.Models
 
         public void UpdateItem(invoice_lineitem li)
         {
-            foreach (invoice_lineitem item in this.cartItems)
-            {
-                if (li.GetProduct().product_id == item.product_id)
-                {
-                    item.Set_lineitem_quantity(li.lineitem_quantity);
-                }
-            }
+            this.cartItems.Where(ci => ci.product_id == li.product_id).Single().Set_lineitem_quantity(li.lineitem_quantity);
             CalculateTotal();
         }
 
-        public void RemoveItem(invoice_lineitem li)
+        public void RemoveItem(int productID)
         {
-            foreach (invoice_lineitem item in this.cartItems)
-            {
-                if (li.GetProduct().product_id == item.product_id)
-                {
-                    li = item;
-                }
-            }
-            this.cartItems.Remove(li);
+            this.cartItems.Remove(this.cartItems.Where(ci => ci.product_id == productID).Single());
             CalculateTotal();
         }
 
