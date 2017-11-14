@@ -38,18 +38,5 @@ namespace Gartenkraft_Admin.Models
         public virtual DbSet<tblSales_Invoice> tblSales_Invoice { get; set; }
         public virtual DbSet<tblSales_Invoice_Lineitem> tblSales_Invoice_Lineitem { get; set; }
         public virtual DbSet<tblShipping> tblShippings { get; set; }
-        public virtual DbSet<C__MigrationHistory> C__MigrationHistory { get; set; }
-        public virtual DbSet<AspNetRole> AspNetRoles { get; set; }
-        public virtual DbSet<AspNetUserClaim> AspNetUserClaims { get; set; }
-        public virtual DbSet<AspNetUserLogin> AspNetUserLogins { get; set; }
-        public virtual DbSet<tblProduct_Option> tblProduct_Option { get; set; }
-        public virtual DbSet<vwCategory> vwCategories { get; set; }
-        public virtual DbSet<vwCheckout> vwCheckouts { get; set; }
-        public virtual DbSet<vwFeaturedProduct> vwFeaturedProducts { get; set; }
-        public virtual DbSet<vwInvoice> vwInvoices { get; set; }
-        public virtual DbSet<vwInvoice_Lineitem> vwInvoice_Lineitem { get; set; }
-        public virtual DbSet<vwProduct> vwProducts { get; set; }
-        public virtual DbSet<vwProduct_Line> vwProduct_Line { get; set; }
-        public virtual DbSet<vwProduct_Option> vwProduct_Option { get; set; }
     }
 }

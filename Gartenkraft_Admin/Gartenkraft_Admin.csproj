@@ -218,19 +218,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>AdminModel.edmx</DependentUpon>
     </Compile>
-    <Compile Include="Models\AspNetRole.cs">
-      <DependentUpon>AdminModel.tt</DependentUpon>
-    </Compile>
     <Compile Include="Models\AspNetUser.cs">
-      <DependentUpon>AdminModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\AspNetUserClaim.cs">
-      <DependentUpon>AdminModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\AspNetUserLogin.cs">
-      <DependentUpon>AdminModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\C__MigrationHistory.cs">
       <DependentUpon>AdminModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\IdentityModels.cs" />
@@ -265,9 +253,6 @@
     <Compile Include="Models\tblProduct_Line_Image.cs">
       <DependentUpon>AdminModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\tblProduct_Option.cs">
-      <DependentUpon>AdminModel.tt</DependentUpon>
-    </Compile>
     <Compile Include="Models\tblSales_Invoice.cs">
       <DependentUpon>AdminModel.tt</DependentUpon>
     </Compile>
@@ -275,30 +260,6 @@
       <DependentUpon>AdminModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\tblShipping.cs">
-      <DependentUpon>AdminModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\vwCategory.cs">
-      <DependentUpon>AdminModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\vwCheckout.cs">
-      <DependentUpon>AdminModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\vwFeaturedProduct.cs">
-      <DependentUpon>AdminModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\vwInvoice.cs">
-      <DependentUpon>AdminModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\vwInvoice_Lineitem.cs">
-      <DependentUpon>AdminModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\vwProduct.cs">
-      <DependentUpon>AdminModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\vwProduct_Line.cs">
-      <DependentUpon>AdminModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\vwProduct_Option.cs">
       <DependentUpon>AdminModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\XmlHelper.cs" />

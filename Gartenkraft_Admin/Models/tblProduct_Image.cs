@@ -11,13 +11,21 @@ namespace Gartenkraft_Admin.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+    using System.ComponentModel;
+    using System.ComponentModel.DataAnnotations.Schema;
+
     public partial class tblProduct_Image
     {
+        [Required]
+        [DisplayName("Product Image ID")]
         public int product_image_id { get; set; }
+        [Required]
+        [DisplayName("Product ID")]
         public int product_id { get; set; }
+        [Required]
+        [DisplayName("Image")]
         public string product_image_name { get; set; }
-    
         public virtual tblProduct tblProduct { get; set; }
     }
 }

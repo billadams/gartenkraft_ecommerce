@@ -11,7 +11,10 @@ namespace Gartenkraft_Admin.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+    using System.ComponentModel;
+    using System.ComponentModel.DataAnnotations.Schema;
+
     public partial class tblShipping
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -19,17 +22,34 @@ namespace Gartenkraft_Admin.Models
         {
             this.tblSales_Invoice = new HashSet<tblSales_Invoice>();
         }
-    
+        [Required]
+        [DisplayName("Shippin ID")]
         public int shipping_id { get; set; }
+        [Required]
+        [DisplayName("Customer ID")]
         public string customer_id { get; set; }
+        [Required]
+        [DisplayName("Shipping Address")]
         public string shipping_address1 { get; set; }
+        [DisplayFormat(ConvertEmptyStringToNull = true, NullDisplayText = "[Null]")]
+        [DisplayName("Shipping Address 2")]
         public string shipping_address2 { get; set; }
+        [Required]
+        [DisplayName("City")]
         public string shipping_city { get; set; }
+        [Required]
+        [DisplayName("State")]
         public string shipping_state { get; set; }
+        [Required]
+        [DisplayName("Zip")]
         public string shipping_zip { get; set; }
+        [DisplayFormat(ConvertEmptyStringToNull = true, NullDisplayText = "[Null]")]
+        [DisplayName("Four Diget Zip")]
         public string shipping_zip4 { get; set; }
+        [Required]
+        [DisplayName("Country")]
         public string shipping_country { get; set; }
-    
+
         public virtual AspNetUser AspNetUser { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<tblSales_Invoice> tblSales_Invoice { get; set; }
