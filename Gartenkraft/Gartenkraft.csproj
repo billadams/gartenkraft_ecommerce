@@ -321,8 +321,29 @@
     <Content Include="Areas\Admin\Content\bootstrap.css" />
     <Content Include="Areas\Admin\Content\bootstrap.min.css" />
     <Content Include="Areas\Admin\Content\dashboard.css" />
+    <Content Include="Areas\Admin\Content\extra-large.css">
+      <DependentUpon>extra-large.less</DependentUpon>
+    </Content>
+    <Content Include="Areas\Admin\Content\extra-large.min.css">
+      <DependentUpon>extra-large.css</DependentUpon>
+    </Content>
+    <Content Include="Areas\Admin\Content\large.css">
+      <DependentUpon>large.less</DependentUpon>
+    </Content>
+    <Content Include="Areas\Admin\Content\large.min.css">
+      <DependentUpon>large.css</DependentUpon>
+    </Content>
+    <Content Include="Areas\Admin\Content\medium.css">
+      <DependentUpon>medium.less</DependentUpon>
+    </Content>
+    <Content Include="Areas\Admin\Content\medium.min.css">
+      <DependentUpon>medium.css</DependentUpon>
+    </Content>
     <Content Include="Areas\Admin\Content\sidebar.css" />
     <Content Include="Areas\Admin\Content\Site.css" />
+    <Content Include="Areas\Admin\Content\site.min.css">
+      <DependentUpon>Site.css</DependentUpon>
+    </Content>
     <Content Include="Areas\Admin\Content\table.css" />
     <Content Include="Content\bootstrap\bootstrap.css">
       <DependentUpon>bootstrap.less</DependentUpon>
@@ -389,6 +410,10 @@
     <Content Include="Areas\Admin\Views\ProductsAdmin\CreateOption.cshtml" />
     <Content Include="Areas\Admin\Views\ProductsAdmin\EditOption.cshtml" />
     <Content Include="Areas\Admin\Views\ProductsAdmin\DeleteOption.cshtml" />
+    <Content Include="Areas\Admin\Content\medium.less" />
+    <Content Include="Areas\Admin\Content\large.less" />
+    <Content Include="Areas\Admin\Content\extra-large.less" />
+    <Content Include="Areas\Admin\Content\site.less" />
     <None Include="Content\large.less" />
     <Content Include="Content\large.css">
       <DependentUpon>large.less</DependentUpon>
