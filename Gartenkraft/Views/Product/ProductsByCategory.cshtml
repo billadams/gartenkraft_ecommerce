@@ -39,22 +39,22 @@
             </li>
 
 
-            @*<li class="col-md-4 text-center">
+            <li class="col-md-4 text-center">
                 <div class="info">
-                    <h3>@item.product_name</h3>
-                    @if (item.ProductImages.Count > 0)
+                    <h3>@product.product_name</h3>
+                    @if (product.ProductImages.Count > 0)
                     {
-                        <img src="@Url.Content("~/ProductImages/" + item.product_id + "/" + item.ProductImages.First().product_image_name)" alt="Product Image" class="center-block img-responsive"/>
+                        <img src="@Url.Content("~/ProductImages/" + product.product_id + "/" + product.ProductImages.First().product_image_name)" alt="Product Image" class="center-block img-responsive"/>
                     }
                     else
                     {
                         <img src="http://via.placeholder.com/200x200" alt="Product Image" class="center-block img-responsive"/>
                     }
-                    <p class="text-muted">@item.product_short_description</p>
-                    <p>Price: @item.PriceRange</p>
+                    <p class="text-muted">@product.product_short_description</p>
+                    <p>Price: @product.PriceRange</p>
                 </div>
-                @Html.ActionLink("Show details", "View", "Product", new {productID = item.product_id}, new {@class = "btn btn-primary"})
-            </li>*@
+                @Html.ActionLink("Show details", "View", "Product", new {productID = product.product_id}, new {@class = "btn btn-primary"})
+            </li>
         }
 
     </ul>

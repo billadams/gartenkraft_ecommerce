@@ -5,7 +5,7 @@
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Create Product Line</h2>
+<h2>Add a New Product Line</h2>
 
 @using (Html.BeginForm()) 
 {
@@ -55,5 +55,5 @@
 }
 
 <div>
-    @Html.ActionLink("Back to List", "Index", null, htmlAttributes: new { @class = "btn btn-default" })
+    <a class="btn btn-default" href="@Url.Action("Index")">Back to Product Line</a>
 </div>

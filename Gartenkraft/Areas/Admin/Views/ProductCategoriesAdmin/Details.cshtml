@@ -1,29 +1,30 @@
-﻿@model Gartenkraft.Models.tblProduct_Line
+﻿@model Gartenkraft.Models.tblProduct_Category
 
 @{
-    ViewBag.Title = "Details";
+    ViewBag.Title = "Category Details";
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Details for @Model.product_line_name</h2>
+<h2>Category Details for @Model.category_name</h2>
 
 <div>
     <hr />
     <dl class="dl-horizontal">
+        <!--Moved dt/dd pair that was at bottom of this dl to the top for consistency with Add a New Category.  Tim H-->
         <dt>
-            @Html.DisplayNameFor(model => model.product_line_name)
+            @Html.DisplayNameFor(model => model.tblProduct_Line.product_line_name)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.product_line_name)
+            @Html.DisplayFor(model => model.tblProduct_Line.product_line_name)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.date_added)
+            @Html.DisplayNameFor(model => model.category_name)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.date_added)
+            @Html.DisplayFor(model => model.category_name)
         </dd>
 
         <dt>
@@ -46,6 +47,6 @@
 </div>
 
 <p>
-    <a class="btn btn-warning" href="@Url.Action("Edit", new { id = Model.product_line_id })"><em class="fa fa-pencil"></em></a>
+    <a class="btn btn-warning" href="@Url.Action("Edit", new { id = Model.category_id })"><em class="fa fa-pencil"></em></a>
     <a class="btn btn-default" href="@Url.Action("Index")">Back to List</a>
 </p>
