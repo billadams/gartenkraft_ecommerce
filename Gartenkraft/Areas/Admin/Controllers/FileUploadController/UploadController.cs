@@ -37,7 +37,7 @@ namespace Gartenkraft.Areas.Admin.Controllers.FileUploadController
                     // check if name exist
                     if (db.tblProduct_Image.Where(pi => pi.product_image_name == file.FileName).SingleOrDefault() == null)
                     {
-                        var pImages = db.tblProduct_Image.ToList();
+                        var pImages = db.tblProduct_Image.Where(pi => pi.product_id == productID).ToList();
                         // check maximum of 5 images per product
                         if (pImages.Count < 5)
                         {

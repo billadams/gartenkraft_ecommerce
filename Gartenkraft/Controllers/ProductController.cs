@@ -33,7 +33,7 @@ namespace Gartenkraft.Controllers
 
         public ActionResult View(int productID)
         {
-            var selectedProduct = db.vwProducts.Single(product => product.product_id == productID);
+            var selectedProduct = db.vwProducts.Where(product => product.product_id == productID).SingleOrDefault();
             selectedProduct.SetPriceRange();
             return View(selectedProduct);
         }
