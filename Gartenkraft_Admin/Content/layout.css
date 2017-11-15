@@ -1,0 +1,17 @@
+﻿.page-body {
+     background-color: #f9fff7;
+}
+
+#content.col-sm-12.col-md-12.well{
+    background-color: white;
+    background-image: linear-gradient(to bottom, #fff 0%, #fff 100%);
+}
+
+.navbar-inverse .navbar-callapse, .navbar-inverse .navbar-form{
+    background-color: green;
+}
+
+.navbar.navbar-inverse.navbar-fixed-top{
+    background-image: linear-gradient(to bottom, #3c763d 0%, #81d643 100%);
+    border-color: #5cc75c;
+}

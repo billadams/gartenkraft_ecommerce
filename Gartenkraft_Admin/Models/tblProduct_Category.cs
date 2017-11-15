@@ -11,7 +11,10 @@ namespace Gartenkraft_Admin.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+    using System.ComponentModel;
+    using System.ComponentModel.DataAnnotations.Schema;
+
     public partial class tblProduct_Category
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -20,12 +23,23 @@ namespace Gartenkraft_Admin.Models
             this.tblProducts = new HashSet<tblProduct>();
             this.tblProduct_Category_Image = new HashSet<tblProduct_Category_Image>();
         }
-    
+        [Required]
+        [DisplayName("Category ID")]
         public int category_id { get; set; }
+        [Required]
+        [DisplayName("Produact ID")]
         public int category_product_line_id { get; set; }
+        [DisplayFormat(ConvertEmptyStringToNull = true, NullDisplayText = "[Null]")]
+        [DisplayName("Category Image ID")]
         public Nullable<int> category_image_id { get; set; }
+        [Required]
+        [DisplayName("Category ID")]
         public string category_name { get; set; }
+        [DisplayFormat(ConvertEmptyStringToNull = true, NullDisplayText = "[Null]")]
+        [DisplayName("Soft Delete")]
         public Nullable<bool> soft_delete { get; set; }
+        [DisplayFormat(ConvertEmptyStringToNull = true, NullDisplayText = "[Null]")]
+        [DisplayName("Visible")]
         public Nullable<bool> is_visible { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

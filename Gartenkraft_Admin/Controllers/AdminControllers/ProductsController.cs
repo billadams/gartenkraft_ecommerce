@@ -12,12 +12,13 @@ namespace Gartenkraft_Admin.Controllers.AdminControllers
 {
     public class ProductsController : Controller
     {
-        private gartenkraftAdminEntities db = new gartenkraftAdminEntities();
+        private GartenkraftAdminEntities db = new GartenkraftAdminEntities();
 
         // GET: Products
         public ActionResult Index()
         {
             var tblProducts = db.tblProducts.Include(t => t.tblProduct_Line).Include(t => t.tblProduct_Category);
+            ViewBag.Categories = db.tblProduct_Category.ToList();
             return View(tblProducts.ToList());
         }
 
@@ -64,7 +65,7 @@ namespace Gartenkraft_Admin.Controllers.AdminControllers
         }
 
         // GET: Products/Edit/5
-        public ActionResult Edit(int? id)
+        public ActionResult Edit(int? id, string message)
         {
             if (id == null)
             {
@@ -77,6 +78,11 @@ namespace Gartenkraft_Admin.Controllers.AdminControllers
             }
             ViewBag.product_line_id = new SelectList(db.tblProduct_Line, "product_line_id", "product_line_name", tblProduct.product_line_id);
             ViewBag.product_category_id = new SelectList(db.tblProduct_Category, "category_id", "category_name", tblProduct.product_category_id);
+            ViewBag.ProductImages = db.tblProduct_Image.Where(pi => pi.product_id == id).ToList();
+            if (message != null)
+            {
+                ViewBag.Message = message;
+            }
             return View(tblProduct);
         }
 
@@ -95,6 +101,7 @@ namespace Gartenkraft_Admin.Controllers.AdminControllers
             }
             ViewBag.product_line_id = new SelectList(db.tblProduct_Line, "product_line_id", "product_line_name", tblProduct.product_line_id);
             ViewBag.product_category_id = new SelectList(db.tblProduct_Category, "category_id", "category_name", tblProduct.product_category_id);
+            ViewBag.ProductImages = db.tblProduct_Image.Where(pi => pi.product_id == tblProduct.product_id).ToList();
             return View(tblProduct);
         }
 

@@ -18,10 +18,13 @@ namespace Gartenkraft {
 
             bundles.Add(new ScriptBundle("~/bundles/bootstrap").Include(
                       "~/Scripts/bootstrap.js",
-                      "~/Scripts/respond.js"));
+                      "~/Scripts/respond.js",
+                      "~/Scripts/jquery.bcSwipe.js",
+                      "~/Scripts/toTop.js"));
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
-                      "~/Content/bootstrap.css",
+                      "~/Content/bootstrap/bootstrap.min.css",
+                      "~/Content/bootstrap/theme.min.css",
                       "~/Content/site.css"));
         }
     }

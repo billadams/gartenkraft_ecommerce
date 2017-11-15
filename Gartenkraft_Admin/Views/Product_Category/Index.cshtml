@@ -1,20 +1,19 @@
 ﻿@model IEnumerable<Gartenkraft_Admin.Models.tblProduct_Category>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Categories";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Index</h2>
+<h2>Categories</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("Add a New Category", "Create")
 </p>
+
+
 <table class="table">
     <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.category_image_id)
-        </th>
         <th>
             @Html.DisplayNameFor(model => model.category_name)
         </th>
@@ -32,9 +31,6 @@
 
 @foreach (var item in Model) {
     <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.category_image_id)
-        </td>
         <td>
             @Html.DisplayFor(modelItem => item.category_name)
         </td>

@@ -1,0 +1,58 @@
+﻿@model IEnumerable<Gartenkraft.Models.tblProduct_Category>
+
+@{
+    ViewBag.Title = "Categories";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<div class="pull-right">
+    <div class="btn-group">
+        <a class="btn btn-success" href="@Url.Action("Create")"><em class="fa fa-plus"></em> Add</a>
+    </div>
+</div>
+
+<h2>Categories</h2>
+
+<div class="col-sm-12 col-md-12 well" id="content">
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.category_name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.tblProduct_Line.product_line_name)
+            </th>
+            <th class="text-center">
+                @Html.DisplayNameFor(model => model.soft_delete)
+            </th>
+            <th class="text-center">
+                @Html.DisplayNameFor(model => model.is_visible)
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.category_name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.tblProduct_Line.product_line_name)
+                </td>
+                <td class="text-center">
+                    @Html.DisplayFor(modelItem => item.soft_delete)
+                </td>
+                <td class="text-center">
+                    @Html.DisplayFor(modelItem => item.is_visible)
+                </td>
+                <td align="center">
+                    <a class="btn btn-warning" href="@Url.Action("Edit", new { id = item.category_id })"><em class="fa fa-pencil"></em></a>
+                    <a class="btn btn-default" href="@Url.Action("Details", new { id = item.category_id})"><em class="fa fa-eye"></em></a>
+                    <a class="btn btn-danger" id="deleteproduct" href="@Url.Action("Delete", new { id = item.category_id})"><em class="fa fa-trash"></em></a>
+                </td>
+            </tr>
+        }
+
+    </table>
+</div>

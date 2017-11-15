@@ -1,0 +1,21 @@
+﻿@model Gartenkraft.ViewModels.MenuModel
+
+
+@foreach (var link in Model.ProductLines)
+{
+    <li class="dropdown">
+        <a href="@Url.Action("Menu", "Nav")" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">@link.product_line_name<span class="caret"></span></a>
+        <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+            @foreach (var sublink in link.Categories)
+            {
+                <li>
+                    @Html.ActionLink(sublink.category_name, "ProductsByCategory", "Product", new { categoryID = sublink.category_id }, new Dictionary<string, object> { { "class", "dropdown-toggle" }, { "data-toggle", "dropdown" }, { "aria-haspopup", "true" }, { "aria-expanded", "false" } })
+                </li>
+            }
+        </ul>
+    </li>
+}
+
+
+
+

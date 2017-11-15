@@ -11,7 +11,9 @@ namespace Gartenkraft_Admin.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+    using System.ComponentModel;
+    using System.ComponentModel.DataAnnotations.Schema;
     public partial class tblSales_Invoice
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -19,11 +21,22 @@ namespace Gartenkraft_Admin.Models
         {
             this.tblSales_Invoice_Lineitem = new HashSet<tblSales_Invoice_Lineitem>();
         }
-    
+        
+        [Required]
+        [DisplayName("Invoice ID")]
         public int invoice_id { get; set; }
+        [Required]
+        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:d}")]
+        [DisplayName("Invoice Date")]
         public System.DateTime invoice_date { get; set; }
+        [Required]
+        [DisplayName("Customer ID")]
         public string customer_id { get; set; }
+        [DisplayFormat(ConvertEmptyStringToNull = true, NullDisplayText = "[Null]")]
+        [DisplayName("Billing ID")]
         public Nullable<int> billing_id { get; set; }
+        [DisplayName("Shipping ID")]
+        [DisplayFormat(ConvertEmptyStringToNull = true, NullDisplayText = "[Null]")]
         public Nullable<int> shipping_id { get; set; }
     
         public virtual tblBilling_Information tblBilling_Information { get; set; }

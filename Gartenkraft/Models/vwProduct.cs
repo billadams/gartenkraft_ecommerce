@@ -18,10 +18,12 @@ namespace Gartenkraft.Models
         public string product_name { get; set; }
         public string product_short_description { get; set; }
         public string product_long_description { get; set; }
-        public decimal product_unit_price { get; set; }
-        public int product_category_id { get; set; }
+        public bool soft_delete { get; set; }
+        public bool is_visible { get; set; }
+        public bool is_custom_product { get; set; }
+        public int category_id { get; set; }
+        public string category_name { get; set; }
         public int product_line_id { get; set; }
-        public decimal product_weight { get; set; }
-        public Nullable<bool> is_visible { get; set; }
+        public string product_line_name { get; set; }
     }
 }

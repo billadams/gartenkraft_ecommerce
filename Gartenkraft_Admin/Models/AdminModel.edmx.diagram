@@ -4,31 +4,35 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="8a60d1df8fde41ca8671b152993ec84f" Name="Diagram1">
-        <EntityTypeShape EntityType="gartenkraftAdminModel.tblBilling_Information" Width="1.5" PointX="6" PointY="4.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="gartenkraftAdminModel.tblFeature_Product" Width="1.5" PointX="7.5" PointY="8.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="gartenkraftAdminModel.tblInventory" Width="1.5" PointX="7.5" PointY="10.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="gartenkraftAdminModel.tblProduct" Width="1.5" PointX="5.25" PointY="9.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="gartenkraftAdminModel.tblProduct_Category" Width="1.5" PointX="3" PointY="14.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="gartenkraftAdminModel.tblProduct_Category_Image" Width="1.5" PointX="5.25" PointY="14.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="gartenkraftAdminModel.tblProduct_Image" Width="1.5" PointX="7.5" PointY="13.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="gartenkraftAdminModel.tblProduct_Line" Width="1.5" PointX="0.75" PointY="8.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="gartenkraftAdminModel.tblProduct_Line_Image" Width="1.5" PointX="3" PointY="17.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="gartenkraftAdminModel.tblSales_Invoice" Width="1.5" PointX="8.25" PointY="2.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="gartenkraftAdminModel.tblSales_Invoice_Lineitem" Width="1.5" PointX="10.5" PointY="10.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="gartenkraftAdminModel.tblShipping" Width="1.5" PointX="6" PointY="17.875" IsExpanded="true" />
-        <AssociationConnector Association="gartenkraftAdminModel.FK_tblSales_Invoice_tblBilling" ManuallyRouted="false" />
-        <AssociationConnector Association="gartenkraftAdminModel.FproductFK" ManuallyRouted="false" />
-        <AssociationConnector Association="gartenkraftAdminModel.FK_tblInventory_tblProduct" ManuallyRouted="false" />
-        <AssociationConnector Association="gartenkraftAdminModel.FK_tblProduct_Image_tblProduct" ManuallyRouted="false" />
-        <AssociationConnector Association="gartenkraftAdminModel.FK_tblProduct_productLine" ManuallyRouted="false" />
-        <AssociationConnector Association="gartenkraftAdminModel.FK_tblProduct_tblProduct_Category" ManuallyRouted="false" />
-        <AssociationConnector Association="gartenkraftAdminModel.FK_tblSales_Invoice_Lineitem_tblProduct" ManuallyRouted="false" />
-        <AssociationConnector Association="gartenkraftAdminModel.FK_tblProduct_Category_Image_tblProduct_Category" ManuallyRouted="false" />
-        <AssociationConnector Association="gartenkraftAdminModel.FK_tblProduct_Category_tblProductLine" ManuallyRouted="false" />
-        <AssociationConnector Association="gartenkraftAdminModel.FK_tblProduct_Line_Image_tblProduct_Line" ManuallyRouted="false" />
-        <AssociationConnector Association="gartenkraftAdminModel.FK_tblSales_Invoice_Lineitem_tblSales_Invoice" ManuallyRouted="false" />
-        <AssociationConnector Association="gartenkraftAdminModel.FK_tblSales_Invoice_tblShipping" ManuallyRouted="false" />
+      <Diagram DiagramId="ddb128dbbfbe455e90cb78f4228e1404" Name="Diagram1">
+        <EntityTypeShape EntityType="GartenkraftAdminModel.AspNetUser" Width="1.5" PointX="6" PointY="18.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="GartenkraftAdminModel.tblBilling_Information" Width="1.5" PointX="6" PointY="5" IsExpanded="true" />
+        <EntityTypeShape EntityType="GartenkraftAdminModel.tblFeature_Product" Width="1.5" PointX="7.5" PointY="9.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="GartenkraftAdminModel.tblInventory" Width="1.5" PointX="7.5" PointY="12.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="GartenkraftAdminModel.tblProduct" Width="1.5" PointX="5.25" PointY="10.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="GartenkraftAdminModel.tblProduct_Category" Width="1.5" PointX="3" PointY="15.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="GartenkraftAdminModel.tblProduct_Category_Image" Width="1.5" PointX="5.25" PointY="16.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="GartenkraftAdminModel.tblProduct_Image" Width="1.5" PointX="7.5" PointY="14.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="GartenkraftAdminModel.tblProduct_Line" Width="1.5" PointX="0.75" PointY="9.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="GartenkraftAdminModel.tblProduct_Line_Image" Width="1.5" PointX="3" PointY="19.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="GartenkraftAdminModel.tblSales_Invoice" Width="1.5" PointX="8.25" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="GartenkraftAdminModel.tblSales_Invoice_Lineitem" Width="1.5" PointX="10.5" PointY="12" IsExpanded="true" />
+        <EntityTypeShape EntityType="GartenkraftAdminModel.tblShipping" Width="1.5" PointX="6" PointY="25.5" IsExpanded="true" />
+        <AssociationConnector Association="GartenkraftAdminModel.FK_tblBilling_Information_AspNetUsers" ManuallyRouted="false" />
+        <AssociationConnector Association="GartenkraftAdminModel.FK_tblSales_Invoice_AspNetUsers" ManuallyRouted="false" />
+        <AssociationConnector Association="GartenkraftAdminModel.FK_tblShipping_AspNetUsers" ManuallyRouted="false" />
+        <AssociationConnector Association="GartenkraftAdminModel.FK_tblSales_Invoice_tblBilling" ManuallyRouted="false" />
+        <AssociationConnector Association="GartenkraftAdminModel.FproductFK" ManuallyRouted="false" />
+        <AssociationConnector Association="GartenkraftAdminModel.FK_tblInventory_tblProduct" ManuallyRouted="false" />
+        <AssociationConnector Association="GartenkraftAdminModel.FK_tblProduct_Image_tblProduct" ManuallyRouted="false" />
+        <AssociationConnector Association="GartenkraftAdminModel.FK_tblProduct_productLine" ManuallyRouted="false" />
+        <AssociationConnector Association="GartenkraftAdminModel.FK_tblProduct_tblProduct_Category" ManuallyRouted="false" />
+        <AssociationConnector Association="GartenkraftAdminModel.FK_tblSales_Invoice_Lineitem_tblProduct" ManuallyRouted="false" />
+        <AssociationConnector Association="GartenkraftAdminModel.FK_tblProduct_Category_Image_tblProduct_Category" ManuallyRouted="false" />
+        <AssociationConnector Association="GartenkraftAdminModel.FK_tblProduct_Category_tblProductLine" ManuallyRouted="false" />
+        <AssociationConnector Association="GartenkraftAdminModel.FK_tblProduct_Line_Image_tblProduct_Line" ManuallyRouted="false" />
+        <AssociationConnector Association="GartenkraftAdminModel.FK_tblSales_Invoice_Lineitem_tblSales_Invoice" ManuallyRouted="false" />
+        <AssociationConnector Association="GartenkraftAdminModel.FK_tblSales_Invoice_tblShipping" ManuallyRouted="false" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

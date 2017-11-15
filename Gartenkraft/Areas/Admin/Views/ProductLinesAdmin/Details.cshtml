@@ -1,0 +1,51 @@
+﻿@model Gartenkraft.Models.tblProduct_Line
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details for @Model.product_line_name</h2>
+
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.product_line_name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.product_line_name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.date_added)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.date_added)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.soft_delete)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.soft_delete)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.is_visible)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.is_visible)
+        </dd>
+
+    </dl>
+</div>
+
+<p>
+    <a class="btn btn-warning" href="@Url.Action("Edit", new { id = Model.product_line_id })"><em class="fa fa-pencil"></em></a>
+    <a class="btn btn-default" href="@Url.Action("Index")">Back to List</a>
+</p>

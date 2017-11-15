@@ -1,0 +1,1787 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="GartenkraftModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="AspNetUsers">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="Email" Type="nvarchar" MaxLength="256" />
+          <Property Name="EmailConfirmed" Type="bit" Nullable="false" />
+          <Property Name="PasswordHash" Type="nvarchar(max)" />
+          <Property Name="SecurityStamp" Type="nvarchar(max)" />
+          <Property Name="PhoneNumber" Type="nvarchar(max)" />
+          <Property Name="PhoneNumberConfirmed" Type="bit" Nullable="false" />
+          <Property Name="TwoFactorEnabled" Type="bit" Nullable="false" />
+          <Property Name="LockoutEndDateUtc" Type="datetime" />
+          <Property Name="LockoutEnabled" Type="bit" Nullable="false" />
+          <Property Name="AccessFailedCount" Type="int" Nullable="false" />
+          <Property Name="UserName" Type="nvarchar" MaxLength="256" Nullable="false" />
+          <Property Name="FirstName" Type="nvarchar(max)" />
+          <Property Name="LastName" Type="nvarchar(max)" />
+          <Property Name="Address1" Type="nvarchar(max)" />
+          <Property Name="Address2" Type="nvarchar(max)" />
+          <Property Name="City" Type="nvarchar(max)" />
+          <Property Name="State" Type="nvarchar(max)" />
+          <Property Name="Zip" Type="nvarchar(max)" />
+          <Property Name="Zip4" Type="nvarchar(max)" />
+          <Property Name="Country" Type="nvarchar(max)" />
+          <Property Name="ImageFileName" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="tblBilling_Information">
+          <Key>
+            <PropertyRef Name="billing_id" />
+          </Key>
+          <Property Name="billing_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="customer_id" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="billing_address1" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="billing_address2" Type="varchar" MaxLength="100" />
+          <Property Name="billing_city" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="billing_state" Type="varchar(max)" Nullable="false" />
+          <Property Name="billing_zip" Type="varchar" MaxLength="5" Nullable="false" />
+          <Property Name="billing_zip4" Type="varchar" MaxLength="4" />
+          <Property Name="billing_country" Type="varchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tblFeature_Product">
+          <Key>
+            <PropertyRef Name="feature_id" />
+          </Key>
+          <Property Name="feature_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="product_id" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tblInventory">
+          <Key>
+            <PropertyRef Name="inventory_id" />
+          </Key>
+          <Property Name="inventory_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="product_id" Type="int" Nullable="false" />
+          <Property Name="inventory_quantity" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tblProduct">
+          <Key>
+            <PropertyRef Name="product_id" />
+          </Key>
+          <Property Name="product_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="product_name" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="product_short_description" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="product_long_description" Type="varchar(max)" Nullable="false" />
+          <Property Name="product_category_id" Type="int" Nullable="false" />
+          <Property Name="product_date_added" Type="datetime" Nullable="false" />
+          <Property Name="soft_delete" Type="bit" Nullable="false" />
+          <Property Name="is_visible" Type="bit" Nullable="false" />
+          <Property Name="is_custom_product" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tblProduct_Category">
+          <Key>
+            <PropertyRef Name="category_id" />
+          </Key>
+          <Property Name="category_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="category_product_line_id" Type="int" Nullable="false" />
+          <Property Name="category_name" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="soft_delete" Type="bit" Nullable="false" />
+          <Property Name="is_visible" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tblProduct_Category_Image">
+          <Key>
+            <PropertyRef Name="product_category_image_id" />
+          </Key>
+          <Property Name="product_category_image_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="product_category_id" Type="int" Nullable="false" />
+          <Property Name="product_category_image_name" Type="varchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tblProduct_Image">
+          <Key>
+            <PropertyRef Name="product_image_id" />
+          </Key>
+          <Property Name="product_image_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="product_id" Type="int" Nullable="false" />
+          <Property Name="product_image_name" Type="varchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tblProduct_Line">
+          <Key>
+            <PropertyRef Name="product_line_id" />
+          </Key>
+          <Property Name="product_line_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="product_line_name" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="date_added" Type="datetime" Nullable="false" />
+          <Property Name="soft_delete" Type="bit" Nullable="false" />
+          <Property Name="is_visible" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tblProduct_Line_Image">
+          <Key>
+            <PropertyRef Name="product_line_image_id" />
+          </Key>
+          <Property Name="product_line_image_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="product_line_id" Type="int" Nullable="false" />
+          <Property Name="product_line_image_name" Type="varchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tblProduct_Option">
+          <Key>
+            <PropertyRef Name="option_id" />
+          </Key>
+          <Property Name="title" Type="varchar" MaxLength="126" Nullable="false" />
+          <Property Name="weight" Type="decimal" Precision="6" Scale="2" Nullable="false" />
+          <Property Name="unit_cost" Type="decimal" Precision="6" Scale="2" Nullable="false" />
+          <Property Name="unit_price" Type="decimal" Precision="6" Scale="2" Nullable="false" />
+          <Property Name="product_id" Type="int" Nullable="false" />
+          <Property Name="option_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tblSales_Invoice">
+          <Key>
+            <PropertyRef Name="invoice_id" />
+          </Key>
+          <Property Name="invoice_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="invoice_date" Type="datetime" Nullable="false" />
+          <Property Name="customer_id" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="billing_id" Type="int" />
+          <Property Name="shipping_id" Type="int" />
+        </EntityType>
+        <EntityType Name="tblSales_Invoice_Lineitem">
+          <Key>
+            <PropertyRef Name="lineitem_id" />
+          </Key>
+          <Property Name="lineitem_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="product_id" Type="int" Nullable="false" />
+          <Property Name="lineitem_quantity" Type="int" Nullable="false" />
+          <Property Name="invoice_id" Type="int" Nullable="false" />
+          <Property Name="product_option_id" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tblShipping">
+          <Key>
+            <PropertyRef Name="shipping_id" />
+          </Key>
+          <Property Name="shipping_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="customer_id" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="shipping_address1" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="shipping_address2" Type="varchar" MaxLength="100" />
+          <Property Name="shipping_city" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="shipping_state" Type="varchar(max)" Nullable="false" />
+          <Property Name="shipping_zip" Type="varchar" MaxLength="5" Nullable="false" />
+          <Property Name="shipping_zip4" Type="varchar" MaxLength="4" />
+          <Property Name="shipping_country" Type="varchar(max)" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'gartenkraft.gkraft.vwCategory' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="vwCategory">
+          <Key>
+            <PropertyRef Name="category_name" />
+            <PropertyRef Name="category_id" />
+            <PropertyRef Name="category_product_line_id" />
+            <PropertyRef Name="product_line_name" />
+          </Key>
+          <Property Name="category_name" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="category_id" Type="int" Nullable="false" />
+          <Property Name="category_product_line_id" Type="int" Nullable="false" />
+          <Property Name="soft_delete" Type="bit" />
+          <Property Name="is_visible" Type="bit" />
+          <Property Name="product_line_name" Type="varchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'gartenkraft.gkraft.vwCheckout' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="vwCheckout">
+          <Key>
+            <PropertyRef Name="chkBillingAddress1" />
+            <PropertyRef Name="chkBillingCIty" />
+            <PropertyRef Name="chkBillingState" />
+            <PropertyRef Name="chkBillingZip" />
+            <PropertyRef Name="chkBillingCountry" />
+            <PropertyRef Name="chkShippingAddress1" />
+            <PropertyRef Name="chkShippingCity" />
+            <PropertyRef Name="chkShippingState" />
+            <PropertyRef Name="chkShippingZip" />
+            <PropertyRef Name="chkShippingCountry" />
+            <PropertyRef Name="chkInvoiceDate" />
+            <PropertyRef Name="chkInvoiceID" />
+          </Key>
+          <Property Name="chkBillingAddress1" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="chkBillingAddress2" Type="varchar" MaxLength="100" />
+          <Property Name="chkBillingCIty" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="chkBillingState" Type="varchar(max)" Nullable="false" />
+          <Property Name="chkBillingZip" Type="varchar" MaxLength="5" Nullable="false" />
+          <Property Name="chkBillingZip4" Type="varchar" MaxLength="4" />
+          <Property Name="chkBillingCountry" Type="varchar(max)" Nullable="false" />
+          <Property Name="chkShippingAddress1" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="chkShippingAddress2" Type="varchar" MaxLength="100" />
+          <Property Name="chkShippingCity" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="chkShippingState" Type="varchar(max)" Nullable="false" />
+          <Property Name="chkShippingZip" Type="varchar" MaxLength="5" Nullable="false" />
+          <Property Name="chkShippingZip4" Type="varchar" MaxLength="4" />
+          <Property Name="chkShippingCountry" Type="varchar(max)" Nullable="false" />
+          <Property Name="chkInvoiceDate" Type="datetime" Nullable="false" />
+          <Property Name="chkInvoiceID" Type="int" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'gartenkraft.gkraft.vwFeaturedProduct' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="vwFeaturedProduct">
+          <Key>
+            <PropertyRef Name="feature_id" />
+            <PropertyRef Name="product_id" />
+            <PropertyRef Name="product_name" />
+            <PropertyRef Name="product_short_description" />
+            <PropertyRef Name="product_long_description" />
+            <PropertyRef Name="category_name" />
+            <PropertyRef Name="product_line_name" />
+            <PropertyRef Name="soft_delete" />
+            <PropertyRef Name="is_visible" />
+            <PropertyRef Name="is_custom_product" />
+            <PropertyRef Name="product_line_id" />
+            <PropertyRef Name="category_id" />
+          </Key>
+          <Property Name="feature_id" Type="int" Nullable="false" />
+          <Property Name="product_id" Type="int" Nullable="false" />
+          <Property Name="product_name" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="product_short_description" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="product_long_description" Type="varchar(max)" Nullable="false" />
+          <Property Name="category_name" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="product_line_name" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="soft_delete" Type="bit" Nullable="false" />
+          <Property Name="is_visible" Type="bit" Nullable="false" />
+          <Property Name="is_custom_product" Type="bit" Nullable="false" />
+          <Property Name="product_line_id" Type="int" Nullable="false" />
+          <Property Name="category_id" Type="int" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'gartenkraft.gkraft.vwInvoice' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="vwInvoice">
+          <Key>
+            <PropertyRef Name="invoice_id" />
+            <PropertyRef Name="invoice_date" />
+            <PropertyRef Name="UserName" />
+            <PropertyRef Name="billing_address1" />
+            <PropertyRef Name="billing_city" />
+            <PropertyRef Name="billing_state" />
+            <PropertyRef Name="billing_zip" />
+            <PropertyRef Name="billing_country" />
+            <PropertyRef Name="shipping_address1" />
+            <PropertyRef Name="shipping_city" />
+            <PropertyRef Name="shipping_state" />
+            <PropertyRef Name="shipping_zip" />
+            <PropertyRef Name="shipping_country" />
+          </Key>
+          <Property Name="invoice_id" Type="int" Nullable="false" />
+          <Property Name="invoice_date" Type="datetime" Nullable="false" />
+          <Property Name="Email" Type="nvarchar" MaxLength="256" />
+          <Property Name="PhoneNumber" Type="nvarchar(max)" />
+          <Property Name="UserName" Type="nvarchar" MaxLength="256" Nullable="false" />
+          <Property Name="FirstName" Type="nvarchar(max)" />
+          <Property Name="LastName" Type="nvarchar(max)" />
+          <Property Name="ImageFileName" Type="nvarchar(max)" />
+          <Property Name="billing_address1" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="billing_address2" Type="varchar" MaxLength="100" />
+          <Property Name="billing_city" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="billing_state" Type="varchar(max)" Nullable="false" />
+          <Property Name="billing_zip" Type="varchar" MaxLength="5" Nullable="false" />
+          <Property Name="billing_zip4" Type="varchar" MaxLength="4" />
+          <Property Name="billing_country" Type="varchar(max)" Nullable="false" />
+          <Property Name="shipping_address1" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="shipping_address2" Type="varchar" MaxLength="100" />
+          <Property Name="shipping_city" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="shipping_state" Type="varchar(max)" Nullable="false" />
+          <Property Name="shipping_zip" Type="varchar" MaxLength="5" Nullable="false" />
+          <Property Name="shipping_zip4" Type="varchar" MaxLength="4" />
+          <Property Name="shipping_country" Type="varchar(max)" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'gartenkraft.gkraft.vwInvoice_Lineitem' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="vwInvoice_Lineitem">
+          <Key>
+            <PropertyRef Name="lineitem_id" />
+            <PropertyRef Name="invoice_id" />
+            <PropertyRef Name="product_id" />
+            <PropertyRef Name="product_name" />
+            <PropertyRef Name="product_short_description" />
+            <PropertyRef Name="product_long_description" />
+            <PropertyRef Name="is_custom_product" />
+            <PropertyRef Name="category_id" />
+            <PropertyRef Name="category_name" />
+            <PropertyRef Name="product_line_id" />
+            <PropertyRef Name="product_line_name" />
+            <PropertyRef Name="option_id" />
+            <PropertyRef Name="title" />
+            <PropertyRef Name="weight" />
+            <PropertyRef Name="unit_price" />
+          </Key>
+          <Property Name="lineitem_id" Type="int" Nullable="false" />
+          <Property Name="invoice_id" Type="int" Nullable="false" />
+          <Property Name="product_id" Type="int" Nullable="false" />
+          <Property Name="product_name" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="product_short_description" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="product_long_description" Type="varchar(max)" Nullable="false" />
+          <Property Name="is_custom_product" Type="bit" Nullable="false" />
+          <Property Name="category_id" Type="int" Nullable="false" />
+          <Property Name="category_name" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="product_line_id" Type="int" Nullable="false" />
+          <Property Name="product_line_name" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="option_id" Type="int" Nullable="false" />
+          <Property Name="title" Type="varchar" MaxLength="126" Nullable="false" />
+          <Property Name="weight" Type="decimal" Precision="6" Scale="2" Nullable="false" />
+          <Property Name="unit_price" Type="decimal" Precision="6" Scale="2" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'gartenkraft.gkraft.vwProduct' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="vwProduct">
+          <Key>
+            <PropertyRef Name="product_id" />
+            <PropertyRef Name="product_name" />
+            <PropertyRef Name="product_short_description" />
+            <PropertyRef Name="product_long_description" />
+            <PropertyRef Name="soft_delete" />
+            <PropertyRef Name="is_visible" />
+            <PropertyRef Name="is_custom_product" />
+            <PropertyRef Name="category_id" />
+            <PropertyRef Name="category_name" />
+            <PropertyRef Name="product_line_id" />
+            <PropertyRef Name="product_line_name" />
+          </Key>
+          <Property Name="product_id" Type="int" Nullable="false" />
+          <Property Name="product_name" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="product_short_description" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="product_long_description" Type="varchar(max)" Nullable="false" />
+          <Property Name="soft_delete" Type="bit" Nullable="false" />
+          <Property Name="is_visible" Type="bit" Nullable="false" />
+          <Property Name="is_custom_product" Type="bit" Nullable="false" />
+          <Property Name="category_id" Type="int" Nullable="false" />
+          <Property Name="category_name" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="product_line_id" Type="int" Nullable="false" />
+          <Property Name="product_line_name" Type="varchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'gartenkraft.gkraft.vwProduct_Line' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="vwProduct_Line">
+          <Key>
+            <PropertyRef Name="product_line_id" />
+            <PropertyRef Name="product_line_name" />
+            <PropertyRef Name="is_visible" />
+            <PropertyRef Name="soft_delete" />
+          </Key>
+          <Property Name="product_line_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="product_line_name" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="is_visible" Type="bit" Nullable="false" />
+          <Property Name="soft_delete" Type="bit" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'gartenkraft.gkraft.vwProduct_Option' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="vwProduct_Option">
+          <Key>
+            <PropertyRef Name="title" />
+            <PropertyRef Name="weight" />
+            <PropertyRef Name="unit_price" />
+            <PropertyRef Name="option_id" />
+            <PropertyRef Name="product_id" />
+          </Key>
+          <Property Name="title" Type="varchar" MaxLength="126" Nullable="false" />
+          <Property Name="weight" Type="decimal" Precision="6" Scale="2" Nullable="false" />
+          <Property Name="unit_price" Type="decimal" Precision="6" Scale="2" Nullable="false" />
+          <Property Name="option_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="product_id" Type="int" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_Product_ID">
+          <End Role="tblProduct" Type="Self.tblProduct" Multiplicity="1" />
+          <End Role="tblProduct_Option" Type="Self.tblProduct_Option" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblProduct">
+              <PropertyRef Name="product_id" />
+            </Principal>
+            <Dependent Role="tblProduct_Option">
+              <PropertyRef Name="product_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblBilling_Information_AspNetUsers">
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1" />
+          <End Role="tblBilling_Information" Type="Self.tblBilling_Information" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="tblBilling_Information">
+              <PropertyRef Name="customer_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblInventory_tblProduct">
+          <End Role="tblProduct" Type="Self.tblProduct" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="tblInventory" Type="Self.tblInventory" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblProduct">
+              <PropertyRef Name="product_id" />
+            </Principal>
+            <Dependent Role="tblInventory">
+              <PropertyRef Name="product_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblProduct_Category_Image_tblProduct_Category">
+          <End Role="tblProduct_Category" Type="Self.tblProduct_Category" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="tblProduct_Category_Image" Type="Self.tblProduct_Category_Image" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblProduct_Category">
+              <PropertyRef Name="category_id" />
+            </Principal>
+            <Dependent Role="tblProduct_Category_Image">
+              <PropertyRef Name="product_category_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblProduct_Category_tblProductLine">
+          <End Role="tblProduct_Line" Type="Self.tblProduct_Line" Multiplicity="1" />
+          <End Role="tblProduct_Category" Type="Self.tblProduct_Category" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblProduct_Line">
+              <PropertyRef Name="product_line_id" />
+            </Principal>
+            <Dependent Role="tblProduct_Category">
+              <PropertyRef Name="category_product_line_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblProduct_Image_tblProduct">
+          <End Role="tblProduct" Type="Self.tblProduct" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="tblProduct_Image" Type="Self.tblProduct_Image" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblProduct">
+              <PropertyRef Name="product_id" />
+            </Principal>
+            <Dependent Role="tblProduct_Image">
+              <PropertyRef Name="product_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblProduct_Line_Image_tblProduct_Line">
+          <End Role="tblProduct_Line" Type="Self.tblProduct_Line" Multiplicity="1" />
+          <End Role="tblProduct_Line_Image" Type="Self.tblProduct_Line_Image" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblProduct_Line">
+              <PropertyRef Name="product_line_id" />
+            </Principal>
+            <Dependent Role="tblProduct_Line_Image">
+              <PropertyRef Name="product_line_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblProduct_tblProduct_Category">
+          <End Role="tblProduct_Category" Type="Self.tblProduct_Category" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="tblProduct" Type="Self.tblProduct" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblProduct_Category">
+              <PropertyRef Name="category_id" />
+            </Principal>
+            <Dependent Role="tblProduct">
+              <PropertyRef Name="product_category_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblSales_Invoice_AspNetUsers">
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="tblSales_Invoice" Type="Self.tblSales_Invoice" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="tblSales_Invoice">
+              <PropertyRef Name="customer_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblSales_Invoice_Lineitem_tblProduct">
+          <End Role="tblProduct" Type="Self.tblProduct" Multiplicity="1" />
+          <End Role="tblSales_Invoice_Lineitem" Type="Self.tblSales_Invoice_Lineitem" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblProduct">
+              <PropertyRef Name="product_id" />
+            </Principal>
+            <Dependent Role="tblSales_Invoice_Lineitem">
+              <PropertyRef Name="product_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblSales_Invoice_Lineitem_tblSales_Invoice">
+          <End Role="tblSales_Invoice" Type="Self.tblSales_Invoice" Multiplicity="1" />
+          <End Role="tblSales_Invoice_Lineitem" Type="Self.tblSales_Invoice_Lineitem" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblSales_Invoice">
+              <PropertyRef Name="invoice_id" />
+            </Principal>
+            <Dependent Role="tblSales_Invoice_Lineitem">
+              <PropertyRef Name="invoice_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblSales_Invoice_tblBilling">
+          <End Role="tblBilling_Information" Type="Self.tblBilling_Information" Multiplicity="0..1" />
+          <End Role="tblSales_Invoice" Type="Self.tblSales_Invoice" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblBilling_Information">
+              <PropertyRef Name="billing_id" />
+            </Principal>
+            <Dependent Role="tblSales_Invoice">
+              <PropertyRef Name="billing_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblSales_Invoice_tblShipping">
+          <End Role="tblShipping" Type="Self.tblShipping" Multiplicity="0..1" />
+          <End Role="tblSales_Invoice" Type="Self.tblSales_Invoice" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblShipping">
+              <PropertyRef Name="shipping_id" />
+            </Principal>
+            <Dependent Role="tblSales_Invoice">
+              <PropertyRef Name="shipping_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblShipping_AspNetUsers">
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="tblShipping" Type="Self.tblShipping" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="tblShipping">
+              <PropertyRef Name="customer_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FproductFK">
+          <End Role="tblProduct" Type="Self.tblProduct" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="tblFeature_Product" Type="Self.tblFeature_Product" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblProduct">
+              <PropertyRef Name="product_id" />
+            </Principal>
+            <Dependent Role="tblFeature_Product">
+              <PropertyRef Name="product_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="GartenkraftModelStoreContainer">
+          <EntitySet Name="AspNetUsers" EntityType="Self.AspNetUsers" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblBilling_Information" EntityType="Self.tblBilling_Information" Schema="gkraft" store:Type="Tables" />
+          <EntitySet Name="tblFeature_Product" EntityType="Self.tblFeature_Product" Schema="gkraft" store:Type="Tables" />
+          <EntitySet Name="tblInventory" EntityType="Self.tblInventory" Schema="gkraft" store:Type="Tables" />
+          <EntitySet Name="tblProduct" EntityType="Self.tblProduct" Schema="gkraft" store:Type="Tables" />
+          <EntitySet Name="tblProduct_Category" EntityType="Self.tblProduct_Category" Schema="gkraft" store:Type="Tables" />
+          <EntitySet Name="tblProduct_Category_Image" EntityType="Self.tblProduct_Category_Image" Schema="gkraft" store:Type="Tables" />
+          <EntitySet Name="tblProduct_Image" EntityType="Self.tblProduct_Image" Schema="gkraft" store:Type="Tables" />
+          <EntitySet Name="tblProduct_Line" EntityType="Self.tblProduct_Line" Schema="gkraft" store:Type="Tables" />
+          <EntitySet Name="tblProduct_Line_Image" EntityType="Self.tblProduct_Line_Image" Schema="gkraft" store:Type="Tables" />
+          <EntitySet Name="tblProduct_Option" EntityType="Self.tblProduct_Option" Schema="gkraft" store:Type="Tables" />
+          <EntitySet Name="tblSales_Invoice" EntityType="Self.tblSales_Invoice" Schema="gkraft" store:Type="Tables" />
+          <EntitySet Name="tblSales_Invoice_Lineitem" EntityType="Self.tblSales_Invoice_Lineitem" Schema="gkraft" store:Type="Tables" />
+          <EntitySet Name="tblShipping" EntityType="Self.tblShipping" Schema="gkraft" store:Type="Tables" />
+          <EntitySet Name="vwCategory" EntityType="Self.vwCategory" store:Type="Views" store:Schema="gkraft">
+            <DefiningQuery>SELECT 
+    [vwCategory].[category_name] AS [category_name], 
+    [vwCategory].[category_id] AS [category_id], 
+    [vwCategory].[category_product_line_id] AS [category_product_line_id], 
+    [vwCategory].[soft_delete] AS [soft_delete], 
+    [vwCategory].[is_visible] AS [is_visible], 
+    [vwCategory].[product_line_name] AS [product_line_name]
+    FROM [gkraft].[vwCategory] AS [vwCategory]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="vwCheckout" EntityType="Self.vwCheckout" store:Type="Views" store:Schema="gkraft">
+            <DefiningQuery>SELECT 
+    [vwCheckout].[chkBillingAddress1] AS [chkBillingAddress1], 
+    [vwCheckout].[chkBillingAddress2] AS [chkBillingAddress2], 
+    [vwCheckout].[chkBillingCIty] AS [chkBillingCIty], 
+    [vwCheckout].[chkBillingState] AS [chkBillingState], 
+    [vwCheckout].[chkBillingZip] AS [chkBillingZip], 
+    [vwCheckout].[chkBillingZip4] AS [chkBillingZip4], 
+    [vwCheckout].[chkBillingCountry] AS [chkBillingCountry], 
+    [vwCheckout].[chkShippingAddress1] AS [chkShippingAddress1], 
+    [vwCheckout].[chkShippingAddress2] AS [chkShippingAddress2], 
+    [vwCheckout].[chkShippingCity] AS [chkShippingCity], 
+    [vwCheckout].[chkShippingState] AS [chkShippingState], 
+    [vwCheckout].[chkShippingZip] AS [chkShippingZip], 
+    [vwCheckout].[chkShippingZip4] AS [chkShippingZip4], 
+    [vwCheckout].[chkShippingCountry] AS [chkShippingCountry], 
+    [vwCheckout].[chkInvoiceDate] AS [chkInvoiceDate], 
+    [vwCheckout].[chkInvoiceID] AS [chkInvoiceID]
+    FROM [gkraft].[vwCheckout] AS [vwCheckout]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="vwFeaturedProduct" EntityType="Self.vwFeaturedProduct" store:Type="Views" store:Schema="gkraft">
+            <DefiningQuery>SELECT 
+    [vwFeaturedProduct].[feature_id] AS [feature_id], 
+    [vwFeaturedProduct].[product_id] AS [product_id], 
+    [vwFeaturedProduct].[product_name] AS [product_name], 
+    [vwFeaturedProduct].[product_short_description] AS [product_short_description], 
+    [vwFeaturedProduct].[product_long_description] AS [product_long_description], 
+    [vwFeaturedProduct].[category_name] AS [category_name], 
+    [vwFeaturedProduct].[product_line_name] AS [product_line_name], 
+    [vwFeaturedProduct].[soft_delete] AS [soft_delete], 
+    [vwFeaturedProduct].[is_visible] AS [is_visible], 
+    [vwFeaturedProduct].[is_custom_product] AS [is_custom_product], 
+    [vwFeaturedProduct].[product_line_id] AS [product_line_id], 
+    [vwFeaturedProduct].[category_id] AS [category_id]
+    FROM [gkraft].[vwFeaturedProduct] AS [vwFeaturedProduct]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="vwInvoice" EntityType="Self.vwInvoice" store:Type="Views" store:Schema="gkraft">
+            <DefiningQuery>SELECT 
+    [vwInvoice].[invoice_id] AS [invoice_id], 
+    [vwInvoice].[invoice_date] AS [invoice_date], 
+    [vwInvoice].[Email] AS [Email], 
+    [vwInvoice].[PhoneNumber] AS [PhoneNumber], 
+    [vwInvoice].[UserName] AS [UserName], 
+    [vwInvoice].[FirstName] AS [FirstName], 
+    [vwInvoice].[LastName] AS [LastName], 
+    [vwInvoice].[ImageFileName] AS [ImageFileName], 
+    [vwInvoice].[billing_address1] AS [billing_address1], 
+    [vwInvoice].[billing_address2] AS [billing_address2], 
+    [vwInvoice].[billing_city] AS [billing_city], 
+    [vwInvoice].[billing_state] AS [billing_state], 
+    [vwInvoice].[billing_zip] AS [billing_zip], 
+    [vwInvoice].[billing_zip4] AS [billing_zip4], 
+    [vwInvoice].[billing_country] AS [billing_country], 
+    [vwInvoice].[shipping_address1] AS [shipping_address1], 
+    [vwInvoice].[shipping_address2] AS [shipping_address2], 
+    [vwInvoice].[shipping_city] AS [shipping_city], 
+    [vwInvoice].[shipping_state] AS [shipping_state], 
+    [vwInvoice].[shipping_zip] AS [shipping_zip], 
+    [vwInvoice].[shipping_zip4] AS [shipping_zip4], 
+    [vwInvoice].[shipping_country] AS [shipping_country]
+    FROM [gkraft].[vwInvoice] AS [vwInvoice]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="vwInvoice_Lineitem" EntityType="Self.vwInvoice_Lineitem" store:Type="Views" store:Schema="gkraft">
+            <DefiningQuery>SELECT 
+    [vwInvoice_Lineitem].[lineitem_id] AS [lineitem_id], 
+    [vwInvoice_Lineitem].[invoice_id] AS [invoice_id], 
+    [vwInvoice_Lineitem].[product_id] AS [product_id], 
+    [vwInvoice_Lineitem].[product_name] AS [product_name], 
+    [vwInvoice_Lineitem].[product_short_description] AS [product_short_description], 
+    [vwInvoice_Lineitem].[product_long_description] AS [product_long_description], 
+    [vwInvoice_Lineitem].[is_custom_product] AS [is_custom_product], 
+    [vwInvoice_Lineitem].[category_id] AS [category_id], 
+    [vwInvoice_Lineitem].[category_name] AS [category_name], 
+    [vwInvoice_Lineitem].[product_line_id] AS [product_line_id], 
+    [vwInvoice_Lineitem].[product_line_name] AS [product_line_name], 
+    [vwInvoice_Lineitem].[option_id] AS [option_id], 
+    [vwInvoice_Lineitem].[title] AS [title], 
+    [vwInvoice_Lineitem].[weight] AS [weight], 
+    [vwInvoice_Lineitem].[unit_price] AS [unit_price]
+    FROM [gkraft].[vwInvoice_Lineitem] AS [vwInvoice_Lineitem]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="vwProduct" EntityType="Self.vwProduct" store:Type="Views" store:Schema="gkraft">
+            <DefiningQuery>SELECT 
+    [vwProduct].[product_id] AS [product_id], 
+    [vwProduct].[product_name] AS [product_name], 
+    [vwProduct].[product_short_description] AS [product_short_description], 
+    [vwProduct].[product_long_description] AS [product_long_description], 
+    [vwProduct].[soft_delete] AS [soft_delete], 
+    [vwProduct].[is_visible] AS [is_visible], 
+    [vwProduct].[is_custom_product] AS [is_custom_product], 
+    [vwProduct].[category_id] AS [category_id], 
+    [vwProduct].[category_name] AS [category_name], 
+    [vwProduct].[product_line_id] AS [product_line_id], 
+    [vwProduct].[product_line_name] AS [product_line_name]
+    FROM [gkraft].[vwProduct] AS [vwProduct]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="vwProduct_Line" EntityType="Self.vwProduct_Line" store:Type="Views" store:Schema="gkraft">
+            <DefiningQuery>SELECT 
+    [vwProduct_Line].[product_line_id] AS [product_line_id], 
+    [vwProduct_Line].[product_line_name] AS [product_line_name], 
+    [vwProduct_Line].[is_visible] AS [is_visible], 
+    [vwProduct_Line].[soft_delete] AS [soft_delete]
+    FROM [gkraft].[vwProduct_Line] AS [vwProduct_Line]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="vwProduct_Option" EntityType="Self.vwProduct_Option" store:Type="Views" store:Schema="gkraft">
+            <DefiningQuery>SELECT 
+    [vwProduct_Option].[title] AS [title], 
+    [vwProduct_Option].[weight] AS [weight], 
+    [vwProduct_Option].[unit_price] AS [unit_price], 
+    [vwProduct_Option].[option_id] AS [option_id], 
+    [vwProduct_Option].[product_id] AS [product_id]
+    FROM [gkraft].[vwProduct_Option] AS [vwProduct_Option]</DefiningQuery>
+          </EntitySet>
+          <AssociationSet Name="FK_Product_ID" Association="Self.FK_Product_ID">
+            <End Role="tblProduct" EntitySet="tblProduct" />
+            <End Role="tblProduct_Option" EntitySet="tblProduct_Option" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblBilling_Information_AspNetUsers" Association="Self.FK_tblBilling_Information_AspNetUsers">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="tblBilling_Information" EntitySet="tblBilling_Information" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblInventory_tblProduct" Association="Self.FK_tblInventory_tblProduct">
+            <End Role="tblProduct" EntitySet="tblProduct" />
+            <End Role="tblInventory" EntitySet="tblInventory" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblProduct_Category_Image_tblProduct_Category" Association="Self.FK_tblProduct_Category_Image_tblProduct_Category">
+            <End Role="tblProduct_Category" EntitySet="tblProduct_Category" />
+            <End Role="tblProduct_Category_Image" EntitySet="tblProduct_Category_Image" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblProduct_Category_tblProductLine" Association="Self.FK_tblProduct_Category_tblProductLine">
+            <End Role="tblProduct_Line" EntitySet="tblProduct_Line" />
+            <End Role="tblProduct_Category" EntitySet="tblProduct_Category" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblProduct_Image_tblProduct" Association="Self.FK_tblProduct_Image_tblProduct">
+            <End Role="tblProduct" EntitySet="tblProduct" />
+            <End Role="tblProduct_Image" EntitySet="tblProduct_Image" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblProduct_Line_Image_tblProduct_Line" Association="Self.FK_tblProduct_Line_Image_tblProduct_Line">
+            <End Role="tblProduct_Line" EntitySet="tblProduct_Line" />
+            <End Role="tblProduct_Line_Image" EntitySet="tblProduct_Line_Image" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblProduct_tblProduct_Category" Association="Self.FK_tblProduct_tblProduct_Category">
+            <End Role="tblProduct_Category" EntitySet="tblProduct_Category" />
+            <End Role="tblProduct" EntitySet="tblProduct" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblSales_Invoice_AspNetUsers" Association="Self.FK_tblSales_Invoice_AspNetUsers">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="tblSales_Invoice" EntitySet="tblSales_Invoice" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblSales_Invoice_Lineitem_tblProduct" Association="Self.FK_tblSales_Invoice_Lineitem_tblProduct">
+            <End Role="tblProduct" EntitySet="tblProduct" />
+            <End Role="tblSales_Invoice_Lineitem" EntitySet="tblSales_Invoice_Lineitem" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblSales_Invoice_Lineitem_tblSales_Invoice" Association="Self.FK_tblSales_Invoice_Lineitem_tblSales_Invoice">
+            <End Role="tblSales_Invoice" EntitySet="tblSales_Invoice" />
+            <End Role="tblSales_Invoice_Lineitem" EntitySet="tblSales_Invoice_Lineitem" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblSales_Invoice_tblBilling" Association="Self.FK_tblSales_Invoice_tblBilling">
+            <End Role="tblBilling_Information" EntitySet="tblBilling_Information" />
+            <End Role="tblSales_Invoice" EntitySet="tblSales_Invoice" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblSales_Invoice_tblShipping" Association="Self.FK_tblSales_Invoice_tblShipping">
+            <End Role="tblShipping" EntitySet="tblShipping" />
+            <End Role="tblSales_Invoice" EntitySet="tblSales_Invoice" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblShipping_AspNetUsers" Association="Self.FK_tblShipping_AspNetUsers">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="tblShipping" EntitySet="tblShipping" />
+          </AssociationSet>
+          <AssociationSet Name="FproductFK" Association="Self.FproductFK">
+            <End Role="tblProduct" EntitySet="tblProduct" />
+            <End Role="tblFeature_Product" EntitySet="tblFeature_Product" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="GartenkraftModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="AspNetUser">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Email" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="EmailConfirmed" Type="Boolean" Nullable="false" />
+          <Property Name="PasswordHash" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="SecurityStamp" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="PhoneNumber" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="PhoneNumberConfirmed" Type="Boolean" Nullable="false" />
+          <Property Name="TwoFactorEnabled" Type="Boolean" Nullable="false" />
+          <Property Name="LockoutEndDateUtc" Type="DateTime" Precision="3" />
+          <Property Name="LockoutEnabled" Type="Boolean" Nullable="false" />
+          <Property Name="AccessFailedCount" Type="Int32" Nullable="false" />
+          <Property Name="UserName" Type="String" MaxLength="256" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="FirstName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="LastName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Address1" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Address2" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="City" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="State" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Zip" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Zip4" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Country" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ImageFileName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="tblBilling_Information" Relationship="Self.FK_tblBilling_Information_AspNetUsers" FromRole="AspNetUsers" ToRole="tblBilling_Information" />
+          <NavigationProperty Name="tblSales_Invoice" Relationship="Self.FK_tblSales_Invoice_AspNetUsers" FromRole="AspNetUsers" ToRole="tblSales_Invoice" />
+          <NavigationProperty Name="tblShippings" Relationship="Self.FK_tblShipping_AspNetUsers" FromRole="AspNetUsers" ToRole="tblShipping" />
+        </EntityType>
+        <EntityType Name="tblBilling_Information">
+          <Key>
+            <PropertyRef Name="billing_id" />
+          </Key>
+          <Property Name="billing_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="customer_id" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="billing_address1" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="billing_address2" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="billing_city" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="billing_state" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="billing_zip" Type="String" MaxLength="5" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="billing_zip4" Type="String" MaxLength="4" FixedLength="false" Unicode="false" />
+          <Property Name="billing_country" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="AspNetUser" Relationship="Self.FK_tblBilling_Information_AspNetUsers" FromRole="tblBilling_Information" ToRole="AspNetUsers" />
+          <NavigationProperty Name="tblSales_Invoice" Relationship="Self.FK_tblSales_Invoice_tblBilling" FromRole="tblBilling_Information" ToRole="tblSales_Invoice" />
+        </EntityType>
+        <EntityType Name="tblFeature_Product">
+          <Key>
+            <PropertyRef Name="feature_id" />
+          </Key>
+          <Property Name="feature_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="product_id" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="tblProduct" Relationship="Self.FproductFK" FromRole="tblFeature_Product" ToRole="tblProduct" />
+        </EntityType>
+        <EntityType Name="tblInventory">
+          <Key>
+            <PropertyRef Name="inventory_id" />
+          </Key>
+          <Property Name="inventory_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="product_id" Type="Int32" Nullable="false" />
+          <Property Name="inventory_quantity" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="tblProduct" Relationship="Self.FK_tblInventory_tblProduct" FromRole="tblInventory" ToRole="tblProduct" />
+        </EntityType>
+        <EntityType Name="tblProduct">
+          <Key>
+            <PropertyRef Name="product_id" />
+          </Key>
+          <Property Name="product_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="product_name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="product_short_description" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="product_long_description" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="product_category_id" Type="Int32" Nullable="false" />
+          <Property Name="product_date_added" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="soft_delete" Type="Boolean" Nullable="false" />
+          <Property Name="is_visible" Type="Boolean" Nullable="false" />
+          <Property Name="is_custom_product" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="tblFeature_Product" Relationship="Self.FproductFK" FromRole="tblProduct" ToRole="tblFeature_Product" />
+          <NavigationProperty Name="tblInventories" Relationship="Self.FK_tblInventory_tblProduct" FromRole="tblProduct" ToRole="tblInventory" />
+          <NavigationProperty Name="tblProduct_Option" Relationship="Self.FK_Product_ID" FromRole="tblProduct" ToRole="tblProduct_Option" />
+          <NavigationProperty Name="tblProduct_Image" Relationship="Self.FK_tblProduct_Image_tblProduct" FromRole="tblProduct" ToRole="tblProduct_Image" />
+          <NavigationProperty Name="tblProduct_Category" Relationship="Self.FK_tblProduct_tblProduct_Category" FromRole="tblProduct" ToRole="tblProduct_Category" />
+          <NavigationProperty Name="tblSales_Invoice_Lineitem" Relationship="Self.FK_tblSales_Invoice_Lineitem_tblProduct" FromRole="tblProduct" ToRole="tblSales_Invoice_Lineitem" />
+        </EntityType>
+        <EntityType Name="tblProduct_Category">
+          <Key>
+            <PropertyRef Name="category_id" />
+          </Key>
+          <Property Name="category_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="category_product_line_id" Type="Int32" Nullable="false" />
+          <Property Name="category_name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="soft_delete" Type="Boolean" Nullable="false" />
+          <Property Name="is_visible" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="tblProducts" Relationship="Self.FK_tblProduct_tblProduct_Category" FromRole="tblProduct_Category" ToRole="tblProduct" />
+          <NavigationProperty Name="tblProduct_Category_Image" Relationship="Self.FK_tblProduct_Category_Image_tblProduct_Category" FromRole="tblProduct_Category" ToRole="tblProduct_Category_Image" />
+          <NavigationProperty Name="tblProduct_Line" Relationship="Self.FK_tblProduct_Category_tblProductLine" FromRole="tblProduct_Category" ToRole="tblProduct_Line" />
+        </EntityType>
+        <EntityType Name="tblProduct_Category_Image">
+          <Key>
+            <PropertyRef Name="product_category_image_id" />
+          </Key>
+          <Property Name="product_category_image_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="product_category_id" Type="Int32" Nullable="false" />
+          <Property Name="product_category_image_name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="tblProduct_Category" Relationship="Self.FK_tblProduct_Category_Image_tblProduct_Category" FromRole="tblProduct_Category_Image" ToRole="tblProduct_Category" />
+        </EntityType>
+        <EntityType Name="tblProduct_Image">
+          <Key>
+            <PropertyRef Name="product_image_id" />
+          </Key>
+          <Property Name="product_image_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="product_id" Type="Int32" Nullable="false" />
+          <Property Name="product_image_name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="tblProduct" Relationship="Self.FK_tblProduct_Image_tblProduct" FromRole="tblProduct_Image" ToRole="tblProduct" />
+        </EntityType>
+        <EntityType Name="tblProduct_Line">
+          <Key>
+            <PropertyRef Name="product_line_id" />
+          </Key>
+          <Property Name="product_line_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="product_line_name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="date_added" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="soft_delete" Type="Boolean" Nullable="false" />
+          <Property Name="is_visible" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="tblProduct_Category" Relationship="Self.FK_tblProduct_Category_tblProductLine" FromRole="tblProduct_Line" ToRole="tblProduct_Category" />
+          <NavigationProperty Name="tblProduct_Line_Image" Relationship="Self.FK_tblProduct_Line_Image_tblProduct_Line" FromRole="tblProduct_Line" ToRole="tblProduct_Line_Image" />
+        </EntityType>
+        <EntityType Name="tblProduct_Line_Image">
+          <Key>
+            <PropertyRef Name="product_line_image_id" />
+          </Key>
+          <Property Name="product_line_image_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="product_line_id" Type="Int32" Nullable="false" />
+          <Property Name="product_line_image_name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="tblProduct_Line" Relationship="Self.FK_tblProduct_Line_Image_tblProduct_Line" FromRole="tblProduct_Line_Image" ToRole="tblProduct_Line" />
+        </EntityType>
+        <EntityType Name="tblProduct_Option">
+          <Key>
+            <PropertyRef Name="option_id" />
+          </Key>
+          <Property Name="title" Type="String" MaxLength="126" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="weight" Type="Decimal" Precision="6" Scale="2" Nullable="false" />
+          <Property Name="unit_cost" Type="Decimal" Precision="6" Scale="2" Nullable="false" />
+          <Property Name="unit_price" Type="Decimal" Precision="6" Scale="2" Nullable="false" />
+          <Property Name="product_id" Type="Int32" Nullable="false" />
+          <Property Name="option_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <NavigationProperty Name="tblProduct" Relationship="Self.FK_Product_ID" FromRole="tblProduct_Option" ToRole="tblProduct" />
+        </EntityType>
+        <EntityType Name="tblSales_Invoice">
+          <Key>
+            <PropertyRef Name="invoice_id" />
+          </Key>
+          <Property Name="invoice_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="invoice_date" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="customer_id" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="billing_id" Type="Int32" />
+          <Property Name="shipping_id" Type="Int32" />
+          <NavigationProperty Name="AspNetUser" Relationship="Self.FK_tblSales_Invoice_AspNetUsers" FromRole="tblSales_Invoice" ToRole="AspNetUsers" />
+          <NavigationProperty Name="tblBilling_Information" Relationship="Self.FK_tblSales_Invoice_tblBilling" FromRole="tblSales_Invoice" ToRole="tblBilling_Information" />
+          <NavigationProperty Name="tblSales_Invoice_Lineitem" Relationship="Self.FK_tblSales_Invoice_Lineitem_tblSales_Invoice" FromRole="tblSales_Invoice" ToRole="tblSales_Invoice_Lineitem" />
+          <NavigationProperty Name="tblShipping" Relationship="Self.FK_tblSales_Invoice_tblShipping" FromRole="tblSales_Invoice" ToRole="tblShipping" />
+        </EntityType>
+        <EntityType Name="tblSales_Invoice_Lineitem">
+          <Key>
+            <PropertyRef Name="lineitem_id" />
+          </Key>
+          <Property Name="lineitem_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="product_id" Type="Int32" Nullable="false" />
+          <Property Name="lineitem_quantity" Type="Int32" Nullable="false" />
+          <Property Name="invoice_id" Type="Int32" Nullable="false" />
+          <Property Name="product_option_id" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="tblProduct" Relationship="Self.FK_tblSales_Invoice_Lineitem_tblProduct" FromRole="tblSales_Invoice_Lineitem" ToRole="tblProduct" />
+          <NavigationProperty Name="tblSales_Invoice" Relationship="Self.FK_tblSales_Invoice_Lineitem_tblSales_Invoice" FromRole="tblSales_Invoice_Lineitem" ToRole="tblSales_Invoice" />
+        </EntityType>
+        <EntityType Name="tblShipping">
+          <Key>
+            <PropertyRef Name="shipping_id" />
+          </Key>
+          <Property Name="shipping_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="customer_id" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="shipping_address1" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="shipping_address2" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="shipping_city" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="shipping_state" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="shipping_zip" Type="String" MaxLength="5" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="shipping_zip4" Type="String" MaxLength="4" FixedLength="false" Unicode="false" />
+          <Property Name="shipping_country" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="AspNetUser" Relationship="Self.FK_tblShipping_AspNetUsers" FromRole="tblShipping" ToRole="AspNetUsers" />
+          <NavigationProperty Name="tblSales_Invoice" Relationship="Self.FK_tblSales_Invoice_tblShipping" FromRole="tblShipping" ToRole="tblSales_Invoice" />
+        </EntityType>
+        <EntityType Name="vwCategory">
+          <Key>
+            <PropertyRef Name="category_name" />
+            <PropertyRef Name="category_id" />
+            <PropertyRef Name="category_product_line_id" />
+            <PropertyRef Name="product_line_name" />
+          </Key>
+          <Property Name="category_name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="category_id" Type="Int32" Nullable="false" />
+          <Property Name="category_product_line_id" Type="Int32" Nullable="false" />
+          <Property Name="soft_delete" Type="Boolean" />
+          <Property Name="is_visible" Type="Boolean" />
+          <Property Name="product_line_name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="vwCheckout">
+          <Key>
+            <PropertyRef Name="chkBillingAddress1" />
+            <PropertyRef Name="chkBillingCIty" />
+            <PropertyRef Name="chkBillingState" />
+            <PropertyRef Name="chkBillingZip" />
+            <PropertyRef Name="chkBillingCountry" />
+            <PropertyRef Name="chkShippingAddress1" />
+            <PropertyRef Name="chkShippingCity" />
+            <PropertyRef Name="chkShippingState" />
+            <PropertyRef Name="chkShippingZip" />
+            <PropertyRef Name="chkShippingCountry" />
+            <PropertyRef Name="chkInvoiceDate" />
+            <PropertyRef Name="chkInvoiceID" />
+          </Key>
+          <Property Name="chkBillingAddress1" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="chkBillingAddress2" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="chkBillingCIty" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="chkBillingState" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="chkBillingZip" Type="String" MaxLength="5" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="chkBillingZip4" Type="String" MaxLength="4" FixedLength="false" Unicode="false" />
+          <Property Name="chkBillingCountry" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="chkShippingAddress1" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="chkShippingAddress2" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="chkShippingCity" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="chkShippingState" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="chkShippingZip" Type="String" MaxLength="5" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="chkShippingZip4" Type="String" MaxLength="4" FixedLength="false" Unicode="false" />
+          <Property Name="chkShippingCountry" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="chkInvoiceDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="chkInvoiceID" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="vwFeaturedProduct">
+          <Key>
+            <PropertyRef Name="feature_id" />
+            <PropertyRef Name="product_id" />
+            <PropertyRef Name="product_name" />
+            <PropertyRef Name="product_short_description" />
+            <PropertyRef Name="product_long_description" />
+            <PropertyRef Name="category_name" />
+            <PropertyRef Name="product_line_name" />
+            <PropertyRef Name="soft_delete" />
+            <PropertyRef Name="is_visible" />
+            <PropertyRef Name="is_custom_product" />
+            <PropertyRef Name="product_line_id" />
+            <PropertyRef Name="category_id" />
+          </Key>
+          <Property Name="feature_id" Type="Int32" Nullable="false" />
+          <Property Name="product_id" Type="Int32" Nullable="false" />
+          <Property Name="product_name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="product_short_description" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="product_long_description" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="category_name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="product_line_name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="soft_delete" Type="Boolean" Nullable="false" />
+          <Property Name="is_visible" Type="Boolean" Nullable="false" />
+          <Property Name="is_custom_product" Type="Boolean" Nullable="false" />
+          <Property Name="product_line_id" Type="Int32" Nullable="false" />
+          <Property Name="category_id" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="vwInvoice">
+          <Key>
+            <PropertyRef Name="invoice_id" />
+            <PropertyRef Name="invoice_date" />
+            <PropertyRef Name="UserName" />
+            <PropertyRef Name="billing_address1" />
+            <PropertyRef Name="billing_city" />
+            <PropertyRef Name="billing_state" />
+            <PropertyRef Name="billing_zip" />
+            <PropertyRef Name="billing_country" />
+            <PropertyRef Name="shipping_address1" />
+            <PropertyRef Name="shipping_city" />
+            <PropertyRef Name="shipping_state" />
+            <PropertyRef Name="shipping_zip" />
+            <PropertyRef Name="shipping_country" />
+          </Key>
+          <Property Name="invoice_id" Type="Int32" Nullable="false" />
+          <Property Name="invoice_date" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Email" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="PhoneNumber" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="UserName" Type="String" MaxLength="256" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="FirstName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="LastName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ImageFileName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="billing_address1" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="billing_address2" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="billing_city" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="billing_state" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="billing_zip" Type="String" MaxLength="5" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="billing_zip4" Type="String" MaxLength="4" FixedLength="false" Unicode="false" />
+          <Property Name="billing_country" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="shipping_address1" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="shipping_address2" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="shipping_city" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="shipping_state" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="shipping_zip" Type="String" MaxLength="5" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="shipping_zip4" Type="String" MaxLength="4" FixedLength="false" Unicode="false" />
+          <Property Name="shipping_country" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="vwInvoice_Lineitem">
+          <Key>
+            <PropertyRef Name="lineitem_id" />
+            <PropertyRef Name="invoice_id" />
+            <PropertyRef Name="product_id" />
+            <PropertyRef Name="product_name" />
+            <PropertyRef Name="product_short_description" />
+            <PropertyRef Name="product_long_description" />
+            <PropertyRef Name="is_custom_product" />
+            <PropertyRef Name="category_id" />
+            <PropertyRef Name="category_name" />
+            <PropertyRef Name="product_line_id" />
+            <PropertyRef Name="product_line_name" />
+            <PropertyRef Name="option_id" />
+            <PropertyRef Name="title" />
+            <PropertyRef Name="weight" />
+            <PropertyRef Name="unit_price" />
+          </Key>
+          <Property Name="lineitem_id" Type="Int32" Nullable="false" />
+          <Property Name="invoice_id" Type="Int32" Nullable="false" />
+          <Property Name="product_id" Type="Int32" Nullable="false" />
+          <Property Name="product_name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="product_short_description" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="product_long_description" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="is_custom_product" Type="Boolean" Nullable="false" />
+          <Property Name="category_id" Type="Int32" Nullable="false" />
+          <Property Name="category_name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="product_line_id" Type="Int32" Nullable="false" />
+          <Property Name="product_line_name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="option_id" Type="Int32" Nullable="false" />
+          <Property Name="title" Type="String" MaxLength="126" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="weight" Type="Decimal" Precision="6" Scale="2" Nullable="false" />
+          <Property Name="unit_price" Type="Decimal" Precision="6" Scale="2" Nullable="false" />
+        </EntityType>
+        <EntityType Name="vwProduct">
+          <Key>
+            <PropertyRef Name="product_id" />
+            <PropertyRef Name="product_name" />
+            <PropertyRef Name="product_short_description" />
+            <PropertyRef Name="product_long_description" />
+            <PropertyRef Name="soft_delete" />
+            <PropertyRef Name="is_visible" />
+            <PropertyRef Name="is_custom_product" />
+            <PropertyRef Name="category_id" />
+            <PropertyRef Name="category_name" />
+            <PropertyRef Name="product_line_id" />
+            <PropertyRef Name="product_line_name" />
+          </Key>
+          <Property Name="product_id" Type="Int32" Nullable="false" />
+          <Property Name="product_name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="product_short_description" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="product_long_description" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="soft_delete" Type="Boolean" Nullable="false" />
+          <Property Name="is_visible" Type="Boolean" Nullable="false" />
+          <Property Name="is_custom_product" Type="Boolean" Nullable="false" />
+          <Property Name="category_id" Type="Int32" Nullable="false" />
+          <Property Name="category_name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="product_line_id" Type="Int32" Nullable="false" />
+          <Property Name="product_line_name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="vwProduct_Line">
+          <Key>
+            <PropertyRef Name="product_line_id" />
+            <PropertyRef Name="product_line_name" />
+            <PropertyRef Name="is_visible" />
+            <PropertyRef Name="soft_delete" />
+          </Key>
+          <Property Name="product_line_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="product_line_name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="is_visible" Type="Boolean" Nullable="false" />
+          <Property Name="soft_delete" Type="Boolean" Nullable="false" />
+        </EntityType>
+        <EntityType Name="vwProduct_Option">
+          <Key>
+            <PropertyRef Name="title" />
+            <PropertyRef Name="weight" />
+            <PropertyRef Name="unit_price" />
+            <PropertyRef Name="option_id" />
+            <PropertyRef Name="product_id" />
+          </Key>
+          <Property Name="title" Type="String" MaxLength="126" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="weight" Type="Decimal" Precision="6" Scale="2" Nullable="false" />
+          <Property Name="unit_price" Type="Decimal" Precision="6" Scale="2" Nullable="false" />
+          <Property Name="option_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="product_id" Type="Int32" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_tblBilling_Information_AspNetUsers">
+          <End Role="AspNetUsers" Type="Self.AspNetUser" Multiplicity="1" />
+          <End Role="tblBilling_Information" Type="Self.tblBilling_Information" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="tblBilling_Information">
+              <PropertyRef Name="customer_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblSales_Invoice_AspNetUsers">
+          <End Role="AspNetUsers" Type="Self.AspNetUser" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="tblSales_Invoice" Type="Self.tblSales_Invoice" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="tblSales_Invoice">
+              <PropertyRef Name="customer_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblShipping_AspNetUsers">
+          <End Role="AspNetUsers" Type="Self.AspNetUser" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="tblShipping" Type="Self.tblShipping" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="tblShipping">
+              <PropertyRef Name="customer_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblSales_Invoice_tblBilling">
+          <End Role="tblBilling_Information" Type="Self.tblBilling_Information" Multiplicity="0..1" />
+          <End Role="tblSales_Invoice" Type="Self.tblSales_Invoice" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblBilling_Information">
+              <PropertyRef Name="billing_id" />
+            </Principal>
+            <Dependent Role="tblSales_Invoice">
+              <PropertyRef Name="billing_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FproductFK">
+          <End Role="tblProduct" Type="Self.tblProduct" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="tblFeature_Product" Type="Self.tblFeature_Product" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblProduct">
+              <PropertyRef Name="product_id" />
+            </Principal>
+            <Dependent Role="tblFeature_Product">
+              <PropertyRef Name="product_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblInventory_tblProduct">
+          <End Role="tblProduct" Type="Self.tblProduct" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="tblInventory" Type="Self.tblInventory" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblProduct">
+              <PropertyRef Name="product_id" />
+            </Principal>
+            <Dependent Role="tblInventory">
+              <PropertyRef Name="product_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Product_ID">
+          <End Role="tblProduct" Type="Self.tblProduct" Multiplicity="1" />
+          <End Role="tblProduct_Option" Type="Self.tblProduct_Option" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblProduct">
+              <PropertyRef Name="product_id" />
+            </Principal>
+            <Dependent Role="tblProduct_Option">
+              <PropertyRef Name="product_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblProduct_Image_tblProduct">
+          <End Role="tblProduct" Type="Self.tblProduct" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="tblProduct_Image" Type="Self.tblProduct_Image" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblProduct">
+              <PropertyRef Name="product_id" />
+            </Principal>
+            <Dependent Role="tblProduct_Image">
+              <PropertyRef Name="product_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblProduct_tblProduct_Category">
+          <End Role="tblProduct_Category" Type="Self.tblProduct_Category" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="tblProduct" Type="Self.tblProduct" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblProduct_Category">
+              <PropertyRef Name="category_id" />
+            </Principal>
+            <Dependent Role="tblProduct">
+              <PropertyRef Name="product_category_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblSales_Invoice_Lineitem_tblProduct">
+          <End Role="tblProduct" Type="Self.tblProduct" Multiplicity="1" />
+          <End Role="tblSales_Invoice_Lineitem" Type="Self.tblSales_Invoice_Lineitem" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblProduct">
+              <PropertyRef Name="product_id" />
+            </Principal>
+            <Dependent Role="tblSales_Invoice_Lineitem">
+              <PropertyRef Name="product_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblProduct_Category_Image_tblProduct_Category">
+          <End Role="tblProduct_Category" Type="Self.tblProduct_Category" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="tblProduct_Category_Image" Type="Self.tblProduct_Category_Image" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblProduct_Category">
+              <PropertyRef Name="category_id" />
+            </Principal>
+            <Dependent Role="tblProduct_Category_Image">
+              <PropertyRef Name="product_category_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblProduct_Category_tblProductLine">
+          <End Role="tblProduct_Line" Type="Self.tblProduct_Line" Multiplicity="1" />
+          <End Role="tblProduct_Category" Type="Self.tblProduct_Category" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblProduct_Line">
+              <PropertyRef Name="product_line_id" />
+            </Principal>
+            <Dependent Role="tblProduct_Category">
+              <PropertyRef Name="category_product_line_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblProduct_Line_Image_tblProduct_Line">
+          <End Role="tblProduct_Line" Type="Self.tblProduct_Line" Multiplicity="1" />
+          <End Role="tblProduct_Line_Image" Type="Self.tblProduct_Line_Image" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblProduct_Line">
+              <PropertyRef Name="product_line_id" />
+            </Principal>
+            <Dependent Role="tblProduct_Line_Image">
+              <PropertyRef Name="product_line_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblSales_Invoice_Lineitem_tblSales_Invoice">
+          <End Role="tblSales_Invoice" Type="Self.tblSales_Invoice" Multiplicity="1" />
+          <End Role="tblSales_Invoice_Lineitem" Type="Self.tblSales_Invoice_Lineitem" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblSales_Invoice">
+              <PropertyRef Name="invoice_id" />
+            </Principal>
+            <Dependent Role="tblSales_Invoice_Lineitem">
+              <PropertyRef Name="invoice_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblSales_Invoice_tblShipping">
+          <End Role="tblShipping" Type="Self.tblShipping" Multiplicity="0..1" />
+          <End Role="tblSales_Invoice" Type="Self.tblSales_Invoice" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblShipping">
+              <PropertyRef Name="shipping_id" />
+            </Principal>
+            <Dependent Role="tblSales_Invoice">
+              <PropertyRef Name="shipping_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="GartenkraftEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="AspNetUsers" EntityType="Self.AspNetUser" />
+          <EntitySet Name="tblBilling_Information" EntityType="Self.tblBilling_Information" />
+          <EntitySet Name="tblFeature_Product" EntityType="Self.tblFeature_Product" />
+          <EntitySet Name="tblInventories" EntityType="Self.tblInventory" />
+          <EntitySet Name="tblProducts" EntityType="Self.tblProduct" />
+          <EntitySet Name="tblProduct_Category" EntityType="Self.tblProduct_Category" />
+          <EntitySet Name="tblProduct_Category_Image" EntityType="Self.tblProduct_Category_Image" />
+          <EntitySet Name="tblProduct_Image" EntityType="Self.tblProduct_Image" />
+          <EntitySet Name="tblProduct_Line" EntityType="Self.tblProduct_Line" />
+          <EntitySet Name="tblProduct_Line_Image" EntityType="Self.tblProduct_Line_Image" />
+          <EntitySet Name="tblProduct_Option" EntityType="Self.tblProduct_Option" />
+          <EntitySet Name="tblSales_Invoice" EntityType="Self.tblSales_Invoice" />
+          <EntitySet Name="tblSales_Invoice_Lineitem" EntityType="Self.tblSales_Invoice_Lineitem" />
+          <EntitySet Name="tblShippings" EntityType="Self.tblShipping" />
+          <EntitySet Name="vwCategories" EntityType="Self.vwCategory" />
+          <EntitySet Name="vwCheckouts" EntityType="Self.vwCheckout" />
+          <EntitySet Name="vwFeaturedProducts" EntityType="Self.vwFeaturedProduct" />
+          <EntitySet Name="vwInvoices" EntityType="Self.vwInvoice" />
+          <EntitySet Name="vwInvoice_Lineitem" EntityType="Self.vwInvoice_Lineitem" />
+          <EntitySet Name="vwProducts" EntityType="Self.vwProduct" />
+          <EntitySet Name="vwProduct_Line" EntityType="Self.vwProduct_Line" />
+          <EntitySet Name="vwProduct_Option" EntityType="Self.vwProduct_Option" />
+          <AssociationSet Name="FK_tblBilling_Information_AspNetUsers" Association="Self.FK_tblBilling_Information_AspNetUsers">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="tblBilling_Information" EntitySet="tblBilling_Information" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblSales_Invoice_AspNetUsers" Association="Self.FK_tblSales_Invoice_AspNetUsers">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="tblSales_Invoice" EntitySet="tblSales_Invoice" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblShipping_AspNetUsers" Association="Self.FK_tblShipping_AspNetUsers">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="tblShipping" EntitySet="tblShippings" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblSales_Invoice_tblBilling" Association="Self.FK_tblSales_Invoice_tblBilling">
+            <End Role="tblBilling_Information" EntitySet="tblBilling_Information" />
+            <End Role="tblSales_Invoice" EntitySet="tblSales_Invoice" />
+          </AssociationSet>
+          <AssociationSet Name="FproductFK" Association="Self.FproductFK">
+            <End Role="tblProduct" EntitySet="tblProducts" />
+            <End Role="tblFeature_Product" EntitySet="tblFeature_Product" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblInventory_tblProduct" Association="Self.FK_tblInventory_tblProduct">
+            <End Role="tblProduct" EntitySet="tblProducts" />
+            <End Role="tblInventory" EntitySet="tblInventories" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Product_ID" Association="Self.FK_Product_ID">
+            <End Role="tblProduct" EntitySet="tblProducts" />
+            <End Role="tblProduct_Option" EntitySet="tblProduct_Option" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblProduct_Image_tblProduct" Association="Self.FK_tblProduct_Image_tblProduct">
+            <End Role="tblProduct" EntitySet="tblProducts" />
+            <End Role="tblProduct_Image" EntitySet="tblProduct_Image" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblProduct_tblProduct_Category" Association="Self.FK_tblProduct_tblProduct_Category">
+            <End Role="tblProduct_Category" EntitySet="tblProduct_Category" />
+            <End Role="tblProduct" EntitySet="tblProducts" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblSales_Invoice_Lineitem_tblProduct" Association="Self.FK_tblSales_Invoice_Lineitem_tblProduct">
+            <End Role="tblProduct" EntitySet="tblProducts" />
+            <End Role="tblSales_Invoice_Lineitem" EntitySet="tblSales_Invoice_Lineitem" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblProduct_Category_Image_tblProduct_Category" Association="Self.FK_tblProduct_Category_Image_tblProduct_Category">
+            <End Role="tblProduct_Category" EntitySet="tblProduct_Category" />
+            <End Role="tblProduct_Category_Image" EntitySet="tblProduct_Category_Image" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblProduct_Category_tblProductLine" Association="Self.FK_tblProduct_Category_tblProductLine">
+            <End Role="tblProduct_Line" EntitySet="tblProduct_Line" />
+            <End Role="tblProduct_Category" EntitySet="tblProduct_Category" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblProduct_Line_Image_tblProduct_Line" Association="Self.FK_tblProduct_Line_Image_tblProduct_Line">
+            <End Role="tblProduct_Line" EntitySet="tblProduct_Line" />
+            <End Role="tblProduct_Line_Image" EntitySet="tblProduct_Line_Image" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblSales_Invoice_Lineitem_tblSales_Invoice" Association="Self.FK_tblSales_Invoice_Lineitem_tblSales_Invoice">
+            <End Role="tblSales_Invoice" EntitySet="tblSales_Invoice" />
+            <End Role="tblSales_Invoice_Lineitem" EntitySet="tblSales_Invoice_Lineitem" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblSales_Invoice_tblShipping" Association="Self.FK_tblSales_Invoice_tblShipping">
+            <End Role="tblShipping" EntitySet="tblShippings" />
+            <End Role="tblSales_Invoice" EntitySet="tblSales_Invoice" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="GartenkraftModelStoreContainer" CdmEntityContainer="GartenkraftEntities">
+          <EntitySetMapping Name="AspNetUsers">
+            <EntityTypeMapping TypeName="GartenkraftModel.AspNetUser">
+              <MappingFragment StoreEntitySet="AspNetUsers">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="EmailConfirmed" ColumnName="EmailConfirmed" />
+                <ScalarProperty Name="PasswordHash" ColumnName="PasswordHash" />
+                <ScalarProperty Name="SecurityStamp" ColumnName="SecurityStamp" />
+                <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+                <ScalarProperty Name="PhoneNumberConfirmed" ColumnName="PhoneNumberConfirmed" />
+                <ScalarProperty Name="TwoFactorEnabled" ColumnName="TwoFactorEnabled" />
+                <ScalarProperty Name="LockoutEndDateUtc" ColumnName="LockoutEndDateUtc" />
+                <ScalarProperty Name="LockoutEnabled" ColumnName="LockoutEnabled" />
+                <ScalarProperty Name="AccessFailedCount" ColumnName="AccessFailedCount" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="Address1" ColumnName="Address1" />
+                <ScalarProperty Name="Address2" ColumnName="Address2" />
+                <ScalarProperty Name="City" ColumnName="City" />
+                <ScalarProperty Name="State" ColumnName="State" />
+                <ScalarProperty Name="Zip" ColumnName="Zip" />
+                <ScalarProperty Name="Zip4" ColumnName="Zip4" />
+                <ScalarProperty Name="Country" ColumnName="Country" />
+                <ScalarProperty Name="ImageFileName" ColumnName="ImageFileName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblBilling_Information">
+            <EntityTypeMapping TypeName="GartenkraftModel.tblBilling_Information">
+              <MappingFragment StoreEntitySet="tblBilling_Information">
+                <ScalarProperty Name="billing_id" ColumnName="billing_id" />
+                <ScalarProperty Name="customer_id" ColumnName="customer_id" />
+                <ScalarProperty Name="billing_address1" ColumnName="billing_address1" />
+                <ScalarProperty Name="billing_address2" ColumnName="billing_address2" />
+                <ScalarProperty Name="billing_city" ColumnName="billing_city" />
+                <ScalarProperty Name="billing_state" ColumnName="billing_state" />
+                <ScalarProperty Name="billing_zip" ColumnName="billing_zip" />
+                <ScalarProperty Name="billing_zip4" ColumnName="billing_zip4" />
+                <ScalarProperty Name="billing_country" ColumnName="billing_country" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblFeature_Product">
+            <EntityTypeMapping TypeName="GartenkraftModel.tblFeature_Product">
+              <MappingFragment StoreEntitySet="tblFeature_Product">
+                <ScalarProperty Name="feature_id" ColumnName="feature_id" />
+                <ScalarProperty Name="product_id" ColumnName="product_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblInventories">
+            <EntityTypeMapping TypeName="GartenkraftModel.tblInventory">
+              <MappingFragment StoreEntitySet="tblInventory">
+                <ScalarProperty Name="inventory_id" ColumnName="inventory_id" />
+                <ScalarProperty Name="product_id" ColumnName="product_id" />
+                <ScalarProperty Name="inventory_quantity" ColumnName="inventory_quantity" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblProducts">
+            <EntityTypeMapping TypeName="GartenkraftModel.tblProduct">
+              <MappingFragment StoreEntitySet="tblProduct">
+                <ScalarProperty Name="product_id" ColumnName="product_id" />
+                <ScalarProperty Name="product_name" ColumnName="product_name" />
+                <ScalarProperty Name="product_short_description" ColumnName="product_short_description" />
+                <ScalarProperty Name="product_long_description" ColumnName="product_long_description" />
+                <ScalarProperty Name="product_category_id" ColumnName="product_category_id" />
+                <ScalarProperty Name="product_date_added" ColumnName="product_date_added" />
+                <ScalarProperty Name="soft_delete" ColumnName="soft_delete" />
+                <ScalarProperty Name="is_visible" ColumnName="is_visible" />
+                <ScalarProperty Name="is_custom_product" ColumnName="is_custom_product" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblProduct_Category">
+            <EntityTypeMapping TypeName="GartenkraftModel.tblProduct_Category">
+              <MappingFragment StoreEntitySet="tblProduct_Category">
+                <ScalarProperty Name="category_id" ColumnName="category_id" />
+                <ScalarProperty Name="category_product_line_id" ColumnName="category_product_line_id" />
+                <ScalarProperty Name="category_name" ColumnName="category_name" />
+                <ScalarProperty Name="soft_delete" ColumnName="soft_delete" />
+                <ScalarProperty Name="is_visible" ColumnName="is_visible" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblProduct_Category_Image">
+            <EntityTypeMapping TypeName="GartenkraftModel.tblProduct_Category_Image">
+              <MappingFragment StoreEntitySet="tblProduct_Category_Image">
+                <ScalarProperty Name="product_category_image_id" ColumnName="product_category_image_id" />
+                <ScalarProperty Name="product_category_id" ColumnName="product_category_id" />
+                <ScalarProperty Name="product_category_image_name" ColumnName="product_category_image_name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblProduct_Image">
+            <EntityTypeMapping TypeName="GartenkraftModel.tblProduct_Image">
+              <MappingFragment StoreEntitySet="tblProduct_Image">
+                <ScalarProperty Name="product_image_id" ColumnName="product_image_id" />
+                <ScalarProperty Name="product_id" ColumnName="product_id" />
+                <ScalarProperty Name="product_image_name" ColumnName="product_image_name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblProduct_Line">
+            <EntityTypeMapping TypeName="GartenkraftModel.tblProduct_Line">
+              <MappingFragment StoreEntitySet="tblProduct_Line">
+                <ScalarProperty Name="product_line_id" ColumnName="product_line_id" />
+                <ScalarProperty Name="product_line_name" ColumnName="product_line_name" />
+                <ScalarProperty Name="date_added" ColumnName="date_added" />
+                <ScalarProperty Name="soft_delete" ColumnName="soft_delete" />
+                <ScalarProperty Name="is_visible" ColumnName="is_visible" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblProduct_Line_Image">
+            <EntityTypeMapping TypeName="GartenkraftModel.tblProduct_Line_Image">
+              <MappingFragment StoreEntitySet="tblProduct_Line_Image">
+                <ScalarProperty Name="product_line_image_id" ColumnName="product_line_image_id" />
+                <ScalarProperty Name="product_line_id" ColumnName="product_line_id" />
+                <ScalarProperty Name="product_line_image_name" ColumnName="product_line_image_name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblProduct_Option">
+            <EntityTypeMapping TypeName="GartenkraftModel.tblProduct_Option">
+              <MappingFragment StoreEntitySet="tblProduct_Option">
+                <ScalarProperty Name="title" ColumnName="title" />
+                <ScalarProperty Name="weight" ColumnName="weight" />
+                <ScalarProperty Name="unit_cost" ColumnName="unit_cost" />
+                <ScalarProperty Name="unit_price" ColumnName="unit_price" />
+                <ScalarProperty Name="product_id" ColumnName="product_id" />
+                <ScalarProperty Name="option_id" ColumnName="option_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblSales_Invoice">
+            <EntityTypeMapping TypeName="GartenkraftModel.tblSales_Invoice">
+              <MappingFragment StoreEntitySet="tblSales_Invoice">
+                <ScalarProperty Name="invoice_id" ColumnName="invoice_id" />
+                <ScalarProperty Name="invoice_date" ColumnName="invoice_date" />
+                <ScalarProperty Name="customer_id" ColumnName="customer_id" />
+                <ScalarProperty Name="billing_id" ColumnName="billing_id" />
+                <ScalarProperty Name="shipping_id" ColumnName="shipping_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblSales_Invoice_Lineitem">
+            <EntityTypeMapping TypeName="GartenkraftModel.tblSales_Invoice_Lineitem">
+              <MappingFragment StoreEntitySet="tblSales_Invoice_Lineitem">
+                <ScalarProperty Name="lineitem_id" ColumnName="lineitem_id" />
+                <ScalarProperty Name="product_id" ColumnName="product_id" />
+                <ScalarProperty Name="lineitem_quantity" ColumnName="lineitem_quantity" />
+                <ScalarProperty Name="invoice_id" ColumnName="invoice_id" />
+                <ScalarProperty Name="product_option_id" ColumnName="product_option_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblShippings">
+            <EntityTypeMapping TypeName="GartenkraftModel.tblShipping">
+              <MappingFragment StoreEntitySet="tblShipping">
+                <ScalarProperty Name="shipping_id" ColumnName="shipping_id" />
+                <ScalarProperty Name="customer_id" ColumnName="customer_id" />
+                <ScalarProperty Name="shipping_address1" ColumnName="shipping_address1" />
+                <ScalarProperty Name="shipping_address2" ColumnName="shipping_address2" />
+                <ScalarProperty Name="shipping_city" ColumnName="shipping_city" />
+                <ScalarProperty Name="shipping_state" ColumnName="shipping_state" />
+                <ScalarProperty Name="shipping_zip" ColumnName="shipping_zip" />
+                <ScalarProperty Name="shipping_zip4" ColumnName="shipping_zip4" />
+                <ScalarProperty Name="shipping_country" ColumnName="shipping_country" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="vwCategories">
+            <EntityTypeMapping TypeName="GartenkraftModel.vwCategory">
+              <MappingFragment StoreEntitySet="vwCategory">
+                <ScalarProperty Name="category_name" ColumnName="category_name" />
+                <ScalarProperty Name="category_id" ColumnName="category_id" />
+                <ScalarProperty Name="category_product_line_id" ColumnName="category_product_line_id" />
+                <ScalarProperty Name="soft_delete" ColumnName="soft_delete" />
+                <ScalarProperty Name="is_visible" ColumnName="is_visible" />
+                <ScalarProperty Name="product_line_name" ColumnName="product_line_name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="vwCheckouts">
+            <EntityTypeMapping TypeName="GartenkraftModel.vwCheckout">
+              <MappingFragment StoreEntitySet="vwCheckout">
+                <ScalarProperty Name="chkBillingAddress1" ColumnName="chkBillingAddress1" />
+                <ScalarProperty Name="chkBillingAddress2" ColumnName="chkBillingAddress2" />
+                <ScalarProperty Name="chkBillingCIty" ColumnName="chkBillingCIty" />
+                <ScalarProperty Name="chkBillingState" ColumnName="chkBillingState" />
+                <ScalarProperty Name="chkBillingZip" ColumnName="chkBillingZip" />
+                <ScalarProperty Name="chkBillingZip4" ColumnName="chkBillingZip4" />
+                <ScalarProperty Name="chkBillingCountry" ColumnName="chkBillingCountry" />
+                <ScalarProperty Name="chkShippingAddress1" ColumnName="chkShippingAddress1" />
+                <ScalarProperty Name="chkShippingAddress2" ColumnName="chkShippingAddress2" />
+                <ScalarProperty Name="chkShippingCity" ColumnName="chkShippingCity" />
+                <ScalarProperty Name="chkShippingState" ColumnName="chkShippingState" />
+                <ScalarProperty Name="chkShippingZip" ColumnName="chkShippingZip" />
+                <ScalarProperty Name="chkShippingZip4" ColumnName="chkShippingZip4" />
+                <ScalarProperty Name="chkShippingCountry" ColumnName="chkShippingCountry" />
+                <ScalarProperty Name="chkInvoiceDate" ColumnName="chkInvoiceDate" />
+                <ScalarProperty Name="chkInvoiceID" ColumnName="chkInvoiceID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="vwFeaturedProducts">
+            <EntityTypeMapping TypeName="GartenkraftModel.vwFeaturedProduct">
+              <MappingFragment StoreEntitySet="vwFeaturedProduct">
+                <ScalarProperty Name="feature_id" ColumnName="feature_id" />
+                <ScalarProperty Name="product_id" ColumnName="product_id" />
+                <ScalarProperty Name="product_name" ColumnName="product_name" />
+                <ScalarProperty Name="product_short_description" ColumnName="product_short_description" />
+                <ScalarProperty Name="product_long_description" ColumnName="product_long_description" />
+                <ScalarProperty Name="category_name" ColumnName="category_name" />
+                <ScalarProperty Name="product_line_name" ColumnName="product_line_name" />
+                <ScalarProperty Name="soft_delete" ColumnName="soft_delete" />
+                <ScalarProperty Name="is_visible" ColumnName="is_visible" />
+                <ScalarProperty Name="is_custom_product" ColumnName="is_custom_product" />
+                <ScalarProperty Name="product_line_id" ColumnName="product_line_id" />
+                <ScalarProperty Name="category_id" ColumnName="category_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="vwInvoices">
+            <EntityTypeMapping TypeName="GartenkraftModel.vwInvoice">
+              <MappingFragment StoreEntitySet="vwInvoice">
+                <ScalarProperty Name="invoice_id" ColumnName="invoice_id" />
+                <ScalarProperty Name="invoice_date" ColumnName="invoice_date" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="ImageFileName" ColumnName="ImageFileName" />
+                <ScalarProperty Name="billing_address1" ColumnName="billing_address1" />
+                <ScalarProperty Name="billing_address2" ColumnName="billing_address2" />
+                <ScalarProperty Name="billing_city" ColumnName="billing_city" />
+                <ScalarProperty Name="billing_state" ColumnName="billing_state" />
+                <ScalarProperty Name="billing_zip" ColumnName="billing_zip" />
+                <ScalarProperty Name="billing_zip4" ColumnName="billing_zip4" />
+                <ScalarProperty Name="billing_country" ColumnName="billing_country" />
+                <ScalarProperty Name="shipping_address1" ColumnName="shipping_address1" />
+                <ScalarProperty Name="shipping_address2" ColumnName="shipping_address2" />
+                <ScalarProperty Name="shipping_city" ColumnName="shipping_city" />
+                <ScalarProperty Name="shipping_state" ColumnName="shipping_state" />
+                <ScalarProperty Name="shipping_zip" ColumnName="shipping_zip" />
+                <ScalarProperty Name="shipping_zip4" ColumnName="shipping_zip4" />
+                <ScalarProperty Name="shipping_country" ColumnName="shipping_country" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="vwInvoice_Lineitem">
+            <EntityTypeMapping TypeName="GartenkraftModel.vwInvoice_Lineitem">
+              <MappingFragment StoreEntitySet="vwInvoice_Lineitem">
+                <ScalarProperty Name="lineitem_id" ColumnName="lineitem_id" />
+                <ScalarProperty Name="invoice_id" ColumnName="invoice_id" />
+                <ScalarProperty Name="product_id" ColumnName="product_id" />
+                <ScalarProperty Name="product_name" ColumnName="product_name" />
+                <ScalarProperty Name="product_short_description" ColumnName="product_short_description" />
+                <ScalarProperty Name="product_long_description" ColumnName="product_long_description" />
+                <ScalarProperty Name="is_custom_product" ColumnName="is_custom_product" />
+                <ScalarProperty Name="category_id" ColumnName="category_id" />
+                <ScalarProperty Name="category_name" ColumnName="category_name" />
+                <ScalarProperty Name="product_line_id" ColumnName="product_line_id" />
+                <ScalarProperty Name="product_line_name" ColumnName="product_line_name" />
+                <ScalarProperty Name="option_id" ColumnName="option_id" />
+                <ScalarProperty Name="title" ColumnName="title" />
+                <ScalarProperty Name="weight" ColumnName="weight" />
+                <ScalarProperty Name="unit_price" ColumnName="unit_price" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="vwProducts">
+            <EntityTypeMapping TypeName="GartenkraftModel.vwProduct">
+              <MappingFragment StoreEntitySet="vwProduct">
+                <ScalarProperty Name="product_id" ColumnName="product_id" />
+                <ScalarProperty Name="product_name" ColumnName="product_name" />
+                <ScalarProperty Name="product_short_description" ColumnName="product_short_description" />
+                <ScalarProperty Name="product_long_description" ColumnName="product_long_description" />
+                <ScalarProperty Name="soft_delete" ColumnName="soft_delete" />
+                <ScalarProperty Name="is_visible" ColumnName="is_visible" />
+                <ScalarProperty Name="is_custom_product" ColumnName="is_custom_product" />
+                <ScalarProperty Name="category_id" ColumnName="category_id" />
+                <ScalarProperty Name="category_name" ColumnName="category_name" />
+                <ScalarProperty Name="product_line_id" ColumnName="product_line_id" />
+                <ScalarProperty Name="product_line_name" ColumnName="product_line_name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="vwProduct_Line">
+            <EntityTypeMapping TypeName="GartenkraftModel.vwProduct_Line">
+              <MappingFragment StoreEntitySet="vwProduct_Line">
+                <ScalarProperty Name="product_line_id" ColumnName="product_line_id" />
+                <ScalarProperty Name="product_line_name" ColumnName="product_line_name" />
+                <ScalarProperty Name="is_visible" ColumnName="is_visible" />
+                <ScalarProperty Name="soft_delete" ColumnName="soft_delete" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="vwProduct_Option">
+            <EntityTypeMapping TypeName="GartenkraftModel.vwProduct_Option">
+              <MappingFragment StoreEntitySet="vwProduct_Option">
+                <ScalarProperty Name="title" ColumnName="title" />
+                <ScalarProperty Name="weight" ColumnName="weight" />
+                <ScalarProperty Name="unit_price" ColumnName="unit_price" />
+                <ScalarProperty Name="option_id" ColumnName="option_id" />
+                <ScalarProperty Name="product_id" ColumnName="product_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

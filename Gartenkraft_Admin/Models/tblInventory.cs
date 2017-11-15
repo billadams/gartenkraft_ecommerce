@@ -11,11 +11,20 @@ namespace Gartenkraft_Admin.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+    using System.ComponentModel;
+    using System.ComponentModel.DataAnnotations.Schema;
+
     public partial class tblInventory
     {
+        [Required]
+        [DisplayName("Inventory ID")]
         public int inventory_id { get; set; }
+        [Required]
+        [DisplayName("Product ID")]
         public int product_id { get; set; }
+        [Required]
+        [DisplayName("Quantity")]
         public int inventory_quantity { get; set; }
     
         public virtual tblProduct tblProduct { get; set; }

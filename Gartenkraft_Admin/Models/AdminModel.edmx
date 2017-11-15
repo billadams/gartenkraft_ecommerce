@@ -4,7 +4,34 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="gartenkraftAdminModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="GartenkraftAdminModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="AspNetUsers">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="Email" Type="nvarchar" MaxLength="256" />
+          <Property Name="EmailConfirmed" Type="bit" Nullable="false" />
+          <Property Name="PasswordHash" Type="nvarchar(max)" />
+          <Property Name="SecurityStamp" Type="nvarchar(max)" />
+          <Property Name="PhoneNumber" Type="nvarchar(max)" />
+          <Property Name="PhoneNumberConfirmed" Type="bit" Nullable="false" />
+          <Property Name="TwoFactorEnabled" Type="bit" Nullable="false" />
+          <Property Name="LockoutEndDateUtc" Type="datetime" />
+          <Property Name="LockoutEnabled" Type="bit" Nullable="false" />
+          <Property Name="AccessFailedCount" Type="int" Nullable="false" />
+          <Property Name="UserName" Type="nvarchar" MaxLength="256" Nullable="false" />
+          <Property Name="FirstName" Type="nvarchar(max)" />
+          <Property Name="LastName" Type="nvarchar(max)" />
+          <Property Name="Address1" Type="nvarchar(max)" />
+          <Property Name="Address2" Type="nvarchar(max)" />
+          <Property Name="City" Type="nvarchar(max)" />
+          <Property Name="State" Type="nvarchar(max)" />
+          <Property Name="Zip" Type="nvarchar(max)" />
+          <Property Name="Zip4" Type="nvarchar(max)" />
+          <Property Name="Country" Type="nvarchar(max)" />
+          <Property Name="ImageFileName" Type="nvarchar(max)" />
+        </EntityType>
         <EntityType Name="tblBilling_Information">
           <Key>
             <PropertyRef Name="billing_id" />
@@ -129,6 +156,18 @@
           <Property Name="shipping_zip4" Type="varchar" MaxLength="4" />
           <Property Name="shipping_country" Type="varchar(max)" Nullable="false" />
         </EntityType>
+        <Association Name="FK_tblBilling_Information_AspNetUsers">
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1" />
+          <End Role="tblBilling_Information" Type="Self.tblBilling_Information" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="tblBilling_Information">
+              <PropertyRef Name="customer_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_tblInventory_tblProduct">
           <End Role="tblProduct" Type="Self.tblProduct" Multiplicity="1">
             <OnDelete Action="Cascade" />
@@ -223,6 +262,20 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_tblSales_Invoice_AspNetUsers">
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="tblSales_Invoice" Type="Self.tblSales_Invoice" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="tblSales_Invoice">
+              <PropertyRef Name="customer_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_tblSales_Invoice_Lineitem_tblProduct">
           <End Role="tblProduct" Type="Self.tblProduct" Multiplicity="1" />
           <End Role="tblSales_Invoice_Lineitem" Type="Self.tblSales_Invoice_Lineitem" Multiplicity="*" />
@@ -271,6 +324,20 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_tblShipping_AspNetUsers">
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="tblShipping" Type="Self.tblShipping" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="tblShipping">
+              <PropertyRef Name="customer_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FproductFK">
           <End Role="tblProduct" Type="Self.tblProduct" Multiplicity="1">
             <OnDelete Action="Cascade" />
@@ -285,7 +352,8 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="gartenkraftAdminModelStoreContainer">
+        <EntityContainer Name="GartenkraftAdminModelStoreContainer">
+          <EntitySet Name="AspNetUsers" EntityType="Self.AspNetUsers" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tblBilling_Information" EntityType="Self.tblBilling_Information" Schema="gkraft" store:Type="Tables" />
           <EntitySet Name="tblFeature_Product" EntityType="Self.tblFeature_Product" Schema="gkraft" store:Type="Tables" />
           <EntitySet Name="tblInventory" EntityType="Self.tblInventory" Schema="gkraft" store:Type="Tables" />
@@ -298,6 +366,10 @@
           <EntitySet Name="tblSales_Invoice" EntityType="Self.tblSales_Invoice" Schema="gkraft" store:Type="Tables" />
           <EntitySet Name="tblSales_Invoice_Lineitem" EntityType="Self.tblSales_Invoice_Lineitem" Schema="gkraft" store:Type="Tables" />
           <EntitySet Name="tblShipping" EntityType="Self.tblShipping" Schema="gkraft" store:Type="Tables" />
+          <AssociationSet Name="FK_tblBilling_Information_AspNetUsers" Association="Self.FK_tblBilling_Information_AspNetUsers">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="tblBilling_Information" EntitySet="tblBilling_Information" />
+          </AssociationSet>
           <AssociationSet Name="FK_tblInventory_tblProduct" Association="Self.FK_tblInventory_tblProduct">
             <End Role="tblProduct" EntitySet="tblProduct" />
             <End Role="tblInventory" EntitySet="tblInventory" />
@@ -326,6 +398,10 @@
             <End Role="tblProduct_Category" EntitySet="tblProduct_Category" />
             <End Role="tblProduct" EntitySet="tblProduct" />
           </AssociationSet>
+          <AssociationSet Name="FK_tblSales_Invoice_AspNetUsers" Association="Self.FK_tblSales_Invoice_AspNetUsers">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="tblSales_Invoice" EntitySet="tblSales_Invoice" />
+          </AssociationSet>
           <AssociationSet Name="FK_tblSales_Invoice_Lineitem_tblProduct" Association="Self.FK_tblSales_Invoice_Lineitem_tblProduct">
             <End Role="tblProduct" EntitySet="tblProduct" />
             <End Role="tblSales_Invoice_Lineitem" EntitySet="tblSales_Invoice_Lineitem" />
@@ -342,6 +418,10 @@
             <End Role="tblShipping" EntitySet="tblShipping" />
             <End Role="tblSales_Invoice" EntitySet="tblSales_Invoice" />
           </AssociationSet>
+          <AssociationSet Name="FK_tblShipping_AspNetUsers" Association="Self.FK_tblShipping_AspNetUsers">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="tblShipping" EntitySet="tblShipping" />
+          </AssociationSet>
           <AssociationSet Name="FproductFK" Association="Self.FproductFK">
             <End Role="tblProduct" EntitySet="tblProduct" />
             <End Role="tblFeature_Product" EntitySet="tblFeature_Product" />
@@ -351,7 +431,37 @@
     </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
-      <Schema Namespace="gartenkraftAdminModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+      <Schema Namespace="GartenkraftAdminModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="AspNetUser">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Email" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="EmailConfirmed" Type="Boolean" Nullable="false" />
+          <Property Name="PasswordHash" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="SecurityStamp" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="PhoneNumber" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="PhoneNumberConfirmed" Type="Boolean" Nullable="false" />
+          <Property Name="TwoFactorEnabled" Type="Boolean" Nullable="false" />
+          <Property Name="LockoutEndDateUtc" Type="DateTime" Precision="3" />
+          <Property Name="LockoutEnabled" Type="Boolean" Nullable="false" />
+          <Property Name="AccessFailedCount" Type="Int32" Nullable="false" />
+          <Property Name="UserName" Type="String" MaxLength="256" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="FirstName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="LastName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Address1" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Address2" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="City" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="State" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Zip" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Zip4" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Country" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ImageFileName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="tblBilling_Information" Relationship="Self.FK_tblBilling_Information_AspNetUsers" FromRole="AspNetUsers" ToRole="tblBilling_Information" />
+          <NavigationProperty Name="tblSales_Invoice" Relationship="Self.FK_tblSales_Invoice_AspNetUsers" FromRole="AspNetUsers" ToRole="tblSales_Invoice" />
+          <NavigationProperty Name="tblShippings" Relationship="Self.FK_tblShipping_AspNetUsers" FromRole="AspNetUsers" ToRole="tblShipping" />
+        </EntityType>
         <EntityType Name="tblBilling_Information">
           <Key>
             <PropertyRef Name="billing_id" />
@@ -365,6 +475,7 @@
           <Property Name="billing_zip" Type="String" MaxLength="5" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="billing_zip4" Type="String" MaxLength="4" FixedLength="false" Unicode="false" />
           <Property Name="billing_country" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="AspNetUser" Relationship="Self.FK_tblBilling_Information_AspNetUsers" FromRole="tblBilling_Information" ToRole="AspNetUsers" />
           <NavigationProperty Name="tblSales_Invoice" Relationship="Self.FK_tblSales_Invoice_tblBilling" FromRole="tblBilling_Information" ToRole="tblSales_Invoice" />
         </EntityType>
         <EntityType Name="tblFeature_Product">
@@ -470,6 +581,7 @@
           <Property Name="customer_id" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="billing_id" Type="Int32" />
           <Property Name="shipping_id" Type="Int32" />
+          <NavigationProperty Name="AspNetUser" Relationship="Self.FK_tblSales_Invoice_AspNetUsers" FromRole="tblSales_Invoice" ToRole="AspNetUsers" />
           <NavigationProperty Name="tblBilling_Information" Relationship="Self.FK_tblSales_Invoice_tblBilling" FromRole="tblSales_Invoice" ToRole="tblBilling_Information" />
           <NavigationProperty Name="tblSales_Invoice_Lineitem" Relationship="Self.FK_tblSales_Invoice_Lineitem_tblSales_Invoice" FromRole="tblSales_Invoice" ToRole="tblSales_Invoice_Lineitem" />
           <NavigationProperty Name="tblShipping" Relationship="Self.FK_tblSales_Invoice_tblShipping" FromRole="tblSales_Invoice" ToRole="tblShipping" />
@@ -498,8 +610,49 @@
           <Property Name="shipping_zip" Type="String" MaxLength="5" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="shipping_zip4" Type="String" MaxLength="4" FixedLength="false" Unicode="false" />
           <Property Name="shipping_country" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="AspNetUser" Relationship="Self.FK_tblShipping_AspNetUsers" FromRole="tblShipping" ToRole="AspNetUsers" />
           <NavigationProperty Name="tblSales_Invoice" Relationship="Self.FK_tblSales_Invoice_tblShipping" FromRole="tblShipping" ToRole="tblSales_Invoice" />
         </EntityType>
+        <Association Name="FK_tblBilling_Information_AspNetUsers">
+          <End Role="AspNetUsers" Type="Self.AspNetUser" Multiplicity="1" />
+          <End Role="tblBilling_Information" Type="Self.tblBilling_Information" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="tblBilling_Information">
+              <PropertyRef Name="customer_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblSales_Invoice_AspNetUsers">
+          <End Role="AspNetUsers" Type="Self.AspNetUser" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="tblSales_Invoice" Type="Self.tblSales_Invoice" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="tblSales_Invoice">
+              <PropertyRef Name="customer_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblShipping_AspNetUsers">
+          <End Role="AspNetUsers" Type="Self.AspNetUser" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="tblShipping" Type="Self.tblShipping" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="tblShipping">
+              <PropertyRef Name="customer_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_tblSales_Invoice_tblBilling">
           <End Role="tblBilling_Information" Type="Self.tblBilling_Information" Multiplicity="0..1" />
           <End Role="tblSales_Invoice" Type="Self.tblSales_Invoice" Multiplicity="*" />
@@ -656,7 +809,8 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="gartenkraftAdminEntities" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="GartenkraftAdminEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="AspNetUsers" EntityType="Self.AspNetUser" />
           <EntitySet Name="tblBilling_Information" EntityType="Self.tblBilling_Information" />
           <EntitySet Name="tblFeature_Product" EntityType="Self.tblFeature_Product" />
           <EntitySet Name="tblInventories" EntityType="Self.tblInventory" />
@@ -669,6 +823,18 @@
           <EntitySet Name="tblSales_Invoice" EntityType="Self.tblSales_Invoice" />
           <EntitySet Name="tblSales_Invoice_Lineitem" EntityType="Self.tblSales_Invoice_Lineitem" />
           <EntitySet Name="tblShippings" EntityType="Self.tblShipping" />
+          <AssociationSet Name="FK_tblBilling_Information_AspNetUsers" Association="Self.FK_tblBilling_Information_AspNetUsers">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="tblBilling_Information" EntitySet="tblBilling_Information" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblSales_Invoice_AspNetUsers" Association="Self.FK_tblSales_Invoice_AspNetUsers">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="tblSales_Invoice" EntitySet="tblSales_Invoice" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblShipping_AspNetUsers" Association="Self.FK_tblShipping_AspNetUsers">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="tblShipping" EntitySet="tblShippings" />
+          </AssociationSet>
           <AssociationSet Name="FK_tblSales_Invoice_tblBilling" Association="Self.FK_tblSales_Invoice_tblBilling">
             <End Role="tblBilling_Information" EntitySet="tblBilling_Information" />
             <End Role="tblSales_Invoice" EntitySet="tblSales_Invoice" />
@@ -723,9 +889,37 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="gartenkraftAdminModelStoreContainer" CdmEntityContainer="gartenkraftAdminEntities">
+        <EntityContainerMapping StorageEntityContainer="GartenkraftAdminModelStoreContainer" CdmEntityContainer="GartenkraftAdminEntities">
+          <EntitySetMapping Name="AspNetUsers">
+            <EntityTypeMapping TypeName="GartenkraftAdminModel.AspNetUser">
+              <MappingFragment StoreEntitySet="AspNetUsers">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="EmailConfirmed" ColumnName="EmailConfirmed" />
+                <ScalarProperty Name="PasswordHash" ColumnName="PasswordHash" />
+                <ScalarProperty Name="SecurityStamp" ColumnName="SecurityStamp" />
+                <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+                <ScalarProperty Name="PhoneNumberConfirmed" ColumnName="PhoneNumberConfirmed" />
+                <ScalarProperty Name="TwoFactorEnabled" ColumnName="TwoFactorEnabled" />
+                <ScalarProperty Name="LockoutEndDateUtc" ColumnName="LockoutEndDateUtc" />
+                <ScalarProperty Name="LockoutEnabled" ColumnName="LockoutEnabled" />
+                <ScalarProperty Name="AccessFailedCount" ColumnName="AccessFailedCount" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="Address1" ColumnName="Address1" />
+                <ScalarProperty Name="Address2" ColumnName="Address2" />
+                <ScalarProperty Name="City" ColumnName="City" />
+                <ScalarProperty Name="State" ColumnName="State" />
+                <ScalarProperty Name="Zip" ColumnName="Zip" />
+                <ScalarProperty Name="Zip4" ColumnName="Zip4" />
+                <ScalarProperty Name="Country" ColumnName="Country" />
+                <ScalarProperty Name="ImageFileName" ColumnName="ImageFileName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="tblBilling_Information">
-            <EntityTypeMapping TypeName="gartenkraftAdminModel.tblBilling_Information">
+            <EntityTypeMapping TypeName="GartenkraftAdminModel.tblBilling_Information">
               <MappingFragment StoreEntitySet="tblBilling_Information">
                 <ScalarProperty Name="billing_id" ColumnName="billing_id" />
                 <ScalarProperty Name="customer_id" ColumnName="customer_id" />
@@ -740,7 +934,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="tblFeature_Product">
-            <EntityTypeMapping TypeName="gartenkraftAdminModel.tblFeature_Product">
+            <EntityTypeMapping TypeName="GartenkraftAdminModel.tblFeature_Product">
               <MappingFragment StoreEntitySet="tblFeature_Product">
                 <ScalarProperty Name="feature_id" ColumnName="feature_id" />
                 <ScalarProperty Name="product_id" ColumnName="product_id" />
@@ -748,7 +942,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="tblInventories">
-            <EntityTypeMapping TypeName="gartenkraftAdminModel.tblInventory">
+            <EntityTypeMapping TypeName="GartenkraftAdminModel.tblInventory">
               <MappingFragment StoreEntitySet="tblInventory">
                 <ScalarProperty Name="inventory_id" ColumnName="inventory_id" />
                 <ScalarProperty Name="product_id" ColumnName="product_id" />
@@ -757,7 +951,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="tblProducts">
-            <EntityTypeMapping TypeName="gartenkraftAdminModel.tblProduct">
+            <EntityTypeMapping TypeName="GartenkraftAdminModel.tblProduct">
               <MappingFragment StoreEntitySet="tblProduct">
                 <ScalarProperty Name="product_id" ColumnName="product_id" />
                 <ScalarProperty Name="product_name" ColumnName="product_name" />
@@ -775,7 +969,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="tblProduct_Category">
-            <EntityTypeMapping TypeName="gartenkraftAdminModel.tblProduct_Category">
+            <EntityTypeMapping TypeName="GartenkraftAdminModel.tblProduct_Category">
               <MappingFragment StoreEntitySet="tblProduct_Category">
                 <ScalarProperty Name="category_id" ColumnName="category_id" />
                 <ScalarProperty Name="category_product_line_id" ColumnName="category_product_line_id" />
@@ -787,7 +981,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="tblProduct_Category_Image">
-            <EntityTypeMapping TypeName="gartenkraftAdminModel.tblProduct_Category_Image">
+            <EntityTypeMapping TypeName="GartenkraftAdminModel.tblProduct_Category_Image">
               <MappingFragment StoreEntitySet="tblProduct_Category_Image">
                 <ScalarProperty Name="product_category_image_id" ColumnName="product_category_image_id" />
                 <ScalarProperty Name="product_category_id" ColumnName="product_category_id" />
@@ -796,7 +990,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="tblProduct_Image">
-            <EntityTypeMapping TypeName="gartenkraftAdminModel.tblProduct_Image">
+            <EntityTypeMapping TypeName="GartenkraftAdminModel.tblProduct_Image">
               <MappingFragment StoreEntitySet="tblProduct_Image">
                 <ScalarProperty Name="product_image_id" ColumnName="product_image_id" />
                 <ScalarProperty Name="product_id" ColumnName="product_id" />
@@ -805,7 +999,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="tblProduct_Line">
-            <EntityTypeMapping TypeName="gartenkraftAdminModel.tblProduct_Line">
+            <EntityTypeMapping TypeName="GartenkraftAdminModel.tblProduct_Line">
               <MappingFragment StoreEntitySet="tblProduct_Line">
                 <ScalarProperty Name="product_line_id" ColumnName="product_line_id" />
                 <ScalarProperty Name="product_line_name" ColumnName="product_line_name" />
@@ -816,7 +1010,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="tblProduct_Line_Image">
-            <EntityTypeMapping TypeName="gartenkraftAdminModel.tblProduct_Line_Image">
+            <EntityTypeMapping TypeName="GartenkraftAdminModel.tblProduct_Line_Image">
               <MappingFragment StoreEntitySet="tblProduct_Line_Image">
                 <ScalarProperty Name="product_line_image_id" ColumnName="product_line_image_id" />
                 <ScalarProperty Name="product_line_id" ColumnName="product_line_id" />
@@ -825,7 +1019,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="tblSales_Invoice">
-            <EntityTypeMapping TypeName="gartenkraftAdminModel.tblSales_Invoice">
+            <EntityTypeMapping TypeName="GartenkraftAdminModel.tblSales_Invoice">
               <MappingFragment StoreEntitySet="tblSales_Invoice">
                 <ScalarProperty Name="invoice_id" ColumnName="invoice_id" />
                 <ScalarProperty Name="invoice_date" ColumnName="invoice_date" />
@@ -836,7 +1030,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="tblSales_Invoice_Lineitem">
-            <EntityTypeMapping TypeName="gartenkraftAdminModel.tblSales_Invoice_Lineitem">
+            <EntityTypeMapping TypeName="GartenkraftAdminModel.tblSales_Invoice_Lineitem">
               <MappingFragment StoreEntitySet="tblSales_Invoice_Lineitem">
                 <ScalarProperty Name="lineitem_id" ColumnName="lineitem_id" />
                 <ScalarProperty Name="product_id" ColumnName="product_id" />
@@ -846,7 +1040,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="tblShippings">
-            <EntityTypeMapping TypeName="gartenkraftAdminModel.tblShipping">
+            <EntityTypeMapping TypeName="GartenkraftAdminModel.tblShipping">
               <MappingFragment StoreEntitySet="tblShipping">
                 <ScalarProperty Name="shipping_id" ColumnName="shipping_id" />
                 <ScalarProperty Name="customer_id" ColumnName="customer_id" />

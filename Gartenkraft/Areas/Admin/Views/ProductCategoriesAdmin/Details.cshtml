@@ -1,0 +1,52 @@
+﻿@model Gartenkraft.Models.tblProduct_Category
+
+@{
+    ViewBag.Title = "Category Details";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Category Details for @Model.category_name</h2>
+
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <!--Moved dt/dd pair that was at bottom of this dl to the top for consistency with Add a New Category.  Tim H-->
+        <dt>
+            @Html.DisplayNameFor(model => model.tblProduct_Line.product_line_name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tblProduct_Line.product_line_name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.category_name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.category_name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.soft_delete)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.soft_delete)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.is_visible)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.is_visible)
+        </dd>
+
+    </dl>
+</div>
+
+<p>
+    <a class="btn btn-warning" href="@Url.Action("Edit", new { id = Model.category_id })"><em class="fa fa-pencil"></em></a>
+    <a class="btn btn-default" href="@Url.Action("Index")">Back to List</a>
+</p>

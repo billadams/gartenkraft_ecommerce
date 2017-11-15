@@ -11,7 +11,10 @@ namespace Gartenkraft_Admin.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+    using System.ComponentModel;
+    using System.ComponentModel.DataAnnotations.Schema;
+
     public partial class tblProduct_Line
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -21,11 +24,20 @@ namespace Gartenkraft_Admin.Models
             this.tblProduct_Category = new HashSet<tblProduct_Category>();
             this.tblProduct_Line_Image = new HashSet<tblProduct_Line_Image>();
         }
-    
+        [Required]
+        [DisplayName("Line Item ID")]
         public int product_line_id { get; set; }
+        [Required]
+        [DisplayName("Product Name")]
         public string product_line_name { get; set; }
+        [Required]
+        [DisplayName("Date")]
         public System.DateTime date_added { get; set; }
+        [Required]
+        [DisplayName("Soft Delete")]
         public bool soft_delete { get; set; }
+        [Required]
+        [DisplayName("Visible")]
         public bool is_visible { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

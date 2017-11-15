@@ -1,0 +1,46 @@
+﻿[
+  {
+    "outputFile": "Content/bootstrap/bootstrap.css",
+    "inputFile": "Content/bootstrap/bootstrap.less"
+  },
+  {
+    "outputFile": "Content/bootstrap/theme.css",
+    "inputFile": "Content/bootstrap/theme.less"
+  },
+  {
+    "outputFile": "Content/site.css",
+    "inputFile": "Content/site.less"
+  },
+  {
+    "outputFile": "Content/large.css",
+    "inputFile": "Content/large.less"
+  },
+  {
+    "outputFile": "Content/extra-large.css",
+    "inputFile": "Content/extra-large.less"
+  },
+  {
+    "outputFile": "Content/medium.css",
+    "inputFile": "Content/medium.less"
+  },
+  {
+    "outputFile": "Content/small.css",
+    "inputFile": "Content/small.less"
+  },
+  {
+    "outputFile": "Areas/Admin/Content/site.css",
+    "inputFile": "Areas/Admin/Content/site.less"
+  },
+  {
+    "outputFile": "Areas/Admin/Content/medium.css",
+    "inputFile": "Areas/Admin/Content/medium.less"
+  },
+  {
+    "outputFile": "Areas/Admin/Content/large.css",
+    "inputFile": "Areas/Admin/Content/large.less"
+  },
+  {
+    "outputFile": "Areas/Admin/Content/extra-large.css",
+    "inputFile": "Areas/Admin/Content/extra-large.less"
+  }
+]
