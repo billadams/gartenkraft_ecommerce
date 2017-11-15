@@ -5,8 +5,8 @@
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Edit Products</h2>
-<hr class="navbar-inverse" />
+<h2>Edit @Model.product_name</h2>
+<hr  />
 
 <div class="row">
     <div class="col-md-8">
@@ -101,7 +101,7 @@
             </div>
         }
 
-        <hr class="navbar-inverse" />
+        <hr  />
 
         <h3>Options:</h3>
 
@@ -188,7 +188,6 @@
                     </div>
                 </div>
                 <br />
-                @*<div class="text-danger">@ViewBag.Message</div>*@
             }
         </div>
     </div>
