@@ -189,7 +189,6 @@
     <Compile Include="Areas\Admin\Controllers\FileUploadController\UploadController.cs" />
     <Compile Include="Areas\Admin\Controllers\HomeController.cs" />
     <Compile Include="Areas\Admin\Controllers\ManageController.cs" />
-    <Compile Include="Controllers\CheckoutController.cs" />
     <Compile Include="Models\AspNetUser.cs">
       <DependentUpon>GartenkraftModel.tt</DependentUpon>
     </Compile>

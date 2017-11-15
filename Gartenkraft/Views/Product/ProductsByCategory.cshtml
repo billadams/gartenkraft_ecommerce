@@ -12,7 +12,7 @@
 
         @foreach (var product in Model)
         {
-            <li class="col-md-4 product-tile">
+            <li class="col-md-4 tile-container">
 
                 <a href="@Url.Action("View", "Product", new {productID = product.product_id})" class="product-tiles">
                     <div class="product-info">
@@ -31,11 +31,11 @@
                             }
                         </div>
                         <div class="product-price">
-                            <p>@product.PriceRange</p>
+                            <p class="pull-right">@product.PriceRange</p>
                         </div> 
                     </div>
-
                 </a>
+                <div class="link-overlay">View details</div>
             </li>
 
 
