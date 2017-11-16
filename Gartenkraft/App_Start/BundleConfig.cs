@@ -20,7 +20,8 @@ namespace Gartenkraft {
                       "~/Scripts/bootstrap.js",
                       "~/Scripts/respond.js",
                       "~/Scripts/jquery.bcSwipe.js",
-                      "~/Scripts/toTop.js"));
+                      "~/Scripts/toTop.js",
+                      "~/Scripts/edit.js"));
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap/bootstrap.min.css",

@@ -6,14 +6,15 @@
 }
 
 
-<div class="pull-right">
-    <div class="btn-group">
-        <a class="btn btn-success" href="@Url.Action("Create")"><em class="fa fa-plus"></em> Add</a>
+<div class="col-md-12">
+    <h2 class="col-md-8">Products</h2>
+
+    <div class="pull-right col-md-2">
+        <div class="btn-group">
+            http://localhost:52715/Admin/ProductsAdmin/Index#<a class="btn btn-success" href="@Url.Action("Create")"><em class="fa fa-plus"></em> Add</a>
+        </div>
     </div>
 </div>
-
-<h2>Products</h2>
-
 <div class="col-sm-12 col-md-12 well" id="content">
     @using (Html.BeginForm())
     {
