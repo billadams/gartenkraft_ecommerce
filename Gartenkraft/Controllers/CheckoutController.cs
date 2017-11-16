@@ -26,5 +26,11 @@ namespace Gartenkraft.Controllers
             }
             
         }
+
+        public ActionResult SubmitOrder()
+        {
+
+            return View();
+        }
     }
 }
