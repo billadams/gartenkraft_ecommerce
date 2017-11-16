@@ -184,6 +184,7 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
     <Compile Include="Areas\Admin\Controllers\AccountController.cs" />
+    <Compile Include="Areas\Admin\Controllers\AdminControllers\SalesInvoiceController.cs" />
     <Compile Include="Areas\Admin\Controllers\AdminControllers\ProductCategoriesAdminController.cs" />
     <Compile Include="Areas\Admin\Controllers\AdminControllers\ProductLinesAdminController.cs" />
     <Compile Include="Areas\Admin\Controllers\AdminControllers\ProductsAdminController.cs" />
@@ -639,6 +640,7 @@
     <None Include="Project_Readme.html" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Areas\Admin\Views\Invoice\" />
     <Folder Include="ProductImages\" />
   </ItemGroup>
   <ItemGroup>
