@@ -1,0 +1,58 @@
+﻿@model Gartenkraft.Models.tblProduct_Category
+
+@{
+    ViewBag.Title = "Delete Category";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Delete @Model.category_name</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <!--Moved dt/dd pair that was at bottom of this dl to the top for consistency with Add a New Category.  Tim H-->
+        <dt>
+            @Html.DisplayNameFor(model => model.tblProduct_Line.product_line_name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tblProduct_Line.product_line_name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.category_name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.category_name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.soft_delete)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.soft_delete)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.is_visible)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.is_visible)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-danger" />
+            @Html.ActionLink("Back to List", "Index", null, htmlAttributes: new { @class = "btn btn-default" })
+        </div>
+    }
+</div>

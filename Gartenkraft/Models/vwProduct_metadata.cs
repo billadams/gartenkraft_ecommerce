@@ -12,13 +12,13 @@ namespace Gartenkraft.Models
     {
         [NotMapped]
         [Display(Name = "Quantity")]
-        public int quantity { get; set; }
+        public int Quantity { get; set; }
 
         [NotMapped]
         public List<tblProduct_Image> ProductImages { get; set; }
 
         [NotMapped]
-        public List<tblProduct_Option> Options { get; set; }
+        public List<tblProduct_Option> ProductOptions { get; set; }
 
         [NotMapped]
         public int SelectedOptionID { get; set; }
@@ -29,10 +29,18 @@ namespace Gartenkraft.Models
         public void SetOption()
         {
             var db = new GartenkraftEntities();
+
             // setting option for simple product
-            if (this.is_custom_product == false) { this.SelectedOption = db.vwProduct_Option.Where(po => po.option_id == this.SelectedOptionID).Single(); }
+            if (this.is_custom_product == false)
+            {
+                this.SelectedOption = db.vwProduct_Option.FirstOrDefault(productOption => productOption.product_id == this.product_id);
+            }
             // else custom product
-            else { this.SelectedOption = db.vwProduct_Option.Where(po => po.option_id == this.SelectedOptionID).Single(); }
+            else
+            {
+                this.SelectedOption = db.vwProduct_Option.FirstOrDefault(productOption => productOption.option_id == this.SelectedOptionID);
+            }
+
             db.Dispose();
         }
 
@@ -44,12 +52,13 @@ namespace Gartenkraft.Models
         {
             var db = new GartenkraftEntities();
             this.ProductImages = db.tblProduct_Image.Where(pi => pi.product_id == this.product_id).ToList();
-            this.Options = db.tblProduct_Option.Where(o => o.product_id == this.product_id).ToList();
+            this.ProductOptions = db.tblProduct_Option.Where(o => o.product_id == this.product_id).ToList();
             db.Dispose();
-            if (this.Options.Count > 1 && this.Options != null)
+
+            if (this.ProductOptions.Count > 1 && this.ProductOptions != null)
             {
                 decimal lowestPrice = 0m, highestPrice = 0m;
-                foreach (var i in this.Options)
+                foreach (var i in this.ProductOptions)
                 {
                     // initialize lowestprice
                     if (lowestPrice == 0) { lowestPrice = i.unit_price; }
@@ -60,10 +69,10 @@ namespace Gartenkraft.Models
 
                 this.PriceRange = lowestPrice.ToString("c") + " - " + highestPrice.ToString("c");
             }
-            else if (this.Options.Count == 1)
+            else if (this.ProductOptions.Count == 1)
             {
                 string price = "";
-                foreach (var i in this.Options) { price = i.unit_price.ToString("c"); }
+                foreach (var i in this.ProductOptions) { price = i.unit_price.ToString("c"); }
                 this.PriceRange = price;
             }
         }

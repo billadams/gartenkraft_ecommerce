@@ -40,6 +40,7 @@ namespace Gartenkraft.Models
         public virtual DbSet<tblSales_Invoice_Lineitem> tblSales_Invoice_Lineitem { get; set; }
         public virtual DbSet<tblShipping> tblShippings { get; set; }
         public virtual DbSet<vwCategory> vwCategories { get; set; }
+        public virtual DbSet<vwCheckout> vwCheckouts { get; set; }
         public virtual DbSet<vwFeaturedProduct> vwFeaturedProducts { get; set; }
         public virtual DbSet<vwInvoice> vwInvoices { get; set; }
         public virtual DbSet<vwInvoice_Lineitem> vwInvoice_Lineitem { get; set; }

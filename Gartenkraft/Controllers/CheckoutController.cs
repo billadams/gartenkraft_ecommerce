@@ -4,18 +4,27 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using Gartenkraft.Models;
+
 namespace Gartenkraft.Controllers
 {
     public class CheckoutController : Controller
     {
-        private Cart cart = new Cart();
+        private Checkout oCheckout = new Checkout();
         private GartenkraftEntities dbContext = new GartenkraftEntities();
         // GET: Checkout
         public ActionResult Index()
         {
-            //initial checkout view
-            cart = (Cart)Session["Cart"];
-            return View();
+            if (Session["Cart"] != null)
+            {
+                oCheckout.CartInfo = (Cart) Session["Cart"];
+
+                return View(oCheckout);
+            }
+            else
+            {
+                return RedirectToAction("Index", "Cart");//no cart found, shouldn't be able to view this page
+            }
+            
         }
     }
 }

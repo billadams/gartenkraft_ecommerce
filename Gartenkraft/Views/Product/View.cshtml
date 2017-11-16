@@ -1,27 +1,39 @@
 ﻿@model Gartenkraft.Models.vwProduct
 
 @{
-    ViewBag.Title = @Model.product_name;
+//ViewBag.Title = @Model.product_name;
 }
 
 <section class="item">
     
     <div class="info">
         
-            <h2>@Model.product_name</h2>
+            @*<h2>@Model.product_name</h2>*@
 
         <div class="col-md-6">
             
-            <div class="product-images col-md-offset-2 col-md-10">
-                <img src="@Url.Content("~/ProductImages/" + @Model.product_id + "/" + @Model.ProductImages.First().product_image_name)" alt="@Model.product_name image" class="img-responsive"/>
-                <ul class="thumbnail-list list-unstyled clearfix">
-                    @foreach (var image in Model.ProductImages)
+            <div class="product-images col-md-12">
+                @if (@Model.ProductImages.Count > 0)
+                {
+                        <img src="@Url.Content("~/ProductImages/" + @Model.product_id + "/" + @Model.ProductImages.First().product_image_name)" alt="@Model.product_name image" class="center-block img-responsive"/>  
+                    
+                    <div class="center-block">
+                        <ul class="thumbnail-list list-unstyled clearfix">                        
+                            @foreach (var image in Model.ProductImages)
+                            {
+                                <li class="image-thumbnail">
+                                    <img src="@Url.Content("~/ProductImages/" + @image.product_id + "/" + @image.product_image_name)" alt="@image.product_image_name thumbnail" class="img-responsive"/>
+                                </li>
+                            }
+                        </ul>
+                    </div>
+                }
+                else
                     {
-                        <li class="image-thumbnail">
-                            <img src="@Url.Content("~/ProductImages/" + @image.product_id + "/" + @image.product_image_name)" alt="@image.product_image_name thumbnail" class="img-responsive"/>
-                        </li>
+                        <img src = "http://via.placeholder.com/200x200"
+                        alt = "Product Image" class=
+                        "center-block img-responsive" />
                     }
-                </ul>
             </div> <!-- ./col-md-12 -->
 
         </div> <!-- ./col-md-6 -->
@@ -35,23 +47,25 @@
                 @Html.HiddenFor(model => model.product_id)
 
                 <div class="row">
-                    <div class="pull-right col-md-6 price">
+                    <div class="pull-right col-md-6 product-price">
                         <p>@Model.PriceRange</p>
                     </div>
                 </div>
 
 
                 <div class="form-group col-md-3 quantity">
-                    @Html.LabelFor(model => model.quantity)
-                    @Html.EditorFor(model => model.quantity, new { htmlAttributes = new { @Value = "1", @class = "form-control" } })
+                    @Html.LabelFor(model => model.Quantity)
+                    @Html.EditorFor(model => model.Quantity, new { htmlAttributes = new { @Value = "1", @class = "form-control" } })
                 </div>
                     
                 if (Model.is_custom_product == true)
                 {
-                <div class="form-group col-md-4 custom-dropdown">
-                    @Html.LabelFor(model => model.SelectedOptionID, "Select option")
-                    @Html.DropDownListFor(model => model.SelectedOptionID, new SelectList(Model.Options, "option_id", "title"), htmlAttributes: new {@class = "form-control"})
-                </div>
+                    <div class="form-group col-md-4 custom-dropdown">
+                        @Html.LabelFor(model => model.SelectedOptionID, "Select option")
+                        @Html.DropDownListFor(model => model.SelectedOptionID, new SelectList(Model.ProductOptions, "option_id", "title"), htmlAttributes: new { @class = "form-control" })
+                        @*@Html.LabelFor(model => model.SelectedOptionID, "Select option")
+                    @Html.ExtendedDropDownListFor(model => model.SelectedOptionID, new SelectList(Model.ProductOptions, "option_id", "title", Model.ProductOptions.First().option_id , new Dictionary<string, object> { { "class", "data-product-price" } }), htmlAttributes: new { @class = "form-control" })*@
+                    </div>
                 }
                         
                 <div class="col-md-5">

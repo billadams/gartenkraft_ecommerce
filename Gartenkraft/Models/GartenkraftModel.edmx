@@ -81,10 +81,9 @@
           </Key>
           <Property Name="category_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="category_product_line_id" Type="int" Nullable="false" />
-          <Property Name="category_image_id" Type="int" />
           <Property Name="category_name" Type="varchar" MaxLength="100" Nullable="false" />
-          <Property Name="soft_delete" Type="bit" />
-          <Property Name="is_visible" Type="bit" />
+          <Property Name="soft_delete" Type="bit" Nullable="false" />
+          <Property Name="is_visible" Type="bit" Nullable="false" />
         </EntityType>
         <EntityType Name="tblProduct_Category_Image">
           <Key>
@@ -180,6 +179,40 @@ warning 6002: The table/view 'gartenkraft.gkraft.vwCategory' does not have a pri
           <Property Name="soft_delete" Type="bit" />
           <Property Name="is_visible" Type="bit" />
           <Property Name="product_line_name" Type="varchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'gartenkraft.gkraft.vwCheckout' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="vwCheckout">
+          <Key>
+            <PropertyRef Name="chkBillingAddress1" />
+            <PropertyRef Name="chkBillingCIty" />
+            <PropertyRef Name="chkBillingState" />
+            <PropertyRef Name="chkBillingZip" />
+            <PropertyRef Name="chkBillingCountry" />
+            <PropertyRef Name="chkShippingAddress1" />
+            <PropertyRef Name="chkShippingCity" />
+            <PropertyRef Name="chkShippingState" />
+            <PropertyRef Name="chkShippingZip" />
+            <PropertyRef Name="chkShippingCountry" />
+            <PropertyRef Name="chkInvoiceDate" />
+            <PropertyRef Name="chkInvoiceID" />
+          </Key>
+          <Property Name="chkBillingAddress1" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="chkBillingAddress2" Type="varchar" MaxLength="100" />
+          <Property Name="chkBillingCIty" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="chkBillingState" Type="varchar(max)" Nullable="false" />
+          <Property Name="chkBillingZip" Type="varchar" MaxLength="5" Nullable="false" />
+          <Property Name="chkBillingZip4" Type="varchar" MaxLength="4" />
+          <Property Name="chkBillingCountry" Type="varchar(max)" Nullable="false" />
+          <Property Name="chkShippingAddress1" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="chkShippingAddress2" Type="varchar" MaxLength="100" />
+          <Property Name="chkShippingCity" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="chkShippingState" Type="varchar(max)" Nullable="false" />
+          <Property Name="chkShippingZip" Type="varchar" MaxLength="5" Nullable="false" />
+          <Property Name="chkShippingZip4" Type="varchar" MaxLength="4" />
+          <Property Name="chkShippingCountry" Type="varchar(max)" Nullable="false" />
+          <Property Name="chkInvoiceDate" Type="datetime" Nullable="false" />
+          <Property Name="chkInvoiceID" Type="int" Nullable="false" />
         </EntityType>
         <!--Errors Found During Generation:
 warning 6002: The table/view 'gartenkraft.gkraft.vwFeaturedProduct' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
@@ -565,6 +598,26 @@ warning 6002: The table/view 'gartenkraft.gkraft.vwProduct_Option' does not have
     [vwCategory].[product_line_name] AS [product_line_name]
     FROM [gkraft].[vwCategory] AS [vwCategory]</DefiningQuery>
           </EntitySet>
+          <EntitySet Name="vwCheckout" EntityType="Self.vwCheckout" store:Type="Views" store:Schema="gkraft">
+            <DefiningQuery>SELECT 
+    [vwCheckout].[chkBillingAddress1] AS [chkBillingAddress1], 
+    [vwCheckout].[chkBillingAddress2] AS [chkBillingAddress2], 
+    [vwCheckout].[chkBillingCIty] AS [chkBillingCIty], 
+    [vwCheckout].[chkBillingState] AS [chkBillingState], 
+    [vwCheckout].[chkBillingZip] AS [chkBillingZip], 
+    [vwCheckout].[chkBillingZip4] AS [chkBillingZip4], 
+    [vwCheckout].[chkBillingCountry] AS [chkBillingCountry], 
+    [vwCheckout].[chkShippingAddress1] AS [chkShippingAddress1], 
+    [vwCheckout].[chkShippingAddress2] AS [chkShippingAddress2], 
+    [vwCheckout].[chkShippingCity] AS [chkShippingCity], 
+    [vwCheckout].[chkShippingState] AS [chkShippingState], 
+    [vwCheckout].[chkShippingZip] AS [chkShippingZip], 
+    [vwCheckout].[chkShippingZip4] AS [chkShippingZip4], 
+    [vwCheckout].[chkShippingCountry] AS [chkShippingCountry], 
+    [vwCheckout].[chkInvoiceDate] AS [chkInvoiceDate], 
+    [vwCheckout].[chkInvoiceID] AS [chkInvoiceID]
+    FROM [gkraft].[vwCheckout] AS [vwCheckout]</DefiningQuery>
+          </EntitySet>
           <EntitySet Name="vwFeaturedProduct" EntityType="Self.vwFeaturedProduct" store:Type="Views" store:Schema="gkraft">
             <DefiningQuery>SELECT 
     [vwFeaturedProduct].[feature_id] AS [feature_id], 
@@ -813,10 +866,9 @@ warning 6002: The table/view 'gartenkraft.gkraft.vwProduct_Option' does not have
           </Key>
           <Property Name="category_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="category_product_line_id" Type="Int32" Nullable="false" />
-          <Property Name="category_image_id" Type="Int32" />
           <Property Name="category_name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="soft_delete" Type="Boolean" />
-          <Property Name="is_visible" Type="Boolean" />
+          <Property Name="soft_delete" Type="Boolean" Nullable="false" />
+          <Property Name="is_visible" Type="Boolean" Nullable="false" />
           <NavigationProperty Name="tblProducts" Relationship="Self.FK_tblProduct_tblProduct_Category" FromRole="tblProduct_Category" ToRole="tblProduct" />
           <NavigationProperty Name="tblProduct_Category_Image" Relationship="Self.FK_tblProduct_Category_Image_tblProduct_Category" FromRole="tblProduct_Category" ToRole="tblProduct_Category_Image" />
           <NavigationProperty Name="tblProduct_Line" Relationship="Self.FK_tblProduct_Category_tblProductLine" FromRole="tblProduct_Category" ToRole="tblProduct_Line" />
@@ -927,6 +979,38 @@ warning 6002: The table/view 'gartenkraft.gkraft.vwProduct_Option' does not have
           <Property Name="soft_delete" Type="Boolean" />
           <Property Name="is_visible" Type="Boolean" />
           <Property Name="product_line_name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="vwCheckout">
+          <Key>
+            <PropertyRef Name="chkBillingAddress1" />
+            <PropertyRef Name="chkBillingCIty" />
+            <PropertyRef Name="chkBillingState" />
+            <PropertyRef Name="chkBillingZip" />
+            <PropertyRef Name="chkBillingCountry" />
+            <PropertyRef Name="chkShippingAddress1" />
+            <PropertyRef Name="chkShippingCity" />
+            <PropertyRef Name="chkShippingState" />
+            <PropertyRef Name="chkShippingZip" />
+            <PropertyRef Name="chkShippingCountry" />
+            <PropertyRef Name="chkInvoiceDate" />
+            <PropertyRef Name="chkInvoiceID" />
+          </Key>
+          <Property Name="chkBillingAddress1" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="chkBillingAddress2" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="chkBillingCIty" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="chkBillingState" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="chkBillingZip" Type="String" MaxLength="5" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="chkBillingZip4" Type="String" MaxLength="4" FixedLength="false" Unicode="false" />
+          <Property Name="chkBillingCountry" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="chkShippingAddress1" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="chkShippingAddress2" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="chkShippingCity" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="chkShippingState" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="chkShippingZip" Type="String" MaxLength="5" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="chkShippingZip4" Type="String" MaxLength="4" FixedLength="false" Unicode="false" />
+          <Property Name="chkShippingCountry" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="chkInvoiceDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="chkInvoiceID" Type="Int32" Nullable="false" />
         </EntityType>
         <EntityType Name="vwFeaturedProduct">
           <Key>
@@ -1291,6 +1375,7 @@ warning 6002: The table/view 'gartenkraft.gkraft.vwProduct_Option' does not have
           <EntitySet Name="tblSales_Invoice_Lineitem" EntityType="Self.tblSales_Invoice_Lineitem" />
           <EntitySet Name="tblShippings" EntityType="Self.tblShipping" />
           <EntitySet Name="vwCategories" EntityType="Self.vwCategory" />
+          <EntitySet Name="vwCheckouts" EntityType="Self.vwCheckout" />
           <EntitySet Name="vwFeaturedProducts" EntityType="Self.vwFeaturedProduct" />
           <EntitySet Name="vwInvoices" EntityType="Self.vwInvoice" />
           <EntitySet Name="vwInvoice_Lineitem" EntityType="Self.vwInvoice_Lineitem" />
@@ -1444,7 +1529,6 @@ warning 6002: The table/view 'gartenkraft.gkraft.vwProduct_Option' does not have
               <MappingFragment StoreEntitySet="tblProduct_Category">
                 <ScalarProperty Name="category_id" ColumnName="category_id" />
                 <ScalarProperty Name="category_product_line_id" ColumnName="category_product_line_id" />
-                <ScalarProperty Name="category_image_id" ColumnName="category_image_id" />
                 <ScalarProperty Name="category_name" ColumnName="category_name" />
                 <ScalarProperty Name="soft_delete" ColumnName="soft_delete" />
                 <ScalarProperty Name="is_visible" ColumnName="is_visible" />
@@ -1547,6 +1631,28 @@ warning 6002: The table/view 'gartenkraft.gkraft.vwProduct_Option' does not have
                 <ScalarProperty Name="soft_delete" ColumnName="soft_delete" />
                 <ScalarProperty Name="is_visible" ColumnName="is_visible" />
                 <ScalarProperty Name="product_line_name" ColumnName="product_line_name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="vwCheckouts">
+            <EntityTypeMapping TypeName="GartenkraftModel.vwCheckout">
+              <MappingFragment StoreEntitySet="vwCheckout">
+                <ScalarProperty Name="chkBillingAddress1" ColumnName="chkBillingAddress1" />
+                <ScalarProperty Name="chkBillingAddress2" ColumnName="chkBillingAddress2" />
+                <ScalarProperty Name="chkBillingCIty" ColumnName="chkBillingCIty" />
+                <ScalarProperty Name="chkBillingState" ColumnName="chkBillingState" />
+                <ScalarProperty Name="chkBillingZip" ColumnName="chkBillingZip" />
+                <ScalarProperty Name="chkBillingZip4" ColumnName="chkBillingZip4" />
+                <ScalarProperty Name="chkBillingCountry" ColumnName="chkBillingCountry" />
+                <ScalarProperty Name="chkShippingAddress1" ColumnName="chkShippingAddress1" />
+                <ScalarProperty Name="chkShippingAddress2" ColumnName="chkShippingAddress2" />
+                <ScalarProperty Name="chkShippingCity" ColumnName="chkShippingCity" />
+                <ScalarProperty Name="chkShippingState" ColumnName="chkShippingState" />
+                <ScalarProperty Name="chkShippingZip" ColumnName="chkShippingZip" />
+                <ScalarProperty Name="chkShippingZip4" ColumnName="chkShippingZip4" />
+                <ScalarProperty Name="chkShippingCountry" ColumnName="chkShippingCountry" />
+                <ScalarProperty Name="chkInvoiceDate" ColumnName="chkInvoiceDate" />
+                <ScalarProperty Name="chkInvoiceID" ColumnName="chkInvoiceID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

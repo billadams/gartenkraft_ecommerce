@@ -23,10 +23,9 @@ namespace Gartenkraft.Models
     
         public int category_id { get; set; }
         public int category_product_line_id { get; set; }
-        public Nullable<int> category_image_id { get; set; }
         public string category_name { get; set; }
-        public Nullable<bool> soft_delete { get; set; }
-        public Nullable<bool> is_visible { get; set; }
+        public bool soft_delete { get; set; }
+        public bool is_visible { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<tblProduct> tblProducts { get; set; }

@@ -5,10 +5,9 @@
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Details</h2>
+<h2>Details for @Model.product_line_name</h2>
 
 <div>
-    <h4>tblProduct_Line</h4>
     <hr />
     <dl class="dl-horizontal">
         <dt>
@@ -45,7 +44,8 @@
 
     </dl>
 </div>
+
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.product_line_id }) |
-    @Html.ActionLink("Back to List", "Index")
+    <a class="btn btn-warning" href="@Url.Action("Edit", new { id = Model.product_line_id })"><em class="fa fa-pencil"></em></a>
+    <a class="btn btn-default" href="@Url.Action("Index")">Back to List</a>
 </p>

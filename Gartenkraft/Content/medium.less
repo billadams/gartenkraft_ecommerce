@@ -18,6 +18,27 @@ body {
 }
 
 /*------------------------------------------------ CATEGORY PRODUCT STYLES ------------------------------------------------ */
+.items .product-info {
+    padding: 15px;
+}
+.tile-container {
+    position: relative;
+}
+a.product-tiles:hover + .link-overlay {
+    display: inline-block;
+    left: 50%;
+    color: #333;
+    position: absolute;
+    text-decoration: underline;
+    top: 50%;
+    transform: translateX(-50%);
+}
+.item a {
+    color: inherit;
+}
+.items a:hover {
+    opacity: .5;
+}
 .item-list {
     align-items: stretch;
     display: flex;
@@ -26,16 +47,15 @@ body {
 }
 .item-list li {
     border-bottom: none;
-    margin-bottom: 2.5rem;
+    margin-bottom: 0;
     padding-bottom: 15px;
-    padding-top: 15px;
-    transition: box-shadow 0.3s ease-in-out;
+    /*transition: box-shadow 0.3s ease-in-out;*/
 }
 .item-list li:hover {
-    box-shadow: 0px 5px 15px #e7e7e7;
+    /*box-shadow: 0px 5px 15px #e7e7e7;*/
 }
 .item-list .info {
-    min-height: 325px;
+    /*min-height: 325px;*/
 }
 
 /*------------------------------------------------ PRODUCT LISTING STYLES ------------------------------------------------ */
