@@ -47,23 +47,25 @@
                 @Html.HiddenFor(model => model.product_id)
 
                 <div class="row">
-                    <div class="pull-right col-md-6 price">
+                    <div class="pull-right col-md-6 product-price">
                         <p>@Model.PriceRange</p>
                     </div>
                 </div>
 
 
                 <div class="form-group col-md-3 quantity">
-                    @Html.LabelFor(model => model.quantity)
-                    @Html.EditorFor(model => model.quantity, new { htmlAttributes = new { @Value = "1", @class = "form-control" } })
+                    @Html.LabelFor(model => model.Quantity)
+                    @Html.EditorFor(model => model.Quantity, new { htmlAttributes = new { @Value = "1", @class = "form-control" } })
                 </div>
                     
                 if (Model.is_custom_product == true)
                 {
-                <div class="form-group col-md-4 custom-dropdown">
-                    @Html.LabelFor(model => model.SelectedOptionID, "Select option")
-                    @Html.DropDownListFor(model => model.SelectedOptionID, new SelectList(Model.Options, "option_id", "title"), htmlAttributes: new {@class = "form-control"})
-                </div>
+                    <div class="form-group col-md-4 custom-dropdown">
+                        @Html.LabelFor(model => model.SelectedOptionID, "Select option")
+                        @Html.DropDownListFor(model => model.SelectedOptionID, new SelectList(Model.ProductOptions, "option_id", "title"), htmlAttributes: new { @class = "form-control" })
+                        @*@Html.LabelFor(model => model.SelectedOptionID, "Select option")
+                    @Html.ExtendedDropDownListFor(model => model.SelectedOptionID, new SelectList(Model.ProductOptions, "option_id", "title", Model.ProductOptions.First().option_id , new Dictionary<string, object> { { "class", "data-product-price" } }), htmlAttributes: new { @class = "form-control" })*@
+                    </div>
                 }
                         
                 <div class="col-md-5">
