@@ -219,6 +219,15 @@ footer #copyright {
     top: 50%;
     transform: translateX(-50%);
   }
+  .link-overlay:hover {
+    display: inline-block;
+    left: 50%;
+    color: #333;
+    position: absolute;
+    text-decoration: underline;
+    top: 50%;
+    transform: translateX(-50%);
+  }
   .item a {
     color: inherit;
   }
