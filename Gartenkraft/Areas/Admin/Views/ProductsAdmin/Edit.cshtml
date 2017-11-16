@@ -13,13 +13,13 @@
             <li class="active">
                 <a href="#step-1">
                     <h4 class="list-group-item-heading">Step 1</h4>
-                    <p class="list-group-item-text">First step description</p>
+                    <p class="list-group-item-text">Edit product info</p>
                 </a>
             </li>
             <li class="disabled">
                 <a href="#step-2">
                     <h4 class="list-group-item-heading">Step 2</h4>
-                    <p class="list-group-item-text">Second step description</p>
+                    <p class="list-group-item-text">Edit Images</p>
                 </a>
             </li>
         </ul>
@@ -28,7 +28,7 @@
 <div class="row setup-content" id="step-1">
     <div class="col-xs-12">
         <div class="col-md-12 well text-center">
-            <h1> STEP 1</h1>
+            <h2> Product Info</h2>
             @using (Html.BeginForm())
             {
                 @Html.AntiForgeryToken()
@@ -114,23 +114,23 @@
 
                     <div class="form-group">
                         <div class="col-md-offset-2 col-md-10">
-                            <input type="submit" value="Save" class="btn btn-success" />
+                            <input type="submit" id="activate-step-2" value="Save and continue" class="btn btn-success" />
                         </div>
                     </div>
                 </div>
             }
-            <button id="activate-step-2" class="btn btn-primary btn-lg">Activate Step 2</button>
+            @*<button id="activate-step-2" class="btn btn-primary btn-lg">Activate Step 2</button>*@
         </div>
     </div>
 </div>
 <div class="row setup-content" id="step-2">
     <div class="col-xs-12">
         <div class="col-md-12 well">
-            <h1 class="text-center"> STEP 2</h1>
+            <h2 class="text-center"> Images</h2>
             <div class="col-md-12">
                 <table class="table">
                     <tr>
-                        <th><div class="text-center">Images:</div></th>
+                        @*<th><div class="text-center">Images:</div></th>*@
                         <th></th>
                     </tr>
 
