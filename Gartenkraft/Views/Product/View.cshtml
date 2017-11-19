@@ -8,14 +8,14 @@
     
     <div class="info">
         
-            <h2>@Model.product_name</h2>
+        <h2>@Model.product_name</h2>
 
         <div class="col-md-6">
             
             <div class="product-images col-md-12">
                 @if (@Model.ProductImages.Count > 0)
                 {
-                        <img src="@Url.Content("~/ProductImages/" + @Model.product_id + "/" + @Model.ProductImages.First().product_image_name)" alt="@Model.product_name image" class="center-block img-responsive"/>  
+                    <img src="@Url.Content("~/ProductImages/" + @Model.product_id + "/" + @Model.ProductImages.First().product_image_name)" alt="@Model.product_name image" class="center-block img-responsive"/>  
                     
                     <div class="center-block">
                         <ul class="thumbnail-list list-unstyled clearfix">                        
@@ -29,11 +29,11 @@
                     </div>
                 }
                 else
-                    {
-                        <img src = "http://via.placeholder.com/200x200"
-                        alt = "Product Image" class=
-                        "center-block img-responsive" />
-                    }
+                {
+                    <img src = "http://via.placeholder.com/200x200"
+                         alt = "Product Image" class=
+                         "center-block img-responsive" />
+                }
             </div> <!-- ./col-md-12 -->
 
         </div> <!-- ./col-md-6 -->
@@ -47,8 +47,8 @@
                 @Html.HiddenFor(model => model.product_id)
 
                 <div class="row">
-                    <div class="pull-right col-md-6 product-price">
-                        <p>@Model.PriceRange</p>
+                    <div class="pull-right col-md-6 product-price text-right">
+                        <div><span id="data-displayed-price"></span></div>
                     </div>
                 </div>
 
@@ -94,3 +94,14 @@
     </div> <!-- ./info -->
 
 </section>
+
+@section scripts
+{
+    <script>
+        $('#data-displayed-price').text('$ ' + $('#SelectedOptionID').find(":selected").attr('data-val-price'));
+
+        $("#SelectedOptionID").change(function() {
+            $('#data-displayed-price').text('$ ' + $(this).find(":selected").attr('data-val-price'));
+        });
+    </script>
+}
