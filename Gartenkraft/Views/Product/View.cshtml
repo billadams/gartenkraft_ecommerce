@@ -60,11 +60,18 @@
                     
                 if (Model.is_custom_product == true)
                 {
-                    <div class="form-group col-md-4 custom-dropdown">
+                    <div class="form-group col-md-4 custom-product-dropdown">
                         @Html.LabelFor(model => model.SelectedOptionID, "Select option")
-                        @Html.DropDownListFor(model => model.SelectedOptionID, new SelectList(Model.ProductOptions, "option_id", "title"), htmlAttributes: new { @class = "form-control" })
-                        @*@Html.LabelFor(model => model.SelectedOptionID, "Select option")
-                    @Html.ExtendedDropDownListFor(model => model.SelectedOptionID, new SelectList(Model.ProductOptions, "option_id", "title", Model.ProductOptions.First().option_id , new Dictionary<string, object> { { "class", "data-product-price" } }), htmlAttributes: new { @class = "form-control" })*@
+                        
+                        <select id="@Html.IdFor(model => model.SelectedOptionID)" class="form-control" name="@Html.NameFor(model => model.SelectedOptionID)">
+                            @foreach (var option in Model.ProductOptions)
+                            {
+                                <option class="product-price" value="@option.option_id")>@option.title</option>
+                            }
+                        </select>
+
+                        @*@Html.DropDownListFor(model => model.SelectedOptionID, new SelectList(Model.ProductOptions, "option_id", "title"), htmlAttributes: new { @class = "form-control" })*@
+                        
                     </div>
                 }
                         
