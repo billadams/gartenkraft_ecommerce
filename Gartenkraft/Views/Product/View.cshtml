@@ -66,7 +66,7 @@
                         <select id="@Html.IdFor(model => model.SelectedOptionID)" class="form-control" name="@Html.NameFor(model => model.SelectedOptionID)">
                             @foreach (var option in Model.ProductOptions)
                             {
-                                <option class="product-price" value="@option.option_id")>@option.title</option>
+                                <option class="product-price" data-val-price="@option.unit_price" value="@option.option_id")>@option.title</option>
                             }
                         </select>
 
