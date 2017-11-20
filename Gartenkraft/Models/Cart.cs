@@ -34,7 +34,7 @@ namespace Gartenkraft.Models
             bool duplicate = false;
             foreach (invoice_lineitem item in this.cartItems)
             {
-                if (li.GetProduct().product_id == item.product_id)
+                if (li.GetProduct().product_id == item.product_id && li.GetProduct().SelectedOptionID == item.GetProduct().SelectedOptionID)
                 {
                     duplicate = true;
                     item.Set_lineitem_quantity(item.lineitem_quantity += 1);
@@ -50,7 +50,7 @@ namespace Gartenkraft.Models
 
         public void UpdateItem(invoice_lineitem li)
         {
-            this.cartItems.Where(ci => ci.product_id == li.product_id).Single().Set_lineitem_quantity(li.lineitem_quantity);
+            this.cartItems.Where(ci => ci.product_id == li.product_id && ci.product_option_id == li.product_option_id).Single().Set_lineitem_quantity(li.lineitem_quantity);
             CalculateTotal();
         }
 

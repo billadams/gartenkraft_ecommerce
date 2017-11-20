@@ -25,6 +25,7 @@ namespace Gartenkraft.Models
         {
             this.product = p;
             base.product_id = p.product_id;
+            base.product_option_id = p.SelectedOptionID;
         }
 
         public vwProduct GetProduct()
@@ -34,7 +35,7 @@ namespace Gartenkraft.Models
 
         private void SetLineTotal()
         {
-            this.LineTotal = this.product.SelectedOption.unit_price * base.lineitem_quantity;
+            this.LineTotal = this.product.Price * base.lineitem_quantity;
         }
     }
 }

@@ -30,7 +30,7 @@ namespace Gartenkraft.Controllers
         // GET: vwProducts/ProductsByCategory
         public ActionResult ProductsByCategory(int categoryID)
         {
-            var prodByCategory = db.vwProducts.Where(products => products.category_id == categoryID).ToList();
+            var prodByCategory = db.vwProducts.Where(products => products.category_id == categoryID && products.is_visible == true).ToList();
 
             foreach (var product in prodByCategory)
             {

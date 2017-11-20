@@ -21,7 +21,7 @@ else
                 <th>@*image*@</th>
                 <th>@Html.DisplayNameFor(model => model.CartItems.Single().lineitem_quantity)</th>
                 <th>@Html.DisplayNameFor(model => model.CartItems.Single().GetProduct().product_name)</th>
-                <th>@Html.DisplayNameFor(model => model.CartItems.Single().GetProduct().product_short_description)</th>
+                <th>@Html.DisplayNameFor(model => model.CartItems.Single().GetProduct().SelectedOption.title)</th>
                 <th>@Html.DisplayNameFor(model => model.CartItems.Single().GetProduct().SelectedOption.unit_price)</th>
                 <th>@Html.DisplayName("Total")</th>
                 <th>&nbsp;</th>
@@ -38,11 +38,12 @@ else
                         <td></td>
                         <td>
                             @Html.HiddenFor(modelItem => item.product_id)
+                            @Html.HiddenFor(modelItem => item.product_option_id)
                             @Html.EditorFor(modelItem => item.lineitem_quantity, new { @type = "number", @min = "1", @step = "1" })
                             <input type="submit" value="Update" class="btn btn-warning" />
                         </td>
                         <td>@Html.DisplayFor(modelItem => item.GetProduct().product_name)</td>
-                        <td>@Html.DisplayFor(modelItem => item.GetProduct().product_short_description)</td>
+                        <td>@Html.DisplayFor(modelItem => item.GetProduct().SelectedOption.title)</td>
                         <td>@Html.DisplayFor(modelItem => item.GetProduct().SelectedOption.unit_price)</td>
                         <td>@Html.DisplayFor(modelItem => item.LineTotal)</td>
                         <td>

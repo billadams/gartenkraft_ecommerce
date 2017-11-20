@@ -26,27 +26,32 @@ namespace Gartenkraft.Models
         [NotMapped]
         public vwProduct_Option SelectedOption { get; set; }
 
+        [NotMapped]
+        [Display(Name = "Price")]
+        public string PriceRange { get; private set; }
+
+        [NotMapped]
+        public decimal Price { get; set; }
+
         public void SetOption()
         {
             var db = new GartenkraftEntities();
 
-            // setting option for simple product
-            if (this.is_custom_product == false)
-            {
-                this.SelectedOption = db.vwProduct_Option.FirstOrDefault(productOption => productOption.product_id == this.product_id);
-            }
-            // else custom product
-            else
-            {
-                this.SelectedOption = db.vwProduct_Option.FirstOrDefault(productOption => productOption.option_id == this.SelectedOptionID);
-            }
+            //// setting option for simple product
+            //if (this.is_custom_product == false)
+            //{
+            //    this.SelectedOption = db.vwProduct_Option.FirstOrDefault(productOption => productOption.product_id == this.product_id);
+            //}
+            //// else custom product
+            //else
+            //{
+            //    this.SelectedOption = db.vwProduct_Option.FirstOrDefault(productOption => productOption.option_id == this.SelectedOptionID);
+            //}
+
+            this.SelectedOption = db.vwProduct_Option.FirstOrDefault(po => po.option_id == this.SelectedOptionID);
 
             db.Dispose();
         }
-
-        [NotMapped]
-        [Display(Name = "Price")]
-        public string PriceRange { get; private set; }
 
         public void SetPriceRange()
         {
@@ -75,6 +80,12 @@ namespace Gartenkraft.Models
                 foreach (var i in this.ProductOptions) { price = i.unit_price.ToString("c"); }
                 this.PriceRange = price;
             }
+        }
+
+        public void SetPrice()
+        {
+            SetOption();
+            this.Price = this.SelectedOption.unit_price;
         }
     }
 
