@@ -197,6 +197,8 @@
     </Compile>
     <Compile Include="Models\BillingInfo.cs" />
     <Compile Include="Models\Checkout.cs" />
+    <Compile Include="Models\CheckoutDB.cs" />
+    <Compile Include="Models\GartenkraftConnection.cs" />
     <Compile Include="Models\GartenkraftModel.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -624,6 +626,7 @@
     <Content Include="Views\Product\ProductsByCategory.cshtml" />
     <Content Include="Views\Home\Error.cshtml" />
     <Content Include="Views\Checkout\Index.cshtml" />
+    <Content Include="Views\Checkout\SubmitOrder.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201710081937282_InitialCreate.resx">
