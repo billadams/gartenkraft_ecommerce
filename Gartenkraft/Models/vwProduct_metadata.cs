@@ -37,18 +37,16 @@ namespace Gartenkraft.Models
         {
             var db = new GartenkraftEntities();
 
-            //// setting option for simple product
-            //if (this.is_custom_product == false)
-            //{
-            //    this.SelectedOption = db.vwProduct_Option.FirstOrDefault(productOption => productOption.product_id == this.product_id);
-            //}
-            //// else custom product
-            //else
-            //{
-            //    this.SelectedOption = db.vwProduct_Option.FirstOrDefault(productOption => productOption.option_id == this.SelectedOptionID);
-            //}
-
-            this.SelectedOption = db.vwProduct_Option.FirstOrDefault(po => po.option_id == this.SelectedOptionID);
+            // setting option for simple product
+            if (this.is_custom_product == false)
+            {
+                this.SelectedOption = db.vwProduct_Option.FirstOrDefault(productOption => productOption.product_id == this.product_id);
+            }
+            // else custom product
+            else
+            {
+                this.SelectedOption = db.vwProduct_Option.FirstOrDefault(productOption => productOption.option_id == this.SelectedOptionID);
+            }
 
             db.Dispose();
         }
