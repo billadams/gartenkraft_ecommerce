@@ -34,61 +34,62 @@
                          alt = "Product Image" class=
                          "center-block img-responsive" />
                 }
-            </div> <!-- ./col-md-12 -->
+            </div> <!-- ./col-md-6 -->
 
         </div> <!-- ./col-md-6 -->
 
         <div class="col-md-6">
-
-            @using (Html.BeginForm("Add", "Cart"))
-            {
-                @Html.AntiForgeryToken()
-
-                @Html.HiddenFor(model => model.product_id)
-
-                <div class="row">
-                    <div class="pull-right col-md-6 product-price text-right">
-                        <div><span id="data-displayed-price"></span></div>
-                    </div>
-                </div>
-
-
-                <div class="form-group col-md-3 quantity">
-                    @Html.LabelFor(model => model.Quantity)
-                    @Html.EditorFor(model => model.Quantity, new { htmlAttributes = new { @Value = "1", @class = "form-control" } })
-                </div>
-                    
-                if (Model.is_custom_product == true)
+            
+            <div class="col-md-12 product-price text-right">
+                <div><span id="data-displayed-price"></span></div>
+            </div>
+            
+            <div class="col-md-12">
+                
+                @using (Html.BeginForm("Add", "Cart"))
                 {
-                    <div class="form-group col-md-4 custom-product-dropdown">
-                        @Html.LabelFor(model => model.SelectedOptionID, "Select option")
-                        
-                        <select id="@Html.IdFor(model => model.SelectedOptionID)" class="form-control" name="@Html.NameFor(model => model.SelectedOptionID)">
-                            @foreach (var option in Model.ProductOptions)
-                            {
-                                <option class="product-price" data-val-price="@option.unit_price" value="@option.option_id")>@option.title</option>
-                            }
-                        </select>
-                        
+                    @Html.AntiForgeryToken()
+
+                    @Html.HiddenFor(model => model.product_id)
+
+
+
+                    <div class="form-group col-md-3 quantity">
+                        @Html.LabelFor(model => model.Quantity)
+                        @Html.EditorFor(model => model.Quantity, new {htmlAttributes = new {@Value = "1", @class = "form-control"}})
                     </div>
-                }
-                        
-                <div class="col-md-5">
-                    <input type="submit" value="Add to Cart" class="btn btn-primary" />
-                </div>
-            }
+
+                    if (Model.is_custom_product == true)
+                    {
+                        <div class="form-group col-md-4 custom-product-dropdown">
+                            @Html.LabelFor(model => model.SelectedOptionID, "Select option")
+
+                            <select id="@Html.IdFor(model => model.SelectedOptionID)" class="form-control" name="@Html.NameFor(model => model.SelectedOptionID)">
+                                @foreach (var option in Model.ProductOptions)
+                                {
+                                    <option data-val-price="@option.unit_price" value="@option.option_id")>@option.title</option>
+                                }
+                            </select>
+
+                        </div>
+                    }
+
+                    <div class="col-md-5 text-right">
+                        <input type="submit" value="Add to Cart" class="btn btn-primary"/>
+                    </div>
+                }  
+
+            </div>
+
+            <div class="col-md-12 details clearfix">
+                <p>Details</p>
+                <hr/>
+                <p>@Model.product_short_description</p>
+                <p>@Model.product_long_description</p>
+            </div>
 
         </div> <!-- ./col-md-6 -->
         
-        <div class="row pull-right col-md-6">
-            
-            <p>Details</p>
-            <hr/>
-            <p>@Model.product_short_description</p>
-            <p>@Model.product_long_description</p>
-
-        </div> <!-- ./col-md-6 -->
-
     </div> <!-- ./info -->
 
 </section>
