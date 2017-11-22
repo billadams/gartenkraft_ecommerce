@@ -322,6 +322,7 @@
     <Compile Include="Models\vwProduct_metadata.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
+    <Compile Include="ViewModels\ModifyPasswordModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="App_Data\states.xml" />
@@ -612,8 +613,6 @@
     <Content Include="Views\Account\SendCode.cshtml" />
     <Content Include="Views\Account\VerifyCode.cshtml" />
     <Content Include="Views\Manage\AddPhoneNumber.cshtml" />
-    <Content Include="Views\Manage\ChangePassword.cshtml" />
-    <Content Include="Views\Manage\Index.cshtml" />
     <Content Include="Views\Manage\ManageLogins.cshtml" />
     <Content Include="Views\Manage\SetPassword.cshtml" />
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
@@ -630,6 +629,11 @@
     <Content Include="Views\Checkout\Index.cshtml" />
     <Content Include="Views\Checkout\SubmitOrder.cshtml" />
     <Content Include="Views\Manage\PartialChangePassword.cshtml" />
+    <Content Include="Views\Manage\ChangePassword.cshtml" />
+    <Content Include="Views\Manage\Index.cshtml" />
+    <Content Include="Views\Manage\ModifyPassword.cshtml" />
+    <Content Include="Views\Manage\_LayoutManage.cshtml" />
+    <Content Include="Views\Manage\_ManageLayout.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201710081937282_InitialCreate.resx">

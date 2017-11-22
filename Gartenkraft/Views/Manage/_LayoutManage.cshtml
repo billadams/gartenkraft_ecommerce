@@ -1,12 +1,19 @@
-﻿@model Gartenkraft.Models.IndexViewModel
-@{
-    ViewBag.Title = "Index";
-    Layout = "~/Views/Manage/_ManageLayout.cshtml";
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2 class="text-info">Your Profile</h2>
+<div class="row">
+    <div class="col-md-3 bg-primary">
 
+        @Html.Action("ModifyPassword")
 
+        @Html.ActionLink("Change your profile", "ChangeProfile", null, htmlAttributes: new { @class = "btn btn-default navbar-btn" })
+
+    </div>
+    <div class="col-md-9">
+        @RenderBody()
+    </div>
+</div>
 
 @*****************************************************************commented for future reference**************************************************************@
 
@@ -98,5 +105,7 @@
     </div>*@
 
 @*****************************************************************commented for future reference**************************************************************@
+
+
 
 

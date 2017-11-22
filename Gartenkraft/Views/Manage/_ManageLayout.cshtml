@@ -1,0 +1,96 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GartenKraft Lawn & Garden Products | @ViewBag.Title</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+</head>
+<body>
+
+    <header class="header">
+        <div class="container">
+            @Html.ActionLink("GartenKraft", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+
+            <div class="pull-right">
+                <ul class="nav navbar-nav">
+                    <li>@Html.ActionLink("Cart", "Index", "Cart")</li>
+                    @Html.Partial("_LoginPartial")
+                </ul>
+            </div>
+
+        </div>
+    </header>
+
+    <nav class="navbar">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    @* Dynamic menu *@
+                    @Html.Action("Menu", "Nav")
+
+                    <li>@Html.ActionLink("About", "About", "Home")</li>
+                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container body-content">
+        <div class="row">
+            <div class="col-md-3 bg-primary">
+
+                @Html.Action("ModifyPassword")
+
+                @Html.ActionLink("Change your profile", "ChangeProfile", null, htmlAttributes: new { @class = "btn btn-default navbar-btn" })
+
+            </div>
+            <div class="col-md-9">
+                @RenderBody()
+            </div>
+        </div>
+    </div>
+    <footer class="footer">
+        <div class="container">
+            <div class="row">
+                <div id="sunneday-logo" class="col-xs-6 col-xs-offset-3 col-sm-3 col-sm-offset-1 col-md-2 col-md-offset-1 col-lg-2 col-lg-offset-1">
+                    <img src="~/Images/sunneday-logo-white.png" alt="Sunneday Corporate Logo" class="img-responsive">
+                </div>
+                <div class="contact-info col-xs-12 col-sm-4 col-md-6">
+                    <ul>
+                        <li>Office: 402-852-2008</li>
+                        <li>Fax: 402-852-2031</li>
+                        <li>Email: <a href="mailto:info@sunneday.com">info@sunneday.com</a></li>
+                        <li>Web: <a href="http://www.sunneday.com" target="_blank">Sunneday Corporate Website</a></li>
+                    </ul>
+                </div>
+                <div class="col-xs-6 col-xs-offset-3 col-sm-3 col-sm-offset-1 col-md-2 col-md-offset-0 col-lg-2" id="gartenkraft-logo">
+                    <img src="~/Images/gartenkraft-whitelogo.png" alt="Gartenkraft Logo" class="img-responsive">
+                </div>
+            </div>
+            <div id="copyright">
+                <p>Copyright &copy; @DateTime.Now.Year Gartenkraft All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    <script>$('.carousel').bcSwipe({ threshold: 50 });</script>
+    @RenderSection("scripts", required: false)
+
+
+    <script src="~/Scripts/jquery.validate.unobtrusive.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+
+</body>
+</html>

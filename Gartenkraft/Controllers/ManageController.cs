@@ -7,6 +7,7 @@ using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using Gartenkraft.Models;
+using Gartenkraft.ViewModels;
 
 namespace Gartenkraft.Controllers
 {
@@ -352,6 +353,14 @@ namespace Gartenkraft.Controllers
             }
             var result = await UserManager.AddLoginAsync(User.Identity.GetUserId(), loginInfo.Login);
             return result.Succeeded ? RedirectToAction("ManageLogins") : RedirectToAction("ManageLogins", new { Message = ManageMessageId.Error });
+        }
+
+        // partial views to check if user has password
+        public PartialViewResult ModifyPassword()
+        {
+            var model = new ModifyPasswordModel();
+            model.HasPassword = HasPassword();
+            return PartialView(model);
         }
 
         protected override void Dispose(bool disposing)
