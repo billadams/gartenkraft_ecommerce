@@ -10,21 +10,27 @@
 </head>
 <body>
     
-    <header class="header">
-        <div class="container">
-            @Html.ActionLink("GartenKraft", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
-        
-            <div class="pull-right">
-                <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Cart", "Index", "Cart")</li>
-                    @Html.Partial("_LoginPartial")
-                </ul>
+    
+
+    <nav class="navbar" style="z-index:1;">
+        <div class="header" style="z-index:998;background-color:white;color:#444444;">
+            <div class="container">
+                <div>
+                    @Html.ActionLink("GartenKraft", "Index", "Home", new { area = "" }, new { @class = "navbar-brand", @style = "z-index:999;color:#444444;" })
+                </div>
+
+                <div class="pull-right" style="z-index:999;color:#444444;">
+                    <ul class="nav navbar-nav" style="z-index:999;color:#444444;">
+                        <li>@Html.ActionLink("Cart", "Index", "Cart", new { @style = "z-index:999;color:#444444;" })</li>
+                        <li style="z-index:999;color:#444444;">
+                            @Html.Partial("_LoginPartial")
+                        </li>
+                    </ul>
+                </div>
+
             </div>
-
         </div>
-    </header>
 
-    <nav class="navbar">
         <div class="container">
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
@@ -48,7 +54,7 @@
     <div class="container body-content">
         @RenderBody()
     </div>
-    <footer class="footer">
+    <footer class="footer" style="z-index:999;">
         <div class="container">
             <div class="row">
                 <div id="sunneday-logo" class="col-xs-6 col-xs-offset-3 col-sm-3 col-sm-offset-1 col-md-2 col-md-offset-1 col-lg-2 col-lg-offset-1">

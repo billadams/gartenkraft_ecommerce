@@ -9,7 +9,16 @@
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         @Html.HiddenFor(model => model.Id)
+        @Html.HiddenFor(model => model.UserName)
         @Html.HiddenFor(model => model.PasswordHash)
+        @Html.HiddenFor(model => model.AccessFailedCount)
+        @Html.HiddenFor(model => model.EmailConfirmed)
+        @Html.HiddenFor(model => model.ImageFileName)
+        @Html.HiddenFor(model => model.LockoutEnabled)
+        @Html.HiddenFor(model => model.LockoutEndDateUtc)
+        @Html.HiddenFor(model => model.PhoneNumberConfirmed)
+        @Html.HiddenFor(model => model.SecurityStamp)
+
 
         <div class="form-group">
             @Html.LabelFor(model => model.Email, htmlAttributes: new { @class = "control-label col-md-2" })

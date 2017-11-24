@@ -12,14 +12,14 @@
                                 background-color:#519032;
                                 position: fixed;
                                 z-index: 0;
-                                top:102px;
-                                padding:20px 0px;
+                                top:0;
+                                padding:120px 0px;
                                 ">
         @Html.ActionLink("View your Profile", "Index", new { Message = ""}, htmlAttributes: new { @class = "btn btn-primary btn-group-justified", @style = "margin:10px 0px;" })
         @Ajax.ActionLink("Change your password", "PartialChangePassword", null, new AjaxOptions() { HttpMethod = "GET", UpdateTargetId = "ManageContent", InsertionMode = InsertionMode.Replace }, htmlAttributes: new { @class = "btn btn-primary btn-group-justified", @style = "margin:10px 0px;" })
         @Ajax.ActionLink("Change your profile", "PartialChangeProfile", null, new AjaxOptions() { HttpMethod = "GET", UpdateTargetId = "ManageContent", InsertionMode = InsertionMode.Replace }, htmlAttributes: new { @class = "btn btn-primary btn-group-justified", @style = "margin:10px 0px;" })
     </div>
-    <div class="col-lg-9" style="padding:25px;">
+    <div class="col-lg-9" style="padding:25px;margin-left:200px;">
         <h2>@User.Identity.Name's Profile</h2>
 
         <p><span class="text-danger">@ViewBag.StatusMessage</span></p>
