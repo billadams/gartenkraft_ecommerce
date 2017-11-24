@@ -16,15 +16,18 @@ namespace Gartenkraft.Controllers
     {
         private ApplicationSignInManager _signInManager;
         private ApplicationUserManager _userManager;
+        private GartenkraftEntities db;
 
         public ManageController()
         {
+            db = new GartenkraftEntities();
         }
 
         public ManageController(ApplicationUserManager userManager, ApplicationSignInManager signInManager)
         {
             UserManager = userManager;
             SignInManager = signInManager;
+            db = new GartenkraftEntities();
         }
 
         public ApplicationSignInManager SignInManager
@@ -74,6 +77,14 @@ namespace Gartenkraft.Controllers
                 BrowserRemembered = await AuthenticationManager.TwoFactorBrowserRememberedAsync(userId)
             };
             return View(model);
+        }
+
+        // partial profile view
+        public PartialViewResult _UserProfile()
+        {
+            var id = User.Identity.GetUserId();
+            var user = db.AspNetUsers.Find(id);
+            return PartialView(user);
         }
 
         //
@@ -223,7 +234,7 @@ namespace Gartenkraft.Controllers
 
         //
         // POST: /Manage/ChangePassword
-        [HttpPost]
+        [HttpPost, ActionName ("PartialChangePassword")]
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> ChangePassword(ChangePasswordViewModel model)
         {
@@ -253,28 +264,30 @@ namespace Gartenkraft.Controllers
             return PartialView();
         }
 
+        // ----------------------------------change profile partial--------------------
         //
-        // POST: /Manage/ChangePassword
+        // GET: /Manage/ChangeProfile
+        public PartialViewResult PartialChangeProfile()
+        {
+            var id = User.Identity.GetUserId();
+            AspNetUser user = db.AspNetUsers.Find(id);
+            return PartialView(user);
+        }
+
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<PartialViewResult> PartialChangePassword(ChangePasswordViewModel model)
+        public ActionResult PartialChangeProfile(AspNetUser user)
         {
-            if (!ModelState.IsValid)
+            if(ModelState.IsValid)
             {
-                return PartialView(model);
-            }
-            var result = await UserManager.ChangePasswordAsync(User.Identity.GetUserId(), model.OldPassword, model.NewPassword);
-            if (result.Succeeded)
-            {
-                var user = await UserManager.FindByIdAsync(User.Identity.GetUserId());
-                if (user != null)
+                db.Entry(user).State = System.Data.Entity.EntityState.Modified;
+                var result = db.SaveChanges();
+                if (result > 0)
                 {
-                    await SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
+                    return RedirectToAction("Index", new { Message = "" });
                 }
-                //return RedirectToAction("Index", new { Message = ManageMessageId.ChangePasswordSuccess });
             }
-            AddErrors(result);
-            return PartialView(model);
+            return RedirectToAction("Index", new { Message = ManageMessageId.Error });
         }
 
         //

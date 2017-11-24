@@ -195,6 +195,7 @@
     <Compile Include="Models\AspNetUser.cs">
       <DependentUpon>GartenkraftModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\AspNetUsersMetadata.cs" />
     <Compile Include="Models\BillingInfo.cs" />
     <Compile Include="Models\Checkout.cs" />
     <Compile Include="Models\CheckoutDB.cs" />
@@ -632,8 +633,8 @@
     <Content Include="Views\Manage\ChangePassword.cshtml" />
     <Content Include="Views\Manage\Index.cshtml" />
     <Content Include="Views\Manage\ModifyPassword.cshtml" />
-    <Content Include="Views\Manage\_LayoutManage.cshtml" />
-    <Content Include="Views\Manage\_ManageLayout.cshtml" />
+    <Content Include="Views\Manage\PartialChangeProfile.cshtml" />
+    <Content Include="Views\Manage\_UserProfile.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201710081937282_InitialCreate.resx">
