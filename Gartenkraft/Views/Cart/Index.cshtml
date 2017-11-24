@@ -15,13 +15,13 @@
 else
 {
     <table class="table">
-        
+
         <thead>
             <tr>
                 <th>@*image*@</th>
                 <th>@Html.DisplayNameFor(model => model.CartItems.Single().lineitem_quantity)</th>
                 <th>@Html.DisplayNameFor(model => model.CartItems.Single().GetProduct().product_name)</th>
-                <th>@Html.DisplayNameFor(model => model.CartItems.Single().GetProduct().product_short_description)</th>
+                <th>@Html.DisplayNameFor(model => model.CartItems.Single().GetProduct().SelectedOption.title)</th>
                 <th>@Html.DisplayNameFor(model => model.CartItems.Single().GetProduct().SelectedOption.unit_price)</th>
                 <th>@Html.DisplayName("Total")</th>
                 <th>&nbsp;</th>
@@ -29,28 +29,29 @@ else
         </thead>
 
         <tbody>
-        @foreach (var item in Model.CartItems)
-        {
-            <tr>
-                @using (Html.BeginForm("UpdateQuantity", "Cart", FormMethod.Get))
-                {
-                    @Html.AntiForgeryToken()
-                    <td></td>
-                    <td>
-                        @Html.HiddenFor(modelItem => item.product_id)
-                        @Html.EditorFor(modelItem => item.lineitem_quantity, new {@type = "number", @min = "1", @step = "1"})
-                        <input type="submit" value="Update" class="btn btn-warning"/>
-                    </td>
-                    <td>@Html.DisplayFor(modelItem => item.GetProduct().product_name)</td>
-                    <td>@Html.DisplayFor(modelItem => item.GetProduct().product_short_description)</td>
-                    <td>@Html.DisplayFor(modelItem => item.GetProduct().SelectedOption.unit_price)</td>
-                    <td>@Html.DisplayFor(modelItem => item.LineTotal)</td>
-                    <td>
-                        @Html.ActionLink("Remove", "RemoveLineitem", new {productID = item.GetProduct().product_id}, htmlAttributes: new {@class = "btn btn-danger"})
-                    </td>
-                }
-            </tr>
-        }
+            @foreach (var item in Model.CartItems)
+            {
+                <tr>
+                    @using (Html.BeginForm("UpdateQuantity", "Cart", FormMethod.Get))
+                    {
+                        @Html.AntiForgeryToken()
+                        <td></td>
+                        <td>
+                            @Html.HiddenFor(modelItem => item.product_id)
+                            @Html.HiddenFor(modelItem => item.product_option_id)
+                            @Html.EditorFor(modelItem => item.lineitem_quantity, new { @type = "number", @min = "1", @step = "1" })
+                            <input type="submit" value="Update" class="btn btn-warning" />
+                        </td>
+                        <td>@Html.DisplayFor(modelItem => item.GetProduct().product_name)</td>
+                        <td>@Html.DisplayFor(modelItem => item.GetProduct().SelectedOption.title)</td>
+                        <td>@Html.DisplayFor(modelItem => item.GetProduct().SelectedOption.unit_price)</td>
+                        <td>@Html.DisplayFor(modelItem => item.LineTotal)</td>
+                        <td>
+                            @Html.ActionLink("Remove", "RemoveLineitem", new { productID = item.GetProduct().product_id }, htmlAttributes: new { @class = "btn btn-danger" })
+                        </td>
+                    }
+                </tr>
+            }
         </tbody>
 
         <tfoot>
@@ -58,11 +59,19 @@ else
                 <td colspan="6" class="text-right">Subtotal: @Model.Subtotal.ToString("c")</td>
             </tr>
             <tr>
-                <td colspan="6" class="text-right">Shipping: $0.00</td>          
+                <td colspan="6" class="text-right">Shipping: $0.00</td>
             </tr>
             <tr>
                 <td colspan="6" class="text-right">Order total: @Model.Total.ToString("c")</td>
             </tr>
+            <tr>
+                <td colspan="6" class="text-right">
+                    <a href="Checkout/Index">
+                        <input type="button" class="btn btn-primary" value="Checkout" />
+                    </a>
+                </td>
+            </tr>
+
         </tfoot>
 
     </table>

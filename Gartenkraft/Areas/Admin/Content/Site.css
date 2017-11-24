@@ -1,10 +1,17 @@
 ﻿@import url('https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css');
+.page-body {
+  background-color: #f9fff7;
+}
 #wrapper {
   padding-left: 0;
 }
 #page-wrapper {
   width: 100%;
   padding: 0;
+}
+#content.col-sm-12.col-md-12.well {
+  background-color: white;
+  background-image: linear-gradient(to bottom, #fff 0%, #fff 100%);
 }
 /*------------------------------------------------ TOP NAVIGATION STYLES ------------------------------------------------ */
 .top-nav {

@@ -276,7 +276,6 @@
     <Content Include="Content\edit.css" />
     <Content Include="Content\fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Content\layout.css" />
-    <Content Include="Content\sidebar.css" />
     <Content Include="Content\site.css" />
     <Content Include="Content\table.css" />
     <Content Include="favicon.ico" />
