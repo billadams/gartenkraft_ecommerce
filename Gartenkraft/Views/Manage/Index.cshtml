@@ -13,7 +13,7 @@
                                 position: fixed;
                                 z-index: 0;
                                 top:0;
-                                padding:120px 0px;
+                                padding:150px 0px;
                                 ">
         @Html.ActionLink("View your Profile", "Index", new { Message = ""}, htmlAttributes: new { @class = "btn btn-primary btn-group-justified", @style = "margin:10px 0px;" })
         @Ajax.ActionLink("Change your password", "PartialChangePassword", null, new AjaxOptions() { HttpMethod = "GET", UpdateTargetId = "ManageContent", InsertionMode = InsertionMode.Replace }, htmlAttributes: new { @class = "btn btn-primary btn-group-justified", @style = "margin:10px 0px;" })

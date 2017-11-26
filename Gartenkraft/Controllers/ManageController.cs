@@ -16,18 +16,15 @@ namespace Gartenkraft.Controllers
     {
         private ApplicationSignInManager _signInManager;
         private ApplicationUserManager _userManager;
-        private GartenkraftEntities db;
 
         public ManageController()
         {
-            db = new GartenkraftEntities();
         }
 
         public ManageController(ApplicationUserManager userManager, ApplicationSignInManager signInManager)
         {
             UserManager = userManager;
             SignInManager = signInManager;
-            db = new GartenkraftEntities();
         }
 
         public ApplicationSignInManager SignInManager
@@ -82,8 +79,10 @@ namespace Gartenkraft.Controllers
         // partial profile view
         public PartialViewResult _UserProfile()
         {
+            var db = new ApplicationDbContext();
             var id = User.Identity.GetUserId();
-            var user = db.AspNetUsers.Find(id);
+            var user = db.Users.Find(id);
+            db.Dispose();
             return PartialView(user);
         }
 
@@ -269,24 +268,44 @@ namespace Gartenkraft.Controllers
         // GET: /Manage/ChangeProfile
         public PartialViewResult PartialChangeProfile()
         {
+            ViewBag.States = XmlHelper.GetStates(Server, Url);
+            ViewBag.Countries = XmlHelper.GetCountries(Server, Url);
+
+            var db = new ApplicationDbContext();
             var id = User.Identity.GetUserId();
-            AspNetUser user = db.AspNetUsers.Find(id);
+            var user = db.Users.Find(id);
+            db.Dispose();
             return PartialView(user);
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult PartialChangeProfile(AspNetUser user)
+        public ActionResult PartialChangeProfile(ApplicationUser user)
         {
-            if(ModelState.IsValid)
+            var db = new ApplicationDbContext();
+
+            // get user being edited and enter edited fields
+            var editUser = db.Users.Find(user.Id);
+            editUser.Email = user.Email;
+            editUser.PhoneNumber = user.PhoneNumber;
+            editUser.FirstName = user.FirstName;
+            editUser.LastName = user.LastName;
+            editUser.Address1 = user.Address1;
+            editUser.Address2 = user.Address2;
+            editUser.City = user.City;
+            editUser.State = user.State;
+            editUser.Zip = user.Zip;
+            editUser.Zip4 = user.Zip4;
+            editUser.Country = user.Country;
+
+            // save to database
+            db.Entry(editUser).State = System.Data.Entity.EntityState.Modified;
+            var result = db.SaveChanges();
+            if (result > 0)
             {
-                db.Entry(user).State = System.Data.Entity.EntityState.Modified;
-                var result = db.SaveChanges();
-                if (result > 0)
-                {
-                    return RedirectToAction("Index", new { Message = "" });
-                }
+                return RedirectToAction("Index", new { Message = "" });
             }
+            db.Dispose();
             return RedirectToAction("Index", new { Message = ManageMessageId.Error });
         }
 

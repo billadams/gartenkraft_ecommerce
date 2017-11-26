@@ -326,6 +326,7 @@
     <Compile Include="ViewModels\ModifyPasswordModel.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="App_Data\countries.xml" />
     <Content Include="App_Data\states.xml" />
     <Content Include="App_Data\ViewUserRoles.sql" />
     <Content Include="Areas\Admin\Content\bootstrap-theme.css" />
@@ -635,6 +636,7 @@
     <Content Include="Views\Manage\ModifyPassword.cshtml" />
     <Content Include="Views\Manage\PartialChangeProfile.cshtml" />
     <Content Include="Views\Manage\_UserProfile.cshtml" />
+    <Content Include="Views\Shared\_Cart.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201710081937282_InitialCreate.resx">

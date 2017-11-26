@@ -1,4 +1,4 @@
-﻿@model Gartenkraft.Models.AspNetUser
+﻿@model Gartenkraft.Models.ApplicationUser
 
 
 @using (Html.BeginForm())
@@ -9,15 +9,6 @@
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         @Html.HiddenFor(model => model.Id)
-        @Html.HiddenFor(model => model.UserName)
-        @Html.HiddenFor(model => model.PasswordHash)
-        @Html.HiddenFor(model => model.AccessFailedCount)
-        @Html.HiddenFor(model => model.EmailConfirmed)
-        @Html.HiddenFor(model => model.ImageFileName)
-        @Html.HiddenFor(model => model.LockoutEnabled)
-        @Html.HiddenFor(model => model.LockoutEndDateUtc)
-        @Html.HiddenFor(model => model.PhoneNumberConfirmed)
-        @Html.HiddenFor(model => model.SecurityStamp)
 
 
         <div class="form-group">
@@ -87,7 +78,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.State, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.State, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.DropDownListFor(model => model.State, (SelectList)ViewBag.States, null, new { @class = "form-control" })
                 @Html.ValidationMessageFor(model => model.State, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -111,7 +102,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.Country, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.Country, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.DropDownListFor(model => model.Country, (SelectList)ViewBag.Countries, null, new { @class = "form-control" })
                 @Html.ValidationMessageFor(model => model.Country, "", new { @class = "text-danger" })
             </div>
         </div>
