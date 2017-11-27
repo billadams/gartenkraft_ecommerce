@@ -9,7 +9,7 @@
             @foreach (var sublink in link.Categories)
             {
                 <li>
-                    @Html.ActionLink(sublink.category_name, "ProductsByCategory", "Product", new { categoryID = sublink.category_id }, new Dictionary<string, object> { { "class", "dropdown-toggle" }, { "data-toggle", "dropdown" }, { "aria-haspopup", "true" }, { "aria-expanded", "false" } })
+                    @Html.ActionLink(sublink.category_name, "Show", "Category", new { id = sublink.category_id }, new Dictionary<string, object> { { "class", "dropdown-toggle" }, { "data-toggle", "dropdown" }, { "aria-haspopup", "true" }, { "aria-expanded", "false" } })
                 </li>
             }
         </ul>

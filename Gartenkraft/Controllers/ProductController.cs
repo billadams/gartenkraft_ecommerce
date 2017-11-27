@@ -24,20 +24,7 @@ namespace Gartenkraft.Controllers
             return View(selectedProduct);
         }
 
-        // GET: vwProducts/ProductsByCategory
-        public ActionResult ProductsByCategory(int categoryID)
-        {
-            var prodByCategory = db.vwProducts.Where(products => products.category_id == categoryID && products.is_visible == true).ToList();
 
-            foreach (var product in prodByCategory)
-            {
-                product.SetPriceRange();
-            }
-
-            ViewBag.CategoryName = db.vwCategories.FirstOrDefault(category => category.category_id == categoryID).category_name;
-
-            return View(prodByCategory);
-        }
 
         protected override void Dispose(bool disposing)
         {
