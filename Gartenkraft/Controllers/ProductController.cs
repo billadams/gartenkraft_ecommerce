@@ -15,16 +15,13 @@ namespace Gartenkraft.Controllers
         private GartenkraftEntities db = new GartenkraftEntities();
 
         // GET: vwProducts
-        public ActionResult Index()
+        public ActionResult Show(int id)
         {
-            var products = db.vwProducts.Where(product => product.is_visible == true).ToList();
+            var selectedProduct = db.vwProducts.FirstOrDefault(product => product.product_id == id);
 
-            foreach (var product in products)
-            {
-                product.SetPriceRange();
-            }
+            selectedProduct.SetPriceRange();
 
-            return View(products);
+            return View(selectedProduct);
         }
 
         // GET: vwProducts/ProductsByCategory
@@ -40,15 +37,6 @@ namespace Gartenkraft.Controllers
             ViewBag.CategoryName = db.vwCategories.FirstOrDefault(category => category.category_id == categoryID).category_name;
 
             return View(prodByCategory);
-        }
-
-        public ActionResult View(int productID)
-        {
-            var selectedProduct = db.vwProducts.FirstOrDefault(product => product.product_id == productID);
-
-            selectedProduct.SetPriceRange();
-
-            return View(selectedProduct);
         }
 
         protected override void Dispose(bool disposing)

@@ -18,11 +18,14 @@
                     <img src="@Url.Content("~/ProductImages/" + @Model.product_id + "/" + @Model.ProductImages.First().product_image_name)" alt="@Model.product_name image" class="center-block img-responsive"/>  
                     
                     <div class="center-block">
-                        <ul class="thumbnail-list list-unstyled clearfix">                        
+                        <ul class="thumbnails list-unstyled clearfix">                        
                             @foreach (var image in Model.ProductImages)
                             {
                                 <li class="image-thumbnail">
-                                    <img src="@Url.Content("~/ProductImages/" + @image.product_id + "/" + @image.product_image_name)" alt="@image.product_image_name thumbnail" class="img-responsive"/>
+                                    <a href="@Url.Content("~/ProductImages/" + @image.product_id + "/" + @image.product_image_name)">
+                                        <img src="@Url.Content("~/ProductImages/" + @image.product_id + "/" + @image.product_image_name)" alt="@image.product_image_name thumbnail" class="img-responsive" />
+                                    </a>
+
                                 </li>
                             }
                         </ul>
@@ -99,8 +102,19 @@
     <script>
         $('#data-displayed-price').text('$ ' + $('#SelectedOptionID').find(":selected").attr('data-val-price'));
 
-        $("#SelectedOptionID").change(function() {
+        $("#SelectedOptionID").change(function () {
             $('#data-displayed-price').text('$ ' + $(this).find(":selected").attr('data-val-price'));
+        });
+
+        $('.thumbnails img').click(function (event) {
+            event.preventDefault();
+            var thumbnail = this;
+            var src = this.src;
+            $('.product-images > img').fadeOut(100, function () {
+                var productImage = this;
+                productImage.src = thumbnail.src;
+                $(this).fadeIn(100)[0].src = src;
+            });
         });
     </script>
 }

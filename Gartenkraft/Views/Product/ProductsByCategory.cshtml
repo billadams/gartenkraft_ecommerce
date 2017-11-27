@@ -14,7 +14,7 @@
         {
             <li class="col-md-4 tile-container">
 
-                <a href="@Url.Action("View", "Product", new {productID = product.product_id})" class="product-tiles">
+                <a href="@Url.Action("Show", "Product", new { id = product.product_id })", class="product-tiles">
                     <div class="product-info">
                         <div id="@product.product_id" class="product-name">
                             <h3>@product.product_name</h3>

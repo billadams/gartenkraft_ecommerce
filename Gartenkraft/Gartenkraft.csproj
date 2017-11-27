@@ -581,11 +581,12 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
+    <Content Include="Scripts\productComboPrice.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
     <Content Include="Scripts\toTop.js" />
     <Content Include="Scripts\_references.js" />
-    <Content Include="Views\Product\Index.cshtml" />
+    <Content Include="Views\Product\Indexold.cshtml" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -625,7 +626,7 @@
     <Content Include="Views\ProductLine\Index.cshtml" />
     <Content Include="Views\Cart\Index.cshtml" />
     <Content Include="Views\Nav\Menu.cshtml" />
-    <Content Include="Views\Product\View.cshtml" />
+    <Content Include="Views\Product\show.cshtml" />
     <Content Include="Views\Product\ProductsByCategory.cshtml" />
     <Content Include="Views\Home\Error.cshtml" />
     <Content Include="Views\Checkout\Index.cshtml" />
