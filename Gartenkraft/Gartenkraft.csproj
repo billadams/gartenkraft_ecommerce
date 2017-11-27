@@ -626,8 +626,8 @@
     <Content Include="Views\ProductLine\Index.cshtml" />
     <Content Include="Views\Cart\Index.cshtml" />
     <Content Include="Views\Nav\Menu.cshtml" />
-    <Content Include="Views\Product\show.cshtml" />
-    <Content Include="Views\Product\ProductsByCategory.cshtml" />
+    <Content Include="Views\Product\Show.cshtml" />
+    <Content Include="Views\Category\Show.cshtml" />
     <Content Include="Views\Home\Error.cshtml" />
     <Content Include="Views\Checkout\Index.cshtml" />
     <Content Include="Views\Checkout\SubmitOrder.cshtml" />
