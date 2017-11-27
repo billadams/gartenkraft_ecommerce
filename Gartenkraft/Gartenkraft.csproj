@@ -430,6 +430,11 @@
     <Content Include="Areas\Admin\Views\ProductCategoriesAdmin\Create.cshtml" />
     <Content Include="Areas\Admin\Views\ProductCategoriesAdmin\Edit.cshtml" />
     <Content Include="Areas\Admin\Views\ProductCategoriesAdmin\Delete.cshtml" />
+    <Content Include="Areas\Admin\Views\SalesInvoice\Details.cshtml" />
+    <Content Include="Areas\Admin\Views\SalesInvoice\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\SalesInvoice\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\SalesInvoice\Delete.cshtml" />
+    <Content Include="Areas\Admin\Views\SalesInvoice\Index.cshtml" />
     <None Include="Content\large.less" />
     <Content Include="Content\large.css">
       <DependentUpon>large.less</DependentUpon>
