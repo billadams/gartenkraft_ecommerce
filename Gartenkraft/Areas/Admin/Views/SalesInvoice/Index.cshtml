@@ -6,9 +6,21 @@
 
 <h2>Index</h2>
 
-<p>
+@* Tim H commentedd following paragraph and replaced with following div *@
+@*<p>
     @Html.ActionLink("Create New", "Create")
-</p>
+</p>*@
+
+<div class="col-md-12">
+    <h2 class="col-md-8">Invoices</h2>
+
+    <div class="pull-right col-md-2">
+        <div class="btn-group">
+            <a class="btn btn-success" href="@Url.Action("Create")"><em class="fa fa-plus"></em> Add</a>
+        </div>
+    </div>
+</div>
+
 <table class="table">
     <tr>
         <th>
@@ -46,10 +58,16 @@
         <td>
             @Html.DisplayFor(modelItem => item.shipping_id)
         </td>
-        <td>
+        @* Tim H commented following td and replaced with td after it *@
+        @*<td>
             @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
             @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
             @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+        </td>*@
+        <td align="center">
+            <a class="btn btn-warning" href="@Url.Action("Edit", new { id = item.invoice_id })"><em class="fa fa-pencil"></em></a>
+            <a class="btn btn-default" href="@Url.Action("Details", new { id = item.invoice_id})"><em class="fa fa-eye"></em></a>
+            <a class="btn btn-danger" id="deleteproduct" href="@Url.Action("Delete", new { id = item.invoice_id})"><em class="fa fa-trash"></em></a>
         </td>
     </tr>
 }
