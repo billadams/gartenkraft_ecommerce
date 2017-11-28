@@ -1,0 +1,69 @@
+﻿@model IEnumerable<Gartenkraft.Models.tblShipping>
+
+<p>
+    @Ajax.ActionLink("Create New Shipping Info", "PartialCreateShipping", null, new AjaxOptions() { HttpMethod = "GET", UpdateTargetId = "ManageContent", InsertionMode = InsertionMode.Replace }, htmlAttributes: new { @class = "btn btn-info" })
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.shipping_address1)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.shipping_address2)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.shipping_city)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.shipping_state)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.shipping_zip)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.shipping_zip4)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.shipping_country)
+        </th>
+        <th></th>
+        <th></th>
+    </tr>
+@if (Model != null && Model.Count() > 0)
+{
+    foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.shipping_address1)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.shipping_address2)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.shipping_city)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.shipping_state)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.shipping_zip)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.shipping_zip4)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.shipping_country)
+            </td>
+            <td>
+                @Ajax.ActionLink("Edit", "PartialEditShipping", new { id = item.shipping_id }, new AjaxOptions() { HttpMethod = "GET", UpdateTargetId = "ManageContent", InsertionMode = InsertionMode.Replace }, htmlAttributes: new { @class = "btn btn-warning" })
+            </td>
+            <td>
+                @Ajax.ActionLink("Delete", "PartialDeleteShipping", new { id = item.shipping_id }, new AjaxOptions() { HttpMethod = "POST", UpdateTargetId = "ManageContent", InsertionMode = InsertionMode.Replace }, htmlAttributes: new { @class = "btn btn-danger" })
+            </td>
+        </tr>
+    }
+}
+
+
+</table>

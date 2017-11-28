@@ -18,6 +18,8 @@
         @Html.ActionLink("View your Profile", "Index", new { Message = ""}, htmlAttributes: new { @class = "btn btn-primary btn-group-justified", @style = "margin:10px 0px;" })
         @Ajax.ActionLink("Change your password", "PartialChangePassword", null, new AjaxOptions() { HttpMethod = "GET", UpdateTargetId = "ManageContent", InsertionMode = InsertionMode.Replace }, htmlAttributes: new { @class = "btn btn-primary btn-group-justified", @style = "margin:10px 0px;" })
         @Ajax.ActionLink("Change your profile", "PartialChangeProfile", null, new AjaxOptions() { HttpMethod = "GET", UpdateTargetId = "ManageContent", InsertionMode = InsertionMode.Replace }, htmlAttributes: new { @class = "btn btn-primary btn-group-justified", @style = "margin:10px 0px;" })
+        @Ajax.ActionLink("Billing Info", "PartialBilling", null, new AjaxOptions() { HttpMethod = "GET", UpdateTargetId = "ManageContent", InsertionMode = InsertionMode.Replace }, htmlAttributes: new { @class = "btn btn-primary btn-group-justified", @style = "margin:10px 0px;" })
+        @Ajax.ActionLink("Shipping Info", "PartialShipping", null, new AjaxOptions() { HttpMethod = "GET", UpdateTargetId = "ManageContent", InsertionMode = InsertionMode.Replace }, htmlAttributes: new { @class = "btn btn-primary btn-group-justified", @style = "margin:10px 0px;" })
     </div>
     <div class="col-lg-9" style="padding:25px;margin-left:200px;">
         <h2>@User.Identity.Name's Profile</h2>
