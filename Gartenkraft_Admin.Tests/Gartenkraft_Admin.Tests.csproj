@@ -116,12 +116,6 @@
     <Content Include="Scripts\Chart.js" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Gartenkraft_Admin\Gartenkraft_Admin.csproj">
-      <Project>{DAB10829-F926-47B2-90C1-22B2F66E1128}</Project>
-      <Name>Gartenkraft_Admin</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
