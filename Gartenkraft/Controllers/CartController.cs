@@ -35,7 +35,7 @@ namespace Gartenkraft.Controllers
                 cart = (Cart)Session["Cart"]; // load cart if in session
                 foreach(var i in cart.CartItems)
                 {
-                    if(i.product_id == product.product_id) { isDuplicate = true; } // set checker to see if product is already in cart
+                    if(i.product_id == product.product_id && i.GetProduct().SelectedOptionID == product.SelectedOptionID) { isDuplicate = true; } // set checker to see if product is already in cart
                 }
             }
 
@@ -43,17 +43,18 @@ namespace Gartenkraft.Controllers
             if (isDuplicate)
             {
                 // add 1 quantity to existing lineitem
-                cart.CartItems.Where(ci => ci.product_id == product.product_id).Single().Set_lineitem_quantity(cart.CartItems.Where(ci => ci.product_id == product.product_id).Single().lineitem_quantity += 1);
+                cart.CartItems.Where(ci => ci.product_id == product.product_id && ci.GetProduct().SelectedOptionID == product.SelectedOptionID).Single().Set_lineitem_quantity(cart.CartItems.Where(ci => ci.product_id == product.product_id && ci.GetProduct().SelectedOptionID == product.SelectedOptionID).Single().lineitem_quantity += 1);
             }
             else
             {
-                // set product
-                product.SetPriceRange();
-                product.SetOption();
+                // set product option and price
+                var newProduct = dbContext.vwProducts.FirstOrDefault(p => p.product_id == product.product_id);
+                newProduct.SelectedOptionID = product.SelectedOptionID;
+                newProduct.SetPrice();
 
                 // set line item
                 invoice_lineitem li = new invoice_lineitem();
-                li.SetProduct(product);
+                li.SetProduct(newProduct);
                 li.Set_lineitem_quantity(Convert.ToInt32(quantity));
 
                 // add to cart

@@ -7,6 +7,7 @@ using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using Gartenkraft.Models;
+using Gartenkraft.ViewModels;
 
 namespace Gartenkraft.Controllers
 {
@@ -73,6 +74,16 @@ namespace Gartenkraft.Controllers
                 BrowserRemembered = await AuthenticationManager.TwoFactorBrowserRememberedAsync(userId)
             };
             return View(model);
+        }
+
+        // partial profile view
+        public PartialViewResult _UserProfile()
+        {
+            var db = new ApplicationDbContext();
+            var id = User.Identity.GetUserId();
+            var user = db.Users.Find(id);
+            db.Dispose();
+            return PartialView(user);
         }
 
         //
@@ -222,7 +233,7 @@ namespace Gartenkraft.Controllers
 
         //
         // POST: /Manage/ChangePassword
-        [HttpPost]
+        [HttpPost, ActionName ("PartialChangePassword")]
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> ChangePassword(ChangePasswordViewModel model)
         {
@@ -242,6 +253,60 @@ namespace Gartenkraft.Controllers
             }
             AddErrors(result);
             return View(model);
+        }
+
+        // ----------------------------------change password partial-------------------
+        //
+        // GET: /Manage/ChangePassword
+        public PartialViewResult PartialChangePassword()
+        {
+            return PartialView();
+        }
+
+        // ----------------------------------change profile partial--------------------
+        //
+        // GET: /Manage/ChangeProfile
+        public PartialViewResult PartialChangeProfile()
+        {
+            ViewBag.States = XmlHelper.GetStates(Server, Url);
+            ViewBag.Countries = XmlHelper.GetCountries(Server, Url);
+
+            var db = new ApplicationDbContext();
+            var id = User.Identity.GetUserId();
+            var user = db.Users.Find(id);
+            db.Dispose();
+            return PartialView(user);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult PartialChangeProfile(ApplicationUser user)
+        {
+            var db = new ApplicationDbContext();
+
+            // get user being edited and enter edited fields
+            var editUser = db.Users.Find(user.Id);
+            editUser.Email = user.Email;
+            editUser.PhoneNumber = user.PhoneNumber;
+            editUser.FirstName = user.FirstName;
+            editUser.LastName = user.LastName;
+            editUser.Address1 = user.Address1;
+            editUser.Address2 = user.Address2;
+            editUser.City = user.City;
+            editUser.State = user.State;
+            editUser.Zip = user.Zip;
+            editUser.Zip4 = user.Zip4;
+            editUser.Country = user.Country;
+
+            // save to database
+            db.Entry(editUser).State = System.Data.Entity.EntityState.Modified;
+            var result = db.SaveChanges();
+            if (result > 0)
+            {
+                return RedirectToAction("Index", new { Message = "" });
+            }
+            db.Dispose();
+            return RedirectToAction("Index", new { Message = ManageMessageId.Error });
         }
 
         //
@@ -320,6 +385,14 @@ namespace Gartenkraft.Controllers
             }
             var result = await UserManager.AddLoginAsync(User.Identity.GetUserId(), loginInfo.Login);
             return result.Succeeded ? RedirectToAction("ManageLogins") : RedirectToAction("ManageLogins", new { Message = ManageMessageId.Error });
+        }
+
+        // partial views to check if user has password
+        public PartialViewResult ModifyPassword()
+        {
+            var model = new ModifyPasswordModel();
+            model.HasPassword = HasPassword();
+            return PartialView(model);
         }
 
         protected override void Dispose(bool disposing)

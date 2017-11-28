@@ -184,6 +184,7 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
     <Compile Include="Areas\Admin\Controllers\AccountController.cs" />
+    <Compile Include="Areas\Admin\Controllers\AdminControllers\SalesInvoiceController.cs" />
     <Compile Include="Areas\Admin\Controllers\AdminControllers\ProductCategoriesAdminController.cs" />
     <Compile Include="Areas\Admin\Controllers\AdminControllers\ProductLinesAdminController.cs" />
     <Compile Include="Areas\Admin\Controllers\AdminControllers\ProductsAdminController.cs" />
@@ -194,8 +195,11 @@
     <Compile Include="Models\AspNetUser.cs">
       <DependentUpon>GartenkraftModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\AspNetUsersMetadata.cs" />
     <Compile Include="Models\BillingInfo.cs" />
     <Compile Include="Models\Checkout.cs" />
+    <Compile Include="Models\CheckoutDB.cs" />
+    <Compile Include="Models\GartenkraftConnection.cs" />
     <Compile Include="Models\GartenkraftModel.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -319,8 +323,10 @@
     <Compile Include="Models\vwProduct_metadata.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
+    <Compile Include="ViewModels\ModifyPasswordModel.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="App_Data\countries.xml" />
     <Content Include="App_Data\states.xml" />
     <Content Include="App_Data\ViewUserRoles.sql" />
     <Content Include="Areas\Admin\Content\bootstrap-theme.css" />
@@ -424,6 +430,11 @@
     <Content Include="Areas\Admin\Views\ProductCategoriesAdmin\Create.cshtml" />
     <Content Include="Areas\Admin\Views\ProductCategoriesAdmin\Edit.cshtml" />
     <Content Include="Areas\Admin\Views\ProductCategoriesAdmin\Delete.cshtml" />
+    <Content Include="Areas\Admin\Views\SalesInvoice\Details.cshtml" />
+    <Content Include="Areas\Admin\Views\SalesInvoice\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\SalesInvoice\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\SalesInvoice\Delete.cshtml" />
+    <Content Include="Areas\Admin\Views\SalesInvoice\Index.cshtml" />
     <None Include="Content\large.less" />
     <Content Include="Content\large.css">
       <DependentUpon>large.less</DependentUpon>
@@ -568,16 +579,19 @@
     <Content Include="Scripts\jquery-1.10.2.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
     <Content Include="Scripts\jquery.bcSwipe.js" />
+    <Content Include="Scripts\jquery.unobtrusive-ajax.js" />
+    <Content Include="Scripts\jquery.unobtrusive-ajax.min.js" />
     <Content Include="Scripts\jquery.validate.js" />
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
+    <Content Include="Scripts\productComboPrice.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
     <Content Include="Scripts\toTop.js" />
     <Content Include="Scripts\_references.js" />
-    <Content Include="Views\Product\Index.cshtml" />
+    <Content Include="Views\Product\Indexold.cshtml" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -607,8 +621,6 @@
     <Content Include="Views\Account\SendCode.cshtml" />
     <Content Include="Views\Account\VerifyCode.cshtml" />
     <Content Include="Views\Manage\AddPhoneNumber.cshtml" />
-    <Content Include="Views\Manage\ChangePassword.cshtml" />
-    <Content Include="Views\Manage\Index.cshtml" />
     <Content Include="Views\Manage\ManageLogins.cshtml" />
     <Content Include="Views\Manage\SetPassword.cshtml" />
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
@@ -619,10 +631,18 @@
     <Content Include="Views\ProductLine\Index.cshtml" />
     <Content Include="Views\Cart\Index.cshtml" />
     <Content Include="Views\Nav\Menu.cshtml" />
-    <Content Include="Views\Product\View.cshtml" />
-    <Content Include="Views\Product\ProductsByCategory.cshtml" />
+    <Content Include="Views\Product\Show.cshtml" />
+    <Content Include="Views\Category\Show.cshtml" />
     <Content Include="Views\Home\Error.cshtml" />
     <Content Include="Views\Checkout\Index.cshtml" />
+    <Content Include="Views\Checkout\SubmitOrder.cshtml" />
+    <Content Include="Views\Manage\PartialChangePassword.cshtml" />
+    <Content Include="Views\Manage\ChangePassword.cshtml" />
+    <Content Include="Views\Manage\Index.cshtml" />
+    <Content Include="Views\Manage\ModifyPassword.cshtml" />
+    <Content Include="Views\Manage\PartialChangeProfile.cshtml" />
+    <Content Include="Views\Manage\_UserProfile.cshtml" />
+    <Content Include="Views\Shared\_Cart.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201710081937282_InitialCreate.resx">
@@ -639,6 +659,7 @@
     <None Include="Project_Readme.html" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Areas\Admin\Views\Invoice\" />
     <Folder Include="ProductImages\" />
   </ItemGroup>
   <ItemGroup>

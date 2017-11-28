@@ -14,7 +14,7 @@
         {
             <li class="col-md-4 tile-container">
 
-                <a href="@Url.Action("View", "Product", new {productID = product.product_id})" class="product-tiles">
+                <a href="@Url.Action("Show", "Product", new { id = product.product_id })", class="product-tiles">
                     <div class="product-info">
                         <div id="@product.product_id" class="product-name">
                             <h3>@product.product_name</h3>
@@ -30,33 +30,14 @@
                                 <img src="http://via.placeholder.com/200x200" alt="Product Image" class="center-block img-responsive"/>
                             }
                         </div>
-                        <div class="product-price">
+                        <div class="category-product-price">
                             <p class="pull-right">@product.PriceRange</p>
                         </div> 
                     </div>
                 </a>
                 <div class="link-overlay">View details</div>
             </li>
-
-
-            <li class="col-md-4 text-center">
-                <div class="info">
-                    <h3>@product.product_name</h3>
-                    @if (product.ProductImages.Count > 0)
-                    {
-                        <img src="@Url.Content("~/ProductImages/" + product.product_id + "/" + product.ProductImages.First().product_image_name)" alt="Product Image" class="center-block img-responsive"/>
-                    }
-                    else
-                    {
-                        <img src="http://via.placeholder.com/200x200" alt="Product Image" class="center-block img-responsive"/>
-                    }
-                    <p class="text-muted">@product.product_short_description</p>
-                    <p>Price: @product.PriceRange</p>
-                </div>
-                @Html.ActionLink("Show details", "View", "Product", new {productID = product.product_id}, new {@class = "btn btn-primary"})
-            </li>
         }
 
     </ul>
 </section>
-

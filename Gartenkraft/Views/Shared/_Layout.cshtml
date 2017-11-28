@@ -9,7 +9,30 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
 </head>
 <body>
-    <nav class="navbar">
+    
+    
+
+    <nav class="navbar" style="z-index:1;border:none;">
+        <div class="header" style="z-index:998;background-color:#999999;color:#444444;">
+            <div class="container">
+                <div>
+                    <strong>
+                        @Html.ActionLink("GartenKraft", "Index", "Home", new { area = "" }, new { @class = "navbar-brand", @style = "z-index:999;color:#444444;" })
+                    </strong>
+                </div>
+
+                <div class="pull-right" style="z-index:999;color:#444444;">
+                    <ul class="nav navbar-nav" style="z-index:999;color:#444444;">
+                        <li>
+                            @Html.Partial("_Cart")
+                        </li>
+                        @Html.Partial("_LoginPartial")
+                    </ul>
+                </div>
+
+            </div>
+        </div>
+
         <div class="container">
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
@@ -17,7 +40,6 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                @Html.ActionLink("GartenKraft", "Index", "Home", new {area = ""}, new {@class = "navbar-brand"})
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
@@ -26,9 +48,7 @@
 
                     <li>@Html.ActionLink("About", "About", "Home")</li>
                     <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
-                    <li>@Html.ActionLink("Cart", "Index", "Cart")</li>
                 </ul>
-                @Html.Partial("_LoginPartial")
             </div>
         </div>
     </nav>
@@ -36,33 +56,40 @@
     <div class="container body-content">
         @RenderBody()
     </div>
-<footer class="footer">
-    <div class="container">
-        <div class="row">
-            <div id="sunneday-logo" class="col-xs-6 col-xs-offset-3 col-sm-3 col-sm-offset-1 col-md-2 col-md-offset-1 col-lg-2 col-lg-offset-1">
-                <img src="~/Images/sunneday-logo-white.png" alt="Sunneday Corporate Logo" class="img-responsive">
+    <footer class="footer" style="z-index:997;">
+        <div class="container" style="z-index:998;">
+            <div class="row" style="z-index:999;">
+                <div id="sunneday-logo" class="col-xs-6 col-xs-offset-3 col-sm-3 col-sm-offset-1 col-md-2 col-md-offset-1 col-lg-2 col-lg-offset-1">
+                    <img src="~/Images/sunneday-logo-white.png" alt="Sunneday Corporate Logo" class="img-responsive">
+                </div>
+                <div class="contact-info col-xs-12 col-sm-4 col-md-6">
+                    <ul>
+                        <li>Office: 402-852-2008</li>
+                        <li>Fax: 402-852-2031</li>
+                        <li>Email: <a href="mailto:info@sunneday.com">info@sunneday.com</a></li>
+                        <li>Web: <a href="http://www.sunneday.com" target="_blank">Sunneday Corporate Website</a></li>
+                    </ul>
+                </div>
+                <div class="col-xs-6 col-xs-offset-3 col-sm-3 col-sm-offset-1 col-md-2 col-md-offset-0 col-lg-2" id="gartenkraft-logo">
+                    <img src="~/Images/gartenkraft-whitelogo.png" alt="Gartenkraft Logo" class="img-responsive">
+                </div>
             </div>
-            <div class="contact-info col-xs-12 col-sm-4 col-md-6">
-                <ul>
-                    <li>Office: 402-852-2008</li>
-                    <li>Fax: 402-852-2031</li>
-                    <li>Email: <a href="mailto:info@sunneday.com">info@sunneday.com</a></li>
-                    <li>Web: <a href="http://www.sunneday.com" target="_blank">Sunneday Corporate Website</a></li>
-                </ul>
-            </div>
-            <div class="col-xs-6 col-xs-offset-3 col-sm-3 col-sm-offset-1 col-md-2 col-md-offset-0 col-lg-2" id="gartenkraft-logo">
-                <img src="~/Images/gartenkraft-whitelogo.png" alt="Gartenkraft Logo" class="img-responsive">
+            <div id="copyright">
+                <p>Copyright &copy; @DateTime.Now.Year Gartenkraft All Rights Reserved.</p>
             </div>
         </div>
-        <div id="copyright">
-            <p>Copyright &copy; @DateTime.Now.Year Gartenkraft All Rights Reserved.</p>
-        </div>
-    </div>
-</footer>
+    </footer>
 
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
     <script>$('.carousel').bcSwipe({ threshold: 50 });</script>
     @RenderSection("scripts", required: false)
+    
+
+
+    <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+    <script src="~/Scripts/jquery.unobtrusive-ajax.js"></script>
+    <script src="~/Scripts/jquery.unobtrusive-ajax.min.js"></script>
+
 </body>
 </html>

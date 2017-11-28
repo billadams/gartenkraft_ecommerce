@@ -16,7 +16,7 @@ namespace Gartenkraft.ViewModels
             this.ProductLines = new List<ProductLineMenuModel>();
 
             // get vwProduct_Lines
-            var vwProdLines = new GartenkraftEntities().vwProduct_Line.ToList();
+            var vwProdLines = new GartenkraftEntities().vwProduct_Line.Where(pl => pl.is_visible == true).ToList();
 
             //assign to MenuModel
             foreach (var prodLine in vwProdLines)
@@ -42,7 +42,7 @@ namespace Gartenkraft.ViewModels
             this.Categories = new List<vwCategory>();
 
             // get vwCategories
-            this.Categories = new GartenkraftEntities().vwCategories.Where(c => c.category_product_line_id == prodLine.product_line_id).ToList();
+            this.Categories = new GartenkraftEntities().vwCategories.Where(c => c.category_product_line_id == prodLine.product_line_id && c.is_visible == true).ToList();
         } 
     }
 }

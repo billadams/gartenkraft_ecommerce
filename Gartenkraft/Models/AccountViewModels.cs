@@ -67,9 +67,9 @@ namespace Gartenkraft.Models
         [Display(Name = "Role")]
         public string RoleName { get; set; }
 
-        [Required]
-        [Display(Name = "UserName")]
-        public string UserName { get; set; }
+        //[Required]
+        //[Display(Name = "UserName")]
+        //public string UserName { get; set; }
 
         [Required]
         [EmailAddress]

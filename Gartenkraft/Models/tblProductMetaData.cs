@@ -56,6 +56,7 @@ namespace Gartenkraft.Models
 
         [Required]
         [DisplayName("Long Desc")]
+        [DataType(DataType.MultilineText)]
         public string product_long_description { get; set; }
 
         [Required]

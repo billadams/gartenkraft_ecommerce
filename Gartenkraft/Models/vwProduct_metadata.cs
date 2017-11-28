@@ -26,6 +26,13 @@ namespace Gartenkraft.Models
         [NotMapped]
         public vwProduct_Option SelectedOption { get; set; }
 
+        [NotMapped]
+        [Display(Name = "Price")]
+        public string PriceRange { get; private set; }
+
+        [NotMapped]
+        public decimal Price { get; set; }
+
         public void SetOption()
         {
             var db = new GartenkraftEntities();
@@ -43,10 +50,6 @@ namespace Gartenkraft.Models
 
             db.Dispose();
         }
-
-        [NotMapped]
-        [Display(Name = "Price")]
-        public string PriceRange { get; private set; }
 
         public void SetPriceRange()
         {
@@ -75,6 +78,12 @@ namespace Gartenkraft.Models
                 foreach (var i in this.ProductOptions) { price = i.unit_price.ToString("c"); }
                 this.PriceRange = price;
             }
+        }
+
+        public void SetPrice()
+        {
+            SetOption();
+            this.Price = this.SelectedOption.unit_price;
         }
     }
 

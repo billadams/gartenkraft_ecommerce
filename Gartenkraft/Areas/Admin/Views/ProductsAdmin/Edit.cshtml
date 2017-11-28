@@ -13,13 +13,13 @@
             <li class="active">
                 <a href="#step-1">
                     <h4 class="list-group-item-heading">Step 1</h4>
-                    <p class="list-group-item-text">First step description</p>
+                    <p class="list-group-item-text">Edit product info</p>
                 </a>
             </li>
             <li class="disabled">
                 <a href="#step-2">
                     <h4 class="list-group-item-heading">Step 2</h4>
-                    <p class="list-group-item-text">Second step description</p>
+                    <p class="list-group-item-text">Edit Images</p>
                 </a>
             </li>
         </ul>
@@ -28,7 +28,7 @@
 <div class="row setup-content" id="step-1">
     <div class="col-xs-12">
         <div class="col-md-12 well text-center">
-            <h1> STEP 1</h1>
+            <h2> Product Info</h2>
             @using (Html.BeginForm())
             {
                 @Html.AntiForgeryToken()
@@ -57,7 +57,7 @@
                     <div class="form-group">
                         @Html.LabelFor(model => model.product_long_description, htmlAttributes: new { @class = "control-label col-md-2" })
                         <div class="col-md-10">
-                            @Html.EditorFor(model => model.product_long_description, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.EditorFor(model => model.product_long_description, new { htmlAttributes = new { @class = "form-control", @rows = "3"  } })
                             @Html.ValidationMessageFor(model => model.product_long_description, "", new { @class = "text-danger" })
                         </div>
                     </div>
@@ -103,34 +103,37 @@
                         </div>
                     </div>
 
-                    <div class="form-group">
+                    @*<div class="form-group">
                         @Html.LabelFor(model => model.PriceRange, htmlAttributes: new { @class = "control-label col-md-2" })
                         <div class="col-md-10">
                             <div class="checkbox">
                                 @Html.EditorFor(model => model.PriceRange, new { htmlAttributes = new { @class = "form-control", @disabled = "true" } })
                             </div>
                         </div>
-                    </div>
+                    </div>*@
 
-                    <div class="form-group">
-                        <div class="col-md-offset-2 col-md-10">
-                            <input type="submit" value="Save" class="btn btn-success" />
+                    <div class="form-group col-md-12">
+                        <div class="col-md-offset-2 col-md-3">
+                            <input type="submit" id="activate-step-2" value="Save and continue" class="btn btn-success" />
+                        </div>
+                        <div class="col-md-4">
+                            @Html.ActionLink("Back to List", "Index", null, htmlAttributes: new { @class = "btn btn-default" })
                         </div>
                     </div>
                 </div>
             }
-            <button id="activate-step-2" class="btn btn-primary btn-lg">Activate Step 2</button>
+            @*<button id="activate-step-2" class="btn btn-primary btn-lg">Activate Step 2</button>*@
         </div>
     </div>
 </div>
 <div class="row setup-content" id="step-2">
     <div class="col-xs-12">
         <div class="col-md-12 well">
-            <h1 class="text-center"> STEP 2</h1>
+            <h2 class="text-center"> Images</h2>
             <div class="col-md-12">
                 <table class="table">
                     <tr>
-                        <th><div class="text-center">Images:</div></th>
+                        @*<th><div class="text-center">Images:</div></th>*@
                         <th></th>
                     </tr>
 
@@ -163,9 +166,12 @@
                                 <div class="text-danger">@ViewBag.UploadErrorMessage</div>
                             </div>
                         </div>
-                        <div class="form-group">
-                            <div class="col-md-offset-2 col-md-10">
+                        <div class="form-group col-md-12">
+                            <div class="col-md-offset-2 col-md-3">
                                 <input type="submit" value="Upload Picture" class="btn btn-success" />
+                            </div>
+                            <div class="col-md-offset-6 col-md-4">
+                                @Html.ActionLink("Back to List", "Index", null, htmlAttributes: new { @class = "btn btn-default" })
                             </div>
                         </div>
                         <br />
@@ -176,198 +182,6 @@
             <div style="clear:both;">&nbsp;</div>
         </div>
     </div>
-</div>
-
-@*<div class="row">
-    <div class="col-md-8">
-        @using (Html.BeginForm())
-        {
-            @Html.AntiForgeryToken()
-
-            <div class="form-horizontal">
-                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-
-                @Html.HiddenFor(model => model.product_id)
-
-                <div class="form-group">
-                    @Html.LabelFor(model => model.product_name, htmlAttributes: new { @class = "control-label col-md-2" })
-                    <div class="col-md-10">
-                        @Html.EditorFor(model => model.product_name, new { htmlAttributes = new { @class = "form-control" } })
-                        @Html.ValidationMessageFor(model => model.product_name, "", new { @class = "text-danger" })
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    @Html.LabelFor(model => model.product_short_description, htmlAttributes: new { @class = "control-label col-md-2" })
-                    <div class="col-md-10">
-                        @Html.EditorFor(model => model.product_short_description, new { htmlAttributes = new { @class = "form-control" } })
-                        @Html.ValidationMessageFor(model => model.product_short_description, "", new { @class = "text-danger" })
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    @Html.LabelFor(model => model.product_long_description, htmlAttributes: new { @class = "control-label col-md-2" })
-                    <div class="col-md-10">
-                        @Html.EditorFor(model => model.product_long_description, new { htmlAttributes = new { @class = "form-control" } })
-                        @Html.ValidationMessageFor(model => model.product_long_description, "", new { @class = "text-danger" })
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    @Html.LabelFor(model => model.product_category_id, "Product Categories", htmlAttributes: new { @class = "control-label col-md-2" })
-                    <div class="col-md-10">
-                        @Html.DropDownList("product_category_id", null, htmlAttributes: new { @class = "form-control" })
-                        @Html.ValidationMessageFor(model => model.product_category_id, "", new { @class = "text-danger" })
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    @Html.LabelFor(model => model.product_date_added, htmlAttributes: new { @class = "control-label col-md-2" })
-                    <div class="col-md-10">
-                        @Html.EditorFor(model => model.product_date_added, new { htmlAttributes = new { @class = "form-control", @type = "date", @Value = Model.product_date_added.ToString("yyyy-MM-dd") } })
-                        @Html.ValidationMessageFor(model => model.product_date_added, "", new { @class = "text-danger" })
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    @Html.LabelFor(model => model.soft_delete, htmlAttributes: new { @class = "control-label col-md-2" })
-                    <div class="col-md-10">
-                        @Html.EditorFor(model => model.soft_delete)
-                        @Html.ValidationMessageFor(model => model.soft_delete, "", new { @class = "text-danger" })
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    @Html.LabelFor(model => model.is_visible, htmlAttributes: new { @class = "control-label col-md-2" })
-                    <div class="col-md-10">
-                        @Html.EditorFor(model => model.is_visible)
-                        @Html.ValidationMessageFor(model => model.is_visible, "", new { @class = "text-danger" })
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    @Html.LabelFor(model => model.is_custom_product, htmlAttributes: new { @class = "control-label col-md-2" })
-                    <div class="col-md-10">
-                        @Html.EditorFor(model => model.is_custom_product)
-                        @Html.ValidationMessageFor(model => model.is_custom_product, "", new { @class = "text-danger" })
-                        <div class="text-danger">@ViewBag.ErrorMessage</div>
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    @Html.LabelFor(model => model.PriceRange, htmlAttributes: new { @class = "control-label col-md-2" })
-                    <div class="col-md-10">
-                        <div class="checkbox">
-                            @Html.EditorFor(model => model.PriceRange, new { htmlAttributes = new { @class = "form-control", @disabled = "true" } })
-                        </div>
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    <div class="col-md-offset-2 col-md-10">
-                        <input type="submit" value="Save" class="btn btn-success" />
-                    </div>
-                </div>
-            </div>
-        }*
-        <hr  />
-
-        <h3>Options:</h3>
-
-        <div class="col-md-12">
-            <div class="btn-group">
-                <a class="btn btn-success" href="@Url.Action("CreateOption", new { id = Model.product_id })"><em class="fa fa-plus"></em> Add</a>
-            </div>
-        </div>
-        <div style="clear:both;">&nbsp;</div>
-
-        <table class="table">
-            <tr>
-                <th>@Html.DisplayNameFor(model => model.tblProduct_Option.First().title)</th>
-                <th>@Html.DisplayNameFor(model => model.tblProduct_Option.First().weight)</th>
-                <th>@Html.DisplayNameFor(model => model.tblProduct_Option.First().unit_cost)</th>
-                <th>@Html.DisplayNameFor(model => model.tblProduct_Option.First().unit_price)</th>
-                <th></th>
-            </tr>
-            @foreach (var item in Model.tblProduct_Option)
-            {
-                <tr>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.title)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.weight)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.unit_cost)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.unit_price)
-                    </td>
-                    <td align="center">
-                        <a class="btn btn-warning" href="@Url.Action("EditOption", new { id = item.option_id })"><em class="fa fa-pencil"></em></a>
-                        <a class="btn btn-danger" id="deleteproduct" href="@Url.Action("DeleteOption", new { id = item.option_id})"><em class="fa fa-trash"></em></a>
-                    </td>
-                </tr>
-            }
-        </table>
-
-
-    @*</div>*@
-
-    @*<div class="col-md-4 navbar-inverse">
-        <table class="table-condensed">
-            <tr>
-                <th><div class="text-center">Images:</div></th>
-                <th></th>
-            </tr>
-
-            @foreach (var item in (List<Gartenkraft.Models.tblProduct_Image>)ViewBag.ProductImages)
-            {
-                <tr>
-                    <td>
-                        <img src="@Url.Content("~/ProductImages/" + item.product_id.ToString() + "/" + item.product_image_name.ToString())" style="width:100px;height:100px;display:inline-block;margin:30px;" class="btn btn-default" />
-                    </td>
-                    <td>
-                        @Html.ActionLink("Remove", "RemoveImage", "Upload", new { productID = item.product_id, imageName = item.product_image_name }, htmlAttributes: new { @class = "btn btn-danger" })
-                    </td>
-                </tr>
-            }
-        </table>
-        <hr />
-
-        <h3 class="text-primary">Image Upload</h3>
-
-        <div class="form-horizontal" @*style="text-align:center;"*@>
-            @*@using (Html.BeginForm("UploadFile", "Upload", new { productID = Model.product_id }, FormMethod.Post, new { enctype = "multipart/form-data" }))
-            {
-                <div class="form-group">
-                    <div class="col-md-offset-2 col-md-10">
-                        @Html.TextBox("file", "", htmlAttributes: new { @type = "file", @style = "display:inline-block;", @class = "form-control" })
-                    </div>
-                </div>
-                <div class="form-group">
-                    <div class="col-md-offset-2 col-md-10">
-                        <div class="text-danger">@ViewBag.UploadErrorMessage</div>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <div class="col-md-offset-2 col-md-10">
-                        <input type="submit" value="Upload Picture" class="btn btn-success" />
-                    </div>
-                </div>
-                <br />
-            }
-        </div>
-    </div>*@
-
-    @*<div style="clear:both;">&nbsp;</div>
-</div>*@
-
-<br />
-
-<div>
-    @Html.ActionLink("Back to List", "Index", null, htmlAttributes: new { @class = "btn btn-default" })
 </div>
 
 @section Scripts {
