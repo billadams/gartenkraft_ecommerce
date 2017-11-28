@@ -2,9 +2,12 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.ComponentModel.DataAnnotations;
 
 namespace Gartenkraft.Models
 {
+    [MetadataType(typeof(SalesInvoice))]
+
     public class SalesInvoice
     {
         public int InvoiceID { get; set; }

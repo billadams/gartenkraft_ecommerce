@@ -52,7 +52,7 @@ namespace Gartenkraft.Areas.Admin.Controllers.AdminControllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "invoice_id,invoice_date,customer_id,billing_id,shipping_id")] tblSales_Invoice tblSales_Invoice)
+        public ActionResult Create([Bind(Include = "invoice_date,customer_id,billing_id,shipping_id")] tblSales_Invoice tblSales_Invoice)
         {
             if (ModelState.IsValid)
             {
@@ -112,7 +112,7 @@ namespace Gartenkraft.Areas.Admin.Controllers.AdminControllers
             return View(tblSales_Invoice);
         }
 
-        // GET: Admin/ProductsAdmin/Delete/5
+        // GET: Admin/SalesInvoice/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
@@ -127,7 +127,7 @@ namespace Gartenkraft.Areas.Admin.Controllers.AdminControllers
             return View(tblSales_Invoice);
         }
 
-        // POST: Admin/ProductsAdmin/Delete/5
+        // POST: Admin/SalesInvoice/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)

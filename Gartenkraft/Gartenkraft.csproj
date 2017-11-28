@@ -188,6 +188,7 @@
     <Compile Include="Areas\Admin\Controllers\AdminControllers\ProductCategoriesAdminController.cs" />
     <Compile Include="Areas\Admin\Controllers\AdminControllers\ProductLinesAdminController.cs" />
     <Compile Include="Areas\Admin\Controllers\AdminControllers\ProductsAdminController.cs" />
+    <Compile Include="Areas\Admin\Controllers\AdminControllers\UserController.cs" />
     <Compile Include="Areas\Admin\Controllers\FileUploadController\UploadController.cs" />
     <Compile Include="Areas\Admin\Controllers\HomeController.cs" />
     <Compile Include="Areas\Admin\Controllers\ManageController.cs" />
@@ -435,6 +436,11 @@
     <Content Include="Areas\Admin\Views\SalesInvoice\Edit.cshtml" />
     <Content Include="Areas\Admin\Views\SalesInvoice\Delete.cshtml" />
     <Content Include="Areas\Admin\Views\SalesInvoice\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\User\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\User\Details.cshtml" />
+    <Content Include="Areas\Admin\Views\User\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\User\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\User\Delete.cshtml" />
     <None Include="Content\large.less" />
     <Content Include="Content\large.css">
       <DependentUpon>large.less</DependentUpon>
