@@ -20,7 +20,7 @@
 
         <div class="form-group">
             @Html.LabelFor(model => model.billing_address2, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
+            <div class="col-md-offset-2 col-md-10">
                 @Html.EditorFor(model => model.billing_address2, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.billing_address2, "", new { @class = "text-danger" })
             </div>
@@ -44,19 +44,24 @@
 
         <div class="form-group">
             @Html.LabelFor(model => model.billing_zip, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
+            <div class="col-md-3">
                 @Html.EditorFor(model => model.billing_zip, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.billing_zip, "", new { @class = "text-danger" })
             </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.billing_zip4, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
+            <div class="col-md-2">
                 @Html.EditorFor(model => model.billing_zip4, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.billing_zip4, "", new { @class = "text-danger" })
             </div>
+            <div class="col-md-5"></div>
         </div>
+
+        @*<div class="form-group">
+            @Html.LabelFor(model => model.billing_zip4, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-offset-2 col-md-10">
+                @Html.EditorFor(model => model.billing_zip4, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.billing_zip4, "", new { @class = "text-danger" })
+            </div>
+        </div>*@
 
         <div class="form-group">
             @Html.LabelFor(model => model.billing_country, htmlAttributes: new { @class = "control-label col-md-2" })
