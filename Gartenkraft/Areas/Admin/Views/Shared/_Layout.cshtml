@@ -55,50 +55,51 @@
 
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">Admin User <b class="fa fa-angle-down"></b></a>
                         <ul class="dropdown-menu">
-                            <li><a href="#"><i class="fa fa-fw fa-user"></i> Edit Profile</a></li>
-                            <li><a href="#"><i class="fa fa-fw fa-cog"></i> Change Password</a></li>
-                            <li class="divider"></li>
-                            <li><a href="#"><i class="fa fa-fw fa-power-off"></i> Logout</a></li>
+                            @Html.Partial("_LoginPartial")
                         </ul>
                     </li>
                 </ul>
                 </div>
             <!-- Sidebar Menu Items - These collapse to the responsive navigation menu on small screens -->
-            <div class="collapse navbar-collapse navbar-ex1-collapse">
-                <ul class="nav navbar-nav side-nav">
-                    <li>
-                        <a href="@Url.Action("Index", "Home")"><i class="fa fa-television"></i> Dashboard</a>
-                    </li>
-                    <li>
-                        <a href="#" data-toggle="collapse" data-target="#submenu-1"><i class="fa fa-book"></i> Catalog <i class="fa fa-fw fa-angle-down pull-right"></i></a>
-                        <ul id="submenu-1" class="collapse">
-                            <li><a href="@Url.Action("Index", "ProductsAdmin")"><i class="fa fa-angle-double-right"></i> Products</a></li>
-                            <li><a href="@Url.Action("Index", "ProductCategoriesAdmin")"><i class="fa fa-angle-double-right"></i> Categories</a></li>
-                            <li><a href="@Url.Action("Index", "ProductLinesAdmin")"><i class="fa fa-angle-double-right"></i> Product Lines</a></li>
-                        </ul>
-                    </li>
-                    <li>
-                        <a href="#" data-toggle="collapse" data-target="#submenu-2"><i class="fa fa-shopping-cart"></i>  Sales <i class="fa fa-fw fa-angle-down pull-right"></i></a>
-                        <ul id="submenu-2" class="collapse">
-                            <li><a href="@Url.Action("Index", "Home")"><i class="fa fa-angle-double-right"></i> Invoice</a></li>
-                            <li><a href="@Url.Action("Index", "Home")"><i class="fa fa-angle-double-right"></i> Shipments</a></li>
-                            <li><a href="@Url.Action("Index", "Home")"><i class="fa fa-angle-double-right"></i> Return request</a></li>
-                            <li><a href="@Url.Action("Index", "Home")"><i class="fa fa-angle-double-right"></i> Current shopping carts</a></li>
-                         </ul>
-                    </li>
-                    <li>
-                        <a href="#" data-toggle="collapse" data-target="#submenu-3"><i class="fa fa-user"></i>  Customers <i class="fa fa-fw fa-angle-down pull-right"></i></a>
-                        <ul id="submenu-3" class="collapse">
-                            <li><a href="@Url.Action("Index", "Home")"><i class="fa fa-angle-double-right"></i> Customers</a></li>
-                            <li><a href="@Url.Action("Index", "Home")"><i class="fa fa-angle-double-right"></i> Customer roles</a></li>
-                        </ul>
-                    </li>
-                    <li>
-                        <a href="@Url.Action("Index", "Home")"><i class="fa fa-fw fa fa-question-circle"></i> Help</a>
-                    </li>
-                </ul>
-            </div>
+            @if (Request.IsAuthenticated @*&& User.IsInRole("Admin")*@)
+            {
+                <div class="collapse navbar-collapse navbar-ex1-collapse">
+                    <ul class="nav navbar-nav side-nav">
+                        <li>
+                            <a href="@Url.Action("Index", "Home")"><i class="fa fa-television"></i> Dashboard</a>
+                        </li>
+                        <li>
+                            <a href="#" data-toggle="collapse" data-target="#submenu-1"><i class="fa fa-book"></i> Catalog <i class="fa fa-fw fa-angle-down pull-right"></i></a>
+                            <ul id="submenu-1" class="collapse">
+                                <li><a href="@Url.Action("Index", "ProductsAdmin")"><i class="fa fa-angle-double-right"></i> Products</a></li>
+                                <li><a href="@Url.Action("Index", "ProductCategoriesAdmin")"><i class="fa fa-angle-double-right"></i> Categories</a></li>
+                                <li><a href="@Url.Action("Index", "ProductLinesAdmin")"><i class="fa fa-angle-double-right"></i> Product Lines</a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="#" data-toggle="collapse" data-target="#submenu-2"><i class="fa fa-shopping-cart"></i>  Sales <i class="fa fa-fw fa-angle-down pull-right"></i></a>
+                            <ul id="submenu-2" class="collapse">
+                                <li><a href="@Url.Action("Index", "Home")"><i class="fa fa-angle-double-right"></i> Invoice</a></li>
+                                <li><a href="@Url.Action("Index", "Home")"><i class="fa fa-angle-double-right"></i> Shipments</a></li>
+                                <li><a href="@Url.Action("Index", "Home")"><i class="fa fa-angle-double-right"></i> Return request</a></li>
+                                <li><a href="@Url.Action("Index", "Home")"><i class="fa fa-angle-double-right"></i> Current shopping carts</a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="#" data-toggle="collapse" data-target="#submenu-3"><i class="fa fa-user"></i>  Customers <i class="fa fa-fw fa-angle-down pull-right"></i></a>
+                            <ul id="submenu-3" class="collapse">
+                                <li><a href="@Url.Action("Index", "Home")"><i class="fa fa-angle-double-right"></i> Customers</a></li>
+                                <li><a href="@Url.Action("Index", "Home")"><i class="fa fa-angle-double-right"></i> Customer roles</a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="@Url.Action("Index", "Home")"><i class="fa fa-fw fa fa-question-circle"></i> Help</a>
+                        </li>
+                    </ul>
+                </div>
+            }
             <!-- /.navbar-collapse -->
+            
         </nav>
         <div id="page-wrapper">
             <div class="container-fluid">

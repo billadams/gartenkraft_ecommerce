@@ -7,6 +7,11 @@ using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using Gartenkraft.Models;
+using Gartenkraft.Controllers;
+using System.Data.Entity.Infrastructure;
+using Microsoft.AspNet.Identity.EntityFramework;
+using System.Data.Entity;
+using System.Collections.Generic;
 
 namespace Gartenkraft.Areas.Admin.Controllers
 {
@@ -15,15 +20,17 @@ namespace Gartenkraft.Areas.Admin.Controllers
     {
         private ApplicationSignInManager _signInManager;
         private ApplicationUserManager _userManager;
+        private ApplicationRoleManager _roleManager;
 
         public ManageController()
         {
         }
 
-        public ManageController(ApplicationUserManager userManager, ApplicationSignInManager signInManager)
+        public ManageController(ApplicationUserManager userManager, ApplicationSignInManager signInManager, ApplicationRoleManager roleManager)
         {
             UserManager = userManager;
             SignInManager = signInManager;
+            RoleManager = roleManager;
         }
 
         public ApplicationSignInManager SignInManager
@@ -47,6 +54,18 @@ namespace Gartenkraft.Areas.Admin.Controllers
             private set
             {
                 _userManager = value;
+            }
+        }
+
+        public ApplicationRoleManager RoleManager
+        {
+            get
+            {
+                return _roleManager ?? HttpContext.GetOwinContext().Get<ApplicationRoleManager>();
+            }
+            private set
+            {
+                _roleManager = value;
             }
         }
 
@@ -321,6 +340,21 @@ namespace Gartenkraft.Areas.Admin.Controllers
             var result = await UserManager.AddLoginAsync(User.Identity.GetUserId(), loginInfo.Login);
             return result.Succeeded ? RedirectToAction("ManageLogins") : RedirectToAction("ManageLogins", new { Message = ManageMessageId.Error });
         }
+
+#region Roles
+
+        public ActionResult ManageRoles()
+        {
+            var roles = RoleManager.Roles.ToList();
+            return View(roles);
+        }
+
+        public ActionResult CreateRole()
+        {
+            return View();
+        }
+
+#endregion
 
         protected override void Dispose(bool disposing)
         {
