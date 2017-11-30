@@ -1,13 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Data.Entity;
 using System.Linq;
-using System.Web;
+using System.Net;
 using System.Web.Mvc;
 using Gartenkraft.Models;
-using System.Net;
-using System.Data.Entity;
 
-namespace Gartenkraft.Areas.Admin.Controllers
+namespace Gartenkraft.Areas.Admin.Controllers.AdminControllers
 {
     public class ProductCategoriesAdminController : Controller
     {
@@ -16,7 +13,7 @@ namespace Gartenkraft.Areas.Admin.Controllers
         // GET: Product_Category
         public ActionResult Index()
         {
-            var tblProduct_Category = db.tblProduct_Category;
+            var tblProduct_Category = db.tblProduct_Category.Include(t => t.tblProduct_Line);
             return View(tblProduct_Category.ToList());
         }
 
@@ -39,10 +36,7 @@ namespace Gartenkraft.Areas.Admin.Controllers
         public ActionResult Create()
         {
             ViewBag.category_product_line_id = new SelectList(db.tblProduct_Line, "product_line_id", "product_line_name");
-            tblProduct_Category model = new tblProduct_Category();
-            model.is_visible = false;
-            model.soft_delete = false;
-            return View(model);
+            return View();
         }
 
         // POST: Product_Category/Create

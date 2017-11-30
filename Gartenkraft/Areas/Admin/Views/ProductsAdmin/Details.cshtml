@@ -126,9 +126,11 @@
         }
     </div>
 </div>
-
+@Ajax.ActionLink("Product Options", "Index", "tblProduct_Option", null, new AjaxOptions() { HttpMethod = "GET", UpdateTargetId = "productOptionContent", InsertionMode = InsertionMode.Replace }, htmlAttributes: new { @class = "btn btn-default" })
+<div id="productOptionContent" > </div>
 
 <p>
     <a class="btn btn-warning" href="@Url.Action("Edit", new { id = Model.product_id })"><em class="fa fa-pencil"></em></a>
     <a class="btn btn-default" href="@Url.Action("Index")">Back to List</a>
 </p>
+<script src="~/Scripts/jquery.unobtrusive-ajax.min.js"></script>

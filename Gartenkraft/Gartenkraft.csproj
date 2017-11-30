@@ -188,6 +188,7 @@
     <Compile Include="Areas\Admin\Controllers\AdminControllers\ProductCategoriesAdminController.cs" />
     <Compile Include="Areas\Admin\Controllers\AdminControllers\ProductLinesAdminController.cs" />
     <Compile Include="Areas\Admin\Controllers\AdminControllers\ProductsAdminController.cs" />
+    <Compile Include="Areas\Admin\Controllers\AdminControllers\tblProduct_OptionController.cs" />
     <Compile Include="Areas\Admin\Controllers\AdminControllers\UserController.cs" />
     <Compile Include="Areas\Admin\Controllers\FileUploadController\UploadController.cs" />
     <Compile Include="Areas\Admin\Controllers\HomeController.cs" />
@@ -441,6 +442,7 @@
     <Content Include="Areas\Admin\Views\User\Create.cshtml" />
     <Content Include="Areas\Admin\Views\User\Edit.cshtml" />
     <Content Include="Areas\Admin\Views\User\Delete.cshtml" />
+    <Content Include="Areas\Admin\Views\tblProduct_Option\Index.cshtml" />
     <None Include="Content\large.less" />
     <Content Include="Content\large.css">
       <DependentUpon>large.less</DependentUpon>
@@ -666,6 +668,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Areas\Admin\Views\Invoice\" />
+    <Folder Include="Areas\Admin\Views\ProductOption\" />
     <Folder Include="ProductImages\" />
   </ItemGroup>
   <ItemGroup>
