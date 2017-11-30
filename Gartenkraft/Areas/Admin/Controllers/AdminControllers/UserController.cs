@@ -68,6 +68,7 @@ namespace Gartenkraft.Areas.Admin.Controllers.AdminControllers
             {
                 return HttpNotFound();
             }
+
             return View(AspNetUsers);
         }
 
@@ -76,7 +77,7 @@ namespace Gartenkraft.Areas.Admin.Controllers.AdminControllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id, Email,EmailConfirmed,PasswordHash,SecurityStamp,PhoneNumber,PhoneNumberConfirmed,TwoFactorEnabled,LockoutEndDateUtc,LockoutEnabled,AccessFailedCount,UserName,FirstName,LastName, Address1,Address2,City,State,Zip,Zip4,Country,ImageFileName")] AspNetUser AspNetUsers)
+        public ActionResult Edit([Bind(Include = "Id,Email,EmailConfirmed,PasswordHash,SecurityStamp,PhoneNumber,PhoneNumberConfirmed,TwoFactorEnabled,LockoutEndDateUtc,LockoutEnabled,AccessFailedCount,UserName,FirstName,LastName, Address1,Address2,City,State,Zip,Zip4,Country,ImageFileName")] AspNetUser AspNetUsers)
         {
             if (ModelState.IsValid)
             {
