@@ -9,6 +9,5 @@ namespace Gartenkraft.ViewModels
     public class ChangeprofileModel
     {
         public ApplicationUser Person { get; set; }
-        public ApplicationRole PersonRole { get; set; }
     }
 }

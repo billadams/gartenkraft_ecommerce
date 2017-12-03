@@ -25,6 +25,7 @@ namespace Gartenkraft.Models
             throw new UnintentionalCodeFirstException();
         }
     
+        public virtual DbSet<AspNetRole> AspNetRoles { get; set; }
         public virtual DbSet<AspNetUser> AspNetUsers { get; set; }
         public virtual DbSet<tblBilling_Information> tblBilling_Information { get; set; }
         public virtual DbSet<tblFeature_Product> tblFeature_Product { get; set; }

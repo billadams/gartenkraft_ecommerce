@@ -7,6 +7,7 @@ using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using Gartenkraft.Models;
+using Gartenkraft;
 using Gartenkraft.Controllers;
 using System.Data.Entity.Infrastructure;
 using Microsoft.AspNet.Identity.EntityFramework;
@@ -21,9 +22,11 @@ namespace Gartenkraft.Areas.Admin.Controllers
         private ApplicationSignInManager _signInManager;
         private ApplicationUserManager _userManager;
         private ApplicationRoleManager _roleManager;
+        private GartenkraftEntities db;
 
         public ManageController()
         {
+            db = new GartenkraftEntities();
         }
 
         public ManageController(ApplicationUserManager userManager, ApplicationSignInManager signInManager, ApplicationRoleManager roleManager)
@@ -31,6 +34,7 @@ namespace Gartenkraft.Areas.Admin.Controllers
             UserManager = userManager;
             SignInManager = signInManager;
             RoleManager = roleManager;
+            db = new GartenkraftEntities();
         }
 
         public ApplicationSignInManager SignInManager
@@ -345,8 +349,7 @@ namespace Gartenkraft.Areas.Admin.Controllers
 
         public ActionResult ManageRoles()
         {
-            var roles = RoleManager.Roles.ToList();
-            return View(roles);
+            return View(db.AspNetRoles.ToList());
         }
 
         public ActionResult CreateRole()
@@ -354,7 +357,16 @@ namespace Gartenkraft.Areas.Admin.Controllers
             return View();
         }
 
-#endregion
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult CreateRole(AspNetRole role)
+        {
+            db.AspNetRoles.Add(role);
+            db.SaveChanges();
+            return RedirectToAction("ManageRoles");
+        }
+
+        #endregion
 
         protected override void Dispose(bool disposing)
         {

@@ -59,11 +59,6 @@ namespace Gartenkraft.Models
         public string PhoneNumber { get; set; }
     }
 
-    public class ApplicationRole : IdentityRole
-    {
-
-    }
-
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
         public ApplicationDbContext()
@@ -75,7 +70,5 @@ namespace Gartenkraft.Models
         {
             return new ApplicationDbContext();
         }
-
-        public System.Data.Entity.DbSet<Gartenkraft.Models.ApplicationRole> IdentityRoles { get; set; }
     }
 }

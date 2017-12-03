@@ -192,6 +192,13 @@
     <Compile Include="Areas\Admin\Controllers\HomeController.cs" />
     <Compile Include="Areas\Admin\Controllers\ManageController.cs" />
     <Compile Include="Controllers\CheckoutController.cs" />
+    <Compile Include="Migrations\201711300708385_RemoveApplicationRole.cs" />
+    <Compile Include="Migrations\201711300708385_RemoveApplicationRole.Designer.cs">
+      <DependentUpon>201711300708385_RemoveApplicationRole.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Models\AspNetRole.cs">
+      <DependentUpon>GartenkraftModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\AspNetUser.cs">
       <DependentUpon>GartenkraftModel.tt</DependentUpon>
     </Compile>
@@ -433,8 +440,8 @@
     <Content Include="Areas\Admin\Views\ProductCategoriesAdmin\Create.cshtml" />
     <Content Include="Areas\Admin\Views\ProductCategoriesAdmin\Edit.cshtml" />
     <Content Include="Areas\Admin\Views\ProductCategoriesAdmin\Delete.cshtml" />
-    <Content Include="Areas\Admin\Views\Manage\ManageRoles.cshtml" />
     <Content Include="Areas\Admin\Views\Manage\CreateRole.cshtml" />
+    <Content Include="Areas\Admin\Views\Manage\ManageRoles.cshtml" />
     <None Include="Content\large.less" />
     <Content Include="Content\large.css">
       <DependentUpon>large.less</DependentUpon>
@@ -658,6 +665,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201710130648076_User.resx">
       <DependentUpon>201710130648076_User.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201711300708385_RemoveApplicationRole.resx">
+      <DependentUpon>201711300708385_RemoveApplicationRole.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

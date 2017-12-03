@@ -8,6 +8,10 @@ using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using Gartenkraft.Models;
 using Gartenkraft.ViewModels;
+using System.Data.Entity.Infrastructure;
+using Microsoft.AspNet.Identity.EntityFramework;
+using System.Data.Entity;
+using System.Collections.Generic;
 
 namespace Gartenkraft.Controllers
 {
@@ -16,6 +20,7 @@ namespace Gartenkraft.Controllers
     {
         private ApplicationSignInManager _signInManager;
         private ApplicationUserManager _userManager;
+        private ApplicationRoleManager _roleManager;
         private GartenkraftEntities db;
 
         public ManageController()
@@ -23,10 +28,11 @@ namespace Gartenkraft.Controllers
             db = new GartenkraftEntities();
         }
 
-        public ManageController(ApplicationUserManager userManager, ApplicationSignInManager signInManager)
+        public ManageController(ApplicationUserManager userManager, ApplicationSignInManager signInManager, ApplicationRoleManager roleManager)
         {
             UserManager = userManager;
             SignInManager = signInManager;
+            RoleManager = roleManager;
             db = new GartenkraftEntities();
         }
 
@@ -51,6 +57,18 @@ namespace Gartenkraft.Controllers
             private set
             {
                 _userManager = value;
+            }
+        }
+
+        public ApplicationRoleManager RoleManager
+        {
+            get
+            {
+                return _roleManager ?? HttpContext.GetOwinContext().Get<ApplicationRoleManager>();
+            }
+            private set
+            {
+                _roleManager = value;
             }
         }
 
