@@ -37,7 +37,7 @@
             <PropertyRef Name="billing_id" />
           </Key>
           <Property Name="billing_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="customer_id" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="customer_id" Type="nvarchar" MaxLength="128" />
           <Property Name="billing_address1" Type="varchar" MaxLength="100" Nullable="false" />
           <Property Name="billing_address2" Type="varchar" MaxLength="100" />
           <Property Name="billing_city" Type="varchar" MaxLength="50" Nullable="false" />
@@ -45,6 +45,8 @@
           <Property Name="billing_zip" Type="varchar" MaxLength="5" Nullable="false" />
           <Property Name="billing_zip4" Type="varchar" MaxLength="4" />
           <Property Name="billing_country" Type="varchar(max)" Nullable="false" />
+          <Property Name="billing_first_name" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="billing_last_name" Type="varchar" MaxLength="50" Nullable="false" />
         </EntityType>
         <EntityType Name="tblFeature_Product">
           <Key>
@@ -136,9 +138,13 @@
           </Key>
           <Property Name="invoice_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="invoice_date" Type="datetime" Nullable="false" />
-          <Property Name="customer_id" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="customer_id" Type="nvarchar" MaxLength="128" />
           <Property Name="billing_id" Type="int" />
           <Property Name="shipping_id" Type="int" />
+          <Property Name="invoice_email" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="is_guest" Type="bit" Nullable="false" />
+          <Property Name="customer_first_name" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="customer_last_name" Type="varchar" MaxLength="50" Nullable="false" />
         </EntityType>
         <EntityType Name="tblSales_Invoice_Lineitem">
           <Key>
@@ -155,7 +161,7 @@
             <PropertyRef Name="shipping_id" />
           </Key>
           <Property Name="shipping_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="customer_id" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="customer_id" Type="nvarchar" MaxLength="128" />
           <Property Name="shipping_address1" Type="varchar" MaxLength="100" Nullable="false" />
           <Property Name="shipping_address2" Type="varchar" MaxLength="100" />
           <Property Name="shipping_city" Type="varchar" MaxLength="50" Nullable="false" />
@@ -163,6 +169,8 @@
           <Property Name="shipping_zip" Type="varchar" MaxLength="5" Nullable="false" />
           <Property Name="shipping_zip4" Type="varchar" MaxLength="4" />
           <Property Name="shipping_country" Type="varchar(max)" Nullable="false" />
+          <Property Name="shipping_first_name" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="shipping_last_name" Type="varchar" MaxLength="50" Nullable="false" />
         </EntityType>
         <!--Errors Found During Generation:
 warning 6002: The table/view 'gartenkraft.gkraft.vwCategory' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
@@ -392,7 +400,7 @@ warning 6002: The table/view 'gartenkraft.gkraft.vwProduct_Option' does not have
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_tblBilling_Information_AspNetUsers">
-          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1" />
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="0..1" />
           <End Role="tblBilling_Information" Type="Self.tblBilling_Information" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="AspNetUsers">
@@ -484,7 +492,7 @@ warning 6002: The table/view 'gartenkraft.gkraft.vwProduct_Option' does not have
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_tblSales_Invoice_AspNetUsers">
-          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1">
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="0..1">
             <OnDelete Action="Cascade" />
           </End>
           <End Role="tblSales_Invoice" Type="Self.tblSales_Invoice" Multiplicity="*" />
@@ -546,7 +554,7 @@ warning 6002: The table/view 'gartenkraft.gkraft.vwProduct_Option' does not have
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_tblShipping_AspNetUsers">
-          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1">
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="0..1">
             <OnDelete Action="Cascade" />
           </End>
           <End Role="tblShipping" Type="Self.tblShipping" Multiplicity="*" />
@@ -812,7 +820,7 @@ warning 6002: The table/view 'gartenkraft.gkraft.vwProduct_Option' does not have
             <PropertyRef Name="billing_id" />
           </Key>
           <Property Name="billing_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="customer_id" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="customer_id" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
           <Property Name="billing_address1" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="billing_address2" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Name="billing_city" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
@@ -820,6 +828,8 @@ warning 6002: The table/view 'gartenkraft.gkraft.vwProduct_Option' does not have
           <Property Name="billing_zip" Type="String" MaxLength="5" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="billing_zip4" Type="String" MaxLength="4" FixedLength="false" Unicode="false" />
           <Property Name="billing_country" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="billing_first_name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="billing_last_name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <NavigationProperty Name="AspNetUser" Relationship="Self.FK_tblBilling_Information_AspNetUsers" FromRole="tblBilling_Information" ToRole="AspNetUsers" />
           <NavigationProperty Name="tblSales_Invoice" Relationship="Self.FK_tblSales_Invoice_tblBilling" FromRole="tblBilling_Information" ToRole="tblSales_Invoice" />
         </EntityType>
@@ -930,9 +940,13 @@ warning 6002: The table/view 'gartenkraft.gkraft.vwProduct_Option' does not have
           </Key>
           <Property Name="invoice_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="invoice_date" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="customer_id" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="customer_id" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
           <Property Name="billing_id" Type="Int32" />
           <Property Name="shipping_id" Type="Int32" />
+          <Property Name="invoice_email" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="is_guest" Type="Boolean" Nullable="false" />
+          <Property Name="customer_first_name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="customer_last_name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <NavigationProperty Name="AspNetUser" Relationship="Self.FK_tblSales_Invoice_AspNetUsers" FromRole="tblSales_Invoice" ToRole="AspNetUsers" />
           <NavigationProperty Name="tblBilling_Information" Relationship="Self.FK_tblSales_Invoice_tblBilling" FromRole="tblSales_Invoice" ToRole="tblBilling_Information" />
           <NavigationProperty Name="tblSales_Invoice_Lineitem" Relationship="Self.FK_tblSales_Invoice_Lineitem_tblSales_Invoice" FromRole="tblSales_Invoice" ToRole="tblSales_Invoice_Lineitem" />
@@ -955,7 +969,7 @@ warning 6002: The table/view 'gartenkraft.gkraft.vwProduct_Option' does not have
             <PropertyRef Name="shipping_id" />
           </Key>
           <Property Name="shipping_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="customer_id" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="customer_id" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
           <Property Name="shipping_address1" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="shipping_address2" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Name="shipping_city" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
@@ -963,6 +977,8 @@ warning 6002: The table/view 'gartenkraft.gkraft.vwProduct_Option' does not have
           <Property Name="shipping_zip" Type="String" MaxLength="5" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="shipping_zip4" Type="String" MaxLength="4" FixedLength="false" Unicode="false" />
           <Property Name="shipping_country" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="shipping_first_name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="shipping_last_name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <NavigationProperty Name="AspNetUser" Relationship="Self.FK_tblShipping_AspNetUsers" FromRole="tblShipping" ToRole="AspNetUsers" />
           <NavigationProperty Name="tblSales_Invoice" Relationship="Self.FK_tblSales_Invoice_tblShipping" FromRole="tblShipping" ToRole="tblSales_Invoice" />
         </EntityType>
@@ -1166,7 +1182,7 @@ warning 6002: The table/view 'gartenkraft.gkraft.vwProduct_Option' does not have
           <Property Name="product_id" Type="Int32" Nullable="false" />
         </EntityType>
         <Association Name="FK_tblBilling_Information_AspNetUsers">
-          <End Role="AspNetUsers" Type="Self.AspNetUser" Multiplicity="1" />
+          <End Role="AspNetUsers" Type="Self.AspNetUser" Multiplicity="0..1" />
           <End Role="tblBilling_Information" Type="Self.tblBilling_Information" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="AspNetUsers">
@@ -1178,7 +1194,7 @@ warning 6002: The table/view 'gartenkraft.gkraft.vwProduct_Option' does not have
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_tblSales_Invoice_AspNetUsers">
-          <End Role="AspNetUsers" Type="Self.AspNetUser" Multiplicity="1">
+          <End Role="AspNetUsers" Type="Self.AspNetUser" Multiplicity="0..1">
             <OnDelete Action="Cascade" />
           </End>
           <End Role="tblSales_Invoice" Type="Self.tblSales_Invoice" Multiplicity="*" />
@@ -1192,7 +1208,7 @@ warning 6002: The table/view 'gartenkraft.gkraft.vwProduct_Option' does not have
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_tblShipping_AspNetUsers">
-          <End Role="AspNetUsers" Type="Self.AspNetUser" Multiplicity="1">
+          <End Role="AspNetUsers" Type="Self.AspNetUser" Multiplicity="0..1">
             <OnDelete Action="Cascade" />
           </End>
           <End Role="tblShipping" Type="Self.tblShipping" Multiplicity="*" />
@@ -1489,6 +1505,8 @@ warning 6002: The table/view 'gartenkraft.gkraft.vwProduct_Option' does not have
                 <ScalarProperty Name="billing_zip" ColumnName="billing_zip" />
                 <ScalarProperty Name="billing_zip4" ColumnName="billing_zip4" />
                 <ScalarProperty Name="billing_country" ColumnName="billing_country" />
+                <ScalarProperty Name="billing_first_name" ColumnName="billing_first_name" />
+                <ScalarProperty Name="billing_last_name" ColumnName="billing_last_name" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -1593,6 +1611,10 @@ warning 6002: The table/view 'gartenkraft.gkraft.vwProduct_Option' does not have
                 <ScalarProperty Name="customer_id" ColumnName="customer_id" />
                 <ScalarProperty Name="billing_id" ColumnName="billing_id" />
                 <ScalarProperty Name="shipping_id" ColumnName="shipping_id" />
+                <ScalarProperty Name="invoice_email" ColumnName="invoice_email" />
+                <ScalarProperty Name="is_guest" ColumnName="is_guest" />
+                <ScalarProperty Name="customer_first_name" ColumnName="customer_first_name" />
+                <ScalarProperty Name="customer_last_name" ColumnName="customer_last_name" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -1619,6 +1641,8 @@ warning 6002: The table/view 'gartenkraft.gkraft.vwProduct_Option' does not have
                 <ScalarProperty Name="shipping_zip" ColumnName="shipping_zip" />
                 <ScalarProperty Name="shipping_zip4" ColumnName="shipping_zip4" />
                 <ScalarProperty Name="shipping_country" ColumnName="shipping_country" />
+                <ScalarProperty Name="shipping_first_name" ColumnName="shipping_first_name" />
+                <ScalarProperty Name="shipping_last_name" ColumnName="shipping_last_name" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

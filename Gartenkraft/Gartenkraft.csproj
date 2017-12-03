@@ -655,6 +655,12 @@
     <Content Include="Views\Manage\PartialChangeProfile.cshtml" />
     <Content Include="Views\Manage\_UserProfile.cshtml" />
     <Content Include="Views\Shared\_Cart.cshtml" />
+    <Content Include="Views\Manage\PartialBilling.cshtml" />
+    <Content Include="Views\Manage\PartialCreateBilling.cshtml" />
+    <Content Include="Views\Manage\PartialEditBilling.cshtml" />
+    <Content Include="Views\Manage\PartialShipping.cshtml" />
+    <Content Include="Views\Manage\PartialCreateShipping.cshtml" />
+    <Content Include="Views\Manage\PartialEditShipping.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201710081937282_InitialCreate.resx">

@@ -29,6 +29,8 @@ namespace Gartenkraft.Models
         public string billing_zip { get; set; }
         public string billing_zip4 { get; set; }
         public string billing_country { get; set; }
+        public string billing_first_name { get; set; }
+        public string billing_last_name { get; set; }
     
         public virtual AspNetUser AspNetUser { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

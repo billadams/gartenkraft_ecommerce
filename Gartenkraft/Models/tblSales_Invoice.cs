@@ -25,6 +25,10 @@ namespace Gartenkraft.Models
         public string customer_id { get; set; }
         public Nullable<int> billing_id { get; set; }
         public Nullable<int> shipping_id { get; set; }
+        public string invoice_email { get; set; }
+        public bool is_guest { get; set; }
+        public string customer_first_name { get; set; }
+        public string customer_last_name { get; set; }
     
         public virtual AspNetUser AspNetUser { get; set; }
         public virtual tblBilling_Information tblBilling_Information { get; set; }

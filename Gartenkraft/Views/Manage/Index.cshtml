@@ -15,9 +15,11 @@
                                 top:0;
                                 padding:150px 0px;
                                 ">
-        @Html.ActionLink("View your Profile", "Index", new { Message = ""}, htmlAttributes: new { @class = "btn btn-primary btn-group-justified", @style = "margin:10px 0px;" })
+        @Html.ActionLink("View your Profile", "Index", new { Message = "" }, htmlAttributes: new { @class = "btn btn-primary btn-group-justified", @style = "margin:10px 0px;" })
         @Ajax.ActionLink("Change your password", "PartialChangePassword", null, new AjaxOptions() { HttpMethod = "GET", UpdateTargetId = "ManageContent", InsertionMode = InsertionMode.Replace }, htmlAttributes: new { @class = "btn btn-primary btn-group-justified", @style = "margin:10px 0px;" })
         @Ajax.ActionLink("Change your profile", "PartialChangeProfile", null, new AjaxOptions() { HttpMethod = "GET", UpdateTargetId = "ManageContent", InsertionMode = InsertionMode.Replace }, htmlAttributes: new { @class = "btn btn-primary btn-group-justified", @style = "margin:10px 0px;" })
+        @Ajax.ActionLink("Billing Info", "PartialBilling", null, new AjaxOptions() { HttpMethod = "GET", UpdateTargetId = "ManageContent", InsertionMode = InsertionMode.Replace }, htmlAttributes: new { @class = "btn btn-primary btn-group-justified", @style = "margin:10px 0px;" })
+        @Ajax.ActionLink("Shipping Info", "PartialShipping", null, new AjaxOptions() { HttpMethod = "GET", UpdateTargetId = "ManageContent", InsertionMode = InsertionMode.Replace }, htmlAttributes: new { @class = "btn btn-primary btn-group-justified", @style = "margin:10px 0px;" })
     </div>
     <div class="col-lg-9" style="padding:25px;margin-left:200px;">
         <h2>@User.Identity.Name's Profile</h2>
@@ -32,107 +34,107 @@
 </div>
 
 @*<script>
-    $('.ManageProfile').click(function (e) {
-        var method_name = this.getAttribute("name");
-        alert(method_name);
-        $.ajax({
-            type: "GET",
-            url: "/Manage/" + method_name,
+        $('.ManageProfile').click(function (e) {
+            var method_name = this.getAttribute("name");
+            alert(method_name);
+            $.ajax({
+                type: "GET",
+                url: "/Manage/" + method_name,
 
+            });
         });
-    });
-</script>*@
+    </script>*@
 
 
-        @*****************************************************************commented for future reference**************************************************************@
+@*****************************************************************commented for future reference**************************************************************@
 
-        @*<h2>@ViewBag.Title.</h2>
+@*<h2>@ViewBag.Title.</h2>
 
-            <p class="text-success">@ViewBag.StatusMessage</p>
-            <div>
-                <h4>Change your account settings</h4>
-                <hr />
-                <dl class="dl-horizontal">
-                    <dt>Password:</dt>
-                    <dd>
-                        [
-                        @if (Model.HasPassword)
-                        {
-                            @Html.ActionLink("Change your password", "ChangePassword", null, htmlAttributes: new { @class = "btn btn-primary" })
-                        }
-                        else
-                        {
-                            @Html.ActionLink("Create", "SetPassword", null, htmlAttributes: new { @class = "btn btn-primary" })
-                        }
-                        ]
-                    </dd>*@
-
-        @*<dt>External Logins:</dt>
+    <p class="text-success">@ViewBag.StatusMessage</p>
+    <div>
+        <h4>Change your account settings</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>Password:</dt>
             <dd>
-                @Model.Logins.Count [
-                @Html.ActionLink("Manage", "ManageLogins") ]
-            </dd>*@
-
-        @*
-            Phone Numbers can used as a second factor of verification in a two-factor authentication system.
-
-             See <a href="http://go.microsoft.com/fwlink/?LinkId=403804">this article</a>
-                for details on setting up this ASP.NET application to support two-factor authentication using SMS.
-
-             Uncomment the following block after you have set up two-factor authentication
-        *@
-        @*
-            <dt>Phone Number:</dt>
-            <dd>
-                @(Model.PhoneNumber ?? "None")
-                @if (Model.PhoneNumber != null)
+                [
+                @if (Model.HasPassword)
                 {
-                    <br />
-                    <text>[&nbsp;&nbsp;@Html.ActionLink("Change", "AddPhoneNumber")&nbsp;&nbsp;]</text>
-                    using (Html.BeginForm("RemovePhoneNumber", "Manage", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
-                    {
-                        @Html.AntiForgeryToken()
-                        <text>[<input type="submit" value="Remove" class="btn-link" />]</text>
-                    }
+                    @Html.ActionLink("Change your password", "ChangePassword", null, htmlAttributes: new { @class = "btn btn-primary" })
                 }
                 else
                 {
-                    <text>[&nbsp;&nbsp;@Html.ActionLink("Add", "AddPhoneNumber")
+                    @Html.ActionLink("Create", "SetPassword", null, htmlAttributes: new { @class = "btn btn-primary" })
                 }
-            </dd>
-        *@
+                ]
+            </dd>*@
 
-        @*<dt>Two-Factor Authentication:</dt>
-            <dd>
-                <p>
-                    There are no two-factor authentication providers configured. See <a href="http://go.microsoft.com/fwlink/?LinkId=403804">this article</a>
-                    for details on setting up this ASP.NET application to support two-factor authentication.
-                </p>*@
+@*<dt>External Logins:</dt>
+    <dd>
+        @Model.Logins.Count [
+        @Html.ActionLink("Manage", "ManageLogins") ]
+    </dd>*@
 
-        @*@if (Model.TwoFactor)
+@*
+    Phone Numbers can used as a second factor of verification in a two-factor authentication system.
+
+     See <a href="http://go.microsoft.com/fwlink/?LinkId=403804">this article</a>
+        for details on setting up this ASP.NET application to support two-factor authentication using SMS.
+
+     Uncomment the following block after you have set up two-factor authentication
+*@
+@*
+    <dt>Phone Number:</dt>
+    <dd>
+        @(Model.PhoneNumber ?? "None")
+        @if (Model.PhoneNumber != null)
+        {
+            <br />
+            <text>[&nbsp;&nbsp;@Html.ActionLink("Change", "AddPhoneNumber")&nbsp;&nbsp;]</text>
+            using (Html.BeginForm("RemovePhoneNumber", "Manage", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
             {
-                using (Html.BeginForm("DisableTwoFactorAuthentication", "Manage", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
-                {
-                    @Html.AntiForgeryToken()
-                    <text>Enabled
-                    <input type="submit" value="Disable" class="btn btn-link" />
-                    </text>
-                }
+                @Html.AntiForgeryToken()
+                <text>[<input type="submit" value="Remove" class="btn-link" />]</text>
             }
-            else
-            {
-                using (Html.BeginForm("EnableTwoFactorAuthentication", "Manage", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
-                {
-                    @Html.AntiForgeryToken()
-                    <text>Disabled
-                    <input type="submit" value="Enable" class="btn btn-link" />
-                    </text>
-                }
-            }*@
-        @*</dd>*@
-        @*</dl>
-            </div>*@
+        }
+        else
+        {
+            <text>[&nbsp;&nbsp;@Html.ActionLink("Add", "AddPhoneNumber")
+        }
+    </dd>
+*@
 
-        @*****************************************************************commented for future reference**************************************************************@
+@*<dt>Two-Factor Authentication:</dt>
+    <dd>
+        <p>
+            There are no two-factor authentication providers configured. See <a href="http://go.microsoft.com/fwlink/?LinkId=403804">this article</a>
+            for details on setting up this ASP.NET application to support two-factor authentication.
+        </p>*@
+
+@*@if (Model.TwoFactor)
+    {
+        using (Html.BeginForm("DisableTwoFactorAuthentication", "Manage", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+        {
+            @Html.AntiForgeryToken()
+            <text>Enabled
+            <input type="submit" value="Disable" class="btn btn-link" />
+            </text>
+        }
+    }
+    else
+    {
+        using (Html.BeginForm("EnableTwoFactorAuthentication", "Manage", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+        {
+            @Html.AntiForgeryToken()
+            <text>Disabled
+            <input type="submit" value="Enable" class="btn btn-link" />
+            </text>
+        }
+    }*@
+@*</dd>*@
+@*</dl>
+    </div>*@
+
+@*****************************************************************commented for future reference**************************************************************@
 
 
