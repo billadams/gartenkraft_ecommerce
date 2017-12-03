@@ -10,6 +10,12 @@ namespace Gartenkraft.Models
     {
         public int BillingID { get; set; }
         public int CustomerID { get; set; }
+        [Required(ErrorMessage = "Please enter your First Name here.")]
+        [DisplayName("First Name")]
+        public string BillingFirstName { get; set; }
+        [Required(ErrorMessage = "Please enter your Last Name here.")]
+        [DisplayName("Last Name")]
+        public string BillingLastName { get; set; }
         [Required(ErrorMessage = "Please enter your Address here.")]
         [DisplayName("Street Address")]
         public string BillingAddress { get; set; }

@@ -17,8 +17,6 @@ namespace Gartenkraft.Controllers
             if (Session["Cart"] != null)
             {
                 oCheckout.CartInfo = (Cart) Session["Cart"];
-                var test = oCheckout.CartInfo.Total;
-                var test2 = oCheckout.CartInfo.Subtotal;
                 return View(oCheckout);
             }
             else
@@ -30,19 +28,30 @@ namespace Gartenkraft.Controllers
 
         public ActionResult SubmitOrder(Checkout oCheckout)
         {
+            if (Session["Cart"] == null)
+            {
+                return RedirectToAction("Index", "Cart");//no cart found, shouldn't be able to view this page
+            }
             //grab cart info from session don't rely on passed in checkout
             Cart validCartInfo = (Cart) Session["Cart"];
             oCheckout = CheckforNullableValues(oCheckout);
-            //hardcoding customerid to 0 until customer is setup
-            oCheckout.BillingInformation.CustomerID = 0;
-            oCheckout.ShippingData.CustomerID = 0;
-            oCheckout.InvoiceData = new SalesInvoiceTableMetadata();
-            oCheckout.InvoiceData.CustomerID = 0;
             CheckoutDB oCheckoutDb = new CheckoutDB();
-            oCheckout.InvoiceData.ShippingID= oCheckoutDb.SaveShippingOrder(oCheckout.ShippingData);
-            oCheckout.InvoiceData.BillingID = oCheckoutDb.SaveBillingOrder(oCheckout.BillingInformation);
+            //if (Session["User"] == null)
+            //{
+            //guest logic
+            oCheckout.InvoiceData.ShippingID = oCheckoutDb.SaveGuestShippingOrder(oCheckout.ShippingData);
+            oCheckout.InvoiceData.BillingID = oCheckoutDb.SaveGuestBillingOrder(oCheckout.BillingInformation);
+            oCheckout.InvoiceData.CustomerFirstName = oCheckout.BillingInformation.BillingFirstName;
+            oCheckout.InvoiceData.CustomerLastName = oCheckout.BillingInformation.BillingLastName;
             oCheckout.InvoiceData.InvoiceDate = DateTime.Now;
-            oCheckout.InvoiceData.InvoiceID = oCheckoutDb.SaveInvoice(oCheckout.InvoiceData);
+            oCheckout.InvoiceData.InvoiceID = oCheckoutDb.SaveGuestInvoice(oCheckout.InvoiceData);
+
+            //}
+            //else
+            //{
+            //    //do customerid logic
+            //}
+
             //clearing session or you could just uncomment below line if you want to remove car
             //Session["Cart"] = null;
             Session.Clear();
