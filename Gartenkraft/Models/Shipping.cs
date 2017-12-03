@@ -13,6 +13,12 @@ namespace Gartenkraft.Models
         public int ShippingID { get; set; }
         
         public int CustomerID { get; set; }
+        [Required(ErrorMessage = "Please enter your First Name here.")]
+        [DisplayName("First Name")]
+        public string ShippingFirstName { get; set; }
+        [Required(ErrorMessage = "Please enter your Last Name here.")]
+        [DisplayName("Last Name")]
+        public string ShippingLastName { get; set; }
         [Required(ErrorMessage = "Please enter your Address here.")]
         [DisplayName("Street Address")]
         public string ShippingAddress { get; set; }
