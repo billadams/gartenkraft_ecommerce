@@ -8,7 +8,7 @@ using System.Collections.Generic;
 namespace Gartenkraft.Models
 {
    
-    [MetadataType(typeof(tblProductMetaData))]
+    [MetadataType(typeof(ProductTableMetadata))]
 
     public partial class tblProduct
     {
@@ -41,7 +41,7 @@ namespace Gartenkraft.Models
         }
     }
 
-    public class tblProductMetaData
+    public class ProductTableMetadata
     {
         [DisplayName("Product ID")]
         public int product_id { get; set; }

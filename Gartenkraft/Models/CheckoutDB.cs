@@ -88,7 +88,7 @@ namespace Gartenkraft.Models
             return newid;
         }
 
-        public int SaveGuestInvoice(SalesInvoice oInvoiceInfo)
+        public int SaveGuestInvoice(SalesInvoiceTableMetadata oInvoiceInfo)
         {
             SqlConnection oConnection = GartenkraftConnection.GetConnection();
             int newid = 0;

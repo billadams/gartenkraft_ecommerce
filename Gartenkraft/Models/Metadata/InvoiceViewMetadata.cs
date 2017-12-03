@@ -6,9 +6,10 @@ using System.ComponentModel.DataAnnotations;
 
 namespace Gartenkraft.Models
 {
-    [MetadataType(typeof(vwInvoice_metadata))]
+    [MetadataType(typeof(InvoiceViewMetadata))]
     public partial class vwInvoice { }
-    public class vwInvoice_metadata
+
+    public class InvoiceViewMetadata
     {
         [Display(Name = "Invoice Date")]
         [DisplayFormat(DataFormatString = "{0:MM/dd/yyyy}")]

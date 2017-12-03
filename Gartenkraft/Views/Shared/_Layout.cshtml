@@ -9,28 +9,27 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
 </head>
 <body>  
-
-    <nav class="navbar" style="z-index:1;border:none;">
-        <div class="header" style="z-index:998;background-color:#999999;color:#444444;">
-            <div class="container">
-                <div>
-                    <strong>
-                        @Html.ActionLink("GartenKraft", "Index", "Home", new { area = "" }, new { @class = "navbar-brand", @style = "z-index:999;color:#444444;" })
-                    </strong>
-                </div>
-
-                <div class="pull-right" style="z-index:999;color:#444444;">
-                    <ul class="nav navbar-nav" style="z-index:999;color:#444444;">
-                        <li>
-                            @Html.Partial("_Cart")
-                        </li>
-                        @Html.Partial("_LoginPartial")
-                    </ul>
-                </div>
-
+    <header>
+        <div class="container">
+            <div>
+                <strong>
+                    @Html.ActionLink("Sunneday", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+                </strong>
             </div>
-        </div>
 
+            <div class="pull-right">
+                <ul class="header-nav">
+                    @Html.Partial("_LoginPartial")
+                    <li>
+                        @Html.Partial("_Cart")
+                    </li>
+                </ul>
+            </div>
+
+        </div>
+    </header>
+
+    <nav class="navbar">
         <div class="container">
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">

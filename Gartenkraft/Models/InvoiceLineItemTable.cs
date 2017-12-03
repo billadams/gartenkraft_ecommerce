@@ -6,7 +6,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace Gartenkraft.Models
 {
-    public partial class invoice_lineitem : tblSales_Invoice_Lineitem
+    public partial class InvoiceLineItemTable : tblSales_Invoice_Lineitem
     {
         private vwProduct product;
 
