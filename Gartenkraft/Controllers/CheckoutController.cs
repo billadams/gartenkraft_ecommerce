@@ -36,7 +36,7 @@ namespace Gartenkraft.Controllers
             //hardcoding customerid to 0 until customer is setup
             oCheckout.BillingInformation.CustomerID = 0;
             oCheckout.ShippingData.CustomerID = 0;
-            oCheckout.InvoiceData = new SalesInvoice();
+            oCheckout.InvoiceData = new SalesInvoiceTableMetadata();
             oCheckout.InvoiceData.CustomerID = 0;
             CheckoutDB oCheckoutDb = new CheckoutDB();
             oCheckout.InvoiceData.ShippingID= oCheckoutDb.SaveShippingOrder(oCheckout.ShippingData);

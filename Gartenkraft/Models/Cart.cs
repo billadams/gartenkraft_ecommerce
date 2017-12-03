@@ -9,9 +9,9 @@ namespace Gartenkraft.Models
     public class Cart
     {
         public const decimal TAX = 0.07m;
-        private List<invoice_lineitem> cartItems;
+        private List<InvoiceLineItemTable> cartItems;
 
-        public List<invoice_lineitem> CartItems
+        public List<InvoiceLineItemTable> CartItems
         {
             get { return this.cartItems; }
             set { this.cartItems = value; }
@@ -27,12 +27,12 @@ namespace Gartenkraft.Models
         [DisplayFormat(DataFormatString = "{0:C}")]
         public decimal Total { get; private set; }
 
-        public Cart() { cartItems = new List<invoice_lineitem>(); }
+        public Cart() { cartItems = new List<InvoiceLineItemTable>(); }
 
-        public void AddItem(invoice_lineitem li)
+        public void AddItem(InvoiceLineItemTable li)
         {
             bool duplicate = false;
-            foreach (invoice_lineitem item in this.cartItems)
+            foreach (InvoiceLineItemTable item in this.cartItems)
             {
                 if (li.GetProduct().product_id == item.product_id && li.GetProduct().SelectedOptionID == item.GetProduct().SelectedOptionID)
                 {
@@ -48,7 +48,7 @@ namespace Gartenkraft.Models
 
         }
 
-        public void UpdateItem(invoice_lineitem li)
+        public void UpdateItem(InvoiceLineItemTable li)
         {
             this.cartItems.Where(ci => ci.product_id == li.product_id && ci.product_option_id == li.product_option_id).Single().Set_lineitem_quantity(li.lineitem_quantity);
             CalculateTotal();
@@ -69,7 +69,7 @@ namespace Gartenkraft.Models
         private void SetSubtotal()
         {
             this.Subtotal = 0m;
-            foreach (invoice_lineitem li in this.CartItems)
+            foreach (InvoiceLineItemTable li in this.CartItems)
             {
                 this.Subtotal += li.LineTotal;
             }

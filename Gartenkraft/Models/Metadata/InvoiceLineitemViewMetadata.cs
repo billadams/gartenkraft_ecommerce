@@ -6,10 +6,10 @@ using System.ComponentModel.DataAnnotations;
 
 namespace Gartenkraft.Models
 {
-    [MetadataType(typeof(vwInvoice_Lineitem_metadata))]
+    [MetadataType(typeof(InvoiceLineitemViewMetadata))]
     public partial class vwInvoice_Lineitem { }
 
-    public class vwInvoice_Lineitem_metadata
+    public class InvoiceLineitemViewMetadata
     {
         [Display(Name = "Quantity")]
         public int lineitem_quantity { get; set; }

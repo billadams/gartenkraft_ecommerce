@@ -7,10 +7,10 @@ using System.ComponentModel.DataAnnotations;
 
 namespace Gartenkraft.Models
 {
-    [MetadataType(typeof(tblProduct_OptionMetadata))]
+    [MetadataType(typeof(ProductOptionTableMetadata))]
     public partial class tblProduct_Option { }
 
-    public class tblProduct_OptionMetadata
+    public class ProductOptionTableMetadata
     {
         [Required]
         [DisplayName("Option Name")]

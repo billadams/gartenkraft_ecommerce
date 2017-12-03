@@ -7,7 +7,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Gartenkraft.Models
 {
-    [MetadataType(typeof(vwProductMetadata))]
+    [MetadataType(typeof(ProductViewMetadata))]
     public partial class vwProduct
     {
         [NotMapped]
@@ -87,7 +87,7 @@ namespace Gartenkraft.Models
         }
     }
 
-    public class vwProductMetadata
+    public class ProductViewMetadata
     {
         [Display(Name = "Product Name")]
         public string product_name { get; set; }

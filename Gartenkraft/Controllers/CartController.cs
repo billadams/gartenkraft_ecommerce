@@ -53,7 +53,7 @@ namespace Gartenkraft.Controllers
                 newProduct.SetPrice();
 
                 // set line item
-                invoice_lineitem li = new invoice_lineitem();
+                InvoiceLineItemTable li = new InvoiceLineItemTable();
                 li.SetProduct(newProduct);
                 li.Set_lineitem_quantity(Convert.ToInt32(quantity));
 
@@ -67,7 +67,7 @@ namespace Gartenkraft.Controllers
         }
 
         // GET: Cart/UpdateQuantity
-        public ActionResult UpdateQuantity(invoice_lineitem item)
+        public ActionResult UpdateQuantity(InvoiceLineItemTable item)
         {
             cart = (Cart)Session["Cart"];
             cart.UpdateItem(item);
