@@ -10,11 +10,11 @@ namespace Gartenkraft.Areas.Admin.Controllers
     {
         public ActionResult Index()
         {
-            if (Request.IsAuthenticated/* && User.IsInRole("Admin")*/)
-            {
+            //if (Request.IsAuthenticated/* && User.IsInRole("Admin")*/)
+            //{
                 return View();
-            }
-            return RedirectToAction("Login", "Account");
+            //}
+            //return RedirectToAction("Login", "Account");
         }
 
         //public ActionResult About()
