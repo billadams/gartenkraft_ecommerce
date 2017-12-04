@@ -242,6 +242,7 @@ namespace Gartenkraft.Areas.Admin.Controllers
         // GET: /Manage/ChangePassword
         public ActionResult ChangePassword()
         {
+            ViewBag.StatusMessage = "";
             return View();
         }
 
@@ -263,7 +264,9 @@ namespace Gartenkraft.Areas.Admin.Controllers
                 {
                     await SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
                 }
-                return RedirectToAction("Index", new { Message = ManageMessageId.ChangePasswordSuccess });
+                //return RedirectToAction("Index", new { Message = ManageMessageId.ChangePasswordSuccess });
+                ViewBag.StatusMessage = "Your password has been succesfully changed";
+                return View();
             }
             AddErrors(result);
             return View(model);
@@ -347,7 +350,7 @@ namespace Gartenkraft.Areas.Admin.Controllers
             return result.Succeeded ? RedirectToAction("ManageLogins") : RedirectToAction("ManageLogins", new { Message = ManageMessageId.Error });
         }
 
-        #region Roles
+#region Roles
 
         public ActionResult ManageRoles()
         {
@@ -428,6 +431,126 @@ namespace Gartenkraft.Areas.Admin.Controllers
 
         #endregion
 
+#region Profile & Admins
+
+        //public ActionResult MakeAdmin()
+        //{
+        //    UserManager.AddToRole(User.Identity.GetUserId(), "Admin");
+        //    return RedirectToAction("Index", "Home");
+        //}
+
+        public ActionResult ManageAdmins()
+        {
+            var roleID = RoleManager.FindByName("Admin").Id;
+            var admins = UserManager.Users.Where(u => u.Roles.FirstOrDefault(r => r.RoleId == roleID) != null).ToList();
+
+            return View(admins);
+        }
+
+        public ActionResult CreateAdmin()
+        {
+            ViewBag.ErrorMessage = "";
+            return View();
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<ActionResult> CreateAdmin(AdminViewModel model)
+        {
+            var user = new ApplicationUser { UserName = model.Email, Email = model.Email, FirstName = model.FirstName, LastName = model.LastName, PhoneNumber = model.PhoneNumber };
+            var result = await UserManager.CreateAsync(user, model.Password);
+            if (result.Succeeded)
+            {
+                var userID = UserManager.FindByName(user.UserName).Id;
+                var roleResult = UserManager.AddToRole(userID, "Admin");
+                if (roleResult.Succeeded)
+                {
+                    return RedirectToAction("ManageAdmins", "Manage");
+                }
+            }
+            // If we got this far, something failed, redisplay form and delete the newly created user
+            var deleteUser = UserManager.FindByName(user.UserName);
+            UserManager.Delete(deleteUser);
+            ViewBag.ErrorMessage = "Something went wrong. Please contact your administrator. Unable to create an admin.";
+            return View(model);
+        }
+
+        public ActionResult DeleteAdmin(string id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            var admin = UserManager.FindById(id);
+            var adminModel = new AdminViewModel() {
+                Email = admin.Email,
+                PhoneNumber = admin.PhoneNumber,
+                FirstName = admin.FirstName,
+                LastName = admin.LastName
+            };
+            ViewBag.ID = id;
+            return View(adminModel);
+        }
+
+        [HttpPost, ActionName("DeleteAdmin")]
+        [ValidateAntiForgeryToken]
+        public ActionResult DeleteAdminConfirm(string id)
+        {
+            UserManager.RemoveFromRole(id, "Admin");
+            var deleteUser = UserManager.FindById(id);
+            UserManager.Delete(deleteUser);
+            return RedirectToAction("ManageAdmins");
+        }
+
+        public ActionResult ManageProfile()
+        {
+            var userID = User.Identity.GetUserId();
+            var userProfile = UserManager.Users.FirstOrDefault(u => u.Id == userID);
+            if (userProfile == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            ViewBag.ErrorMessage = "";
+            ViewBag.States = XmlHelper.GetStates(Server, Url);
+            ViewBag.Countries = XmlHelper.GetCountries(Server, Url);
+            return View(userProfile);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult ManageProfile(ApplicationUser user)
+        {
+            ViewBag.ErrorMessage = "Unable to update your profile. Please try again.";
+            if (ModelState.IsValid)
+            {
+                var newUser = UserManager.Users.SingleOrDefault(u => u.Id == user.Id);
+                if (newUser == null)
+                {
+                    return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                }
+                newUser.Email = user.Email;
+                newUser.UserName = user.Email;
+                newUser.FirstName = user.FirstName;
+                newUser.LastName = user.LastName;
+                newUser.Address1 = user.Address1;
+                newUser.Address2 = user.Address2;
+                newUser.City = user.City;
+                newUser.State = user.State;
+                newUser.Zip = user.Zip;
+                newUser.Zip4 = user.Zip4;
+                newUser.Country = user.Country;
+                newUser.PhoneNumber = user.PhoneNumber;
+
+                UserManager.Update(newUser);
+                ViewBag.ErrorMessage = "Profile was succesfully updated.";
+            }
+            ViewBag.States = XmlHelper.GetStates(Server, Url);
+            ViewBag.Countries = XmlHelper.GetCountries(Server, Url);
+            return View(user);
+        }
+
+#endregion
+
         protected override void Dispose(bool disposing)
         {
             if (disposing && _userManager != null)
@@ -439,7 +562,7 @@ namespace Gartenkraft.Areas.Admin.Controllers
             base.Dispose(disposing);
         }
 
-        #region Helpers
+#region Helpers
         // Used for XSRF protection when adding external logins
         private const string XsrfKey = "XsrfId";
 

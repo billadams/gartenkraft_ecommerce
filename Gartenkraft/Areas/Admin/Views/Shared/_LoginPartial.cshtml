@@ -1,6 +1,6 @@
 ﻿@using Microsoft.AspNet.Identity
 
-@if (Request.IsAuthenticated @*&& User.IsInRole("Admin")*@)
+@if (Request.IsAuthenticated && User.IsInRole("Admin"))
 {
     using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm" }))
     {
@@ -12,20 +12,20 @@
                 </li>
                 <li><a href="javascript:document.getElementById('logoutForm').submit()">Log off</a></li>
             </ul>*@
-        <li><a href="@Url.Action("ChangePassword", "Manage")"><i class="fa fa-fw fa-user"></i> Edit Profile</a></li>
+        <li><a href="@Url.Action("ManageProfile", "Manage")"><i class="fa fa-fw fa-user"></i> Edit Profile</a></li>
         <li><a href="@Url.Action("ChangePassword", "Manage")"><i class="fa fa-fw fa-cog"></i> Password</a></li>
-        <li><a href="@Url.Action("ManageRoles", "Manage")"><i class="fa fa-fw fa-cog"></i> Roles</a></li>
+        @*<li><a href="@Url.Action("ManageRoles", "Manage")"><i class="fa fa-fw fa-cog"></i> Roles</a></li>*@
         <li class="divider"></li>
-        <li><a href="@Url.Action("Register", "Account")"><i class="fa fa-fw fa-user"></i> Create User</a></li>
+        <li><a href="@Url.Action("ManageAdmins", "Manage")"><i class="fa fa-fw fa-user"></i> Manage Admins</a></li>
         <li><a href="javascript:document.getElementById('logoutForm').submit()"><i class="fa fa-fw fa-power-off"></i> Logout</a></li>
     }
 }
-else
+@*else
 {
     <ul class="nav nav-pills flex-column">
-        @*<li class="nav-item">@Html.ActionLink("Register", "Register", "Account", routeValues: null, htmlAttributes: new { id = "registerLink" })</li>
-            <li class="nav-item">@Html.ActionLink("Log in", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink" })</li>*@
+        <li class="nav-item">@Html.ActionLink("Register", "Register", "Account", routeValues: null, htmlAttributes: new { id = "registerLink" })</li>
+        <li class="nav-item">@Html.ActionLink("Log in", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink" })</li>
 
         <li><a href="@Url.Action("Login", "Account")"><i class="fa fa-fw fa-power-off"></i> Log in</a></li>
     </ul>
-}
+}*@

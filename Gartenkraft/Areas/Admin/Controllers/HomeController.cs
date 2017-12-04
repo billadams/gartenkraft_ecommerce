@@ -10,7 +10,7 @@ namespace Gartenkraft.Areas.Admin.Controllers
     {
         public ActionResult Index()
         {
-            if (Request.IsAuthenticated)
+            if (Request.IsAuthenticated/* && User.IsInRole("Admin")*/)
             {
                 return View();
             }

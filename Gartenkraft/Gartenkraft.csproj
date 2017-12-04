@@ -318,6 +318,7 @@
       <DependentUpon>GartenkraftModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Helpers\XmlHelper.cs" />
+    <Compile Include="ViewModels\AdminViewModel.cs" />
     <Compile Include="ViewModels\MenuModel.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Utilities\Cart.cs" />
@@ -454,6 +455,10 @@
     <Content Include="Areas\Admin\Views\Manage\CreateRole.cshtml" />
     <Content Include="Areas\Admin\Views\Manage\EditRole.cshtml" />
     <Content Include="Areas\Admin\Views\Manage\DeleteRole.cshtml" />
+    <Content Include="Areas\Admin\Views\Manage\ManageProfile.cshtml" />
+    <Content Include="Areas\Admin\Views\Manage\ManageAdmins.cshtml" />
+    <Content Include="Areas\Admin\Views\Manage\CreateAdmin.cshtml" />
+    <Content Include="Areas\Admin\Views\Manage\DeleteAdmin.cshtml" />
     <None Include="Content\large.less" />
     <Content Include="Content\large.css">
       <DependentUpon>large.less</DependentUpon>

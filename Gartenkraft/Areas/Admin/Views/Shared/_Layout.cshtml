@@ -52,9 +52,12 @@
                          }
 
 @****************************************************************************************************************************@
-
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Admin User <b class="fa fa-angle-down"></b></a>
+                        @if (Request.IsAuthenticated)
+                        {
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">@User.Identity.Name <b class="fa fa-angle-down"></b></a>
+                        }
                         <ul class="dropdown-menu">
+                            @*<li>@Html.ActionLink("Make Admin", "MakeAdmin", "Manage")</li>*@
                             @Html.Partial("_LoginPartial")
                         </ul>
                     </li>
