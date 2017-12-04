@@ -7,6 +7,14 @@ using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using Gartenkraft.Models;
+using Gartenkraft.ViewModels;
+using Gartenkraft;
+using Gartenkraft.Controllers;
+using System.Data.Entity.Infrastructure;
+using Microsoft.AspNet.Identity.EntityFramework;
+using System.Data.Entity;
+using System.Collections.Generic;
+using System.Net;
 
 namespace Gartenkraft.Areas.Admin.Controllers
 {
@@ -15,15 +23,20 @@ namespace Gartenkraft.Areas.Admin.Controllers
     {
         private ApplicationSignInManager _signInManager;
         private ApplicationUserManager _userManager;
+        private ApplicationRoleManager _roleManager;
+        private GartenkraftEntities db;
 
         public ManageController()
         {
+            db = new GartenkraftEntities();
         }
 
-        public ManageController(ApplicationUserManager userManager, ApplicationSignInManager signInManager)
+        public ManageController(ApplicationUserManager userManager, ApplicationSignInManager signInManager, ApplicationRoleManager roleManager)
         {
             UserManager = userManager;
             SignInManager = signInManager;
+            RoleManager = roleManager;
+            db = new GartenkraftEntities();
         }
 
         public ApplicationSignInManager SignInManager
@@ -32,9 +45,9 @@ namespace Gartenkraft.Areas.Admin.Controllers
             {
                 return _signInManager ?? HttpContext.GetOwinContext().Get<ApplicationSignInManager>();
             }
-            private set 
-            { 
-                _signInManager = value; 
+            private set
+            {
+                _signInManager = value;
             }
         }
 
@@ -47,6 +60,18 @@ namespace Gartenkraft.Areas.Admin.Controllers
             private set
             {
                 _userManager = value;
+            }
+        }
+
+        public ApplicationRoleManager RoleManager
+        {
+            get
+            {
+                return _roleManager ?? HttpContext.GetOwinContext().Get<ApplicationRoleManager>();
+            }
+            private set
+            {
+                _roleManager = value;
             }
         }
 
@@ -322,6 +347,87 @@ namespace Gartenkraft.Areas.Admin.Controllers
             return result.Succeeded ? RedirectToAction("ManageLogins") : RedirectToAction("ManageLogins", new { Message = ManageMessageId.Error });
         }
 
+        #region Roles
+
+        public ActionResult ManageRoles()
+        {
+            var roles = RoleManager.Roles.ToList();
+            var roleModels = new List<RoleViewModel>();
+            foreach (var i in roles) { roleModels.Add(new RoleViewModel() { Id = i.Id, Name = i.Name }); }
+            return View(roleModels);
+        }
+
+        public ActionResult CreateRole()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult CreateRole(RoleViewModel role)
+        {
+            if (ModelState.IsValid)
+            {
+                // validation for if role exist
+                if (RoleManager.RoleExists(role.Name))
+                {
+                    ViewBag.ErrorMessage = "Role name already exist";
+                    return View(role);
+                }
+                RoleManager.Create(new IdentityRole() { Name = role.Name });
+            }
+            return RedirectToAction("ManageRoles");
+        }
+
+        public ActionResult EditRole(string id)
+        {
+            var editRole = RoleManager.Roles.SingleOrDefault(r => r.Id == id);
+            if (editRole == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            var editRoleModel = new RoleViewModel() { Id = editRole.Id, Name = editRole.Name };
+            return View(editRoleModel);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult EditRole(RoleViewModel role)
+        {
+            if (ModelState.IsValid)
+            {
+                RoleManager.Update(new IdentityRole() { Id = role.Id, Name = role.Name });
+                return RedirectToAction("ManageRoles");
+            }
+            return View(role);
+        }
+
+        public ActionResult DeleteRole(string id)
+        {
+            var deleteRole = RoleManager.Roles.SingleOrDefault(r => r.Id == id);
+            if (deleteRole == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            var deleteRoleModel = new RoleViewModel() { Id = deleteRole.Id, Name = deleteRole.Name };
+            return View(deleteRoleModel);
+        }
+
+        [HttpPost, ActionName("DeleteRole")]
+        [ValidateAntiForgeryToken]
+        public ActionResult DeleteRoleConfirm(string id)
+        {
+            var deleteRole = RoleManager.Roles.SingleOrDefault(r => r.Id == id);
+            if (deleteRole == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            RoleManager.Delete(deleteRole);
+            return RedirectToAction("ManageRoles");
+        }
+
+        #endregion
+
         protected override void Dispose(bool disposing)
         {
             if (disposing && _userManager != null)
@@ -333,7 +439,7 @@ namespace Gartenkraft.Areas.Admin.Controllers
             base.Dispose(disposing);
         }
 
-#region Helpers
+        #region Helpers
         // Used for XSRF protection when adding external logins
         private const string XsrfKey = "XsrfId";
 
@@ -384,6 +490,6 @@ namespace Gartenkraft.Areas.Admin.Controllers
             Error
         }
 
-#endregion
+        #endregion
     }
 }

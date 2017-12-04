@@ -16,20 +16,20 @@ namespace Gartenkraft.Controllers
     {
         private ApplicationSignInManager _signInManager;
         private ApplicationUserManager _userManager;
-        //private ApplicationRoleManager _roleManager;
-        private GartenkraftEntities db;
+        private ApplicationRoleManager _roleManager;
+        private GartenkraftEntities dbg;
 
         public ManageController()
         {
-            db = new GartenkraftEntities();
+            dbg = new GartenkraftEntities();
         }
 
-        public ManageController(ApplicationUserManager userManager, ApplicationSignInManager signInManager/*, ApplicationRoleManager roleManager*/)
+        public ManageController(ApplicationUserManager userManager, ApplicationSignInManager signInManager, ApplicationRoleManager roleManager)
         {
             UserManager = userManager;
             SignInManager = signInManager;
-            //RoleManager = roleManager;
-            db = new GartenkraftEntities();
+            RoleManager = roleManager;
+            dbg = new GartenkraftEntities();
         }
 
         public ApplicationSignInManager SignInManager
@@ -56,17 +56,17 @@ namespace Gartenkraft.Controllers
             }
         }
 
-        //public ApplicationRoleManager RoleManager
-        //{
-        //    get
-        //    {
-        //        return _roleManager ?? HttpContext.GetOwinContext().Get<ApplicationRoleManager>();
-        //    }
-        //    private set
-        //    {
-        //        _roleManager = value;
-        //    }
-        //}
+        public ApplicationRoleManager RoleManager
+        {
+            get
+            {
+                return _roleManager ?? HttpContext.GetOwinContext().Get<ApplicationRoleManager>();
+            }
+            private set
+            {
+                _roleManager = value;
+            }
+        }
 
         //
         // GET: /Manage/Index
@@ -332,7 +332,7 @@ namespace Gartenkraft.Controllers
         public PartialViewResult PartialBilling()
         {
             var id = User.Identity.GetUserId();
-            var userBillings = db.tblBilling_Information.Where(b => b.customer_id == id).ToList();
+            var userBillings = dbg.tblBilling_Information.Where(b => b.customer_id == id).ToList();
             return PartialView(userBillings);
         }
 
@@ -349,11 +349,11 @@ namespace Gartenkraft.Controllers
         // POST /Manage/PartialCreateBilling
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public PartialViewResult PartialCreateBilling(tblBilling_Information tblBilling_Information)
+        public ActionResult PartialCreateBilling(tblBilling_Information tblBilling_Information)
         {
             if (ModelState.IsValid)
             {
-                if (db.tblBilling_Information.Where(b => b.billing_address1 == tblBilling_Information.billing_address1
+                if (dbg.tblBilling_Information.Where(b => b.billing_address1 == tblBilling_Information.billing_address1
                                                          && b.billing_address2 == tblBilling_Information.billing_address2
                                                          && b.billing_city == tblBilling_Information.billing_city
                                                          && b.billing_state == tblBilling_Information.billing_state
@@ -361,11 +361,11 @@ namespace Gartenkraft.Controllers
                                                          && b.billing_zip4 == tblBilling_Information.billing_zip4
                                                          && b.billing_country == tblBilling_Information.billing_country).ToList().Count() == 0)
                 {
-                    db.tblBilling_Information.Add(tblBilling_Information);
+                    dbg.tblBilling_Information.Add(tblBilling_Information);
+                    dbg.SaveChanges();
+                    return RedirectToAction("Index");
                 }
-
-                var result = db.SaveChanges();
-                if (result == 0)
+                else
                 {
                     ViewBag.ErrorMessage = "This address had been recorded. Please enter a different address";
                     return PartialView("Error");
@@ -373,14 +373,14 @@ namespace Gartenkraft.Controllers
             }
 
             var id = User.Identity.GetUserId();
-            var billings = db.tblBilling_Information.Where(b => b.customer_id == id).ToList();
+            var billings = dbg.tblBilling_Information.Where(b => b.customer_id == id).ToList();
             return PartialView("PartialBilling", billings);
         }
 
         // GET: /Manage/PartialEditBilling
         public PartialViewResult PartialEditBilling(int? id)
         {
-            var billing = db.tblBilling_Information.Find(id);
+            var billing = dbg.tblBilling_Information.Find(id);
             if (billing == null)
             {
                 ViewBag.ErrorMessage = "Unable to find your billing information.";
@@ -398,8 +398,8 @@ namespace Gartenkraft.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Entry(tblBilling_Information).State = System.Data.Entity.EntityState.Modified;
-                var result = db.SaveChanges();
+                dbg.Entry(tblBilling_Information).State = System.Data.Entity.EntityState.Modified;
+                var result = dbg.SaveChanges();
                 if (result == 0)
                 {
                     ViewBag.ErrorMessage = "Unable to modify your billing information. Please try again.";
@@ -407,7 +407,7 @@ namespace Gartenkraft.Controllers
                 }
             }
             var id = User.Identity.GetUserId();
-            var billings = db.tblBilling_Information.Where(b => b.customer_id == id).ToList();
+            var billings = dbg.tblBilling_Information.Where(b => b.customer_id == id).ToList();
             return PartialView("PartialBilling", billings);
         }
 
@@ -417,9 +417,9 @@ namespace Gartenkraft.Controllers
         {
             if (id != null)
             {
-                var billing = db.tblBilling_Information.Find(id);
-                db.tblBilling_Information.Remove(billing);
-                var result = db.SaveChanges();
+                var billing = dbg.tblBilling_Information.Find(id);
+                dbg.tblBilling_Information.Remove(billing);
+                var result = dbg.SaveChanges();
                 if (result == 0)
                 {
                     ViewBag.ErrorMessage = "Unable to delete billing information. Please try again.";
@@ -427,7 +427,7 @@ namespace Gartenkraft.Controllers
                 }
             }
             var userID = User.Identity.GetUserId();
-            var billings = db.tblBilling_Information.Where(b => b.customer_id == userID).ToList();
+            var billings = dbg.tblBilling_Information.Where(b => b.customer_id == userID).ToList();
             return PartialView("PartialBilling", billings);
         }
 
@@ -438,7 +438,7 @@ namespace Gartenkraft.Controllers
         public PartialViewResult PartialShipping()
         {
             var id = User.Identity.GetUserId();
-            var userShippings = db.tblShippings.Where(s => s.customer_id == id).ToList();
+            var userShippings = dbg.tblShippings.Where(s => s.customer_id == id).ToList();
             return PartialView(userShippings);
         }
 
@@ -459,7 +459,7 @@ namespace Gartenkraft.Controllers
         {
             if (ModelState.IsValid)
             {
-                if (db.tblShippings.Where(b => b.shipping_address1 == tblShipping.shipping_address1
+                if (dbg.tblShippings.Where(b => b.shipping_address1 == tblShipping.shipping_address1
                                             && b.shipping_address2 == tblShipping.shipping_address2
                                             && b.shipping_city == tblShipping.shipping_city
                                             && b.shipping_state == tblShipping.shipping_state
@@ -467,10 +467,10 @@ namespace Gartenkraft.Controllers
                                             && b.shipping_zip4 == tblShipping.shipping_zip4
                                             && b.shipping_country == tblShipping.shipping_country).ToList().Count() == 0)
                 {
-                    db.tblShippings.Add(tblShipping);
+                    dbg.tblShippings.Add(tblShipping);
                 }
 
-                var result = db.SaveChanges();
+                var result = dbg.SaveChanges();
                 if (result == 0)
                 {
                     ViewBag.ErrorMessage = "This shipping address had been recorded. Please enter a different address";
@@ -479,14 +479,14 @@ namespace Gartenkraft.Controllers
             }
 
             var id = User.Identity.GetUserId();
-            var shippings = db.tblShippings.Where(b => b.customer_id == id).ToList();
+            var shippings = dbg.tblShippings.Where(b => b.customer_id == id).ToList();
             return PartialView("PartialShipping", shippings);
         }
 
         // GET: /Manage/PartialEditShipping
         public PartialViewResult PartialEditShipping(int? id)
         {
-            var shipping = db.tblShippings.Find(id);
+            var shipping = dbg.tblShippings.Find(id);
             if (shipping == null)
             {
                 ViewBag.ErrorMessage = "Unable to find your shipping information.";
@@ -504,8 +504,8 @@ namespace Gartenkraft.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Entry(tblShipping).State = System.Data.Entity.EntityState.Modified;
-                var result = db.SaveChanges();
+                dbg.Entry(tblShipping).State = System.Data.Entity.EntityState.Modified;
+                var result = dbg.SaveChanges();
                 if (result == 0)
                 {
                     ViewBag.ErrorMessage = "Unable to modify your shipping information. Please try again.";
@@ -513,7 +513,7 @@ namespace Gartenkraft.Controllers
                 }
             }
             var id = User.Identity.GetUserId();
-            var shippings = db.tblShippings.Where(b => b.customer_id == id).ToList();
+            var shippings = dbg.tblShippings.Where(b => b.customer_id == id).ToList();
             return PartialView("PartialShipping", shippings);
         }
 
@@ -523,9 +523,9 @@ namespace Gartenkraft.Controllers
         {
             if (id != null)
             {
-                var shipping = db.tblShippings.Find(id);
-                db.tblShippings.Remove(shipping);
-                var result = db.SaveChanges();
+                var shipping = dbg.tblShippings.Find(id);
+                dbg.tblShippings.Remove(shipping);
+                var result = dbg.SaveChanges();
                 if (result == 0)
                 {
                     ViewBag.ErrorMessage = "Unable to delete shipping information. Please try again.";
@@ -533,7 +533,7 @@ namespace Gartenkraft.Controllers
                 }
             }
             var userID = User.Identity.GetUserId();
-            var shippings = db.tblShippings.Where(b => b.customer_id == userID).ToList();
+            var shippings = dbg.tblShippings.Where(b => b.customer_id == userID).ToList();
             return PartialView("PartialShipping", shippings);
         }
 
