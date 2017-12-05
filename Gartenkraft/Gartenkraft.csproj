@@ -459,6 +459,7 @@
     <Content Include="Areas\Admin\Views\Manage\ManageAdmins.cshtml" />
     <Content Include="Areas\Admin\Views\Manage\CreateAdmin.cshtml" />
     <Content Include="Areas\Admin\Views\Manage\DeleteAdmin.cshtml" />
+    <Content Include="Areas\Admin\Views\Home\UserDetails.cshtml" />
     <None Include="Content\large.less" />
     <Content Include="Content\large.css">
       <DependentUpon>large.less</DependentUpon>
