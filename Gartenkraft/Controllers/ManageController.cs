@@ -363,7 +363,6 @@ namespace Gartenkraft.Controllers
                 {
                     dbg.tblBilling_Information.Add(tblBilling_Information);
                     dbg.SaveChanges();
-                    return RedirectToAction("Index");
                 }
                 else
                 {
@@ -468,10 +467,9 @@ namespace Gartenkraft.Controllers
                                             && b.shipping_country == tblShipping.shipping_country).ToList().Count() == 0)
                 {
                     dbg.tblShippings.Add(tblShipping);
+                    dbg.SaveChanges();
                 }
-
-                var result = dbg.SaveChanges();
-                if (result == 0)
+                else
                 {
                     ViewBag.ErrorMessage = "This shipping address had been recorded. Please enter a different address";
                     return PartialView("Error");
