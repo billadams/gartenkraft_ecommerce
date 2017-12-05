@@ -35,6 +35,9 @@ namespace Gartenkraft.Areas.Admin.Controllers.AdminControllers
             {
                 return HttpNotFound();
             }
+
+            tblSales_Invoice.LineItems = db.tblSales_Invoice.Where(invoice => invoice.invoice_id == id).ToList();
+            
             return View(tblSales_Invoice);
         }
 

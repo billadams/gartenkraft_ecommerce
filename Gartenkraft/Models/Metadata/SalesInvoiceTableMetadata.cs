@@ -4,13 +4,15 @@ using System.ComponentModel;
 using System.Linq;
 using System.Web;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Gartenkraft.Models
 {
     [MetadataType(typeof(SalesInvoiceTableMetadata))]
     public partial class tblSales_Invoice
     {
-        
+        [NotMapped]
+        public List<tblSales_Invoice_Lineitem> LineItems { get; set; }
     }
 
     public class SalesInvoiceTableMetadata
