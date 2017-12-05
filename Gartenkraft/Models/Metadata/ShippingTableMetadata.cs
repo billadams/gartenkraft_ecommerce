@@ -23,9 +23,6 @@ namespace Gartenkraft.Models
         [Display(Name = "Street Address")]
         public string shipping_address1 { get; set; }
 
-        [Display(Name = "")]
-        public string shipping_address2 { get; set; }
-
         [Required(ErrorMessage = "Please enter your City here.")]
         [Display(Name = "City")]
         public string shipping_city { get; set; }
@@ -37,9 +34,6 @@ namespace Gartenkraft.Models
         [Required(ErrorMessage = "Please enter your Zip Code here.")]
         [Display(Name = "Zip Code")]
         public string shipping_zip { get; set; }
-
-        [Display(Name = "")]
-        public string shipping_zip4 { get; set; }
 
         [Required(ErrorMessage = "Please enter your Country here.")]
         [Display(Name = "Country")]
