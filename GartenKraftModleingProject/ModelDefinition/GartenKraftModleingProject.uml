@@ -1,0 +1,582 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<modelStoreModel xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm4="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm5="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/LogicalClassDesigner"
+  dslVersion="1.0.0.0"
+  Id="f70581de-8012-4fb8-b0d5-596f6db2eac8"
+  name="GartenKraftModleingProject" xmlns="http://schemas.microsoft.com/dsltools/ModelStore">
+  <ownedCommentsInternal>
+    <comment
+      Id="6ca59c37-70e3-47f2-88da-8332663879eb">
+      <body>customer side</body>
+    </comment>
+    <comment
+      Id="d45b09a1-1c1c-430c-988f-2f45472b25b1">
+      <body>Admin side</body>
+    </comment>
+    <comment
+      Id="a492d138-8121-48e7-845b-5418d77de20a">
+      <body>Migrations</body>
+    </comment>
+    <comment
+      Id="3eb64939-2ded-4136-ad72-6cdc68eed80f">
+      <body>Metadata</body>
+    </comment>
+    <comment
+      Id="582f09f4-55cb-485a-bfe6-cacb091dcde7">
+      <body>Utilities</body>
+    </comment>
+    <comment
+      Id="cc741fa4-5f88-4f7e-9f28-086e03889862">
+      <body>ViewModels</body>
+    </comment>
+    <comment
+      Id="6454ad51-340e-404b-b99b-2d353b3ae2a1">
+      <body>App_start</body>
+    </comment>
+  </ownedCommentsInternal>
+  <profileInstances>
+    <packageHasProfileInstances
+      Id="0caec977-1f8c-4ba3-a7db-8cc9ad9cc73b">
+      <profileInstance
+        Id="e34d544e-0fea-4ed6-ac5e-1b74119ac791"
+        name="StandardProfileL2" />
+    </packageHasProfileInstances>
+    <packageHasProfileInstances
+      Id="29349502-908c-4fda-9054-c48619c59ed0">
+      <profileInstance
+        Id="532ea607-fb19-44b8-8502-3351b05452be"
+        name="StandardProfileL3" />
+    </packageHasProfileInstances>
+  </profileInstances>
+  <packagedElements>
+    <packageHasNamedElement>
+      <class
+        Id="ba50a90e-6e87-414c-8f0d-7d1c07edb765"
+        name="XmHelper"
+        isAbstract="false"
+        isLeaf="false"
+        isActiveClass="false" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <class
+        Id="7ca608e3-2313-48c0-a802-5600259c9033"
+        name="AdminAreaRegistration"
+        isAbstract="false"
+        isLeaf="false"
+        isActiveClass="false" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <class
+        Id="e339834c-f205-4bab-9673-5604b633d3d6"
+        name="ProductCategoriesAdminController"
+        isAbstract="false"
+        isLeaf="false"
+        isActiveClass="false" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <class
+        Id="cf3a73bf-a807-42de-b3df-538d669812e0"
+        name="ProductLinesAdminController"
+        isAbstract="false"
+        isLeaf="false"
+        isActiveClass="false" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <class
+        Id="fc913cdd-6136-46ea-91da-6ec3db4f6e85"
+        name="ProductsAdminController"
+        isAbstract="false"
+        isLeaf="false"
+        isActiveClass="false" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <class
+        Id="66e00a87-6163-4b49-80dc-4fa9c40678a3"
+        name="SalesInvoiceController"
+        isAbstract="false"
+        isLeaf="false"
+        isActiveClass="false" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <class
+        Id="5aa9624b-260c-4963-ad8a-1eac2659816d"
+        name="tblProduct_OptionController"
+        isAbstract="false"
+        isLeaf="false"
+        isActiveClass="false" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <class
+        Id="9e0927ac-13ac-4ab8-bf46-d4dfe7723f0c"
+        name="UserController"
+        isAbstract="false"
+        isLeaf="false"
+        isActiveClass="false" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <class
+        Id="d2381962-68c7-471e-bd12-0f63017ab94f"
+        name="UploadController"
+        isAbstract="false"
+        isLeaf="false"
+        isActiveClass="false" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <class
+        Id="592a0ec0-eeae-4a3c-a2cf-277662bfd49e"
+        name="AccountController"
+        isAbstract="false"
+        isLeaf="false"
+        isActiveClass="false" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <class
+        Id="d9cf3cf0-f4c4-4b33-b091-7a606032129a"
+        name="HomeController"
+        isAbstract="false"
+        isLeaf="false"
+        isActiveClass="false" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <class
+        Id="d597ef07-8def-46e8-b761-5ae1d01bba6a"
+        name="ManageConttroller"
+        isAbstract="false"
+        isLeaf="false"
+        isActiveClass="false" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <class
+        Id="e61500ba-104f-4830-a5e1-1fd0e718d169"
+        name="XmlHelper"
+        isAbstract="false"
+        isLeaf="false"
+        isActiveClass="false" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <class
+        Id="848e0bb6-7e8c-40ee-a224-d14407b847b6"
+        name="AdminAreaRegistration"
+        isAbstract="false"
+        isLeaf="false"
+        isActiveClass="false" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <class
+        Id="88f85d42-19a6-4f43-8cd5-ce9ce6096cb1"
+        name="AccountController"
+        isAbstract="false"
+        isLeaf="false"
+        isActiveClass="false" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <class
+        Id="0990bc33-ae03-4358-8df6-de2a3734b32f"
+        name="CartController"
+        isAbstract="false"
+        isLeaf="false"
+        isActiveClass="false" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <class
+        Id="84554215-602d-4813-8f7f-08f169bd7bb5"
+        name="CategoryController"
+        isAbstract="false"
+        isLeaf="false"
+        isActiveClass="false" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <class
+        Id="714373bb-f28c-4a80-8bec-79107ca1c0ee"
+        name="CheckoutController"
+        isAbstract="false"
+        isLeaf="false"
+        isActiveClass="false" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <class
+        Id="f35bc18b-b075-447b-98de-8d35de2b5cca"
+        name="HomeController"
+        isAbstract="false"
+        isLeaf="false"
+        isActiveClass="false" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <class
+        Id="6f7a86cf-df12-4865-8a2f-02674e5cf220"
+        name="ManageController"
+        isAbstract="false"
+        isLeaf="false"
+        isActiveClass="false" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <class
+        Id="c1646709-7622-41e9-a212-3d6e273b85de"
+        name="NavController"
+        isAbstract="false"
+        isLeaf="false"
+        isActiveClass="false" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <class
+        Id="26203609-35c4-4925-a668-0069625d1822"
+        name="ProductController"
+        isAbstract="false"
+        isLeaf="false"
+        isActiveClass="false" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <class
+        Id="cdafd8ff-a4f4-4a08-b971-35367ac7bf95"
+        name="ProductLineController"
+        isAbstract="false"
+        isLeaf="false"
+        isActiveClass="false" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <packageMoniker
+        Id="d31027f2-7db8-4aef-8402-2a1173e5fbd6"
+        LastKnownName="Package1"
+        LastKnownLocation="Package_1724.uml" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <class
+        Id="05a4d2a5-5f2d-4469-96c5-ddb097065f40"
+        name="InitialCreate"
+        isAbstract="false"
+        isLeaf="false"
+        isActiveClass="false" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <class
+        Id="a85086f9-74bf-43d6-b289-51cf0332c971"
+        name="ApplicationRoles"
+        isAbstract="false"
+        isLeaf="false"
+        isActiveClass="false" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <class
+        Id="e6d5b33d-ec2e-4b9e-af97-bd8ddbf433c7"
+        name="Users"
+        isAbstract="false"
+        isLeaf="false"
+        isActiveClass="false" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <class
+        Id="d958706c-56e8-4df2-b9c7-0a5eb15a3b01"
+        name="UserRoles"
+        isAbstract="false"
+        isLeaf="false"
+        isActiveClass="false" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <class
+        Id="df34e0b6-ac4a-4118-9834-920976b99b7e"
+        name="Configuration"
+        isAbstract="false"
+        isLeaf="false"
+        isActiveClass="false" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <class
+        Id="6dc3a448-1056-4f76-9ef6-454da3638b43"
+        name="XmlHelper"
+        isAbstract="false"
+        isLeaf="false"
+        isActiveClass="false" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <class
+        Id="047b8615-45f1-4d85-9f5a-00ad6ac91449"
+        name="AspNetUsersMetadata"
+        isAbstract="false"
+        isLeaf="false"
+        isActiveClass="false" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <class
+        Id="4bb1278e-52b6-4370-a8bc-6f57878a4520"
+        name="BillingTableMetadata"
+        isAbstract="false"
+        isLeaf="false"
+        isActiveClass="false" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <class
+        Id="db0f033f-aab5-47d1-ae14-e5877116df89"
+        name="InvoiceLineitemTableMetadata"
+        isAbstract="false"
+        isLeaf="false"
+        isActiveClass="false" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <class
+        Id="e343ed79-aab6-43f8-b9ad-83b5436dd1ca"
+        name="InvoiceLineitemViewMetadata"
+        isAbstract="false"
+        isLeaf="false"
+        isActiveClass="false" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <class
+        Id="cc01b566-64f4-4ebf-96e4-543c532380fb"
+        name="InvoiceTableMetadata"
+        isAbstract="false"
+        isLeaf="false"
+        isActiveClass="false" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <class
+        Id="731c912b-6082-4e9b-b16f-e20f1c6cfc87"
+        name="InvoiceViewMetadata"
+        isAbstract="false"
+        isLeaf="false"
+        isActiveClass="false" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <class
+        Id="5827c1ea-6f55-493d-aa9e-5fc445eebbff"
+        name="ProductCategoryTableMetadata"
+        isAbstract="false"
+        isLeaf="false"
+        isActiveClass="false" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <class
+        Id="a25e08e9-1824-408b-846d-3895ab5ddd82"
+        name="ProductLineTableMetadata"
+        isAbstract="false"
+        isLeaf="false"
+        isActiveClass="false" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <class
+        Id="bd975dd6-36ca-410b-a470-4e069de4d41f"
+        name="ProductOptionTableMetadata"
+        isAbstract="false"
+        isLeaf="false"
+        isActiveClass="false" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <class
+        Id="3f64e035-ae29-4b00-96ae-71a648bdb651"
+        name="ProductTableMetadata"
+        isAbstract="false"
+        isLeaf="false"
+        isActiveClass="false" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <class
+        Id="cfbffb98-d2bb-4427-b8a8-abcb258197b2"
+        name="ProductViewMetadata"
+        isAbstract="false"
+        isLeaf="false"
+        isActiveClass="false" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <class
+        Id="64dd0ea1-532f-48ee-bc10-909fb811de0c"
+        name="SalesInvoiceTableMetadata"
+        isAbstract="false"
+        isLeaf="false"
+        isActiveClass="false" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <class
+        Id="354d6538-4c2a-4ad6-b67b-0df5c5a4f0e7"
+        name="ShippingTableMetadata"
+        isAbstract="false"
+        isLeaf="false"
+        isActiveClass="false" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <class
+        Id="d4e86bf9-fe35-476e-9d40-9401346cfaba"
+        name="tblSales_Invoice_LineitemMeatadata"
+        isAbstract="false"
+        isLeaf="false"
+        isActiveClass="false" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <class
+        Id="7fbb9312-62db-4926-bdd8-c712080d47dd"
+        name="BillingInfo"
+        isAbstract="false"
+        isLeaf="false"
+        isActiveClass="false" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <class
+        Id="a69518d4-2dc1-4a51-88ba-9ae610e6e156"
+        name="InvoiceLineitemTable"
+        isAbstract="false"
+        isLeaf="false"
+        isActiveClass="false" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <class
+        Id="63670a55-7e51-4d30-9116-e54fb989cd4a"
+        name="Shipping"
+        isAbstract="false"
+        isLeaf="false"
+        isActiveClass="false" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <class
+        Id="526da016-ecd3-4d66-82e1-79681aad1d9a"
+        name="Cart.cs"
+        isAbstract="false"
+        isLeaf="false"
+        isActiveClass="false" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <class
+        Id="32028384-262a-49e9-9b4b-ef1fb7e9b38f"
+        name="Checkout"
+        isAbstract="false"
+        isLeaf="false"
+        isActiveClass="false" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <class
+        Id="e36e5a34-b3f2-4e44-b725-ddbc9350e868"
+        name="CheckoutDB"
+        isAbstract="false"
+        isLeaf="false"
+        isActiveClass="false" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <class
+        Id="1a098c87-e816-48ec-81f9-2ef3d49f3311"
+        name="GartenkraftConnection"
+        isAbstract="false"
+        isLeaf="false"
+        isActiveClass="false" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <class
+        Id="8bc69862-94fa-4c3b-ae38-c674ba6a7bca"
+        name="Menu"
+        isAbstract="false"
+        isLeaf="false"
+        isActiveClass="false" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <class
+        Id="a7a196f8-c7fc-4b07-a257-aad05dc9183b"
+        name="AccountViewModels"
+        isAbstract="false"
+        isLeaf="false"
+        isActiveClass="false" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <class
+        Id="838dfecd-56bd-44d3-9cbf-2299ba04e686"
+        name="IdentityModel"
+        isAbstract="false"
+        isLeaf="false"
+        isActiveClass="false" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <class
+        Id="dd6b5333-d1ff-4f41-ae99-19cc142eca2e"
+        name="ManageViewModels"
+        isAbstract="false"
+        isLeaf="false"
+        isActiveClass="false" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <class
+        Id="aeea3f09-efe1-4027-9210-e69c5f2a2a76"
+        name="AdminViewModel"
+        isAbstract="false"
+        isLeaf="false"
+        isActiveClass="false" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <class
+        Id="2c7781f7-5347-425a-935d-67f09f403ef1"
+        name="MenuModels"
+        isAbstract="false"
+        isLeaf="false"
+        isActiveClass="false" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <class
+        Id="80cab6db-2d7f-41ea-a3c3-b3fd4acae8ca"
+        name="ModifyPasswordModel"
+        isAbstract="false"
+        isLeaf="false"
+        isActiveClass="false" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <class
+        Id="fd7dad66-5531-4b4f-9611-a5961c12ea41"
+        name="RoleViewModel"
+        isAbstract="false"
+        isLeaf="false"
+        isActiveClass="false" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <class
+        Id="406b3bb9-bc79-4443-ad43-4c19549fb6a5"
+        name="BuddleConfig"
+        isAbstract="false"
+        isLeaf="false"
+        isActiveClass="false" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <class
+        Id="6f716c5b-cd38-4e04-8976-7c797b2ec548"
+        name="FilterConfig"
+        isAbstract="false"
+        isLeaf="false"
+        isActiveClass="false" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <class
+        Id="bb22c720-1e54-4e78-8b70-1efa81019baa"
+        name="IdentityConfig"
+        isAbstract="false"
+        isLeaf="false"
+        isActiveClass="false" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <class
+        Id="549c5b19-1d5c-48e3-adfd-7fa7a8af0ced"
+        name="RouteConfig"
+        isAbstract="false"
+        isLeaf="false"
+        isActiveClass="false" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <class
+        Id="9580517f-4800-4f9a-8a1c-ea486d5d0287"
+        name="StartupConfig"
+        isAbstract="false"
+        isLeaf="false"
+        isActiveClass="false" />
+    </packageHasNamedElement>
+  </packagedElements>
+  <primitiveType
+    Id="220a3521-e091-4221-bae9-3ef9018e845c"
+    name="Integer"
+    isAbstract="false"
+    isLeaf="false" />
+  <primitiveType
+    Id="8943dc84-709e-4f62-b15a-a3273aa6f165"
+    name="Boolean"
+    isAbstract="false"
+    isLeaf="false" />
+  <primitiveType
+    Id="59259974-6d55-42c6-b7bd-763d77ac8ef9"
+    name="String"
+    isAbstract="false"
+    isLeaf="false" />
+  <primitiveType
+    Id="3ab42e7d-4969-445a-b209-471f5cb8209c"
+    name="UnlimitedNatural"
+    isAbstract="false"
+    isLeaf="false" />
+</modelStoreModel>

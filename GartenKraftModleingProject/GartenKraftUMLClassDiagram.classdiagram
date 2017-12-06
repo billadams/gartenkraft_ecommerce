@@ -1,0 +1,367 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<logicalClassDesignerModel xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm4="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm5="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/ModelStore" dslVersion="1.0.0.0" Id="1cd58bb2-321d-4230-9b66-365a0e9dc43f" name="GartenKraftUMLClassDiagram" linkedPackageId="6d509784-a9b8-4e27-9784-e7727ef3cf3f" xmlns="http://schemas.microsoft.com/dsltools/LogicalClassDesigner">
+  <ownedCommentsInternal>
+    <comment Id="ab9b748c-4875-4c0a-99fb-b347f6dab10d">
+      <elementDefinition Id="6ca59c37-70e3-47f2-88da-8332663879eb" />
+      <body>customer side</body>
+    </comment>
+    <comment Id="03797a4f-96a5-41da-a155-94ba066c2f76">
+      <elementDefinition Id="d45b09a1-1c1c-430c-988f-2f45472b25b1" />
+      <body>Admin side</body>
+    </comment>
+    <comment Id="573eaed3-065a-497e-9b03-7a39cee08ca2">
+      <elementDefinition Id="a492d138-8121-48e7-845b-5418d77de20a" />
+      <body>Migrations</body>
+    </comment>
+    <comment Id="a7ee1418-82b5-4970-8042-579ea1b567d3">
+      <elementDefinition Id="3eb64939-2ded-4136-ad72-6cdc68eed80f" />
+      <body>Metadata</body>
+    </comment>
+    <comment Id="84a24144-fbae-4292-890d-11e7a42f4dcd">
+      <elementDefinition Id="582f09f4-55cb-485a-bfe6-cacb091dcde7" />
+      <body>Utilities</body>
+    </comment>
+    <comment Id="247ffa02-c178-41b8-985b-2c262d90022e">
+      <elementDefinition Id="cc741fa4-5f88-4f7e-9f28-086e03889862" />
+      <body>ViewModels</body>
+    </comment>
+    <comment Id="421ec0b1-a3a3-497b-b4f3-df24d4a96b2d">
+      <elementDefinition Id="6454ad51-340e-404b-b99b-2d353b3ae2a1" />
+      <body>App_start</body>
+    </comment>
+  </ownedCommentsInternal>
+  <profileInstances>
+    <packageHasProfileInstances Id="b44275d6-7a0e-4edd-a3c7-4c325e7d21fd">
+      <profileInstance Id="24afb7df-a2c0-4f3f-b5b8-cfaa3adda610" name="StandardProfileL2">
+        <elementDefinition Id="e34d544e-0fea-4ed6-ac5e-1b74119ac791" />
+      </profileInstance>
+      <elementDefinition Id="0caec977-1f8c-4ba3-a7db-8cc9ad9cc73b" />
+    </packageHasProfileInstances>
+    <packageHasProfileInstances Id="5d1b55a4-8432-4e50-987b-56e4d87eed3a">
+      <profileInstance Id="1e7e20ec-69cc-4aa5-a383-f62195dd2837" name="StandardProfileL3">
+        <elementDefinition Id="532ea607-fb19-44b8-8502-3351b05452be" />
+      </profileInstance>
+      <elementDefinition Id="29349502-908c-4fda-9054-c48619c59ed0" />
+    </packageHasProfileInstances>
+  </profileInstances>
+  <packagedElements>
+    <logicalClassDesignerModelHasTypes>
+      <class Id="8d377294-abeb-47e5-921b-2922a07aaac6" name="XmHelper" isAbstract="false" isLeaf="false" isActiveClass="false">
+        <elementDefinition Id="ba50a90e-6e87-414c-8f0d-7d1c07edb765" />
+      </class>
+    </logicalClassDesignerModelHasTypes>
+    <logicalClassDesignerModelHasTypes>
+      <class Id="f8628507-ad03-4d89-be0b-742f45f189c6" name="AdminAreaRegistration" isAbstract="false" isLeaf="false" isActiveClass="false">
+        <elementDefinition Id="7ca608e3-2313-48c0-a802-5600259c9033" />
+      </class>
+    </logicalClassDesignerModelHasTypes>
+    <logicalClassDesignerModelHasTypes>
+      <class Id="db939835-042b-4129-96ee-b307197eefec" name="ProductCategoriesAdminController" isAbstract="false" isLeaf="false" isActiveClass="false">
+        <elementDefinition Id="e339834c-f205-4bab-9673-5604b633d3d6" />
+      </class>
+    </logicalClassDesignerModelHasTypes>
+    <logicalClassDesignerModelHasTypes>
+      <class Id="271b385b-026d-48e5-ae5f-85020ea05331" name="ProductLinesAdminController" isAbstract="false" isLeaf="false" isActiveClass="false">
+        <elementDefinition Id="cf3a73bf-a807-42de-b3df-538d669812e0" />
+      </class>
+    </logicalClassDesignerModelHasTypes>
+    <logicalClassDesignerModelHasTypes>
+      <class Id="0a559d9c-f8e2-4454-bb4a-c23939e36e48" name="ProductsAdminController" isAbstract="false" isLeaf="false" isActiveClass="false">
+        <elementDefinition Id="fc913cdd-6136-46ea-91da-6ec3db4f6e85" />
+      </class>
+    </logicalClassDesignerModelHasTypes>
+    <logicalClassDesignerModelHasTypes>
+      <class Id="a40404fd-a23a-41af-a291-28b58dcf2ff4" name="SalesInvoiceController" isAbstract="false" isLeaf="false" isActiveClass="false">
+        <elementDefinition Id="66e00a87-6163-4b49-80dc-4fa9c40678a3" />
+      </class>
+    </logicalClassDesignerModelHasTypes>
+    <logicalClassDesignerModelHasTypes>
+      <class Id="ae035840-69e9-4307-9b8f-6aee1594ec73" name="tblProduct_OptionController" isAbstract="false" isLeaf="false" isActiveClass="false">
+        <elementDefinition Id="5aa9624b-260c-4963-ad8a-1eac2659816d" />
+      </class>
+    </logicalClassDesignerModelHasTypes>
+    <logicalClassDesignerModelHasTypes>
+      <class Id="eb26162d-7a43-4325-9ad0-66c724c49538" name="UserController" isAbstract="false" isLeaf="false" isActiveClass="false">
+        <elementDefinition Id="9e0927ac-13ac-4ab8-bf46-d4dfe7723f0c" />
+      </class>
+    </logicalClassDesignerModelHasTypes>
+    <logicalClassDesignerModelHasTypes>
+      <class Id="6db8c6cf-cfa8-4a00-b5f5-ee0517d2fdc2" name="UploadController" isAbstract="false" isLeaf="false" isActiveClass="false">
+        <elementDefinition Id="d2381962-68c7-471e-bd12-0f63017ab94f" />
+      </class>
+    </logicalClassDesignerModelHasTypes>
+    <logicalClassDesignerModelHasTypes>
+      <class Id="512bf343-26c8-4ddd-8230-b9ff72745cee" name="AccountController" isAbstract="false" isLeaf="false" isActiveClass="false">
+        <elementDefinition Id="592a0ec0-eeae-4a3c-a2cf-277662bfd49e" />
+      </class>
+    </logicalClassDesignerModelHasTypes>
+    <logicalClassDesignerModelHasTypes>
+      <class Id="4633db11-24d6-4158-b9ee-df1d29a1b8f2" name="HomeController" isAbstract="false" isLeaf="false" isActiveClass="false">
+        <elementDefinition Id="d9cf3cf0-f4c4-4b33-b091-7a606032129a" />
+      </class>
+    </logicalClassDesignerModelHasTypes>
+    <logicalClassDesignerModelHasTypes>
+      <class Id="0190f0f8-8e93-49e3-b39a-5fc697ece819" name="ManageConttroller" isAbstract="false" isLeaf="false" isActiveClass="false">
+        <elementDefinition Id="d597ef07-8def-46e8-b761-5ae1d01bba6a" />
+      </class>
+    </logicalClassDesignerModelHasTypes>
+    <logicalClassDesignerModelHasTypes>
+      <class Id="bb7f3117-6cbb-4774-aae0-a8d72b0e432b" name="XmlHelper" isAbstract="false" isLeaf="false" isActiveClass="false">
+        <elementDefinition Id="e61500ba-104f-4830-a5e1-1fd0e718d169" />
+      </class>
+    </logicalClassDesignerModelHasTypes>
+    <logicalClassDesignerModelHasTypes>
+      <class Id="1778687c-5006-4174-bfe6-869fd5d48fa4" name="AdminAreaRegistration" isAbstract="false" isLeaf="false" isActiveClass="false">
+        <elementDefinition Id="848e0bb6-7e8c-40ee-a224-d14407b847b6" />
+      </class>
+    </logicalClassDesignerModelHasTypes>
+    <logicalClassDesignerModelHasTypes>
+      <class Id="2ab9b5d0-7024-4b08-babf-f5e00a36895d" name="AccountController" isAbstract="false" isLeaf="false" isActiveClass="false">
+        <elementDefinition Id="88f85d42-19a6-4f43-8cd5-ce9ce6096cb1" />
+      </class>
+    </logicalClassDesignerModelHasTypes>
+    <logicalClassDesignerModelHasTypes>
+      <class Id="7703a9f8-ec29-4fcd-936a-d01640e796ca" name="CartController" isAbstract="false" isLeaf="false" isActiveClass="false">
+        <elementDefinition Id="0990bc33-ae03-4358-8df6-de2a3734b32f" />
+      </class>
+    </logicalClassDesignerModelHasTypes>
+    <logicalClassDesignerModelHasTypes>
+      <class Id="7596107f-95ef-4678-8127-f37da55f8b80" name="CategoryController" isAbstract="false" isLeaf="false" isActiveClass="false">
+        <elementDefinition Id="84554215-602d-4813-8f7f-08f169bd7bb5" />
+      </class>
+    </logicalClassDesignerModelHasTypes>
+    <logicalClassDesignerModelHasTypes>
+      <class Id="9289a257-9d43-4d13-aa4c-2040b8a998d4" name="CheckoutController" isAbstract="false" isLeaf="false" isActiveClass="false">
+        <elementDefinition Id="714373bb-f28c-4a80-8bec-79107ca1c0ee" />
+      </class>
+    </logicalClassDesignerModelHasTypes>
+    <logicalClassDesignerModelHasTypes>
+      <class Id="7fcd9d50-5029-4082-81fe-23f32f5b4480" name="HomeController" isAbstract="false" isLeaf="false" isActiveClass="false">
+        <elementDefinition Id="f35bc18b-b075-447b-98de-8d35de2b5cca" />
+      </class>
+    </logicalClassDesignerModelHasTypes>
+    <logicalClassDesignerModelHasTypes>
+      <class Id="8b9fd558-75ca-4658-ab28-cc52feb2b5ee" name="ManageController" isAbstract="false" isLeaf="false" isActiveClass="false">
+        <elementDefinition Id="6f7a86cf-df12-4865-8a2f-02674e5cf220" />
+      </class>
+    </logicalClassDesignerModelHasTypes>
+    <logicalClassDesignerModelHasTypes>
+      <class Id="7afb917e-b619-4102-b753-adf3d847135f" name="NavController" isAbstract="false" isLeaf="false" isActiveClass="false">
+        <elementDefinition Id="c1646709-7622-41e9-a212-3d6e273b85de" />
+      </class>
+    </logicalClassDesignerModelHasTypes>
+    <logicalClassDesignerModelHasTypes>
+      <class Id="53fdb481-ed71-4fa7-8f80-b71961c252b0" name="ProductController" isAbstract="false" isLeaf="false" isActiveClass="false">
+        <elementDefinition Id="26203609-35c4-4925-a668-0069625d1822" />
+      </class>
+    </logicalClassDesignerModelHasTypes>
+    <logicalClassDesignerModelHasTypes>
+      <class Id="3680148f-11c5-4641-a089-c2198732896e" name="ProductLineController" isAbstract="false" isLeaf="false" isActiveClass="false">
+        <elementDefinition Id="cdafd8ff-a4f4-4a08-b971-35367ac7bf95" />
+      </class>
+    </logicalClassDesignerModelHasTypes>
+    <logicalClassDesignerModelHasTypes>
+      <class Id="0c416633-0e33-4f86-a95a-f45f36512067" name="InitialCreate" isAbstract="false" isLeaf="false" isActiveClass="false">
+        <elementDefinition Id="05a4d2a5-5f2d-4469-96c5-ddb097065f40" />
+      </class>
+    </logicalClassDesignerModelHasTypes>
+    <logicalClassDesignerModelHasTypes>
+      <class Id="540f0671-234c-45c5-952a-4461f9de2eea" name="ApplicationRoles" isAbstract="false" isLeaf="false" isActiveClass="false">
+        <elementDefinition Id="a85086f9-74bf-43d6-b289-51cf0332c971" />
+      </class>
+    </logicalClassDesignerModelHasTypes>
+    <logicalClassDesignerModelHasTypes>
+      <class Id="50e2f0fa-e5fc-4ed2-b316-1cecd65daf88" name="Users" isAbstract="false" isLeaf="false" isActiveClass="false">
+        <elementDefinition Id="e6d5b33d-ec2e-4b9e-af97-bd8ddbf433c7" />
+      </class>
+    </logicalClassDesignerModelHasTypes>
+    <logicalClassDesignerModelHasTypes>
+      <class Id="de0d85bd-a104-49bc-b081-1621b2963bb4" name="UserRoles" isAbstract="false" isLeaf="false" isActiveClass="false">
+        <elementDefinition Id="d958706c-56e8-4df2-b9c7-0a5eb15a3b01" />
+      </class>
+    </logicalClassDesignerModelHasTypes>
+    <logicalClassDesignerModelHasTypes>
+      <class Id="95fb1f2a-8664-42e2-a394-312531b0b0f2" name="Configuration" isAbstract="false" isLeaf="false" isActiveClass="false">
+        <elementDefinition Id="df34e0b6-ac4a-4118-9834-920976b99b7e" />
+      </class>
+    </logicalClassDesignerModelHasTypes>
+    <logicalClassDesignerModelHasTypes>
+      <class Id="b0c23ded-7e28-4f4c-844c-c89629906b5e" name="XmlHelper" isAbstract="false" isLeaf="false" isActiveClass="false">
+        <elementDefinition Id="6dc3a448-1056-4f76-9ef6-454da3638b43" />
+      </class>
+    </logicalClassDesignerModelHasTypes>
+    <logicalClassDesignerModelHasTypes>
+      <class Id="3fe0b492-cd04-4951-9f2e-07788e593eec" name="AspNetUsersMetadata" isAbstract="false" isLeaf="false" isActiveClass="false">
+        <elementDefinition Id="047b8615-45f1-4d85-9f5a-00ad6ac91449" />
+      </class>
+    </logicalClassDesignerModelHasTypes>
+    <logicalClassDesignerModelHasTypes>
+      <class Id="7b210996-5976-4e3b-be9e-bbd27a7ef8c6" name="BillingTableMetadata" isAbstract="false" isLeaf="false" isActiveClass="false">
+        <elementDefinition Id="4bb1278e-52b6-4370-a8bc-6f57878a4520" />
+      </class>
+    </logicalClassDesignerModelHasTypes>
+    <logicalClassDesignerModelHasTypes>
+      <class Id="f2e1ae29-54a0-4f57-a3f8-210580015977" name="InvoiceLineitemTableMetadata" isAbstract="false" isLeaf="false" isActiveClass="false">
+        <elementDefinition Id="db0f033f-aab5-47d1-ae14-e5877116df89" />
+      </class>
+    </logicalClassDesignerModelHasTypes>
+    <logicalClassDesignerModelHasTypes>
+      <class Id="3e70f97c-3016-4474-b179-01e9794aa394" name="InvoiceLineitemViewMetadata" isAbstract="false" isLeaf="false" isActiveClass="false">
+        <elementDefinition Id="e343ed79-aab6-43f8-b9ad-83b5436dd1ca" />
+      </class>
+    </logicalClassDesignerModelHasTypes>
+    <logicalClassDesignerModelHasTypes>
+      <class Id="aafd7b9a-0a89-460c-a7f0-321ce448122a" name="InvoiceTableMetadata" isAbstract="false" isLeaf="false" isActiveClass="false">
+        <elementDefinition Id="cc01b566-64f4-4ebf-96e4-543c532380fb" />
+      </class>
+    </logicalClassDesignerModelHasTypes>
+    <logicalClassDesignerModelHasTypes>
+      <class Id="073960df-f1d5-47da-a4c9-a8f6df24244c" name="InvoiceViewMetadata" isAbstract="false" isLeaf="false" isActiveClass="false">
+        <elementDefinition Id="731c912b-6082-4e9b-b16f-e20f1c6cfc87" />
+      </class>
+    </logicalClassDesignerModelHasTypes>
+    <logicalClassDesignerModelHasTypes>
+      <class Id="08e84622-1ce3-4da7-b8d5-26ec92320491" name="ProductCategoryTableMetadata" isAbstract="false" isLeaf="false" isActiveClass="false">
+        <elementDefinition Id="5827c1ea-6f55-493d-aa9e-5fc445eebbff" />
+      </class>
+    </logicalClassDesignerModelHasTypes>
+    <logicalClassDesignerModelHasTypes>
+      <class Id="2ad381f8-e472-47cf-97e0-2f416d201c05" name="ProductLineTableMetadata" isAbstract="false" isLeaf="false" isActiveClass="false">
+        <elementDefinition Id="a25e08e9-1824-408b-846d-3895ab5ddd82" />
+      </class>
+    </logicalClassDesignerModelHasTypes>
+    <logicalClassDesignerModelHasTypes>
+      <class Id="f9f7345f-96ab-4f21-bc23-255a454146d4" name="ProductOptionTableMetadata" isAbstract="false" isLeaf="false" isActiveClass="false">
+        <elementDefinition Id="bd975dd6-36ca-410b-a470-4e069de4d41f" />
+      </class>
+    </logicalClassDesignerModelHasTypes>
+    <logicalClassDesignerModelHasTypes>
+      <class Id="07bf9889-c31d-40b4-87e4-4449fb30dd31" name="ProductTableMetadata" isAbstract="false" isLeaf="false" isActiveClass="false">
+        <elementDefinition Id="3f64e035-ae29-4b00-96ae-71a648bdb651" />
+      </class>
+    </logicalClassDesignerModelHasTypes>
+    <logicalClassDesignerModelHasTypes>
+      <class Id="20b528ac-8cee-4e6b-9bc2-19074825f78a" name="ProductViewMetadata" isAbstract="false" isLeaf="false" isActiveClass="false">
+        <elementDefinition Id="cfbffb98-d2bb-4427-b8a8-abcb258197b2" />
+      </class>
+    </logicalClassDesignerModelHasTypes>
+    <logicalClassDesignerModelHasTypes>
+      <class Id="cee5a934-2a96-450d-9406-29be95bbc7b5" name="SalesInvoiceTableMetadata" isAbstract="false" isLeaf="false" isActiveClass="false">
+        <elementDefinition Id="64dd0ea1-532f-48ee-bc10-909fb811de0c" />
+      </class>
+    </logicalClassDesignerModelHasTypes>
+    <logicalClassDesignerModelHasTypes>
+      <class Id="7cd76048-7301-473a-a888-742750251dfe" name="ShippingTableMetadata" isAbstract="false" isLeaf="false" isActiveClass="false">
+        <elementDefinition Id="354d6538-4c2a-4ad6-b67b-0df5c5a4f0e7" />
+      </class>
+    </logicalClassDesignerModelHasTypes>
+    <logicalClassDesignerModelHasTypes>
+      <class Id="11e21c04-9453-4b45-a358-1381def921f8" name="tblSales_Invoice_LineitemMeatadata" isAbstract="false" isLeaf="false" isActiveClass="false">
+        <elementDefinition Id="d4e86bf9-fe35-476e-9d40-9401346cfaba" />
+      </class>
+    </logicalClassDesignerModelHasTypes>
+    <logicalClassDesignerModelHasTypes>
+      <class Id="89d6cbd1-6e37-45c4-a532-9191ec60889e" name="BillingInfo" isAbstract="false" isLeaf="false" isActiveClass="false">
+        <elementDefinition Id="7fbb9312-62db-4926-bdd8-c712080d47dd" />
+      </class>
+    </logicalClassDesignerModelHasTypes>
+    <logicalClassDesignerModelHasTypes>
+      <class Id="20f284a3-7b1e-4d54-adc1-1a576ded3167" name="InvoiceLineitemTable" isAbstract="false" isLeaf="false" isActiveClass="false">
+        <elementDefinition Id="a69518d4-2dc1-4a51-88ba-9ae610e6e156" />
+      </class>
+    </logicalClassDesignerModelHasTypes>
+    <logicalClassDesignerModelHasTypes>
+      <class Id="cfb900e0-2e32-4498-a83c-73d337b6a7ca" name="Shipping" isAbstract="false" isLeaf="false" isActiveClass="false">
+        <elementDefinition Id="63670a55-7e51-4d30-9116-e54fb989cd4a" />
+      </class>
+    </logicalClassDesignerModelHasTypes>
+    <logicalClassDesignerModelHasTypes>
+      <class Id="4176f539-17b2-47c6-9c60-a72eb002b9dc" name="Cart.cs" isAbstract="false" isLeaf="false" isActiveClass="false">
+        <elementDefinition Id="526da016-ecd3-4d66-82e1-79681aad1d9a" />
+      </class>
+    </logicalClassDesignerModelHasTypes>
+    <logicalClassDesignerModelHasTypes>
+      <class Id="7cb15b3e-bb14-4f57-9156-4b22c70816f6" name="Checkout" isAbstract="false" isLeaf="false" isActiveClass="false">
+        <elementDefinition Id="32028384-262a-49e9-9b4b-ef1fb7e9b38f" />
+      </class>
+    </logicalClassDesignerModelHasTypes>
+    <logicalClassDesignerModelHasTypes>
+      <class Id="63398002-7b5f-4a83-9de9-0fd9eac01d72" name="CheckoutDB" isAbstract="false" isLeaf="false" isActiveClass="false">
+        <elementDefinition Id="e36e5a34-b3f2-4e44-b725-ddbc9350e868" />
+      </class>
+    </logicalClassDesignerModelHasTypes>
+    <logicalClassDesignerModelHasTypes>
+      <class Id="95dcfb88-26aa-4c30-919c-17f9fc487a65" name="GartenkraftConnection" isAbstract="false" isLeaf="false" isActiveClass="false">
+        <elementDefinition Id="1a098c87-e816-48ec-81f9-2ef3d49f3311" />
+      </class>
+    </logicalClassDesignerModelHasTypes>
+    <logicalClassDesignerModelHasTypes>
+      <class Id="91252773-daf6-4f70-a101-00e6bef76e98" name="Menu" isAbstract="false" isLeaf="false" isActiveClass="false">
+        <elementDefinition Id="8bc69862-94fa-4c3b-ae38-c674ba6a7bca" />
+      </class>
+    </logicalClassDesignerModelHasTypes>
+    <logicalClassDesignerModelHasTypes>
+      <class Id="aae7bf48-cdf8-411e-8fd6-7fa1f2ccad13" name="AccountViewModels" isAbstract="false" isLeaf="false" isActiveClass="false">
+        <elementDefinition Id="a7a196f8-c7fc-4b07-a257-aad05dc9183b" />
+      </class>
+    </logicalClassDesignerModelHasTypes>
+    <logicalClassDesignerModelHasTypes>
+      <class Id="19771b0d-f294-476a-8303-950861f022fd" name="IdentityModel" isAbstract="false" isLeaf="false" isActiveClass="false">
+        <elementDefinition Id="838dfecd-56bd-44d3-9cbf-2299ba04e686" />
+      </class>
+    </logicalClassDesignerModelHasTypes>
+    <logicalClassDesignerModelHasTypes>
+      <class Id="338c8e3e-4a49-4727-afc0-570a0654759d" name="ManageViewModels" isAbstract="false" isLeaf="false" isActiveClass="false">
+        <elementDefinition Id="dd6b5333-d1ff-4f41-ae99-19cc142eca2e" />
+      </class>
+    </logicalClassDesignerModelHasTypes>
+    <logicalClassDesignerModelHasTypes>
+      <class Id="a7c3422b-0833-48a9-b16b-3ade5c64cfe7" name="AdminViewModel" isAbstract="false" isLeaf="false" isActiveClass="false">
+        <elementDefinition Id="aeea3f09-efe1-4027-9210-e69c5f2a2a76" />
+      </class>
+    </logicalClassDesignerModelHasTypes>
+    <logicalClassDesignerModelHasTypes>
+      <class Id="6dbf3e8b-c12a-4de4-856c-84c06af608ce" name="MenuModels" isAbstract="false" isLeaf="false" isActiveClass="false">
+        <elementDefinition Id="2c7781f7-5347-425a-935d-67f09f403ef1" />
+      </class>
+    </logicalClassDesignerModelHasTypes>
+    <logicalClassDesignerModelHasTypes>
+      <class Id="719d25bd-d1c8-4cea-a060-3d0700c536e7" name="ModifyPasswordModel" isAbstract="false" isLeaf="false" isActiveClass="false">
+        <elementDefinition Id="80cab6db-2d7f-41ea-a3c3-b3fd4acae8ca" />
+      </class>
+    </logicalClassDesignerModelHasTypes>
+    <logicalClassDesignerModelHasTypes>
+      <class Id="d4353950-2bd2-4bb5-9363-c4196042b88d" name="RoleViewModel" isAbstract="false" isLeaf="false" isActiveClass="false">
+        <elementDefinition Id="fd7dad66-5531-4b4f-9611-a5961c12ea41" />
+      </class>
+    </logicalClassDesignerModelHasTypes>
+    <logicalClassDesignerModelHasTypes>
+      <class Id="83d2a913-2453-49d4-9a49-b94b5ac70ba4" name="BuddleConfig" isAbstract="false" isLeaf="false" isActiveClass="false">
+        <elementDefinition Id="406b3bb9-bc79-4443-ad43-4c19549fb6a5" />
+      </class>
+    </logicalClassDesignerModelHasTypes>
+    <logicalClassDesignerModelHasTypes>
+      <class Id="1512553e-954b-4278-a3f6-ad4151ff0f21" name="FilterConfig" isAbstract="false" isLeaf="false" isActiveClass="false">
+        <elementDefinition Id="6f716c5b-cd38-4e04-8976-7c797b2ec548" />
+      </class>
+    </logicalClassDesignerModelHasTypes>
+    <logicalClassDesignerModelHasTypes>
+      <class Id="e9f66aa2-0697-4d8b-97bc-5481163a5a97" name="IdentityConfig" isAbstract="false" isLeaf="false" isActiveClass="false">
+        <elementDefinition Id="bb22c720-1e54-4e78-8b70-1efa81019baa" />
+      </class>
+    </logicalClassDesignerModelHasTypes>
+    <logicalClassDesignerModelHasTypes>
+      <class Id="920788cc-fdc5-404f-abde-5cd0c1cea876" name="RouteConfig" isAbstract="false" isLeaf="false" isActiveClass="false">
+        <elementDefinition Id="549c5b19-1d5c-48e3-adfd-7fa7a8af0ced" />
+      </class>
+    </logicalClassDesignerModelHasTypes>
+    <logicalClassDesignerModelHasTypes>
+      <class Id="dddb3d43-cbb5-44f3-887a-81d682ac1ccc" name="StartupConfig" isAbstract="false" isLeaf="false" isActiveClass="false">
+        <elementDefinition Id="9580517f-4800-4f9a-8a1c-ea486d5d0287" />
+      </class>
+    </logicalClassDesignerModelHasTypes>
+  </packagedElements>
+  <package Id="6d509784-a9b8-4e27-9784-e7727ef3cf3f" name="GartenKraftModleingProject">
+    <elementDefinition Id="f70581de-8012-4fb8-b0d5-596f6db2eac8" />
+  </package>
+</logicalClassDesignerModel>
