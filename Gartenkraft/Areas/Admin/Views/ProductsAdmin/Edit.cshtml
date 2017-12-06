@@ -12,14 +12,20 @@
         <ul class="nav nav-pills nav-justified thumbnail setup-panel">
             <li class="active">
                 <a href="#step-1">
-                    <h4 class="list-group-item-heading">Step 1</h4>
-                    <p class="list-group-item-text">Edit product info</p>
+                    <h4 class="list-group-item-heading">Edit Product Info</h4>
+                    @*<p class="list-group-item-text">Edit Product Info</p>*@
                 </a>
             </li>
-            <li class="disabled">
+            <li>
                 <a href="#step-2">
-                    <h4 class="list-group-item-heading">Step 2</h4>
-                    <p class="list-group-item-text">Edit Images</p>
+                    <h4 class="list-group-item-heading">Edit Product Options</h4>
+                    @*<p class="list-group-item-text">Edit Product Options</p>*@
+                </a>
+            </li>
+            <li>
+                <a href="#step-3">
+                    <h4 class="list-group-item-heading">Edit Product Images</h4>
+                    @*<p class="list-group-item-text">Edit Images</p>*@
                 </a>
             </li>
         </ul>
@@ -114,7 +120,7 @@
 
                     <div class="form-group col-md-12">
                         <div class="col-md-offset-2 col-md-3">
-                            <input type="submit" id="activate-step-2" value="Save and continue" class="btn btn-success" />
+                            <input type="submit" value="Save" class="btn btn-success" />
                         </div>
                         <div class="col-md-4">
                             @Html.ActionLink("Back to List", "Index", null, htmlAttributes: new { @class = "btn btn-default" })
@@ -126,7 +132,22 @@
         </div>
     </div>
 </div>
+
 <div class="row setup-content" id="step-2">
+    <div class="col-xs-12">
+        <div class="col-md-12 well">
+            <h2 class="text-center"> Product Options</h2>
+            <div class="col-md-12">
+                <div id="OptionContent"></div>
+                @Html.Action("ProductOptions")
+                <hr />
+                @Html.ActionLink("Back to List", "Index", null, htmlAttributes: new { @class = "btn btn-default" })
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row setup-content" id="step-3">
     <div class="col-xs-12">
         <div class="col-md-12 well">
             <h2 class="text-center"> Images</h2>
@@ -134,6 +155,7 @@
                 <table class="table">
                     <tr>
                         @*<th><div class="text-center">Images:</div></th>*@
+                        <th></th>
                         <th></th>
                     </tr>
 
@@ -184,6 +206,6 @@
     </div>
 </div>
 
-@section Scripts {
+@*@section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
-}
+}*@

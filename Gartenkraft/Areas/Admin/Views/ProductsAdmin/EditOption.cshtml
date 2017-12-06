@@ -1,10 +1,5 @@
 ﻿@model Gartenkraft.Models.tblProduct_Option
 
-@{
-    ViewBag.Title = "EditOption";
-    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
-}
-
 <h2>Edit Option</h2>
 
 @using (Html.BeginForm())
@@ -55,6 +50,7 @@
         </div>
 
         @Html.HiddenFor(model => model.option_id)
+        @Html.HiddenFor(model => model.product_id)
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
@@ -67,3 +63,7 @@
 <div>
     @Html.ActionLink("Back to List", "Edit", new { id = Model.product_id }, htmlAttributes: new { @class = "btn btn-default" })
 </div>
+
+<br />
+<hr />
+<br />

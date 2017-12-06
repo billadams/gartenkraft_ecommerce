@@ -1,0 +1,56 @@
+﻿@model IEnumerable<Gartenkraft.Models.tblProduct_Option>
+
+<p>
+    @Ajax.ActionLink("Create New", "CreateOption", new { id = (int?)ViewBag.ProductID }, new AjaxOptions() { HttpMethod = "GET", UpdateTargetId = "OptionContent", InsertionMode = InsertionMode.Replace }, htmlAttributes: new { @class = "btn btn-success" })
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.title)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.weight)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.unit_cost)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.unit_price)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.product_id)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.option_id)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.title)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.weight)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.unit_cost)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.unit_price)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.product_id)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.option_id)
+        </td>
+        <td>
+            @Ajax.ActionLink("Edit", "EditOption", new { id = item.option_id }, new AjaxOptions() { HttpMethod = "GET", UpdateTargetId = "OptionContent", InsertionMode = InsertionMode.Replace }, htmlAttributes: new { @class = "btn btn-warning" }) 
+            @Ajax.ActionLink("Delete", "DeleteOption", new { id = item.option_id }, new AjaxOptions() { HttpMethod = "GET", UpdateTargetId = "OptionContent", InsertionMode = InsertionMode.Replace }, htmlAttributes: new { @class = "btn btn-danger" }) 
+        </td>
+    </tr>
+}
+
+</table>

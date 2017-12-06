@@ -460,6 +460,7 @@
     <Content Include="Areas\Admin\Views\Manage\CreateAdmin.cshtml" />
     <Content Include="Areas\Admin\Views\Manage\DeleteAdmin.cshtml" />
     <Content Include="Areas\Admin\Views\Home\UserDetails.cshtml" />
+    <Content Include="Areas\Admin\Views\ProductsAdmin\ProductOptions.cshtml" />
     <None Include="Content\large.less" />
     <Content Include="Content\large.css">
       <DependentUpon>large.less</DependentUpon>
@@ -608,8 +609,6 @@
     <Content Include="Scripts\jquery.unobtrusive-ajax.min.js" />
     <Content Include="Scripts\jquery.validate.js" />
     <Content Include="Scripts\jquery.validate.min.js" />
-    <Content Include="Scripts\jquery.validate.unobtrusive.js" />
-    <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Scripts\productComboPrice.js" />
     <Content Include="Scripts\respond.js" />

@@ -107,7 +107,11 @@ namespace Gartenkraft.Areas.Admin.Controllers.AdminControllers
                 var prodOptions = db.tblProduct_Option.Where(o => o.product_id == tblProduct.product_id).ToList();
                 
                 // check if product type is valid
-                if (tblProduct.is_custom_product == false && prodOptions.Count > 1) { errorMessage = "This product is not qualified to be a simple product as it has multiple product options"; }
+                if (tblProduct.is_custom_product == false && prodOptions.Count > 1)
+                {
+                    errorMessage = "This product is not qualified to be a simple product as it has multiple product options";
+                    tblProduct.is_custom_product = true;
+                }
 
                 if (errorMessage == "")
                 {
@@ -118,9 +122,6 @@ namespace Gartenkraft.Areas.Admin.Controllers.AdminControllers
             }
             tblProduct.SetPriceRange();
             ViewBag.ErrorMessage = errorMessage;
-            var tblProducts = db.tblProducts;
-            foreach (var i in tblProducts) { i.SetPriceRange(); }
-                        
             ViewBag.product_category_id = new SelectList(db.tblProduct_Category.OrderBy(pc => pc.tblProduct_Line.product_line_id).OrderBy(pc => pc.category_name), "category_id", "category_name", tblProduct.product_category_id);
             ViewBag.ProductImages = db.tblProduct_Image.Where(pi => pi.product_id == tblProduct.product_id).ToList();
             return View(tblProduct);
@@ -168,6 +169,14 @@ namespace Gartenkraft.Areas.Admin.Controllers.AdminControllers
 
         #region Product options
 
+        // GET: Admin/ProductsAdmin/ProductOptions
+        public PartialViewResult ProductOptions(int? id)
+        {
+            var pOptions = db.tblProduct_Option.Where(po => po.product_id == id).ToList();
+            ViewBag.ProductID = id;
+            return PartialView(pOptions);
+        }
+
         // Get: Admin/ProductsAdmin/CreateOption
         public ActionResult CreateOption(int? id)
         {
@@ -179,7 +188,7 @@ namespace Gartenkraft.Areas.Admin.Controllers.AdminControllers
                 return RedirectToAction("Edit", new { id = id, errorMessage = errorMessage });
             }
             var option = new tblProduct_Option() { product_id = Convert.ToInt32(id), tblProduct = db.tblProducts.Find(Convert.ToInt32(id)) };
-            return View(option);
+            return PartialView(option);
         }
 
         // POST: Admin/ProductsAdmin/CreateOption
@@ -195,7 +204,7 @@ namespace Gartenkraft.Areas.Admin.Controllers.AdminControllers
                 db.SaveChanges();
                 return RedirectToAction("Edit", new { id = option.product_id });
             }
-            return View(option);
+            return PartialView(option);
         }
 
         // GET: Admin/ProductsAdmin/EditOption/5
@@ -210,8 +219,7 @@ namespace Gartenkraft.Areas.Admin.Controllers.AdminControllers
             {
                 return HttpNotFound();
             }
-            ViewBag.product_id = new SelectList(db.tblProducts, "product_id", "product_name", tblProduct_Option.product_id);
-            return View(tblProduct_Option);
+            return PartialView(tblProduct_Option);
         }
 
         // POST: Admin/ProductsAdmin/EditOption/5
@@ -223,12 +231,18 @@ namespace Gartenkraft.Areas.Admin.Controllers.AdminControllers
         {
             if (ModelState.IsValid)
             {
-                db.Entry(tblProduct_Option).State = EntityState.Modified;
+                var newOption = db.tblProduct_Option.Find(tblProduct_Option.option_id);
+                newOption.title = tblProduct_Option.title;
+                newOption.weight = tblProduct_Option.weight;
+                newOption.unit_cost = tblProduct_Option.unit_cost;
+                newOption.unit_price = tblProduct_Option.unit_price;
+
+                db.Entry(newOption).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Edit", new { id = tblProduct_Option.product_id });
             }
             ViewBag.product_id = new SelectList(db.tblProducts, "product_id", "product_name", tblProduct_Option.product_id);
-            return View(tblProduct_Option);
+            return PartialView(tblProduct_Option);
         }
 
         // GET: Admin/ProductsAdmin/DeleteOption/5
@@ -243,7 +257,7 @@ namespace Gartenkraft.Areas.Admin.Controllers.AdminControllers
             {
                 return HttpNotFound();
             }
-            return View(tblProduct_Option);
+            return PartialView(tblProduct_Option);
         }
 
         // POST: Admin/ProductsAdmin/DeleteOption/5
