@@ -7,12 +7,6 @@ using System.ComponentModel.DataAnnotations;
 
 namespace Gartenkraft.Models
 {
-    [MetadataType(typeof(SalesInvoiceTableMetadata))]
-    public partial class tblSales_Invoice
-    {
-        
-    }
-
     public class SalesInvoiceTableMetadata
     {
         public int InvoiceID { get; set; }

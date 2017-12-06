@@ -19,7 +19,7 @@ namespace Gartenkraft.Areas.Admin.Controllers.AdminControllers
             return View(db.AspNetUsers.ToList());
         }
         // GET: Admin/User/Details/5
-        public ActionResult Details(int? id)
+        public ActionResult Details(string id)
         {
             if (id == null)
             {

@@ -30,7 +30,7 @@
             @Html.DisplayNameFor(model => model.invoice_date)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.customer_id)
+            @Html.DisplayNameFor(model => model.AspNetUser.UserName)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.billing_id)
@@ -50,7 +50,7 @@
             @Html.DisplayFor(modelItem => item.invoice_date)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.customer_id)
+            @Html.DisplayFor(modelItem => item.AspNetUser.UserName)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.billing_id)

@@ -9,7 +9,6 @@ namespace Gartenkraft.Models
 {
    
     [MetadataType(typeof(ProductTableMetadata))]
-
     public partial class tblProduct
     {
         [NotMapped]

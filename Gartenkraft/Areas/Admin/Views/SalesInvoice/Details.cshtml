@@ -4,19 +4,11 @@
     ViewBag.Title = "Details";
 }
 
-<h2>Details</h2>
+<h2>Invoice Number: @Model.invoice_id</h2>
 
 <div>
-    <h4>tblSales_Invoice</h4>
     <hr />
     <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.invoice_id)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.invoice_id)
-        </dd>
 
         <dt>
             @Html.DisplayNameFor(model => model.invoice_date)
@@ -27,32 +19,183 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.customer_id)
+            @Html.DisplayNameFor(model => model.AspNetUser.UserName)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.customer_id)
+            @if (Model.customer_id == null)
+            {
+                @Html.Display("Guest")
+            }
+            else
+            {
+                @Html.DisplayFor(model => model.AspNetUser.UserName)
+            }
+        </dd>
+    </dl>
+
+    <h3>Billing Information:</h3>
+    <hr />
+
+    <dl>
+        <dt>
+            @Html.DisplayNameFor(model => model.tblBilling_Information.billing_first_name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tblBilling_Information.billing_first_name)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.billing_id)
+            @Html.DisplayNameFor(model => model.tblBilling_Information.billing_last_name)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.billing_id)
+            @Html.DisplayFor(model => model.tblBilling_Information.billing_last_name)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.shipping_id)
+            @Html.DisplayNameFor(model => model.tblBilling_Information.billing_address1)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.shipping_id)
+            @Html.DisplayFor(model => model.tblBilling_Information.billing_address1)
+            @Html.DisplayFor(model => model.tblBilling_Information.billing_address2)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.tblBilling_Information.billing_city)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tblBilling_Information.billing_city)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.tblBilling_Information.billing_state)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tblBilling_Information.billing_state)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.tblBilling_Information.billing_zip)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tblBilling_Information.billing_zip)
+            @Html.DisplayFor(model => model.tblBilling_Information.billing_zip4)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.tblBilling_Information.billing_country)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tblBilling_Information.billing_country)
+        </dd>
+
+    </dl>
+
+    <h3>Shipping Information:</h3>
+    <hr />
+
+    <dl>
+        <dt>
+            @Html.DisplayNameFor(model => model.tblShipping.shipping_first_name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tblShipping.shipping_first_name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.tblShipping.shipping_last_name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tblShipping.shipping_last_name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.tblShipping.shipping_address1)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tblShipping.shipping_address1)
+            @Html.DisplayFor(model => model.tblShipping.shipping_address2)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.tblShipping.shipping_city)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tblShipping.shipping_city)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.tblShipping.shipping_state)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tblShipping.shipping_state)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.tblShipping.shipping_zip)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tblShipping.shipping_zip)
+            @Html.DisplayFor(model => model.tblShipping.shipping_zip4)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.tblShipping.shipping_country)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tblShipping.shipping_country)
         </dd>
 
     </dl>
 </div>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
-    @Html.ActionLink("Back to List", "Index")
+    @*@Html.ActionLink("Edit", "Edit", new { id = Model.invoice_id }, htmlAttributes: new { @class = "btn btn-warning" })*@ 
+    @Html.ActionLink("Back to List", "Index", null, htmlAttributes: new { @class = "btn btn-default" })
 </p>
+
+<hr />
+
+<h3>Invoice items:</h3>
+
+<div>
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.tblSales_Invoice_Lineitem.Single().tblProduct.product_name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.tblSales_Invoice_Lineitem.Single().tblProduct_Option.title)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.tblSales_Invoice_Lineitem.Single().lineitem_quantity)
+            </th>
+        </tr>
+        @foreach (var item in Model.tblSales_Invoice_Lineitem)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.tblProduct.product_name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.tblProduct_Option.title)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.lineitem_quantity)</td>
+            </tr>
+        }
+    </table>
+</div>

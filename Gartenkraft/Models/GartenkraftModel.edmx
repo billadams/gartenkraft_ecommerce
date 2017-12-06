@@ -517,6 +517,18 @@ warning 6002: The table/view 'gartenkraft.gkraft.vwProduct_Option' does not have
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="fk_tblSales_Invoice_Lineitem_tblProduct_Option">
+          <End Role="tblProduct_Option" Type="Self.tblProduct_Option" Multiplicity="1" />
+          <End Role="tblSales_Invoice_Lineitem" Type="Self.tblSales_Invoice_Lineitem" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblProduct_Option">
+              <PropertyRef Name="option_id" />
+            </Principal>
+            <Dependent Role="tblSales_Invoice_Lineitem">
+              <PropertyRef Name="product_option_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_tblSales_Invoice_Lineitem_tblSales_Invoice">
           <End Role="tblSales_Invoice" Type="Self.tblSales_Invoice" Multiplicity="1" />
           <End Role="tblSales_Invoice_Lineitem" Type="Self.tblSales_Invoice_Lineitem" Multiplicity="*" />
@@ -759,6 +771,10 @@ warning 6002: The table/view 'gartenkraft.gkraft.vwProduct_Option' does not have
             <End Role="tblProduct" EntitySet="tblProduct" />
             <End Role="tblSales_Invoice_Lineitem" EntitySet="tblSales_Invoice_Lineitem" />
           </AssociationSet>
+          <AssociationSet Name="fk_tblSales_Invoice_Lineitem_tblProduct_Option" Association="Self.fk_tblSales_Invoice_Lineitem_tblProduct_Option">
+            <End Role="tblProduct_Option" EntitySet="tblProduct_Option" />
+            <End Role="tblSales_Invoice_Lineitem" EntitySet="tblSales_Invoice_Lineitem" />
+          </AssociationSet>
           <AssociationSet Name="FK_tblSales_Invoice_Lineitem_tblSales_Invoice" Association="Self.FK_tblSales_Invoice_Lineitem_tblSales_Invoice">
             <End Role="tblSales_Invoice" EntitySet="tblSales_Invoice" />
             <End Role="tblSales_Invoice_Lineitem" EntitySet="tblSales_Invoice_Lineitem" />
@@ -933,6 +949,7 @@ warning 6002: The table/view 'gartenkraft.gkraft.vwProduct_Option' does not have
           <Property Name="product_id" Type="Int32" Nullable="false" />
           <Property Name="option_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <NavigationProperty Name="tblProduct" Relationship="Self.FK_Product_ID" FromRole="tblProduct_Option" ToRole="tblProduct" />
+          <NavigationProperty Name="tblSales_Invoice_Lineitem" Relationship="Self.fk_tblSales_Invoice_Lineitem_tblProduct_Option" FromRole="tblProduct_Option" ToRole="tblSales_Invoice_Lineitem" />
         </EntityType>
         <EntityType Name="tblSales_Invoice">
           <Key>
@@ -962,6 +979,7 @@ warning 6002: The table/view 'gartenkraft.gkraft.vwProduct_Option' does not have
           <Property Name="invoice_id" Type="Int32" Nullable="false" />
           <Property Name="product_option_id" Type="Int32" Nullable="false" />
           <NavigationProperty Name="tblProduct" Relationship="Self.FK_tblSales_Invoice_Lineitem_tblProduct" FromRole="tblSales_Invoice_Lineitem" ToRole="tblProduct" />
+          <NavigationProperty Name="tblProduct_Option" Relationship="Self.fk_tblSales_Invoice_Lineitem_tblProduct_Option" FromRole="tblSales_Invoice_Lineitem" ToRole="tblProduct_Option" />
           <NavigationProperty Name="tblSales_Invoice" Relationship="Self.FK_tblSales_Invoice_Lineitem_tblSales_Invoice" FromRole="tblSales_Invoice_Lineitem" ToRole="tblSales_Invoice" />
         </EntityType>
         <EntityType Name="tblShipping">
@@ -1351,6 +1369,18 @@ warning 6002: The table/view 'gartenkraft.gkraft.vwProduct_Option' does not have
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="fk_tblSales_Invoice_Lineitem_tblProduct_Option">
+          <End Role="tblProduct_Option" Type="Self.tblProduct_Option" Multiplicity="1" />
+          <End Role="tblSales_Invoice_Lineitem" Type="Self.tblSales_Invoice_Lineitem" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblProduct_Option">
+              <PropertyRef Name="option_id" />
+            </Principal>
+            <Dependent Role="tblSales_Invoice_Lineitem">
+              <PropertyRef Name="product_option_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_tblSales_Invoice_Lineitem_tblSales_Invoice">
           <End Role="tblSales_Invoice" Type="Self.tblSales_Invoice" Multiplicity="1" />
           <End Role="tblSales_Invoice_Lineitem" Type="Self.tblSales_Invoice_Lineitem" Multiplicity="*" />
@@ -1449,6 +1479,10 @@ warning 6002: The table/view 'gartenkraft.gkraft.vwProduct_Option' does not have
           <AssociationSet Name="FK_tblProduct_Line_Image_tblProduct_Line" Association="Self.FK_tblProduct_Line_Image_tblProduct_Line">
             <End Role="tblProduct_Line" EntitySet="tblProduct_Line" />
             <End Role="tblProduct_Line_Image" EntitySet="tblProduct_Line_Image" />
+          </AssociationSet>
+          <AssociationSet Name="fk_tblSales_Invoice_Lineitem_tblProduct_Option" Association="Self.fk_tblSales_Invoice_Lineitem_tblProduct_Option">
+            <End Role="tblProduct_Option" EntitySet="tblProduct_Option" />
+            <End Role="tblSales_Invoice_Lineitem" EntitySet="tblSales_Invoice_Lineitem" />
           </AssociationSet>
           <AssociationSet Name="FK_tblSales_Invoice_Lineitem_tblSales_Invoice" Association="Self.FK_tblSales_Invoice_Lineitem_tblSales_Invoice">
             <End Role="tblSales_Invoice" EntitySet="tblSales_Invoice" />

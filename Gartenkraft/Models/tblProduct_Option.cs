@@ -14,6 +14,12 @@ namespace Gartenkraft.Models
     
     public partial class tblProduct_Option
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public tblProduct_Option()
+        {
+            this.tblSales_Invoice_Lineitem = new HashSet<tblSales_Invoice_Lineitem>();
+        }
+    
         public string title { get; set; }
         public decimal weight { get; set; }
         public decimal unit_cost { get; set; }
@@ -22,5 +28,7 @@ namespace Gartenkraft.Models
         public int option_id { get; set; }
     
         public virtual tblProduct tblProduct { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<tblSales_Invoice_Lineitem> tblSales_Invoice_Lineitem { get; set; }
     }
 }
