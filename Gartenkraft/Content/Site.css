@@ -44,6 +44,7 @@ header {
   padding-bottom: 15px;
 }
 header .navbar-brand {
+  height: 0;
   padding: 0;
 }
 header .header-nav {
@@ -128,7 +129,7 @@ nav a:hover {
   letter-spacing: -0.05rem;
 }
 .featurette {
-  padding-top: 120px;
+  /*padding-top: 120px;*/
   /* Vertically center images part 1: add padding above and below text. */
   overflow: hidden;
   /* Vertically center images part 2: clear their floats. */
@@ -278,7 +279,13 @@ footer #copyright {
   }
   /*------------------------------------------------ NAVIGATION STYLES ------------------------------------------------ */
   .navbar {
-    margin-bottom: 2.5rem;
+    border-radius: 0;
+    margin-bottom: 5rem;
+  }
+  .container .navbar-collapse {
+    margin-left: -15px;
+    padding-left: 0;
+    padding-right: 0;
   }
   .dropdown-menu > li > a {
     color: #444444;

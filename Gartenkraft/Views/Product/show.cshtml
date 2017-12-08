@@ -44,7 +44,15 @@
         <div class="col-md-6">
             
             <div class="col-md-12 product-price text-right">
-                <div><span id="data-displayed-price"></span></div>
+                @if (Model.is_custom_product)
+                {
+                    <div><span id="data-displayed-price"></span></div>
+                }
+                else
+                {
+                    <div>@Model.PriceRange</div>
+                }
+                
             </div>
             
             <div class="col-md-12">
@@ -55,8 +63,6 @@
 
                     @Html.HiddenFor(model => model.product_id)
 
-
-
                     <div class="form-group col-md-3 quantity">
                         @Html.LabelFor(model => model.Quantity)
                         @Html.EditorFor(model => model.Quantity, new {htmlAttributes = new {@Value = "1", @class = "form-control"}})
@@ -64,7 +70,7 @@
 
                     if (Model.is_custom_product == true)
                     {
-                        <div class="form-group col-md-4 custom-product-dropdown">
+                        <div class="form-group col-md-6 custom-product-dropdown">
                             @Html.LabelFor(model => model.SelectedOptionID, "Select option")
 
                             <select id="@Html.IdFor(model => model.SelectedOptionID)" class="form-control" name="@Html.NameFor(model => model.SelectedOptionID)">
@@ -77,7 +83,7 @@
                         </div>
                     }
 
-                    <div class="col-md-5 text-right">
+                    <div class="col-md-3 pull-right">
                         <input type="submit" value="Add to Cart" class="btn btn-primary"/>
                     </div>
                 }  
