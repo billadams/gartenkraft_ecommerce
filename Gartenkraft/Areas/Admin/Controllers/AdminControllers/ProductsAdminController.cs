@@ -99,32 +99,72 @@ namespace Gartenkraft.Areas.Admin.Controllers.AdminControllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "product_id,product_name,product_short_description,product_long_description,product_category_id,product_date_added,soft_delete,is_visible,is_custom_product")] tblProduct tblProduct)
+        public ActionResult Edit([Bind(Include = "product_id,product_name,product_short_description,product_long_description,product_category_id,product_date_added,soft_delete,is_visible,is_custom_product")] tblProduct tblProduct, int? optionID/*, string title*/, decimal? weight, decimal? unitCost, decimal? unitPrice)
         {
             string errorMessage = "";
+            string editMessage = "";
             if (ModelState.IsValid)
             {
                 var prodOptions = db.tblProduct_Option.Where(o => o.product_id == tblProduct.product_id).ToList();
                 
-                // check if product type is valid
-                if (tblProduct.is_custom_product == false && prodOptions.Count > 1)
+                // saving product option for simple product
+                if (tblProduct.is_custom_product == false && prodOptions.Count == 1 && optionID != null)
                 {
-                    errorMessage = "This product is not qualified to be a simple product as it has multiple product options";
-                    tblProduct.is_custom_product = true;
+                    var productSpec = prodOptions.FirstOrDefault();
+                    if (productSpec == null)
+                    {
+                        return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                    }
+                    //productSpec.title = title;
+                    productSpec.weight = Convert.ToDecimal(weight);
+                    productSpec.unit_cost = Convert.ToDecimal(unitCost);
+                    productSpec.unit_price = Convert.ToDecimal(unitPrice);
+                    db.Entry(productSpec).State = EntityState.Modified;
+                    var optionResult = db.SaveChanges();
+                    if (optionResult <= 0)
+                    {
+                        errorMessage = "Unable to save product specifications. Please try again.";
+                    }
                 }
 
                 if (errorMessage == "")
                 {
-                    db.Entry(tblProduct).State = EntityState.Modified;
-                    db.SaveChanges();
-                    return RedirectToAction("Index");
+                    var newProduct = db.tblProducts.Find(tblProduct.product_id);
+                    newProduct.product_name = tblProduct.product_name;
+                    newProduct.product_short_description = tblProduct.product_short_description;
+                    newProduct.product_long_description = tblProduct.product_long_description;
+                    newProduct.product_category_id = tblProduct.product_category_id;
+                    newProduct.product_date_added = tblProduct.product_date_added;
+                    newProduct.soft_delete = tblProduct.soft_delete;
+                    newProduct.is_visible = tblProduct.is_visible;
+                    // check if product type is valid
+                    if (tblProduct.is_custom_product == false && prodOptions.Count > 1)
+                    {
+                        errorMessage = "This product is not qualified to be a simple product as it has multiple product options";
+                        tblProduct.is_custom_product = true;
+                    }
+                    else
+                    {
+                        newProduct.is_custom_product = tblProduct.is_custom_product;
+                    }
+                    db.Entry(newProduct).State = EntityState.Modified;
+                    var productResult = db.SaveChanges();
+                    if (productResult <= 0)
+                    {
+                        editMessage = "Unable to edit product. Please try again.";
+                    }
                 }
             }
+            if (editMessage == "")
+            {
+                editMessage = "The product has been succesfully updated.";
+            }
             tblProduct.SetPriceRange();
+            ViewBag.EditMessage = editMessage;
             ViewBag.ErrorMessage = errorMessage;
             ViewBag.product_category_id = new SelectList(db.tblProduct_Category.OrderBy(pc => pc.tblProduct_Line.product_line_id).OrderBy(pc => pc.category_name), "category_id", "category_name", tblProduct.product_category_id);
             ViewBag.ProductImages = db.tblProduct_Image.Where(pi => pi.product_id == tblProduct.product_id).ToList();
-            return View(tblProduct);
+            return View(db.tblProducts.Find(tblProduct.product_id));
         }
 
         // GET: Admin/ProductsAdmin/Delete/5
@@ -202,7 +242,7 @@ namespace Gartenkraft.Areas.Admin.Controllers.AdminControllers
             {
                 db.tblProduct_Option.Add(option);
                 db.SaveChanges();
-                return RedirectToAction("Edit", new { id = option.product_id });
+                return RedirectToAction("ProductOptions", new { id = option.product_id });
             }
             return PartialView(option);
         }
@@ -239,7 +279,7 @@ namespace Gartenkraft.Areas.Admin.Controllers.AdminControllers
 
                 db.Entry(newOption).State = EntityState.Modified;
                 db.SaveChanges();
-                return RedirectToAction("Edit", new { id = tblProduct_Option.product_id });
+                return RedirectToAction("ProductOptions", new { id = tblProduct_Option.product_id });
             }
             ViewBag.product_id = new SelectList(db.tblProducts, "product_id", "product_name", tblProduct_Option.product_id);
             return PartialView(tblProduct_Option);
@@ -268,7 +308,7 @@ namespace Gartenkraft.Areas.Admin.Controllers.AdminControllers
             tblProduct_Option tblProduct_Option = db.tblProduct_Option.Find(id);
             db.tblProduct_Option.Remove(tblProduct_Option);
             db.SaveChanges();
-            return RedirectToAction("Edit", new { id = tblProduct_Option.product_id });
+            return RedirectToAction("ProductOptions", new { id = tblProduct_Option.product_id });
         }
 
         #endregion

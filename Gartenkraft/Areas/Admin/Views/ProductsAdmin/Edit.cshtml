@@ -7,25 +7,31 @@
 
 <h2>Edit @Model.product_name</h2>
 <hr  />
+@if (ViewBag.EditMessage != null && ViewBag.EditMessage != "")
+{
+    <h4 class="text-success">@ViewBag.EditMessage</h4>
+    <hr />
+    <br />
+}
 <div class="row form-group">
     <div class="col-xs-12">
         <ul class="nav nav-pills nav-justified thumbnail setup-panel">
             <li class="active">
                 <a href="#step-1">
-                    <h4 class="list-group-item-heading">Edit Product Info</h4>
-                    @*<p class="list-group-item-text">Edit Product Info</p>*@
+                    <h4 class="list-group-item-heading">Product Info</h4>
                 </a>
             </li>
-            <li>
-                <a href="#step-2">
-                    <h4 class="list-group-item-heading">Edit Product Options</h4>
-                    @*<p class="list-group-item-text">Edit Product Options</p>*@
-                </a>
-            </li>
+            @if (Model.is_custom_product == true)
+            {
+                <li>
+                    <a href="#step-2">
+                        <h4 class="list-group-item-heading">Product Options</h4>
+                    </a>
+                </li>
+            }
             <li>
                 <a href="#step-3">
-                    <h4 class="list-group-item-heading">Edit Product Images</h4>
-                    @*<p class="list-group-item-text">Edit Images</p>*@
+                    <h4 class="list-group-item-heading">Product Images</h4>
                 </a>
             </li>
         </ul>
@@ -109,23 +115,50 @@
                         </div>
                     </div>
 
-                    @*<div class="form-group">
-                        @Html.LabelFor(model => model.PriceRange, htmlAttributes: new { @class = "control-label col-md-2" })
-                        <div class="col-md-10">
-                            <div class="checkbox">
-                                @Html.EditorFor(model => model.PriceRange, new { htmlAttributes = new { @class = "form-control", @disabled = "true" } })
+                    @if (Model.is_custom_product == false)
+                    {
+                        @Html.Hidden("optionID", Model.tblProduct_Option.FirstOrDefault().option_id)
+                        @*<div class="form-group">
+                            @Html.LabelFor(model => model.tblProduct_Option.FirstOrDefault().title, htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-md-10">
+                                @Html.TextBox("title", Model.tblProduct_Option.FirstOrDefault().title, new { @class = "form-control" })
+                                @Html.ValidationMessageFor(model => model.tblProduct_Option.FirstOrDefault().title, "", new { @class = "text-danger" })
+                            </div>
+                        </div>*@
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.tblProduct_Option.FirstOrDefault().weight, htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-md-10">
+                                @Html.TextBox("weight", Model.tblProduct_Option.FirstOrDefault().weight, new { @class = "form-control", @type = "number", @min = "0", @step = ".01" })
+                                @Html.ValidationMessageFor(model => model.tblProduct_Option.FirstOrDefault().weight, "", new { @class = "text-danger" })
                             </div>
                         </div>
-                    </div>*@
 
-                    <div class="form-group col-md-12">
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.tblProduct_Option.FirstOrDefault().unit_cost, htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-md-10">
+                                @Html.TextBox("unitCost", Model.tblProduct_Option.FirstOrDefault().unit_cost, new { @class = "form-control", @type = "number", @min = "0", @step = ".01" })
+                                @Html.ValidationMessageFor(model => model.tblProduct_Option.FirstOrDefault().unit_cost, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.tblProduct_Option.FirstOrDefault().unit_price, htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-md-10">
+                                @Html.TextBox("unitPrice", Model.tblProduct_Option.FirstOrDefault().unit_price, new { @class = "form-control", @type = "number", @min = "0", @step = ".01" })
+                                @Html.ValidationMessageFor(model => model.tblProduct_Option.FirstOrDefault().unit_cost, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                    }
+
+                    <div class="form-group">
                         <div class="col-md-offset-2 col-md-3">
                             <input type="submit" value="Save" class="btn btn-success" />
                         </div>
-                        <div class="col-md-4">
-                            @Html.ActionLink("Back to List", "Index", null, htmlAttributes: new { @class = "btn btn-default" })
-                        </div>
                     </div>
+                </div>
+                <div class="pull-left">
+                    @Html.ActionLink("Back to Product List", "Index", null, htmlAttributes: new { @class = "btn btn-default" })
                 </div>
             }
             @*<button id="activate-step-2" class="btn btn-primary btn-lg">Activate Step 2</button>*@
@@ -138,10 +171,13 @@
         <div class="col-md-12 well">
             <h2 class="text-center"> Product Options</h2>
             <div class="col-md-12">
-                <div id="OptionContent"></div>
-                @Html.Action("ProductOptions")
+                <div id="OptionContent">
+                    @Html.Action("ProductOptions")
+                </div>
                 <hr />
-                @Html.ActionLink("Back to List", "Index", null, htmlAttributes: new { @class = "btn btn-default" })
+                <div class="pull-left">
+                    @Html.ActionLink("Back to Product List", "Index", null, htmlAttributes: new { @class = "btn btn-default" })
+                </div>
             </div>
         </div>
     </div>
@@ -160,7 +196,7 @@
                     </tr>
 
                     @foreach (var item in (List<Gartenkraft.Models.tblProduct_Image>)ViewBag.ProductImages)
-            {
+                    {
                         <tr>
                             <td>
                                 <img src="@Url.Content("~/ProductImages/" + item.product_id.ToString() + "/" + item.product_image_name.ToString())" style="width:100px;height:100px;display:inline-block;margin:30px;" class="btn btn-default" />
@@ -177,7 +213,7 @@
 
                 <div class="form-horizontal" @*style="text-align:center;"*@>
                     @using (Html.BeginForm("UploadFile", "Upload", new { productID = Model.product_id }, FormMethod.Post, new { enctype = "multipart/form-data" }))
-            {
+                    {
                         <div class="form-group">
                             <div class="col-md-offset-2 col-md-10">
                                 @Html.TextBox("file", "", htmlAttributes: new { @type = "file", @style = "display:inline-block;", @class = "form-control" })
@@ -188,16 +224,16 @@
                                 <div class="text-danger">@ViewBag.UploadErrorMessage</div>
                             </div>
                         </div>
-                        <div class="form-group col-md-12">
-                            <div class="col-md-offset-2 col-md-3">
+                        <div class="form-group">
+                            <div class="col-md-offset-2 col-md-10">
                                 <input type="submit" value="Upload Picture" class="btn btn-success" />
-                            </div>
-                            <div class="col-md-offset-6 col-md-4">
-                                @Html.ActionLink("Back to List", "Index", null, htmlAttributes: new { @class = "btn btn-default" })
                             </div>
                         </div>
                         <br />
                     }
+                </div>
+                <div class="pull-left">
+                    @Html.ActionLink("Back to Product List", "Index", null, htmlAttributes: new { @class = "btn btn-default" })
                 </div>
             </div>
 

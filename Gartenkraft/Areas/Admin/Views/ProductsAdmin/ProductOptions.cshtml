@@ -17,12 +17,12 @@
         <th>
             @Html.DisplayNameFor(model => model.unit_price)
         </th>
-        <th>
+        @*<th>
             @Html.DisplayNameFor(model => model.product_id)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.option_id)
-        </th>
+        </th>*@
         <th></th>
     </tr>
 
@@ -40,12 +40,12 @@
         <td>
             @Html.DisplayFor(modelItem => item.unit_price)
         </td>
-        <td>
+        @*<td>
             @Html.DisplayFor(modelItem => item.product_id)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.option_id)
-        </td>
+        </td>*@
         <td>
             @Ajax.ActionLink("Edit", "EditOption", new { id = item.option_id }, new AjaxOptions() { HttpMethod = "GET", UpdateTargetId = "OptionContent", InsertionMode = InsertionMode.Replace }, htmlAttributes: new { @class = "btn btn-warning" }) 
             @Ajax.ActionLink("Delete", "DeleteOption", new { id = item.option_id }, new AjaxOptions() { HttpMethod = "GET", UpdateTargetId = "OptionContent", InsertionMode = InsertionMode.Replace }, htmlAttributes: new { @class = "btn btn-danger" }) 
