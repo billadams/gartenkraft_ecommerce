@@ -207,7 +207,7 @@ namespace Gartenkraft.Areas.Admin.Controllers.AdminControllers
             return RedirectToAction("Index");
         }
 
-        #region Product options
+#region Product options
 
         // GET: Admin/ProductsAdmin/ProductOptions
         public PartialViewResult ProductOptions(int? id)
@@ -311,7 +311,25 @@ namespace Gartenkraft.Areas.Admin.Controllers.AdminControllers
             return RedirectToAction("ProductOptions", new { id = tblProduct_Option.product_id });
         }
 
-        #endregion
+#endregion
+
+#region ProductImages
+
+        public PartialViewResult ProductImages(int? id, string message)
+        {
+            var pImages = db.tblProduct_Image.Where(pi => pi.product_id == id).ToList();
+            if (message != null)
+            {
+                if (message == "")
+                {
+                    message = "Product Images succesfully updated.";
+                }
+                ViewBag.Message = message;
+            }            
+            return PartialView(pImages);
+        }
+
+#endregion
 
         protected override void Dispose(bool disposing)
         {

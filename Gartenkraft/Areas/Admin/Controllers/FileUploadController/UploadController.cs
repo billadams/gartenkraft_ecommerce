@@ -25,6 +25,7 @@ namespace Gartenkraft.Areas.Admin.Controllers.FileUploadController
 
         // post
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult UploadFile(HttpPostedFileBase file, int? productID)
         {
             string message = "";
@@ -56,6 +57,7 @@ namespace Gartenkraft.Areas.Admin.Controllers.FileUploadController
                             var product_image = new tblProduct_Image() { product_id = Convert.ToInt32(productID), product_image_name = file.FileName };
                             db.tblProduct_Image.Add(product_image);
                             db.SaveChanges();
+                            message = "Product image succesfully uploaded.";
                         }
                         else
                         {
@@ -67,14 +69,11 @@ namespace Gartenkraft.Areas.Admin.Controllers.FileUploadController
                         message = "There is an image with the same filename on file.";
                     }
                 }
-                else
-                {
-                    message = "File uploaded successfully";
-                }
                 return RedirectToAction("Edit", "ProductsAdmin", new { id = productID, message = message });
             }
             catch
             {
+                message = "Please select a file to upload.";
                 return RedirectToAction("Edit", "ProductsAdmin", new { id = productID, message = message });
             }
         }
@@ -103,6 +102,10 @@ namespace Gartenkraft.Areas.Admin.Controllers.FileUploadController
                         if (result == 0)
                         {
                             message = "Unable to remove the image. Please try again.";
+                        }
+                        else
+                        {
+                            message = "Product image succesfully deleted.";
                         }
                     }
                     else

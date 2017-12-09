@@ -16,11 +16,23 @@
 <div class="row form-group">
     <div class="col-xs-12">
         <ul class="nav nav-pills nav-justified thumbnail setup-panel">
-            <li class="active">
-                <a href="#step-1">
-                    <h4 class="list-group-item-heading">Product Info</h4>
-                </a>
-            </li>
+            @if (ViewBag.UploadErrorMessage != null && ViewBag.UploadErrorMessage != "")
+            {
+                <li>
+                    <a href="#step-1">
+                        <h4 class="list-group-item-heading">Product Info</h4>
+                    </a>
+                </li>
+            }
+            else
+            {
+                <li class="active">
+                    <a href="#step-1">
+                        <h4 class="list-group-item-heading">Product Info</h4>
+                    </a>
+                </li>
+            }
+            
             @if (Model.is_custom_product == true)
             {
                 <li>
@@ -29,11 +41,23 @@
                     </a>
                 </li>
             }
-            <li>
-                <a href="#step-3">
-                    <h4 class="list-group-item-heading">Product Images</h4>
-                </a>
-            </li>
+
+            @if (ViewBag.UploadErrorMessage != null && ViewBag.UploadErrorMessage != "")
+            {
+                <li class="active">
+                    <a href="#step-3">
+                        <h4 class="list-group-item-heading">Product Images</h4>
+                    </a>
+                </li>
+            }
+            else
+            {
+                <li>
+                    <a href="#step-3">
+                        <h4 class="list-group-item-heading">Product Images</h4>
+                    </a>
+                </li>
+            }
         </ul>
     </div>
 </div>
@@ -188,32 +212,30 @@
         <div class="col-md-12 well">
             <h2 class="text-center"> Images</h2>
             <div class="col-md-12">
-                <table class="table">
-                    <tr>
-                        @*<th><div class="text-center">Images:</div></th>*@
-                        <th></th>
-                        <th></th>
-                    </tr>
 
-                    @foreach (var item in (List<Gartenkraft.Models.tblProduct_Image>)ViewBag.ProductImages)
+                @if (ViewBag.UploadErrorMessage != null && ViewBag.UploadErrorMessage != "")
+                {
+                    if (ViewBag.UploadErrorMessage == "Product image succesfully uploaded.")
                     {
-                        <tr>
-                            <td>
-                                <img src="@Url.Content("~/ProductImages/" + item.product_id.ToString() + "/" + item.product_image_name.ToString())" style="width:100px;height:100px;display:inline-block;margin:30px;" class="btn btn-default" />
-                            </td>
-                            <td>
-                                @Html.ActionLink("Remove", "RemoveImage", "Upload", new { productID = item.product_id, imageName = item.product_image_name }, htmlAttributes: new { @class = "btn btn-danger" })
-                            </td>
-                        </tr>
+                        <h4 class="text-success">@ViewBag.UploadErrorMessage</h4>
                     }
-                </table>
-                <hr />
+                    else
+                    {
+                        <h4 class="text-danger">@ViewBag.UploadErrorMessage</h4>
+                    }
+                }
+
+                <div id="ImageContent">
+                    @Html.Action("ProductImages", new { id = Model.product_id })
+                </div>
+
 
                 <h3 class="text-primary">Image Upload</h3>
 
                 <div class="form-horizontal" @*style="text-align:center;"*@>
-                    @using (Html.BeginForm("UploadFile", "Upload", new { productID = Model.product_id }, FormMethod.Post, new { enctype = "multipart/form-data" }))
+                    @using (Html.BeginForm("UploadFile", "Upload", new {  productID = Model.product_id}, FormMethod.Post, new { enctype = "multipart/form-data" }))                 
                     {
+                        @Html.AntiForgeryToken()
                         <div class="form-group">
                             <div class="col-md-offset-2 col-md-10">
                                 @Html.TextBox("file", "", htmlAttributes: new { @type = "file", @style = "display:inline-block;", @class = "form-control" })
