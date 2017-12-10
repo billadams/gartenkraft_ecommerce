@@ -34,85 +34,72 @@
                     <img src="#" alt="LOGO">
                 </a>
                 <!-- Top Menu Items -->
-                <ul class="nav navbar-right top-nav">
-                    <li>
-                        <a href="#" data-placement="bottom" data-toggle="tooltip" href="#" data-original-title="Stats">
-                            <i class="fa fa-bar-chart-o"></i>
-                        </a>
-                    </li>
-                    <li class="dropdown">
-@**********************************do not erase the following codes***********************************************@
-                        @if (Request.IsAuthenticated)
-                        {
-
-                        }
-                         @if (User.IsInRole(""))
-                         {
-
-                         }
-
-@****************************************************************************************************************************@
-                        @if (Request.IsAuthenticated)
-                        {
+                @if (Request.IsAuthenticated && User.IsInRole("Admin"))
+                {
+                    <ul class="nav navbar-right top-nav">
+                        @*<li>
+                            <a href="#" data-placement="bottom" data-toggle="tooltip" href="#" data-original-title="Stats">
+                                <i class="fa fa-bar-chart-o"></i>
+                            </a>
+                        </li>*@
+                        <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">@User.Identity.Name <b class="fa fa-angle-down"></b></a>
-                        }
-                        <ul class="dropdown-menu">
-                            @*<li>@Html.ActionLink("Make Admin", "MakeAdmin", "Manage")</li>*@
-                            @Html.Partial("_LoginPartial")
-                        </ul>
-                    </li>
-                </ul>
-                </div>
-            @*@if (Request.IsAuthenticated)
-            {*@
-                <!-- Sidebar Menu Items - These collapse to the responsive navigation menu on small screens -->
-                <div class="collapse navbar-collapse navbar-ex1-collapse">
-                    <ul class="nav navbar-nav side-nav">
-                        <li>
-                            <a href="@Url.Action("Index", "Home")"><i class="fa fa-television"></i> Dashboard</a>
-                        </li>
-                        <li>
-                            <a href="#" data-toggle="collapse" data-target="#submenu-1"><i class="fa fa-book"></i> Catalog <i class="fa fa-fw fa-angle-down pull-right"></i></a>
-                            <ul id="submenu-1" class="collapse">
-                                <li><a href="@Url.Action("Index", "ProductsAdmin")"><i class="fa fa-angle-double-right"></i> Products</a></li>
-                                <li><a href="@Url.Action("Index", "ProductCategoriesAdmin")"><i class="fa fa-angle-double-right"></i> Categories</a></li>
-                                <li><a href="@Url.Action("Index", "ProductLinesAdmin")"><i class="fa fa-angle-double-right"></i> Product Lines</a></li>
+                            <ul class="dropdown-menu">
+                                @Html.Partial("_LoginPartial")
                             </ul>
-                        </li>
-                        <li>
-                            <a href="#" data-toggle="collapse" data-target="#submenu-2"><i class="fa fa-shopping-cart"></i>  Sales <i class="fa fa-fw fa-angle-down pull-right"></i></a>
-                            <ul id="submenu-2" class="collapse">
-                                <li><a href="@Url.Action("Index", "SalesInvoice")"><i class="fa fa-angle-double-right"></i> Invoice</a></li>
-                                <li><a href="@Url.Action("Index", "Home")"><i class="fa fa-angle-double-right"></i> Shipments</a></li>
-                                <li><a href="@Url.Action("Index", "Home")"><i class="fa fa-angle-double-right"></i> Return request</a></li>
-                                <li><a href="@Url.Action("Index", "Home")"><i class="fa fa-angle-double-right"></i> Current shopping carts</a></li>
-                            </ul>
-                        </li>
-                        <li>
-                            <a href="#" data-toggle="collapse" data-target="#submenu-3"><i class="fa fa-user"></i>  Customers <i class="fa fa-fw fa-angle-down pull-right"></i></a>
-                            <ul id="submenu-3" class="collapse">
-                                <li><a href="@Url.Action("Index", "User")"><i class="fa fa-angle-double-right"></i> Customers</a></li>
-                                <li><a href="@Url.Action("Index", "Home")"><i class="fa fa-angle-double-right"></i> Customer roles</a></li>
-                            </ul>
-                        </li>
-                        <li>
-                            <a href="@Url.Action("Index", "Home")"><i class="fa fa-fw fa fa-question-circle"></i> Help</a>
                         </li>
                     </ul>
+                }
                 </div>
-                <!-- /.navbar-collapse -->
-            @*}*@
+            
+                <!-- Sidebar Menu Items - These collapse to the responsive navigation menu on small screens -->
+                @if (Request.IsAuthenticated && User.IsInRole("Admin"))
+                {
+                    <div class="collapse navbar-collapse navbar-ex1-collapse">
+                        <ul class="nav navbar-nav side-nav">
+                            <li>
+                                <a href="@Url.Action("Index", "Home")"><i class="fa fa-television"></i> Dashboard</a>
+                            </li>
+                            <li>
+                                <a href="#" data-toggle="collapse" data-target="#submenu-1"><i class="fa fa-book"></i> Catalog <i class="fa fa-fw fa-angle-down pull-right"></i></a>
+                                <ul id="submenu-1" class="collapse">
+                                    <li><a href="@Url.Action("Index", "ProductsAdmin")"><i class="fa fa-angle-double-right"></i> Products</a></li>
+                                    <li><a href="@Url.Action("Index", "ProductCategoriesAdmin")"><i class="fa fa-angle-double-right"></i> Categories</a></li>
+                                    <li><a href="@Url.Action("Index", "ProductLinesAdmin")"><i class="fa fa-angle-double-right"></i> Product Lines</a></li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a href="#" data-toggle="collapse" data-target="#submenu-2"><i class="fa fa-shopping-cart"></i>  Sales <i class="fa fa-fw fa-angle-down pull-right"></i></a>
+                                <ul id="submenu-2" class="collapse">
+                                    <li><a href="@Url.Action("Index", "SalesInvoice")"><i class="fa fa-angle-double-right"></i> Invoice</a></li>
+                                    <li><a href="@Url.Action("Index", "Home")"><i class="fa fa-angle-double-right"></i> Shipments</a></li>
+                                    <li><a href="@Url.Action("Index", "Home")"><i class="fa fa-angle-double-right"></i> Return request</a></li>
+                                    <li><a href="@Url.Action("Index", "Home")"><i class="fa fa-angle-double-right"></i> Current shopping carts</a></li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a href="#" data-toggle="collapse" data-target="#submenu-3"><i class="fa fa-user"></i>  Customers <i class="fa fa-fw fa-angle-down pull-right"></i></a>
+                                <ul id="submenu-3" class="collapse">
+                                    <li><a href="@Url.Action("Index", "User")"><i class="fa fa-angle-double-right"></i> Customers</a></li>
+                                    <li><a href="@Url.Action("Index", "Home")"><i class="fa fa-angle-double-right"></i> Customer roles</a></li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a href="@Url.Action("Index", "Home")"><i class="fa fa-fw fa fa-question-circle"></i> Help</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <!-- /.navbar-collapse -->
+                }
             
         </nav>
         <div id="page-wrapper">
             <div class="container-fluid">
                 <!-- Page Heading -->
                 <div class="row" id="main">
-                        @RenderBody()
-                        <hr />
-                        <footer>
-                            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
-                        </footer>
+                    <hr />
+                    @RenderBody()
+                    <hr />
                 </div>
                 <!-- /.row -->
             </div>
@@ -120,6 +107,30 @@
         </div>
         <!-- /#page-wrapper -->
     </div><!-- /#wrapper -->
+
+    <footer class="footer">
+        <div class="container">
+            <div class="row">
+                <div id="sunneday-logo" class="col-xs-6 col-xs-offset-3 col-sm-3 col-sm-offset-1 col-md-2 col-md-offset-1 col-lg-2 col-lg-offset-1">
+                    <img src="~/Images/sunneday-logo-white.png" alt="Sunneday Corporate Logo" class="img-responsive">
+                </div>
+                <div class="contact-info col-xs-12 col-sm-4 col-md-6">
+                    <ul>
+                        <li>Office: 402-852-2008</li>
+                        <li>Fax: 402-852-2031</li>
+                        <li>Email: <a href="mailto:info@sunneday.com">info@sunneday.com</a></li>
+                        <li>Web: <a href="http://www.sunneday.com" target="_blank">Sunneday Corporate Website</a></li>
+                    </ul>
+                </div>
+                <div class="col-xs-6 col-xs-offset-3 col-sm-3 col-sm-offset-1 col-md-2 col-md-offset-0 col-lg-2" id="gartenkraft-logo">
+                    <img src="~/Images/gartenkraft-whitelogo.png" alt="Gartenkraft Logo" class="img-responsive">
+                </div>
+            </div>
+            <div id="copyright">
+                <p>Copyright &copy; @DateTime.Now.Year Gartenkraft All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
 
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
@@ -133,7 +144,7 @@
     });
 })
     </script>
-            @RenderSection("scripts", required: false)
-            <script src="~/Scripts/jquery.unobtrusive-ajax.js"></script>
+    @RenderSection("scripts", required: false)
+    <script src="~/Scripts/jquery.unobtrusive-ajax.js"></script>
 </body>
 </html>

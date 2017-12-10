@@ -12,7 +12,7 @@ using Gartenkraft.Models;
 
 namespace Gartenkraft.Areas.Admin.Controllers
 {
-    [Authorize]
+    [Authorize(Roles = "Admin")]
     public class AccountController : Controller
     {
         private ApplicationSignInManager _signInManager;

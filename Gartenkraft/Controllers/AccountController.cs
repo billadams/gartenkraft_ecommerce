@@ -78,6 +78,24 @@ namespace Gartenkraft.Controllers
             // This doesn't count login failures towards account lockout
             // To enable password failures to trigger account lockout, change to shouldLockout: true
             var result = await SignInManager.PasswordSignInAsync(model.Email, model.Password, model.RememberMe, shouldLockout: false);
+
+            // filtering admin users
+            bool isAdmin = false;
+            var loggedinUserID = UserManager.FindByEmail(model.Email).Id;
+            var userRoles = UserManager.GetRoles(loggedinUserID);
+            foreach (var i in userRoles)
+            {
+                if (i == "Admin")
+                {
+                    isAdmin = true;
+                }
+            }
+            if (isAdmin && result == SignInStatus.Success)
+            {
+                result = SignInStatus.Failure;
+                AuthenticationManager.SignOut(DefaultAuthenticationTypes.ApplicationCookie);
+            }
+
             switch (result)
             {
                 case SignInStatus.Success:
@@ -88,9 +106,17 @@ namespace Gartenkraft.Controllers
                     return RedirectToAction("SendCode", new { ReturnUrl = returnUrl, RememberMe = model.RememberMe });
                 case SignInStatus.Failure:
                 default:
-                    ModelState.AddModelError("", "Invalid login attempt.");
+                    if (isAdmin)
+                    {
+                        ModelState.AddModelError("", "Admin users are not allowed to login.");
+                    }
+                    else
+                    {
+                        ModelState.AddModelError("", "Invalid login attempt.");
+                    }
                     return View(model);
             }
+
         }
 
         //

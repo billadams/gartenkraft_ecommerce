@@ -10,16 +10,18 @@ using Gartenkraft.Models;
 
 namespace Gartenkraft.Areas.Admin.Controllers
 {
+    [Authorize(Roles = "Admin")]
     public class HomeController : Controller
     {
         private GartenkraftEntities db = new GartenkraftEntities();
 
+        [AllowAnonymous]
         public ActionResult Index()
         {
             ViewBag.Users = db.AspNetUsers.ToList();
             ViewBag.Orders = db.tblSales_Invoice.ToList();
 
-            if (Request.IsAuthenticated/* && User.IsInRole("Admin")*/)
+            if (Request.IsAuthenticated && User.IsInRole("Admin"))
             {
                 return View();
             }

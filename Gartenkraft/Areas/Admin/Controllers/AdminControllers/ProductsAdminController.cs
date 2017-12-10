@@ -10,6 +10,7 @@ using Gartenkraft.Models;
 
 namespace Gartenkraft.Areas.Admin.Controllers.AdminControllers
 {
+    [Authorize(Roles = "Admin")]
     public class ProductsAdminController : Controller
     {
         private GartenkraftEntities db = new GartenkraftEntities();
@@ -154,6 +155,10 @@ namespace Gartenkraft.Areas.Admin.Controllers.AdminControllers
                         editMessage = "Unable to edit product. Please try again.";
                     }
                 }
+            }
+            else
+            {
+                editMessage = "Unable to save changes. Please review the information below.";
             }
             if (editMessage == "")
             {

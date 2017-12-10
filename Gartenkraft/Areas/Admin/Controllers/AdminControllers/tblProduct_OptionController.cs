@@ -10,6 +10,7 @@ using Gartenkraft.Models;
 
 namespace Gartenkraft.Areas.Admin.Controllers.AdminControllers
 {
+    [Authorize(Roles = "Admin")]
     public class tblProduct_OptionController : Controller
     {
         private GartenkraftEntities db = new GartenkraftEntities();

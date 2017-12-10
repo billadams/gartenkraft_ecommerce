@@ -8,6 +8,7 @@ using System.IO;
 
 namespace Gartenkraft.Areas.Admin.Controllers.FileUploadController
 {
+    [Authorize(Roles = "Admin")]
     public class UploadController : Controller
     {
         // GET: Upload
