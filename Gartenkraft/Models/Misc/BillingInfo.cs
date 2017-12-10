@@ -17,10 +17,10 @@ namespace Gartenkraft.Models
         [DisplayName("Last Name")]
         public string BillingLastName { get; set; }
         [Required(ErrorMessage = "Please enter your Address here.")]
-        [DisplayName("Street Address")]
+        [DisplayName("Address")]
         public string BillingAddress { get; set; }
 
-        [DisplayName("Apt #, Floor, etc. (Optional)")]
+        [DisplayName("Address 2")]
         public string BillingAddress2 { get; set; } = "";
         [Required(ErrorMessage = "Please enter your City here.")]
         [DisplayName("City")]
@@ -32,7 +32,7 @@ namespace Gartenkraft.Models
         [Required(ErrorMessage = "Please enter your Zip Code here.")]
         [DisplayName("Zip Code")]
         public string BillingZip { get; set; } = "";
-        [DisplayName("Zip4 (Optional)")]
+        [DisplayName("Zip 4")]
         public string BillingZip4 { get; set; }
         [Required(ErrorMessage = "Please enter your Country here.")]
         [DisplayName("Country")]
