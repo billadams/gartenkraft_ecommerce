@@ -39,6 +39,9 @@ namespace Gartenkraft.Controllers
             //if (Session["User"] == null)
             //{
             //guest logic
+            //testing for line item insertion
+            var cartItems = validCartInfo.CartItems;
+
             oCheckout.InvoiceData.ShippingID = oCheckoutDb.SaveGuestShippingOrder(oCheckout.ShippingData);
             oCheckout.InvoiceData.BillingID = oCheckoutDb.SaveGuestBillingOrder(oCheckout.BillingInformation);
             oCheckout.InvoiceData.CustomerFirstName = oCheckout.BillingInformation.BillingFirstName;
@@ -46,6 +49,8 @@ namespace Gartenkraft.Controllers
             oCheckout.InvoiceData.InvoiceDate = DateTime.Now;
             oCheckout.InvoiceData.InvoiceID = oCheckoutDb.SaveGuestInvoice(oCheckout.InvoiceData);
 
+            //will move to here for line item insertion after
+            
             //}
             //else
             //{
