@@ -9,7 +9,7 @@ namespace Gartenkraft.Models
     public class BillingInfo
     {
         public int BillingID { get; set; }
-        public int CustomerID { get; set; }
+        public string CustomerID { get; set; }
         [Required(ErrorMessage = "Please enter your First Name here.")]
         [DisplayName("First Name")]
         public string BillingFirstName { get; set; }
