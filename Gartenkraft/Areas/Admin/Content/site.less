@@ -348,7 +348,31 @@ used to vertically center elements, may need modification if you're not using de
 #manage-nav {
     background-color: @lighter-green;
 }
------------------------------------------------- */
+
+/*------------------------------------------------ BACK TO TOP STYLES ------------------------------------------------ */
+#toTop.btn-info {
+    background-color: @dark-red;
+    background-image: none;
+    border-color: @darker-red;
+}
+
+#toTop {
+    border-radius: 50px;
+    bottom: 20px;
+    cursor: pointer;
+    display: none;
+    height: 50px;
+    line-height: 40px;
+    opacity: .75;
+    position: fixed;
+    right: 20px;
+    width: 50px;
+}
+
+#toTop .fa {
+    font-size: 25px;
+}
+
 /*------------------------------------------------ MEDIA QUERIES ------------------------------------------------ */
 // Extra small devices (portrait phones, less than 576px)
 // No media query since this is the default in Bootstrap

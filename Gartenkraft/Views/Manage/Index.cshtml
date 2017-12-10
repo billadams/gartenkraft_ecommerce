@@ -1,7 +1,6 @@
 ﻿@model Gartenkraft.Models.IndexViewModel
 @{
     ViewBag.Title = "Manage Profile";
-    //Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 <div class="row">
@@ -25,6 +24,9 @@
 
 
 @section Scripts {
+    
+    <script src="~/Scripts/jquery.unobtrusive-ajax.js"></script>
+
     <script>
         var manageNavTop = $('#manage-nav').offset().top;
         var manageNavLeftOffset = $('#manage-nav').offset().left;

@@ -3,16 +3,9 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewBag.Title - My ASP.NET Application</title>
-    <link href="~/Areas/Admin/Content/bootstrap-theme.css" rel="stylesheet" />
-    <link href="~/Areas/Admin/Content/bootstrap-theme.min.css" rel="stylesheet" />
-    <link href="~/Areas/Admin/Content/bootstrap.css" rel="stylesheet" />
-    <link href="~/Areas/Admin/Content/bootstrap.min.css" rel="stylesheet" />
-    <link href="~/Areas/Admin/Content/dashboard.css" rel="stylesheet" />
-    <link href="~/Areas/Admin/Content/sidebar.css" rel="stylesheet" />
-    <link href="~/Areas/Admin/Content/Site.css" rel="stylesheet" />
-    <link href="~/Areas/Admin/Content/table.css" rel="stylesheet" />
-        @Scripts.Render("~/bundles/modernizr")
+    <title>GartenKraft Lawn & Garden Products | @ViewBag.Title</title>
+    @Styles.Render("~/Areas/Admin/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
 
 </head>
 <body class="page-body">
@@ -106,45 +99,48 @@
             <!-- /.container-fluid -->
         </div>
         <!-- /#page-wrapper -->
+        
+        <footer class="footer">
+            <div class="container">
+                <div class="row">
+                    <div id="sunneday-logo" class="col-xs-6 col-xs-offset-3 col-sm-3 col-sm-offset-1 col-md-2 col-md-offset-1 col-lg-2 col-lg-offset-1">
+                        <img src="~/Images/sunneday-logo-white.png" alt="Sunneday Corporate Logo" class="img-responsive">
+                    </div>
+                    <div class="contact-info col-xs-12 col-sm-4 col-md-6">
+                        <ul>
+                            <li>Office: 402-852-2008</li>
+                            <li>Fax: 402-852-2031</li>
+                            <li>Email: <a href="mailto:info@sunneday.com">info@sunneday.com</a></li>
+                            <li>Web: <a href="http://www.sunneday.com" target="_blank">Sunneday Corporate Website</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-xs-6 col-xs-offset-3 col-sm-3 col-sm-offset-1 col-md-2 col-md-offset-0 col-lg-2" id="gartenkraft-logo">
+                        <img src="~/Images/gartenkraft-whitelogo.png" alt="Gartenkraft Logo" class="img-responsive">
+                    </div>
+                </div>
+                <div id="copyright">
+                    <p>Copyright &copy; @DateTime.Now.Year Gartenkraft All Rights Reserved.</p>
+                </div>
+            </div>
+        </footer>
     </div><!-- /#wrapper -->
 
-    <footer class="footer">
-        <div class="container">
-            <div class="row">
-                <div id="sunneday-logo" class="col-xs-6 col-xs-offset-3 col-sm-3 col-sm-offset-1 col-md-2 col-md-offset-1 col-lg-2 col-lg-offset-1">
-                    <img src="~/Images/sunneday-logo-white.png" alt="Sunneday Corporate Logo" class="img-responsive">
-                </div>
-                <div class="contact-info col-xs-12 col-sm-4 col-md-6">
-                    <ul>
-                        <li>Office: 402-852-2008</li>
-                        <li>Fax: 402-852-2031</li>
-                        <li>Email: <a href="mailto:info@sunneday.com">info@sunneday.com</a></li>
-                        <li>Web: <a href="http://www.sunneday.com" target="_blank">Sunneday Corporate Website</a></li>
-                    </ul>
-                </div>
-                <div class="col-xs-6 col-xs-offset-3 col-sm-3 col-sm-offset-1 col-md-2 col-md-offset-0 col-lg-2" id="gartenkraft-logo">
-                    <img src="~/Images/gartenkraft-whitelogo.png" alt="Gartenkraft Logo" class="img-responsive">
-                </div>
-            </div>
-            <div id="copyright">
-                <p>Copyright &copy; @DateTime.Now.Year Gartenkraft All Rights Reserved.</p>
-            </div>
-        </div>
-    </footer>
+
 
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
     <script>$(function () {
-    $('[data-toggle="tooltip"]').tooltip();
-    $(".side-nav .collapse").on("hide.bs.collapse", function () {
-        $(this).prev().find(".fa").eq(1).removeClass("fa-angle-right").addClass("fa-angle-down");
-    });
-    $('.side-nav .collapse').on("show.bs.collapse", function () {
-        $(this).prev().find(".fa").eq(1).removeClass("fa-angle-down").addClass("fa-angle-right");
-    });
-})
+            $('[data-toggle="tooltip"]').tooltip();
+            $(".side-nav .collapse").on("hide.bs.collapse", function () {
+                $(this).prev().find(".fa").eq(1).removeClass("fa-angle-right").addClass("fa-angle-down");
+            });
+            $('.side-nav .collapse').on("show.bs.collapse", function () {
+                $(this).prev().find(".fa").eq(1).removeClass("fa-angle-down").addClass("fa-angle-right");
+            });
+        })
     </script>
+
     @RenderSection("scripts", required: false)
-    <script src="~/Scripts/jquery.unobtrusive-ajax.js"></script>
+
 </body>
 </html>

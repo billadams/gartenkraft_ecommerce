@@ -280,9 +280,27 @@ used to vertically center elements, may need modification if you're not using de
 #manage-nav {
   background-color: #71bf44;
 }
-/*style="width:200px; height:100%; background-color:#519032; position: fixed; z-index: 0; top:0; padding:150px 0px; "*/
-/*style="padding:25px;margin-left:200px;"*/
-/*------------------------------------------------ PRODUCT DETAILS STYLES ------------------------------------------------ */
+/*------------------------------------------------ BACK TO TOP STYLES ------------------------------------------------ */
+#toTop.btn-info {
+  background-color: #b62d2d;
+  background-image: none;
+  border-color: #9c2727;
+}
+#toTop {
+  border-radius: 50px;
+  bottom: 20px;
+  cursor: pointer;
+  display: none;
+  height: 50px;
+  line-height: 40px;
+  opacity: .75;
+  position: fixed;
+  right: 20px;
+  width: 50px;
+}
+#toTop .fa {
+  font-size: 25px;
+}
 /*------------------------------------------------ MEDIA QUERIES ------------------------------------------------ */
 @media (min-width: 768px) {
   @import url('https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css');
