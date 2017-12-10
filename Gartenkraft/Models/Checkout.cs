@@ -13,6 +13,5 @@ namespace Gartenkraft.Models
         public SalesInvoiceTableMetadata InvoiceData { get; set; }
         public BillingInfo BillingInformation { get; set; }
         public Cart CartInfo { get; set; }
-
     }
 }

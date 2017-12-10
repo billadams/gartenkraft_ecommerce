@@ -1,27 +1,18 @@
 ﻿@model Gartenkraft.Models.IndexViewModel
 @{
-    ViewBag.Title = "Index";
-    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "Manage Profile";
+    //Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-
-
 <div class="row">
-    <div class="col-lg-3" style="width:200px;
-                                height:100%;
-                                background-color:#519032;
-                                position: fixed;
-                                z-index: 0;
-                                top:0;
-                                padding:150px 0px;
-                                ">
+    <aside class="col-md-3" id="manage-nav">
         @Html.ActionLink("View your Profile", "Index", new { Message = "" }, htmlAttributes: new { @class = "btn btn-primary btn-group-justified", @style = "margin:10px 0px;" })
         @Ajax.ActionLink("Change your password", "PartialChangePassword", null, new AjaxOptions() { HttpMethod = "GET", UpdateTargetId = "ManageContent", InsertionMode = InsertionMode.Replace }, htmlAttributes: new { @class = "btn btn-primary btn-group-justified", @style = "margin:10px 0px;" })
         @Ajax.ActionLink("Change your profile", "PartialChangeProfile", null, new AjaxOptions() { HttpMethod = "GET", UpdateTargetId = "ManageContent", InsertionMode = InsertionMode.Replace }, htmlAttributes: new { @class = "btn btn-primary btn-group-justified", @style = "margin:10px 0px;" })
         @Ajax.ActionLink("Billing Info", "PartialBilling", null, new AjaxOptions() { HttpMethod = "GET", UpdateTargetId = "ManageContent", InsertionMode = InsertionMode.Replace }, htmlAttributes: new { @class = "btn btn-primary btn-group-justified", @style = "margin:10px 0px;" })
         @Ajax.ActionLink("Shipping Info", "PartialShipping", null, new AjaxOptions() { HttpMethod = "GET", UpdateTargetId = "ManageContent", InsertionMode = InsertionMode.Replace }, htmlAttributes: new { @class = "btn btn-primary btn-group-justified", @style = "margin:10px 0px;" })
-    </div>
-    <div class="col-lg-9" style="padding:25px;margin-left:200px;">
+    </aside>
+    <div class="col-md-9" id="manage-content">
         <h2>@User.Identity.Name's Profile</h2>
 
         <p><span class="text-danger">@ViewBag.StatusMessage</span></p>
@@ -30,8 +21,38 @@
             @Html.Action("_UserProfile")
         </div>
     </div>
-    <div style="clear:both;">&nbsp;</div>
 </div>
+
+
+@section Scripts {
+    <script>
+        var manageNavTop = $('#manage-nav').offset().top;
+        var manageNavLeftOffset = $('#manage-nav').offset().left;
+        var manageNavWidth = $('#manage-nav').width();
+        var manageContentLeftOffset = $('#manage-content').position().left;
+        $(window).scroll(function () {
+            var currentScroll = $(window).scrollTop();
+            if (currentScroll >= manageNavTop) {
+                $('#manage-nav').css({
+                    position: 'fixed',
+                    top: '0',
+                    left: manageNavLeftOffset
+                });
+                $('#manage-content').css({
+                    marginLeft: manageContentLeftOffset / 2 + 30
+                });
+            } else {
+                $('#manage-nav').css({
+                    position: 'static',
+                    width: manageNavWidth
+                });
+                $('#manage-content').css({
+                    marginLeft: 0
+            });
+            }
+        });
+    </script>
+}
 
 @*<script>
         $('.ManageProfile').click(function (e) {

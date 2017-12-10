@@ -261,9 +261,9 @@
     <Compile Include="Models\tblShipping.cs">
       <DependentUpon>GartenkraftModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\Utilities\Checkout.cs" />
-    <Compile Include="Models\Utilities\CheckoutDB.cs" />
-    <Compile Include="Models\Utilities\GartenkraftConnection.cs" />
+    <Compile Include="Models\Checkout.cs" />
+    <Compile Include="Models\CheckoutDB.cs" />
+    <Compile Include="Models\GartenkraftConnection.cs" />
     <Compile Include="Models\Metadata\SalesInvoiceTableMetadata.cs" />
     <Compile Include="Models\Misc\Shipping.cs" />
     <Compile Include="Models\Metadata\ProductTableMetadata.cs" />
@@ -323,12 +323,12 @@
     <Compile Include="ViewModels\AdminViewModel.cs" />
     <Compile Include="ViewModels\MenuModel.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
-    <Compile Include="Models\Utilities\Cart.cs" />
+    <Compile Include="Models\Cart.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\Misc\InvoiceLineItemTable.cs" />
     <Compile Include="Models\Metadata\InvoiceLineitemTableMetadata.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
-    <Compile Include="Models\Utilities\Menu.cs" />
+    <Compile Include="Models\Menu.cs" />
     <Compile Include="Models\Metadata\InvoiceLineitemViewMetadata.cs" />
     <Compile Include="Models\Metadata\InvoiceViewMetadata.cs" />
     <Compile Include="Models\Metadata\ProductViewMetadata.cs" />
@@ -697,6 +697,7 @@
   <ItemGroup>
     <Folder Include="Areas\Admin\Views\Invoice\" />
     <Folder Include="Areas\Admin\Views\ProductOption\" />
+    <Folder Include="Models\Utilities\" />
     <Folder Include="ProductImages\" />
   </ItemGroup>
   <ItemGroup>

@@ -276,6 +276,12 @@ used to vertically center elements, may need modification if you're not using de
   overflow: hidden;
   color: #fff;
 }
+/*------------------------------------------------ MANAGE PROFILE STYLES ------------------------------------------------ */
+#manage-nav {
+  background-color: #71bf44;
+}
+/*style="width:200px; height:100%; background-color:#519032; position: fixed; z-index: 0; top:0; padding:150px 0px; "*/
+/*style="padding:25px;margin-left:200px;"*/
 /*------------------------------------------------ PRODUCT DETAILS STYLES ------------------------------------------------ */
 /*------------------------------------------------ MEDIA QUERIES ------------------------------------------------ */
 @media (min-width: 768px) {
