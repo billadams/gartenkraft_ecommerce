@@ -23,7 +23,7 @@ namespace Gartenkraft.Models
         [DisplayName("Address")]
         public string ShippingAddress { get; set; }
 
-        [DisplayName("Addresss 2")]
+        [DisplayName("Address 2")]
         public string ShippingAddress2 { get; set; } = "";
         [Required(ErrorMessage = "Please enter your City here.")]
         [DisplayName("City")]

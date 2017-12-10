@@ -124,5 +124,39 @@ namespace Gartenkraft.Models
             }
             return newid;
         }
+
+        public bool SaveLineItem(int productId, int quantity, int invoiceId, int productOptionId)
+        {
+            SqlConnection oConnection = GartenkraftConnection.GetConnection();
+            string insertString =
+                "INSERT into tblSales_Invoice_Lineitem (product_id, lineitem_quantity, invoice_id, product_option_id)" +
+                " values (@product_id, @lineitem_quantity, @invoice_id, @product_option_id)";
+
+            SqlCommand insertCommand = new SqlCommand(insertString, oConnection);
+
+            insertCommand.Parameters.AddWithValue("@product_id", productId);
+            insertCommand.Parameters.AddWithValue("@lineitem_quantity", quantity);
+            insertCommand.Parameters.AddWithValue("@invoice_id", invoiceId);
+            insertCommand.Parameters.AddWithValue("@product_option_id", productOptionId);
+            try
+            {
+                oConnection.Open();
+                insertCommand.ExecuteNonQuery();
+            }
+            catch (SqlException ex)
+            {
+                
+            }
+            catch (Exception ex)
+            {
+                
+            }
+
+            finally
+            {
+                oConnection.Close();
+            }
+            return true;
+        }
     }
 }
