@@ -46,11 +46,11 @@
             <div class="col-md-12 product-price text-right">
                 @if (Model.is_custom_product)
                 {
-                    <div><span id="data-displayed-price"></span></div>
+                    <div class="item-price"><span id="data-displayed-price"></span></div>
                 }
                 else
                 {
-                    <div>@Model.PriceRange</div>
+                    <div class="item-price">@Model.PriceRange</div>
                 }
                 
             </div>

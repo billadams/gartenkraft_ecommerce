@@ -52,7 +52,7 @@ header .header-nav {
 }
 header li {
   float: left;
-  margin-right: 5px;
+  margin-right: 15px;
 }
 /*-----------------------------C------------------- NAVIGATION STYLES ------------------------------------------------ */
 nav {
@@ -135,6 +135,7 @@ nav a:hover {
   /* Vertically center images part 2: clear their floats. */
 }
 .featurette-image {
+  padding-top: 120px;
   margin-top: -120px;
   /* Vertically center images part 3: negative margin up the image the same amount of the padding to center it. */
 }
@@ -267,7 +268,7 @@ footer #copyright {
 #quantity {
   /*width: 50px;*/
 }
-#data-displayed-price {
+.item-price {
   color: #333;
   font-size: 1.5em;
   padding-right: 15px;
