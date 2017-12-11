@@ -11,7 +11,7 @@ namespace Gartenkraft.Models
 
     public class BillingTableMetadata
     {
-        [Required(ErrorMessage = "Please enter your First Name here.")]
+        [Required(ErrorMessage = "Please enter your first name.")]
         [Display(Name = "First Name")]
         public string billing_first_name { get; set; }
 

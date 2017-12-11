@@ -7,7 +7,7 @@
 <h2>Checkout</h2>
 
 <div>
-    @Html.ActionLink("Back to Cart", "Index", "Cart", new { @class = "btn btn-default" })
+    @Html.ActionLink("Back to Cart", "Index", "Cart", null, new { @class = "btn btn-default" })
 </div>
 
 <div class="row">
@@ -86,7 +86,7 @@
                     @Html.ValidationMessageFor(model => model.ShippingData.ShippingCountry, "", new { @class = "text-danger" })
                 </div>
 
-            </div> <!-- /shipping-info-->
+            </div> <!-- /#shipping-info-->
 
             <div class="form-check">
                 <label class="form-check-label">
@@ -151,11 +151,11 @@
                     @Html.ValidationMessageFor(model => model.BillingInformation.BillingCountry, "", new { @class = "text-danger" })
                 </div>
 
-            </div> <!-- /billing-info -->
+            </div> <!-- /Ebilling-info -->
 
             <input type="submit" value="Submit Order" class="btn btn-primary" />
         }
-    </div> <!-- /col-md-8 -->
+    </div> <!-- /.col-md-8 -->
 
     <aside class="col-md-4 ml-auto" id="order-info">
         
@@ -191,12 +191,12 @@
 
         </div>
 
-    </aside> <!-- /col-md-4 -->
+    </aside> <!-- /.col-md-4 -->
 
 </div>
 
 <div>
-    @Html.ActionLink("Back to Cart", "Index", "Cart", new { @class = "btn btn-default"})
+    @Html.ActionLink("Back to Cart", "Index", "Cart", null, new { @class = "btn btn-default"})
 </div>
 
 @section Scripts {
@@ -247,6 +247,5 @@
         });
     </script>
 
+    @Scripts.Render("~/bundles/jqueryval")
 }
-
-@Scripts.Render("~/bundles/jqueryval")

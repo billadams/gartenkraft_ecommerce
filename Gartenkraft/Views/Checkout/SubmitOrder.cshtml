@@ -4,15 +4,16 @@
     ViewBag.Title = "Order Confirmation";
 }
 
-<div class="container">
-    <div class="row text-center">
-        <div class="col-sm-6 col-sm-offset-3">
-            <br><br> <h2 style="color:#0fad00">Order Successful Order Number: @Model.InvoiceData.InvoiceID </h2>
-            <br><br> <h2 style="color:#0fad00">Confirmation email sent to  @Model.InvoiceData.InvoiceEmail </h2>
+<div class="row">
+    <div class="col-sm-9">
+        <h2>Order Confirmation</h2>
+            
+        <hr/>
 
-            <br><br>
-        </div>
-
+        <p>Thank you very much for your order!</p>
+        <p>You order number is @Model.InvoiceData.InvoiceID.</p>
+        <p>We have sent a confirmation email to @Model.InvoiceData.InvoiceEmail.</p>
+        <p>We will notify you via email as soon as your order has shipped.</p>
     </div>
 </div>
 

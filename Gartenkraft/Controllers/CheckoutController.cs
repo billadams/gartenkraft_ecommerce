@@ -54,6 +54,8 @@ namespace Gartenkraft.Controllers
             return View(oCheckout);
         }
 
+        [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult SubmitOrder(Checkout oCheckout, string sameBilling)
         {
             if (Session["Cart"] == null)
