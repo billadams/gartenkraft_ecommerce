@@ -4,6 +4,7 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
+using Gartenkraft.Helpers;
 using Gartenkraft.Models;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
@@ -20,8 +21,7 @@ namespace Gartenkraft.Controllers
         {
             if (Session["Cart"] == null)
             {
-                return RedirectToAction("Index", "Cart");//no cart found, shouldn't be able to view this page
-                
+                return RedirectToAction("Index", "Cart");
             }           
             oCheckout.InvoiceData = new SalesInvoiceTableMetadata();
             oCheckout.BillingInformation = new BillingInfo();
@@ -56,35 +56,25 @@ namespace Gartenkraft.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult SubmitOrder(Checkout oCheckout, string sameBilling)
+        public ActionResult Confirmation(Checkout oCheckout, string sameBilling)
         {
             if (Session["Cart"] == null)
             {
-                return RedirectToAction("Index", "Cart");//no cart found, shouldn't be able to view this page
+                return RedirectToAction("Index", "Cart");
             }
-            //grab cart info from session don't rely on passed in checkout
+            
             Cart validCartInfo = (Cart) Session["Cart"];
-            //if (!ModelState.IsValid)
-            //{
-            //    var errors = ModelState.Select(x => x.Value.Errors)
-            //        .Where(y => y.Count > 0)
-            //        .ToList();
-            //    return RedirectToAction("Index", "Checkout", );
-            //    //var message = string.Join(" | ", ModelState.Values
-            //    //    .SelectMany(v => v.Errors)
-            //    //    .Select(e => e.ErrorMessage));
-            //    //return new HttpStatusCodeResult(HttpStatusCode.BadRequest, message);
-            //}
-            oCheckout = CheckforNullableValues(oCheckout);
-            CheckoutDB oCheckoutDb = new CheckoutDB();
+
+            oCheckout = Gartenkraft.Helpers.CheckoutHelper.CheckforNullableValues(oCheckout);
+
+            CheckoutDB oCheckoutDb = new Gartenkraft.Helpers.CheckoutDB();
             if (sameBilling == "true")
             {
-                oCheckout = BillingSameasShippingInfo(oCheckout);
+                oCheckout = Gartenkraft.Helpers.CheckoutHelper.BillingSameasShippingInfo(oCheckout);
             }
 
             if (User.Identity.IsAuthenticated)
             {
-                //User Checkout Logic
                 var userID = User.Identity.GetUserId();
                 oCheckout.BillingInformation.CustomerID = userID;
                 oCheckout.ShippingData.CustomerID = userID;
@@ -101,7 +91,6 @@ namespace Gartenkraft.Controllers
             }
             else
             {
-                //Guest Checkout Logic
                 oCheckout.InvoiceData.ShippingID = oCheckoutDb.SaveGuestShippingOrder(oCheckout.ShippingData);
                 oCheckout.InvoiceData.BillingID = oCheckoutDb.SaveGuestBillingOrder(oCheckout.BillingInformation);
                 oCheckout.InvoiceData.CustomerFirstName = oCheckout.BillingInformation.BillingFirstName;
@@ -119,41 +108,6 @@ namespace Gartenkraft.Controllers
             Session.Abandon();
 
             return View(oCheckout);
-        }
-
-        public Checkout CheckforNullableValues(Checkout oCheckout)
-        {
-            if (String.IsNullOrEmpty(oCheckout.ShippingData.ShippingAddress2))
-            {
-                oCheckout.ShippingData.ShippingAddress2 = "";
-            }
-            if (String.IsNullOrEmpty(oCheckout.ShippingData.ShippingZip4))
-            {
-                oCheckout.ShippingData.ShippingZip4 = "";
-            }
-            if (String.IsNullOrEmpty(oCheckout.BillingInformation.BillingAddress2))
-            {
-                oCheckout.BillingInformation.BillingAddress2 = "";
-            }
-            if (String.IsNullOrEmpty(oCheckout.BillingInformation.BillingZip4))
-            {
-                oCheckout.BillingInformation.BillingZip4 = "";
-            }
-            return oCheckout;
-        }
-
-        public Checkout BillingSameasShippingInfo(Checkout oCheckout)
-        {
-            oCheckout.BillingInformation.BillingAddress = oCheckout.ShippingData.ShippingAddress;
-            oCheckout.BillingInformation.BillingAddress2 = oCheckout.ShippingData.ShippingAddress2;
-            oCheckout.BillingInformation.BillingFirstName = oCheckout.ShippingData.ShippingFirstName;
-            oCheckout.BillingInformation.BillingLastName = oCheckout.ShippingData.ShippingLastName;
-            oCheckout.BillingInformation.BillingCity = oCheckout.ShippingData.ShippingCity;
-            oCheckout.BillingInformation.BillingState = oCheckout.ShippingData.ShippingState;
-            oCheckout.BillingInformation.BillingCountry = oCheckout.ShippingData.ShippingCountry;
-            oCheckout.BillingInformation.BillingZip = oCheckout.ShippingData.ShippingZip;
-            oCheckout.BillingInformation.BillingZip4 = oCheckout.ShippingData.ShippingZip4;            
-            return oCheckout;
         }
     }
 }

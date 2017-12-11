@@ -216,6 +216,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>GartenkraftModel.edmx</DependentUpon>
     </Compile>
+    <Compile Include="Helpers\CheckoutHelper.cs" />
     <Compile Include="Models\Metadata\AspNetUsersMetadata.cs" />
     <Compile Include="Models\Metadata\BillingTableMetadata.cs" />
     <Compile Include="Models\Metadata\InvoiceTableMetadata.cs" />
@@ -262,7 +263,7 @@
       <DependentUpon>GartenkraftModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Checkout.cs" />
-    <Compile Include="Models\CheckoutDB.cs" />
+    <Compile Include="Helpers\CheckoutDB.cs" />
     <Compile Include="Models\GartenkraftConnection.cs" />
     <Compile Include="Models\Metadata\SalesInvoiceTableMetadata.cs" />
     <Compile Include="Models\Shipping.cs" />
@@ -662,7 +663,7 @@
     <Content Include="Views\Category\Show.cshtml" />
     <Content Include="Views\Home\Error.cshtml" />
     <Content Include="Views\Checkout\Index.cshtml" />
-    <Content Include="Views\Checkout\SubmitOrder.cshtml" />
+    <Content Include="Views\Checkout\Confirmation.cshtml" />
     <Content Include="Views\Manage\PartialChangePassword.cshtml" />
     <Content Include="Views\Manage\ChangePassword.cshtml" />
     <Content Include="Views\Manage\Index.cshtml" />

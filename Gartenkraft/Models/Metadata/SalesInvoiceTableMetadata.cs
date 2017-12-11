@@ -15,7 +15,7 @@ namespace Gartenkraft.Models
         public int ShippingID { get; set; }
         public DateTime InvoiceDate { get; set; }
 
-        [Required(ErrorMessage = "Please enter your Email here.")]
+        [Required(ErrorMessage = "Please enter your email address.")]
         [DisplayName("Email")]
         [EmailAddress]
         public string InvoiceEmail { get; set; }

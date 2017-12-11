@@ -3,8 +3,9 @@ using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Web;
+using Gartenkraft.Models;
 
-namespace Gartenkraft.Models
+namespace Gartenkraft.Helpers
 {
     public class CheckoutDB
     {

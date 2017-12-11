@@ -1,0 +1,18 @@
+﻿@model Gartenkraft.Models.Checkout
+
+@{
+    ViewBag.Title = "Order Confirmation";
+}
+
+<div class="row">
+    <div class="col-sm-9">
+        <h2>Order Confirmation</h2>
+            
+        <hr/>
+
+        <p>Thank you very much for your order! You order number is @Model.InvoiceData.InvoiceID. We have sent a confirmation email to @Model.InvoiceData.InvoiceEmail. We will notify you via email as soon as your order has shipped.</p>
+    </div>
+</div>
+
+
+
