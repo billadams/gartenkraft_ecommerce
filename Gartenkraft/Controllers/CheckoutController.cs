@@ -64,7 +64,10 @@ namespace Gartenkraft.Controllers
             }
             
             Cart validCartInfo = (Cart) Session["Cart"];
-
+            if (!ModelState.IsValid)
+            {
+                return RedirectToAction("Index", "Checkout");
+            }
             oCheckout = Gartenkraft.Helpers.CheckoutHelper.CheckforNullableValues(oCheckout);
 
             CheckoutDB oCheckoutDb = new Gartenkraft.Helpers.CheckoutDB();
